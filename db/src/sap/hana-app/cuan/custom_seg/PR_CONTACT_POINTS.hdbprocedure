@@ -1,0 +1,30 @@
+procedure "sap.hana-app.cuan.custom_seg::PR_CONTACT_POINTS" (  in i_scenario_parameters NCLOB ,  in i_datasource_parameters NCLOB ,  in i_selected_variables NCLOB ,  in i_model_parameters NCLOB ,  in ip_join_set_id VARCHAR(32) ,  out var_out "sap.hana-app.cuan.custom_seg::PR_CONTACT_POINTS/tabletype/var_out"  ) language SQLSCRIPT sql security definer reads sql data as 
+ /********* Begin Procedure Script ************/ 
+begin 
+
+---------------------------------------------------------------------------------------------------
+-- Run Calculation
+---------------------------------------------------------------------------------------------------
+	
+	if :ip_join_set_id = '' then
+	  var_out =
+		select 
+				db_key							as "KEY",
+				max(balance_points)                   	as "SCORE"
+		from "sap.hana-app.loy.v::CA_LOYALTY_SCORES"
+		group by db_key;
+	else	
+      var_out =
+		select 
+				db_key							as "KEY",
+				max(balance_points)                   	as "SCORE"
+		from "sap.hana-app.loy.v::CA_LOYALTY_SCORES" as contact
+		inner join "sap.hana-app.cuan.contact.score.internal.datafoundation::AT_JS_CONTACT" as js
+			on contact.db_key = js.id
+		where js."JOIN_SET_ID" = :ip_join_set_id
+		group by db_key;
+	end if;		
+					   
+end
+
+ /********* End Procedure Script ************/

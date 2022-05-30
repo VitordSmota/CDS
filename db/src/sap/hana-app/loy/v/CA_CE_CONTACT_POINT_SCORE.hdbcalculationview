@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Variable="http://www.sap.com/ndb/BiModelVariable.ecore" schemaVersion="3.0" id="sap.hana-app.loy.v::CA_CE_CONTACT_POINT_SCORE" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="Loyalty Point Score"/>
+  <metadata changedAt="2018-12-19 14:06:23.867"/>
+  <localVariables>
+    <variable id="IP_MODEL_GUID" parameter="true">
+      <descriptions defaultDescription="IP_MODEL_GUID"/>
+      <variableProperties datatype="VARCHAR" length="32" mandatory="false" defaultValue="undefined">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="IP_JOIN_SET_ID" parameter="true">
+      <descriptions defaultDescription="IP_JOIN_SET_ID"/>
+      <variableProperties datatype="VARCHAR" length="32" mandatory="false" defaultValue="undefined">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="TF_CE_CONTACT_POINT_SCORE">
+      <targetVariable name="IP_MODEL_GUID" resourceUri="sap.hana-app.loy.v::TF_CE_CONTACT_POINT_SCORE"/>
+      <localVariable>IP_MODEL_GUID</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="TF_CE_CONTACT_POINT_SCORE">
+      <targetVariable name="IP_JOIN_SET_ID" resourceUri="sap.hana-app.loy.v::TF_CE_CONTACT_POINT_SCORE"/>
+      <localVariable>IP_JOIN_SET_ID</localVariable>
+    </mapping>
+  </variableMappings>
+  <informationModelLayout relativeWidthScenario="19"/>
+  <dataSources>
+    <DataSource id="TF_CE_CONTACT_POINT_SCORE" type="TABLE_FUNCTION">
+      <resourceUri>sap.hana-app.loy.v::TF_CE_CONTACT_POINT_SCORE</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <logicalModel id="TF_CE_CONTACT_POINT_SCORE">
+    <descriptions/>
+    <attributes>
+      <attribute id="CONTACT_KEY" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Contact Key"/>
+        <keyMapping columnObjectName="TF_CE_CONTACT_POINT_SCORE" columnName="CONTACT_KEY"/>
+      </attribute>
+      <attribute id="SCORE_DESC" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Points"/>
+        <keyMapping columnObjectName="TF_CE_CONTACT_POINT_SCORE" columnName="SCORE_DESC"/>
+      </attribute>
+      <attribute id="UNIT" order="4" attributeHierarchyActive="false" descriptionColumnName="UNIT.description" displayAttribute="false">
+        <descriptions defaultDescription="Unit"/>
+        <keyMapping columnObjectName="TF_CE_CONTACT_POINT_SCORE" columnName="UNIT"/>
+      </attribute>
+      <attribute id="RANK" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Rank"/>
+        <keyMapping columnObjectName="TF_CE_CONTACT_POINT_SCORE" columnName="RANK"/>
+      </attribute>
+      <attribute id="UNIT.description" hidden="true" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="TF_CE_CONTACT_POINT_SCORE" columnName="UNIT.description"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="SCORE_VALUE" order="2" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Points"/>
+        <measureMapping columnObjectName="TF_CE_CONTACT_POINT_SCORE" columnName="SCORE_VALUE"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

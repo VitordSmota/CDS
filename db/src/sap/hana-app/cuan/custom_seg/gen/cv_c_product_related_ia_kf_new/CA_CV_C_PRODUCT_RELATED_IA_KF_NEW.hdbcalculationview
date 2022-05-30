@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="sap.hana-app.cuan.custom_seg.gen.cv_c_product_related_ia_kf_new::CA_CV_C_PRODUCT_RELATED_IA_KF_NEW" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="true">
+ <descriptions defaultDescription="Nova CDS para o Montante"/>
+ <localVariables/>
+ <variableMappings/>
+ <dataSources>
+  <DataSource id="hdbtables::CUAND_CE_IA_PROD">
+   <resourceUri>hdbtables::CUAND_CE_IA_PROD</resourceUri>
+  </DataSource>
+  <DataSource id="hdbtables::CUAND_CE_IA_RT">
+   <resourceUri>hdbtables::CUAND_CE_IA_RT</resourceUri>
+  </DataSource>
+  <DataSource id="sap.hana-app::M_TIME_DIMENSION">
+   <resourceUri>sap.hana-app.cuan.db::M_TIME_DIMENSION</resourceUri>
+  </DataSource>
+ </dataSources>
+ <calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_1" cardinality="CN_N" joinType="inner" multiJoinNode="Join_1" multiJoinCentralTable="sap.hana-app::M_TIME_DIMENSION" multiJoinOrder="Outside In">
+   <viewAttributes>
+    <viewAttribute id="MANDT"/>
+    <viewAttribute id="DB_KEY"/>
+    <viewAttribute id="PARENT_KEY"/>
+    <viewAttribute id="PRODUCT_KEY"/>
+    <viewAttribute id="PRODUCT_IMAGE_URL"/>
+    <viewAttribute id="PRODUCT_NAV_URL"/>
+    <viewAttribute id="PRODUCT_VALUATION" aggregationType="sum"/>
+    <viewAttribute id="PRODUCT_QUANTIFIER" aggregationType="sum"/>
+    <viewAttribute id="IA_DATE"/>
+    <viewAttribute id="AMOUNT" aggregationType="sum"/>
+    <viewAttribute id="PRODUCT_DESC"/>
+    <viewAttribute id="UNIT_OF_MEASURE"/>
+    <viewAttribute id="IA_TYPE"/>
+    <viewAttribute id="COMM_MEDIUM"/>
+    <viewAttribute id="ID"/>
+    <viewAttribute id="TIMESTAMP" aggregationType="sum"/>
+    <viewAttribute id="MKT_AREA_ID"/>
+    <viewAttribute id="CAMPAIGN_ID"/>
+    <viewAttribute id="INITIATIVE_ID"/>
+    <viewAttribute id="DIGACC_ID"/>
+    <viewAttribute id="LOC_ID"/>
+    <viewAttribute id="LOC_ORIGIN"/>
+    <viewAttribute id="DIGACC_TYPE"/>
+    <viewAttribute id="MKT_AGREEMENTORIGIN"/>
+    <viewAttribute id="MKT_AGREEMENTEXTERNALID"/>
+    <viewAttribute id="MARKETING_ORCHESTRATION_ID" aggregationType="sum"/>
+    <viewAttribute id="COMM_CAT_ID"/>
+    <viewAttribute id="IA_STATUS"/>
+    <viewAttribute id="IA_REASON"/>
+    <viewAttribute id="IA_LANGUAGE"/>
+    <viewAttribute id="IS_ANONYMOUS"/>
+    <viewAttribute id="CURRENCY"/>
+    <viewAttribute id="DEVICE_TYPE"/>
+    <viewAttribute id="DEVICE_FT"/>
+    <viewAttribute id="SW_CLIENT"/>
+    <viewAttribute id="OS"/>
+    <viewAttribute id="PROCESSING_TIME" aggregationType="sum"/>
+    <viewAttribute id="PRIORITY"/>
+    <viewAttribute id="SOURCE_TIMESTAMP" aggregationType="sum"/>
+    <viewAttribute id="SOURCE_OBJECT_STATUS_CODE"/>
+    <viewAttribute id="SOURCE_OBJECT_ADD_ID"/>
+    <viewAttribute id="SOURCE_SYSTEM_ID"/>
+    <viewAttribute id="SOURCE_SYSTEM_TYPE"/>
+    <viewAttribute id="REFERRAL_SOURCE"/>
+    <viewAttribute id="REFERRAL_SOURCE_CATEGORY"/>
+    <viewAttribute id="CONTACT_KEY"/>
+    <viewAttribute id="IA_DATE_1"/>
+   </viewAttributes>
+   <calculatedViewAttributes/>
+   <input node="hdbtables::CUAND_CE_IA_PROD">
+    <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="DB_KEY" source="DB_KEY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PARENT_KEY" source="PARENT_KEY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_KEY" source="PRODUCT_KEY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_IMAGE_URL" source="PRODUCT_IMAGE_URL"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_NAV_URL" source="PRODUCT_NAV_URL"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_VALUATION" source="PRODUCT_VALUATION"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_QUANTIFIER" source="PRODUCT_QUANTIFIER"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="AMOUNT" source="AMOUNT"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_DESC" source="PRODUCT_DESC"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="UNIT_OF_MEASURE" source="UNIT_OF_MEASURE"/>
+   </input>
+   <input node="hdbtables::CUAND_CE_IA_RT">
+    <mapping xsi:type="Calculation:AttributeMapping" target="IA_DATE" source="IA_DATE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="IA_TYPE" source="IA_TYPE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="COMM_MEDIUM" source="COMM_MEDIUM"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP" source="TIMESTAMP"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AREA_ID" source="MKT_AREA_ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="CAMPAIGN_ID" source="CAMPAIGN_ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INITIATIVE_ID" source="INITIATIVE_ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="DIGACC_ID" source="DIGACC_ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="LOC_ID" source="LOC_ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="LOC_ORIGIN" source="LOC_ORIGIN"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="DIGACC_TYPE" source="DIGACC_TYPE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGREEMENTORIGIN" source="MKT_AGREEMENTORIGIN"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGREEMENTEXTERNALID" source="MKT_AGREEMENTEXTERNALID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="MARKETING_ORCHESTRATION_ID" source="MARKETING_ORCHESTRATION_ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="COMM_CAT_ID" source="COMM_CAT_ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="IA_STATUS" source="IA_STATUS"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON" source="IA_REASON"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="IA_LANGUAGE" source="IA_LANGUAGE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="IS_ANONYMOUS" source="IS_ANONYMOUS"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY" source="CURRENCY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_TYPE" source="DEVICE_TYPE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_FT" source="DEVICE_FT"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="SW_CLIENT" source="SW_CLIENT"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="OS" source="OS"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PROCESSING_TIME" source="PROCESSING_TIME"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PRIORITY" source="PRIORITY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_TIMESTAMP" source="SOURCE_TIMESTAMP"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_STATUS_CODE" source="SOURCE_OBJECT_STATUS_CODE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ADD_ID" source="SOURCE_OBJECT_ADD_ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_ID" source="SOURCE_SYSTEM_ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_TYPE" source="SOURCE_SYSTEM_TYPE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE" source="REFERRAL_SOURCE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE_CATEGORY" source="REFERRAL_SOURCE_CATEGORY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="CONTACT_KEY" source="CONTACT_KEY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="IA_DATE_1" source="IA_DATE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PARENT_KEY" source="DB_KEY"/>
+   </input>
+   <joinAttribute name="MANDT"/>
+   <joinAttribute name="PARENT_KEY"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_2" cardinality="CN_N" joinType="inner" multiJoinNode="Join_1" multiJoinCentralTable="sap.hana-app::M_TIME_DIMENSION" multiJoinOrder="Outside In">
+   <viewAttributes>
+    <viewAttribute id="MANDT"/>
+    <viewAttribute id="DB_KEY"/>
+    <viewAttribute id="PARENT_KEY"/>
+    <viewAttribute id="PRODUCT_KEY"/>
+    <viewAttribute id="PRODUCT_IMAGE_URL"/>
+    <viewAttribute id="PRODUCT_NAV_URL"/>
+    <viewAttribute id="PRODUCT_VALUATION" aggregationType="sum"/>
+    <viewAttribute id="PRODUCT_QUANTIFIER" aggregationType="sum"/>
+    <viewAttribute id="IA_DATE"/>
+    <viewAttribute id="AMOUNT" aggregationType="sum"/>
+    <viewAttribute id="PRODUCT_DESC"/>
+    <viewAttribute id="UNIT_OF_MEASURE"/>
+    <viewAttribute id="IA_TYPE"/>
+    <viewAttribute id="COMM_MEDIUM"/>
+    <viewAttribute id="ID"/>
+    <viewAttribute id="TIMESTAMP" aggregationType="sum"/>
+    <viewAttribute id="MKT_AREA_ID"/>
+    <viewAttribute id="CAMPAIGN_ID"/>
+    <viewAttribute id="INITIATIVE_ID"/>
+    <viewAttribute id="DIGACC_ID"/>
+    <viewAttribute id="LOC_ID"/>
+    <viewAttribute id="LOC_ORIGIN"/>
+    <viewAttribute id="YEAR"/>
+    <viewAttribute id="DAY"/>
+    <viewAttribute id="CALQUARTER"/>
+    <viewAttribute id="CALMONTH"/>
+    <viewAttribute id="DIGACC_TYPE"/>
+    <viewAttribute id="MKT_AGREEMENTORIGIN"/>
+    <viewAttribute id="MKT_AGREEMENTEXTERNALID"/>
+    <viewAttribute id="MARKETING_ORCHESTRATION_ID" aggregationType="sum"/>
+    <viewAttribute id="COMM_CAT_ID"/>
+    <viewAttribute id="IA_STATUS"/>
+    <viewAttribute id="IA_REASON"/>
+    <viewAttribute id="IA_LANGUAGE"/>
+    <viewAttribute id="IS_ANONYMOUS"/>
+    <viewAttribute id="CURRENCY"/>
+    <viewAttribute id="DEVICE_TYPE"/>
+    <viewAttribute id="DEVICE_FT"/>
+    <viewAttribute id="SW_CLIENT"/>
+    <viewAttribute id="OS"/>
+    <viewAttribute id="PROCESSING_TIME" aggregationType="sum"/>
+    <viewAttribute id="PRIORITY"/>
+    <viewAttribute id="SOURCE_TIMESTAMP" aggregationType="sum"/>
+    <viewAttribute id="SOURCE_OBJECT_STATUS_CODE"/>
+    <viewAttribute id="SOURCE_OBJECT_ADD_ID"/>
+    <viewAttribute id="SOURCE_SYSTEM_ID"/>
+    <viewAttribute id="SOURCE_SYSTEM_TYPE"/>
+    <viewAttribute id="REFERRAL_SOURCE"/>
+    <viewAttribute id="REFERRAL_SOURCE_CATEGORY"/>
+    <viewAttribute id="CONTACT_KEY"/>
+    <viewAttribute id="IA_DATE_1"/>
+    <viewAttribute hidden="true" id="JOIN$DATE_SAP$IA_DATE"/>
+   </viewAttributes>
+   <calculatedViewAttributes/>
+   <input node="sap.hana-app::M_TIME_DIMENSION">
+    <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="DAY" source="DAY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="CALQUARTER" source="CALQUARTER"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH" source="CALMONTH"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$DATE_SAP$IA_DATE" source="DATE_SAP"/>
+   </input>
+   <input node="Join_1_1">
+    <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="DB_KEY" source="DB_KEY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PARENT_KEY" source="PARENT_KEY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_KEY" source="PRODUCT_KEY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_IMAGE_URL" source="PRODUCT_IMAGE_URL"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_NAV_URL" source="PRODUCT_NAV_URL"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_VALUATION" source="PRODUCT_VALUATION"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_QUANTIFIER" source="PRODUCT_QUANTIFIER"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="IA_DATE" source="IA_DATE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="AMOUNT" source="AMOUNT"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_DESC" source="PRODUCT_DESC"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="UNIT_OF_MEASURE" source="UNIT_OF_MEASURE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="IA_TYPE" source="IA_TYPE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="COMM_MEDIUM" source="COMM_MEDIUM"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP" source="TIMESTAMP"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AREA_ID" source="MKT_AREA_ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="CAMPAIGN_ID" source="CAMPAIGN_ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INITIATIVE_ID" source="INITIATIVE_ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="DIGACC_ID" source="DIGACC_ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="LOC_ID" source="LOC_ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="LOC_ORIGIN" source="LOC_ORIGIN"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="DIGACC_TYPE" source="DIGACC_TYPE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGREEMENTORIGIN" source="MKT_AGREEMENTORIGIN"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGREEMENTEXTERNALID" source="MKT_AGREEMENTEXTERNALID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="MARKETING_ORCHESTRATION_ID" source="MARKETING_ORCHESTRATION_ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="COMM_CAT_ID" source="COMM_CAT_ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="IA_STATUS" source="IA_STATUS"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON" source="IA_REASON"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="IA_LANGUAGE" source="IA_LANGUAGE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="IS_ANONYMOUS" source="IS_ANONYMOUS"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY" source="CURRENCY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_TYPE" source="DEVICE_TYPE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_FT" source="DEVICE_FT"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="SW_CLIENT" source="SW_CLIENT"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="OS" source="OS"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PROCESSING_TIME" source="PROCESSING_TIME"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PRIORITY" source="PRIORITY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_TIMESTAMP" source="SOURCE_TIMESTAMP"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_STATUS_CODE" source="SOURCE_OBJECT_STATUS_CODE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ADD_ID" source="SOURCE_OBJECT_ADD_ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_ID" source="SOURCE_SYSTEM_ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_TYPE" source="SOURCE_SYSTEM_TYPE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE" source="REFERRAL_SOURCE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE_CATEGORY" source="REFERRAL_SOURCE_CATEGORY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="CONTACT_KEY" source="CONTACT_KEY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="IA_DATE_1" source="IA_DATE_1"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$DATE_SAP$IA_DATE" source="IA_DATE"/>
+   </input>
+   <joinAttribute name="JOIN$DATE_SAP$IA_DATE"/>
+  </calculationView>
+ </calculationViews>
+ <logicalModel id="Join_1_2">
+  <attributes>
+   <attribute id="MANDT" order="1" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="MANDT"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="MANDT"/>
+   </attribute>
+   <attribute id="DB_KEY" order="2" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="DB_KEY"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="DB_KEY"/>
+   </attribute>
+   <attribute id="PARENT_KEY" order="3" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="PARENT_KEY"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="PARENT_KEY"/>
+   </attribute>
+   <attribute id="PRODUCT_KEY" order="4" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="PRODUCT_KEY"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="PRODUCT_KEY"/>
+   </attribute>
+   <attribute id="PRODUCT_IMAGE_URL" order="5" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="PRODUCT_IMAGE_URL"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="PRODUCT_IMAGE_URL"/>
+   </attribute>
+   <attribute id="PRODUCT_NAV_URL" order="6" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="PRODUCT_NAV_URL"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="PRODUCT_NAV_URL"/>
+   </attribute>
+   <attribute id="IA_DATE" order="9" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="IA_DATE"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="IA_DATE"/>
+   </attribute>
+   <attribute id="PRODUCT_DESC" order="11" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="PRODUCT_DESC"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="PRODUCT_DESC"/>
+   </attribute>
+   <attribute id="UNIT_OF_MEASURE" order="12" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="UNIT_OF_MEASURE"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="UNIT_OF_MEASURE"/>
+   </attribute>
+   <attribute id="IA_TYPE" order="13" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="IA_TYPE"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="IA_TYPE"/>
+   </attribute>
+   <attribute id="COMM_MEDIUM" order="14" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="COMM_MEDIUM"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="COMM_MEDIUM"/>
+   </attribute>
+   <attribute id="ID" order="15" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="ID"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="ID"/>
+   </attribute>
+   <attribute id="MKT_AREA_ID" order="17" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="MKT_AREA_ID"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="MKT_AREA_ID"/>
+   </attribute>
+   <attribute id="CAMPAIGN_ID" order="18" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="CAMPAIGN_ID"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="CAMPAIGN_ID"/>
+   </attribute>
+   <attribute id="INITIATIVE_ID" order="19" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INITIATIVE_ID"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="INITIATIVE_ID"/>
+   </attribute>
+   <attribute id="DIGACC_ID" order="20" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="DIGACC_ID"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="DIGACC_ID"/>
+   </attribute>
+   <attribute id="LOC_ID" order="21" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="LOC_ID"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="LOC_ID"/>
+   </attribute>
+   <attribute id="LOC_ORIGIN" order="22" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="LOC_ORIGIN"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="LOC_ORIGIN"/>
+   </attribute>
+   <attribute id="YEAR" order="23" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="YEAR"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="YEAR"/>
+   </attribute>
+   <attribute id="DAY" order="24" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="DAY"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="DAY"/>
+   </attribute>
+   <attribute id="CALQUARTER" order="25" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="CALQUARTER"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="CALQUARTER"/>
+   </attribute>
+   <attribute id="CALMONTH" order="26" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="CALMONTH"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="CALMONTH"/>
+   </attribute>
+   <attribute id="DIGACC_TYPE" order="27" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="DIGACC_TYPE"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="DIGACC_TYPE"/>
+   </attribute>
+   <attribute id="MKT_AGREEMENTORIGIN" order="28" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="MKT_AGREEMENTORIGIN"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="MKT_AGREEMENTORIGIN"/>
+   </attribute>
+   <attribute id="MKT_AGREEMENTEXTERNALID" order="29" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="MKT_AGREEMENTEXTERNALID"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="MKT_AGREEMENTEXTERNALID"/>
+   </attribute>
+   <attribute id="COMM_CAT_ID" order="31" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="COMM_CAT_ID"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="COMM_CAT_ID"/>
+   </attribute>
+   <attribute id="IA_STATUS" order="32" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="IA_STATUS"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="IA_STATUS"/>
+   </attribute>
+   <attribute id="IA_REASON" order="33" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="IA_REASON"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="IA_REASON"/>
+   </attribute>
+   <attribute id="IA_LANGUAGE" order="34" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="IA_LANGUAGE"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="IA_LANGUAGE"/>
+   </attribute>
+   <attribute id="IS_ANONYMOUS" order="35" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="IS_ANONYMOUS"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="IS_ANONYMOUS"/>
+   </attribute>
+   <attribute id="CURRENCY" order="36" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="CURRENCY"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="CURRENCY"/>
+   </attribute>
+   <attribute id="DEVICE_TYPE" order="37" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="DEVICE_TYPE"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="DEVICE_TYPE"/>
+   </attribute>
+   <attribute id="DEVICE_FT" order="38" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="DEVICE_FT"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="DEVICE_FT"/>
+   </attribute>
+   <attribute id="SW_CLIENT" order="39" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="SW_CLIENT"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="SW_CLIENT"/>
+   </attribute>
+   <attribute id="OS" order="40" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="OS"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="OS"/>
+   </attribute>
+   <attribute id="PRIORITY" order="42" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="PRIORITY"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="PRIORITY"/>
+   </attribute>
+   <attribute id="SOURCE_OBJECT_STATUS_CODE" order="44" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="SOURCE_OBJECT_STATUS_CODE"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="SOURCE_OBJECT_STATUS_CODE"/>
+   </attribute>
+   <attribute id="SOURCE_OBJECT_ADD_ID" order="45" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="SOURCE_OBJECT_ADD_ID"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="SOURCE_OBJECT_ADD_ID"/>
+   </attribute>
+   <attribute id="SOURCE_SYSTEM_ID" order="46" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="SOURCE_SYSTEM_ID"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="SOURCE_SYSTEM_ID"/>
+   </attribute>
+   <attribute id="SOURCE_SYSTEM_TYPE" order="47" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="SOURCE_SYSTEM_TYPE"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="SOURCE_SYSTEM_TYPE"/>
+   </attribute>
+   <attribute id="REFERRAL_SOURCE" order="48" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="REFERRAL_SOURCE"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="REFERRAL_SOURCE"/>
+   </attribute>
+   <attribute id="REFERRAL_SOURCE_CATEGORY" order="49" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="REFERRAL_SOURCE_CATEGORY"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="REFERRAL_SOURCE_CATEGORY"/>
+   </attribute>
+   <attribute id="CONTACT_KEY" order="50" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="CONTACT_KEY"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="CONTACT_KEY"/>
+   </attribute>
+   <attribute id="IA_DATE_1" order="51" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="IA_DATE_1"/>
+    <keyMapping columnObjectName="Join_1_2" columnName="IA_DATE_1"/>
+   </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+   <measure id="PRODUCT_VALUATION" order="7" aggregationType="sum" measureType="simple">
+    <descriptions defaultDescription="PRODUCT_VALUATION"/>
+    <measureMapping columnObjectName="Join_1_2" columnName="PRODUCT_VALUATION"/>
+   </measure>
+   <measure id="PRODUCT_QUANTIFIER" order="8" aggregationType="sum" measureType="simple">
+    <descriptions defaultDescription="PRODUCT_QUANTIFIER"/>
+    <measureMapping columnObjectName="Join_1_2" columnName="PRODUCT_QUANTIFIER"/>
+   </measure>
+   <measure id="AMOUNT" order="10" semanticType="amount" aggregationType="sum" measureType="amount" unconverted="false">
+    <descriptions defaultDescription="AMOUNT"/>
+    <fixedCurrency>MXN</fixedCurrency>
+    <currencyConversion generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="AMOUNT_CURRENCY" convert="true" accuracy="COMPATIBILITY" method="ERP" lookup="REGULAR">
+     <client>
+      <attribute attributeName="MANDT"/>
+     </client>
+     <currencyConversionTables rates="hdbtables::TCURR" configuration="hdbtables::TCURV" prefactors="hdbtables::TCURF" notations="hdbtables::TCURN" precisions="hdbtables::TCURX"/>
+     <outputDataType datatype="DECIMAL" length="31" scale="2"/>
+     <sourceCurrency>
+      <value>MXN</value>
+     </sourceCurrency>
+     <erpDecimalShift>true</erpDecimalShift>
+     <targetCurrency>
+      <value>MXN</value>
+     </targetCurrency>
+     <referenceDate>
+      <attribute attributeName="IA_DATE"/>
+     </referenceDate>
+     <exchangeRateType>M</exchangeRateType>
+    </currencyConversion>
+    <measureMapping columnObjectName="Join_1_2" columnName="AMOUNT"/>
+   </measure>
+   <measure id="TIMESTAMP" order="16" aggregationType="sum" measureType="simple">
+    <descriptions defaultDescription="TIMESTAMP"/>
+    <measureMapping columnObjectName="Join_1_2" columnName="TIMESTAMP"/>
+   </measure>
+   <measure id="MARKETING_ORCHESTRATION_ID" order="30" aggregationType="sum" measureType="simple">
+    <descriptions defaultDescription="MARKETING_ORCHESTRATION_ID"/>
+    <measureMapping columnObjectName="Join_1_2" columnName="MARKETING_ORCHESTRATION_ID"/>
+   </measure>
+   <measure id="PROCESSING_TIME" order="41" aggregationType="sum" measureType="simple">
+    <descriptions defaultDescription="PROCESSING_TIME"/>
+    <measureMapping columnObjectName="Join_1_2" columnName="PROCESSING_TIME"/>
+   </measure>
+   <measure id="SOURCE_TIMESTAMP" order="43" aggregationType="sum" measureType="simple">
+    <descriptions defaultDescription="SOURCE_TIMESTAMP"/>
+    <measureMapping columnObjectName="Join_1_2" columnName="SOURCE_TIMESTAMP"/>
+   </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+ </logicalModel>
+ <layout>
+  <shapes>
+   <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+    <upperLeftCorner x="40" y="85"/>
+   </shape>
+   <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+    <upperLeftCorner x="100" y="358"/>
+    <rectangleSize height="30" width="160"/>
+   </shape>
+   <shape modelObjectName="sap.hana-app.cuan.db::M_TIME_DIMENSION" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+    <upperLeftCorner x="1324" y="763"/>
+    <rectangleSize width="269"/>
+   </shape>
+   <shape modelObjectName="hdbtables::CUAND_CE_IA_PROD" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+    <upperLeftCorner x="320" y="30"/>
+    <rectangleSize width="255"/>
+   </shape>
+   <shape modelObjectName="hdbtables::CUAND_CE_IA_RT" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+    <upperLeftCorner x="620" y="30"/>
+    <rectangleSize width="269"/>
+   </shape>
+  </shapes>
+ </layout>
+</Calculation:scenario>

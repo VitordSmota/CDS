@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="sap.hana-app.loy.v::CA_LOYALTY_SCORES" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="Loyalty Scores for Interaction Contact"/>
+  <metadata changedAt="2018-09-04 12:05:39.981"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="41"/>
+  <dataSources>
+    <DataSource id="CUAND_LOY_PGM_RT" clientColumn="MANDT">
+      <resourceUri>sap.hana-app.cuan.db.cuan::CUAND_LOY_PGM_RT</resourceUri>
+    </DataSource>
+    <DataSource id="CUAND_LOY_MEMBER" clientColumn="MANDT">
+      <resourceUri>sap.hana-app.cuan.db.cuan::CUAND_LOY_MEMBER</resourceUri>
+    </DataSource>
+    <DataSource id="CUAND_LOY_TIER" clientColumn="MANDT">
+      <resourceUri>sap.hana-app.cuan.db.cuan::CUAND_LOY_TIER</resourceUri>
+    </DataSource>
+    <DataSource id="AT_TIME">
+      <resourceUri>sap.hana-app.loy.v::AT_TIME</resourceUri>
+    </DataSource>
+    <DataSource id="CUAND_CE_IC_FCET" clientColumn="MANDT">
+      <resourceUri>sap.hana-app.cuan.db.cuan::CUAND_CE_IC_FCET</resourceUri>
+    </DataSource>
+    <DataSource id="CUAND_CE_IA_RT">
+      <resourceUri>sap.hana-app.cuan.db.cuan::CUAND_CE_IA_RT</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_PROGRAM" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="LOYALTYPROGRAMUUID"/>
+        <viewAttribute id="LOYALTYPROGRAMNAME"/>
+        <viewAttribute id="LOYALTYPROGRAM"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="PROGRAM_ID" length="32" expressionLanguage="SQL">
+          <formula>to_nvarchar(&quot;LOYALTYPROGRAM&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="CUAND_LOY_PGM_RT"/>
+    <filter>(&quot;MANDT&quot; ='$$client$$')</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_MEMBER" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="LOYALTYPROGRAMUUID"/>
+        <viewAttribute id="LOYALTYMEMBEREMAILADDRESS"/>
+        <viewAttribute id="LOYALTYIDORIGIN"/>
+        <viewAttribute id="NUMBEROFTOTALLOYALTYPOINTS"/>
+        <viewAttribute id="LOYALTYTIER"/>
+        <viewAttribute id="LOYALTYMEMBERSHIPNUMBER"/>
+        <viewAttribute id="LOYALTYMEMBERJOININGDATE"/>
+        <viewAttribute id="LOYALTYMEMBEREXTERNALID"/>
+        <viewAttribute id="LOYALTYMEMBERUUID"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ID" length="32" expressionLanguage="SQL">
+          <formula>to_nvarchar(&quot;LOYALTYMEMBERUUID&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="CUAND_LOY_MEMBER"/>
+    <filter>(&quot;MANDT&quot; ='$$client$$' and &quot;LOYALTYIDORIGIN&quot;= 'SAP_LOY_PROGRAM')</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_PROGRAM_MEMBER" joinType="inner">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="LOYALTYPROGRAMUUID"/>
+        <viewAttribute id="LOYALTYPROGRAMNAME"/>
+        <viewAttribute id="LOYALTYPROGRAM"/>
+        <viewAttribute id="LOYALTYMEMBEREMAILADDRESS"/>
+        <viewAttribute id="LOYALTYIDORIGIN"/>
+        <viewAttribute id="NUMBEROFTOTALLOYALTYPOINTS"/>
+        <viewAttribute id="LOYALTYTIER"/>
+        <viewAttribute id="LOYALTYMEMBERSHIPNUMBER"/>
+        <viewAttribute id="LOYALTYMEMBERJOININGDATE"/>
+        <viewAttribute id="LOYALTYMEMBEREXTERNALID"/>
+        <viewAttribute id="PROGRAM_ID"/>
+        <viewAttribute id="ID"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="DATE" id="CREATED_DATE_CONV" expressionLanguage="SQL">
+          <formula>to_date(to_timestamp(&quot;LOYALTYMEMBERJOININGDATE&quot;))</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="Projection_PROGRAM">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOYALTYPROGRAMUUID" source="LOYALTYPROGRAMUUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOYALTYPROGRAMNAME" source="LOYALTYPROGRAMNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOYALTYPROGRAM" source="LOYALTYPROGRAM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROGRAM_ID" source="PROGRAM_ID"/>
+      </input>
+      <input node="Projection_MEMBER">
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOYALTYMEMBEREMAILADDRESS" source="LOYALTYMEMBEREMAILADDRESS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOYALTYIDORIGIN" source="LOYALTYIDORIGIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBEROFTOTALLOYALTYPOINTS" source="NUMBEROFTOTALLOYALTYPOINTS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOYALTYTIER" source="LOYALTYTIER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOYALTYMEMBERSHIPNUMBER" source="LOYALTYMEMBERSHIPNUMBER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOYALTYMEMBERJOININGDATE" source="LOYALTYMEMBERJOININGDATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOYALTYMEMBEREXTERNALID" source="LOYALTYMEMBEREXTERNALID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOYALTYPROGRAMUUID" source="LOYALTYPROGRAMUUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      </input>
+    <joinAttribute name="LOYALTYPROGRAMUUID"/>
+    <joinAttribute name="MANDT"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_TIER" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="LOYALTYPROGRAMUUID"/>
+        <viewAttribute id="LOYALTYTIERNAME"/>
+        <viewAttribute id="LOYALTYTIER"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="TIER_ID" length="32" expressionLanguage="SQL">
+          <formula>to_nvarchar(&quot;LOYALTYTIER&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="SMALLINT" id="TIER_ORDER" expressionLanguage="COLUMN_ENGINE">
+          <formula>1</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="CUAND_LOY_TIER"/>
+    <filter>(&quot;MANDT&quot; ='$$client$$')</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_LOYALTY" cardinality="C1_1" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="LOYALTYPROGRAM"/>
+        <viewAttribute id="LOYALTYPROGRAMNAME"/>
+        <viewAttribute id="LOYALTYMEMBEREMAILADDRESS"/>
+        <viewAttribute id="LOYALTYIDORIGIN"/>
+        <viewAttribute id="NUMBEROFTOTALLOYALTYPOINTS"/>
+        <viewAttribute id="LOYALTYMEMBERSHIPNUMBER"/>
+        <viewAttribute id="LOYALTYMEMBERJOININGDATE"/>
+        <viewAttribute id="LOYALTYTIERNAME"/>
+        <viewAttribute id="CREATED_DATE_CONV"/>
+        <viewAttribute id="LOYALTYMEMBEREXTERNALID"/>
+        <viewAttribute id="TIER_ID"/>
+        <viewAttribute id="PROGRAM_ID"/>
+        <viewAttribute id="TIER_ORDER"/>
+        <viewAttribute id="ID"/>
+      <viewAttribute hidden="true" id="JOIN$LOYALTYPROGRAMUUID$LOYALTYPROGRAMUUID"/>
+      <viewAttribute hidden="true" id="JOIN$LOYALTYTIER$LOYALTYTIER"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_PROGRAM_MEMBER">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOYALTYPROGRAM" source="LOYALTYPROGRAM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOYALTYPROGRAMNAME" source="LOYALTYPROGRAMNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOYALTYMEMBEREMAILADDRESS" source="LOYALTYMEMBEREMAILADDRESS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOYALTYIDORIGIN" source="LOYALTYIDORIGIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBEROFTOTALLOYALTYPOINTS" source="NUMBEROFTOTALLOYALTYPOINTS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOYALTYMEMBERSHIPNUMBER" source="LOYALTYMEMBERSHIPNUMBER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOYALTYMEMBERJOININGDATE" source="LOYALTYMEMBERJOININGDATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_DATE_CONV" source="CREATED_DATE_CONV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOYALTYMEMBEREXTERNALID" source="LOYALTYMEMBEREXTERNALID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROGRAM_ID" source="PROGRAM_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$LOYALTYPROGRAMUUID$LOYALTYPROGRAMUUID" source="LOYALTYPROGRAMUUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$LOYALTYTIER$LOYALTYTIER" source="LOYALTYTIER"/>
+      </input>
+      <input node="Projection_TIER">
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOYALTYTIERNAME" source="LOYALTYTIERNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIER_ID" source="TIER_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIER_ORDER" source="TIER_ORDER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$LOYALTYPROGRAMUUID$LOYALTYPROGRAMUUID" source="LOYALTYPROGRAMUUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$LOYALTYTIER$LOYALTYTIER" source="LOYALTYTIER"/>
+      </input>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="JOIN$LOYALTYPROGRAMUUID$LOYALTYPROGRAMUUID"/>
+    <joinAttribute name="JOIN$LOYALTYTIER$LOYALTYTIER"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_TIME" cardinality="C1_1" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="CALQUARTER"/>
+        <viewAttribute id="CALMONTH"/>
+        <viewAttribute id="CALWEEK"/>
+        <viewAttribute id="LOYALTYPROGRAM"/>
+        <viewAttribute id="LOYALTYPROGRAMNAME"/>
+        <viewAttribute id="LOYALTYMEMBEREMAILADDRESS"/>
+        <viewAttribute id="LOYALTYIDORIGIN"/>
+        <viewAttribute id="NUMBEROFTOTALLOYALTYPOINTS"/>
+        <viewAttribute id="LOYALTYMEMBERSHIPNUMBER"/>
+        <viewAttribute id="LOYALTYMEMBERJOININGDATE"/>
+        <viewAttribute id="LOYALTYTIERNAME"/>
+        <viewAttribute id="CREATED_DATE_CONV"/>
+        <viewAttribute id="LOYALTYMEMBEREXTERNALID"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="TIER_ID"/>
+        <viewAttribute id="PROGRAM_ID"/>
+        <viewAttribute id="TIER_ORDER"/>
+        <viewAttribute id="ID"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="DECIMAL" id="BALANCE_POINTS" length="10" scale="2" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;NUMBEROFTOTALLOYALTYPOINTS&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DECIMAL" id="ACCRUED_POINTS" length="10" scale="2" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;NUMBEROFTOTALLOYALTYPOINTS&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DECIMAL" id="REDEEMED_POINTS" length="10" scale="2" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;NUMBEROFTOTALLOYALTYPOINTS&quot;</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="Join_LOYALTY">
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOYALTYPROGRAM" source="LOYALTYPROGRAM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOYALTYPROGRAMNAME" source="LOYALTYPROGRAMNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOYALTYMEMBEREMAILADDRESS" source="LOYALTYMEMBEREMAILADDRESS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOYALTYIDORIGIN" source="LOYALTYIDORIGIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBEROFTOTALLOYALTYPOINTS" source="NUMBEROFTOTALLOYALTYPOINTS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOYALTYMEMBERSHIPNUMBER" source="LOYALTYMEMBERSHIPNUMBER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOYALTYMEMBERJOININGDATE" source="LOYALTYMEMBERJOININGDATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOYALTYTIERNAME" source="LOYALTYTIERNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_DATE_CONV" source="CREATED_DATE_CONV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOYALTYMEMBEREXTERNALID" source="LOYALTYMEMBEREXTERNALID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIER_ID" source="TIER_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROGRAM_ID" source="PROGRAM_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIER_ORDER" source="TIER_ORDER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      </input>
+      <input node="AT_TIME">
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALQUARTER" source="CALQUARTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH" source="CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALWEEK" source="CALWEEK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_DATE_CONV" source="DATE_SQL"/>
+      </input>
+    <joinAttribute name="CREATED_DATE_CONV"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_FCET" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="PARENT_KEY"/>
+        <viewAttribute id="ID_ORIGIN"/>
+        <viewAttribute id="ID"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="CUAND_CE_IC_FCET"/>
+    <filter>(&quot;MANDT&quot; ='$$client$$')</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_INTERACTION" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="ID_ORIGIN"/>
+        <viewAttribute id="ID"/>
+        <viewAttribute id="CONTACT_KEY"/>
+        <viewAttribute id="AMOUNT"/>
+        <viewAttribute id="CURRENCY"/>
+        <viewAttribute id="IA_TYPE"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ACTIVITY_TYPE" length="32" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;IA_TYPE&quot;</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="CUAND_CE_IA_RT"/>
+    <filter>(&quot;MANDT&quot; ='$$client$$')</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_INTERACTION" cardinality="CN_N" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="AMOUNT"/>
+        <viewAttribute id="CURRENCY"/>
+        <viewAttribute id="ID"/>
+        <viewAttribute id="ID_ORIGIN"/>
+        <viewAttribute id="PARENT_KEY"/>
+        <viewAttribute id="ACTIVITY_TYPE"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="DECIMAL" id="TRANSACTION_AMOUNT" length="20" scale="2" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;AMOUNT&quot;</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="Projection_FCET">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN" source="ID_ORIGIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PARENT_KEY" source="PARENT_KEY"/>
+      </input>
+      <input node="Projection_INTERACTION">
+        <mapping xsi:type="Calculation:AttributeMapping" target="AMOUNT" source="AMOUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY" source="CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACTIVITY_TYPE" source="ACTIVITY_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PARENT_KEY" source="CONTACT_KEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN" source="ID_ORIGIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      </input>
+    <joinAttribute name="PARENT_KEY"/>
+    <joinAttribute name="ID_ORIGIN"/>
+    <joinAttribute name="ID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_MEMBER_INTERACTION" cardinality="C1_N" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="CUSTOMER_ID"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="CALQUARTER"/>
+        <viewAttribute id="CALMONTH"/>
+        <viewAttribute id="CALWEEK"/>
+        <viewAttribute id="ACCRUED_POINTS"/>
+        <viewAttribute id="LOYALTYPROGRAM"/>
+        <viewAttribute id="CUSTOMER_EMAIL"/>
+        <viewAttribute id="LOY_PROGRAM_NAME"/>
+        <viewAttribute id="LOYALTYIDORIGIN"/>
+        <viewAttribute id="TOTAL_BALANCE_POINTS"/>
+        <viewAttribute id="MEMBER_NUMBER"/>
+        <viewAttribute id="LOYALTYMEMBERJOININGDATE"/>
+        <viewAttribute id="CREATED_DATE_CONV"/>
+        <viewAttribute id="NAME"/>
+        <viewAttribute id="BALANCE_POINTS"/>
+        <viewAttribute id="REDEEMED_POINTS"/>
+        <viewAttribute id="CURRENCY"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="DB_KEY"/>
+        <viewAttribute id="TIER_ID"/>
+        <viewAttribute id="TRANSACTION_AMOUNT"/>
+        <viewAttribute id="PROGRAM_ID"/>
+        <viewAttribute id="TIER_ORDER"/>
+        <viewAttribute id="ID"/>
+        <viewAttribute id="ACTIVITY_TYPE"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="DECIMAL" id="TRANSACTION_POINTS" length="20" scale="2" expressionLanguage="COLUMN_ENGINE">
+          <formula>00.00</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="TRANSACTION_CURRENCY" length="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;CURRENCY&quot;</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="Join_TIME">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_ID" source="LOYALTYMEMBEREXTERNALID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALQUARTER" source="CALQUARTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH" source="CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALWEEK" source="CALWEEK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACCRUED_POINTS" source="ACCRUED_POINTS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOYALTYPROGRAM" source="LOYALTYPROGRAM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_EMAIL" source="LOYALTYMEMBEREMAILADDRESS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOY_PROGRAM_NAME" source="LOYALTYPROGRAMNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOYALTYIDORIGIN" source="LOYALTYIDORIGIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TOTAL_BALANCE_POINTS" source="NUMBEROFTOTALLOYALTYPOINTS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEMBER_NUMBER" source="LOYALTYMEMBERSHIPNUMBER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOYALTYMEMBERJOININGDATE" source="LOYALTYMEMBERJOININGDATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_DATE_CONV" source="CREATED_DATE_CONV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME" source="LOYALTYTIERNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BALANCE_POINTS" source="BALANCE_POINTS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REDEEMED_POINTS" source="REDEEMED_POINTS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIER_ID" source="TIER_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROGRAM_ID" source="PROGRAM_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIER_ORDER" source="TIER_ORDER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      </input>
+      <input node="Join_INTERACTION">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY" source="CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DB_KEY" source="PARENT_KEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TRANSACTION_AMOUNT" source="TRANSACTION_AMOUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACTIVITY_TYPE" source="ACTIVITY_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LOYALTYIDORIGIN" source="ID_ORIGIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MEMBER_NUMBER" source="ID"/>
+      </input>
+    <joinAttribute name="LOYALTYIDORIGIN"/>
+    <joinAttribute name="MEMBER_NUMBER"/>
+  </calculationView>
+</calculationViews>
+  <logicalModel id="Join_MEMBER_INTERACTION">
+    <descriptions/>
+    <attributes>
+      <attribute id="CUSTOMER_ID" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Customer ID"/>
+        <keyMapping columnObjectName="Join_MEMBER_INTERACTION" columnName="CUSTOMER_ID"/>
+      </attribute>
+      <attribute id="PROGRAM_ID" order="2" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Program ID"/>
+        <keyMapping columnObjectName="Join_MEMBER_INTERACTION" columnName="PROGRAM_ID"/>
+      </attribute>
+      <attribute id="TIER_ID" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Tier ID"/>
+        <keyMapping columnObjectName="Join_MEMBER_INTERACTION" columnName="TIER_ID"/>
+      </attribute>
+      <attribute id="ID" order="6" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Member ID"/>
+        <keyMapping columnObjectName="Join_MEMBER_INTERACTION" columnName="ID"/>
+      </attribute>
+      <attribute id="ACTIVITY_TYPE" order="7" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Activity Type"/>
+        <keyMapping columnObjectName="Join_MEMBER_INTERACTION" columnName="ACTIVITY_TYPE"/>
+      </attribute>
+      <attribute id="DB_KEY" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Database Key"/>
+        <keyMapping columnObjectName="Join_MEMBER_INTERACTION" columnName="DB_KEY"/>
+      </attribute>
+      <attribute id="ID_ORIGIN" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ID Origin"/>
+        <keyMapping columnObjectName="Join_MEMBER_INTERACTION" columnName="LOYALTYIDORIGIN"/>
+      </attribute>
+      <attribute id="YEAR" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Year"/>
+        <keyMapping columnObjectName="Join_MEMBER_INTERACTION" columnName="YEAR"/>
+      </attribute>
+      <attribute id="CALQUARTER" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Calendar Quarter"/>
+        <keyMapping columnObjectName="Join_MEMBER_INTERACTION" columnName="CALQUARTER"/>
+      </attribute>
+      <attribute id="CALMONTH" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Calendar Month"/>
+        <keyMapping columnObjectName="Join_MEMBER_INTERACTION" columnName="CALMONTH"/>
+      </attribute>
+      <attribute id="CALWEEK" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Calendar Week"/>
+        <keyMapping columnObjectName="Join_MEMBER_INTERACTION" columnName="CALWEEK"/>
+      </attribute>
+      <attribute id="NAME" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Tier Name"/>
+        <keyMapping columnObjectName="Join_MEMBER_INTERACTION" columnName="NAME"/>
+      </attribute>
+      <attribute id="MEMBER_NUMBER" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Member Number"/>
+        <keyMapping columnObjectName="Join_MEMBER_INTERACTION" columnName="MEMBER_NUMBER"/>
+      </attribute>
+      <attribute id="CUSTOMER_EMAIL" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Customer Email"/>
+        <keyMapping columnObjectName="Join_MEMBER_INTERACTION" columnName="CUSTOMER_EMAIL"/>
+      </attribute>
+      <attribute id="MANDT" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MANDT"/>
+        <keyMapping columnObjectName="Join_MEMBER_INTERACTION" columnName="MANDT"/>
+      </attribute>
+      <attribute id="LOY_PROGRAM_NAME" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Program Name"/>
+        <keyMapping columnObjectName="Join_MEMBER_INTERACTION" columnName="LOY_PROGRAM_NAME"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="TIER_ORDER" order="4" aggregationType="max" measureType="simple">
+        <descriptions defaultDescription="Tier Order"/>
+        <measureMapping columnObjectName="Join_MEMBER_INTERACTION" columnName="TIER_ORDER"/>
+      </measure>
+      <measure id="TRANSACTION_AMOUNT" order="5" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Transaction Amount"/>
+        <measureMapping columnObjectName="Join_MEMBER_INTERACTION" columnName="TRANSACTION_AMOUNT"/>
+      </measure>
+      <measure id="ACCRUED_POINTS" order="8" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Accrued Points"/>
+        <measureMapping columnObjectName="Join_MEMBER_INTERACTION" columnName="ACCRUED_POINTS"/>
+      </measure>
+      <measure id="REDEEMED_POINTS" order="18" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Redeemed Points"/>
+        <measureMapping columnObjectName="Join_MEMBER_INTERACTION" columnName="REDEEMED_POINTS"/>
+      </measure>
+      <measure id="BALANCE_POINTS" order="19" aggregationType="max" measureType="simple">
+        <descriptions defaultDescription="Balance Points"/>
+        <measureMapping columnObjectName="Join_MEMBER_INTERACTION" columnName="BALANCE_POINTS"/>
+      </measure>
+      <measure id="TRANSACTION_POINTS" order="22" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Transaction Points"/>
+        <measureMapping columnObjectName="Join_MEMBER_INTERACTION" columnName="TRANSACTION_POINTS"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="252" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_PROGRAM" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="549"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_MEMBER" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="549"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_PROGRAM_MEMBER" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="99" y="453"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Projection_PROGRAM" modelObjectNameSpace="Join_PROGRAM_MEMBER" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_MEMBER" modelObjectNameSpace="Join_PROGRAM_MEMBER" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Projection_TIER" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="253" y="453"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_LOYALTY" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="175" y="357"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Join_PROGRAM_MEMBER" modelObjectNameSpace="Join_LOYALTY" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_TIER" modelObjectNameSpace="Join_LOYALTY" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Join_TIME" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="175" y="261"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+    <shape modelObjectName="Join_LOYALTY" modelObjectNameSpace="Join_TIME" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="sap.hana-app.loy.v::AT_TIME" modelObjectNameSpace="Join_TIME" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Projection_FCET" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="329" y="357"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_INTERACTION" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="483" y="357"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_INTERACTION" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="329" y="261"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Projection_FCET" modelObjectNameSpace="Join_INTERACTION" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_INTERACTION" modelObjectNameSpace="Join_INTERACTION" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Join_MEMBER_INTERACTION" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="252" y="165"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+    
+    <shape modelObjectName="Join_TIME" modelObjectNameSpace="Join_MEMBER_INTERACTION" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Join_INTERACTION" modelObjectNameSpace="Join_MEMBER_INTERACTION" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

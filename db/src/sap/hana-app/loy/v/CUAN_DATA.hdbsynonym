@@ -1,0 +1,12 @@
+{
+   "sap.hana-app.loy.v::PR_CONTACT_POINTS": {
+        "target":   {
+ "object": "sap.hana-app.cuan.custom_seg::PR_CONTACT_POINTS" 
+		}
+	},
+   "sap.hana-app.loy.v::TF_CE_CONTACT_POINT_SCORE": {
+        "target":   {
+ "object": "sap.hana-app.cuan.custom_seg::TF_CE_CONTACT_POINT_SCORE" 
+		}
+	} 
+}

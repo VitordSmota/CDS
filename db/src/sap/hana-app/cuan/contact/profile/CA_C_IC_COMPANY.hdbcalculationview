@@ -1,0 +1,2834 @@
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="sap.hana-app.cuan.contact.profile::CA_C_IC_COMPANY" applyPrivilegeType="NONE" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="true" executionSemantic="UNDEFINED" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="Contacts and Related Interactions"/>
+  <metadata changedAt="2019-09-06 16:20:53.096"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="31"/>
+  <dataSources>
+    <DataSource id="CUAND_CE_IC_ROOT">
+      <resourceUri>sap.hana-app.cuan.contact.db.cuan::CUAND_CE_IC_ROOT</resourceUri>
+    </DataSource>
+    <DataSource id="CUAND_CE_IC_REL">
+      <resourceUri>sap.hana-app.cuan.contact.db.cuan::CUAND_CE_IC_REL</resourceUri>
+    </DataSource>
+    <DataSource id="T002">
+      <resourceUri>sap.hana-app.cuan.contact.db.cuan::T002</resourceUri>
+    </DataSource>
+    <DataSource id="T002T">
+      <resourceUri>sap.hana-app.cuan.contact.db.cuan::T002T</resourceUri>
+    </DataSource>
+    <DataSource id="T005T">
+      <resourceUri>sap.hana-app.cuan.contact.db.cuan::T005T</resourceUri>
+    </DataSource>
+    <DataSource id="CUAND_CE_IC_MKTA">
+      <resourceUri>sap.hana-app.cuan.contact.db.cuan::CUAND_CE_IC_MKTA</resourceUri>
+    </DataSource>
+    <DataSource id="HPAC_MKT_AREA_T">
+      <resourceUri>sap.hana-app.cuan.contact.db.cuan::HPAC_MKT_AREA_T</resourceUri>
+    </DataSource>
+    <DataSource id="T005U">
+      <resourceUri>sap.hana-app.cuan.contact.db.cuan::T005U</resourceUri>
+    </DataSource>
+    <DataSource id="CUANC_T016T">
+      <resourceUri>sap.hana-app.cuan.contact.db.cuan::CUANC_T016T</resourceUri>
+    </DataSource>
+    <DataSource id="CUANC_CE_VA_ST_T">
+      <resourceUri>sap.hana-app.cuan.contact.db.cuan::CUANC_CE_VA_ST_T</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="IC_ROOT">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="IC_COMPANY_KEY"/>
+        <viewAttribute id="NAME_TEXT"/>
+        <viewAttribute id="COUNTRY"/>
+        <viewAttribute id="COUNTRY_FT"/>
+        <viewAttribute id="REGION"/>
+        <viewAttribute id="REGION_FT"/>
+        <viewAttribute id="CITY1"/>
+        <viewAttribute id="POSTCODE1"/>
+        <viewAttribute id="LANGUAGE"/>
+        <viewAttribute id="LANGUAGE_FT"/>
+        <viewAttribute id="COMPANY_NAME"/>
+        <viewAttribute id="BRSCH_FT"/>
+        <viewAttribute id="SMTP_ADDR"/>
+        <viewAttribute id="TELNR_LONG"/>
+        <viewAttribute id="TELNR_MOBILE"/>
+        <viewAttribute id="FOR_REVIEW"/>
+        <viewAttribute id="VALIDATION_STATUS"/>
+        <viewAttribute id="ANONYMIZED"/>
+        <viewAttribute id="OBSOLETE"/>
+        <viewAttribute id="_DATAAGING"/>
+        <viewAttribute id="BOOLEAN1"/>
+        <viewAttribute id="BOOLEAN2"/>
+        <viewAttribute id="BOOLEAN3"/>
+        <viewAttribute id="BOOLEAN4"/>
+        <viewAttribute id="TIME1"/>
+        <viewAttribute id="DATE1"/>
+        <viewAttribute id="DATE2"/>
+        <viewAttribute id="DATE3"/>
+        <viewAttribute id="NUMBER1"/>
+        <viewAttribute id="NUMBER2"/>
+        <viewAttribute id="NUMBER3"/>
+        <viewAttribute id="TEXT20_1"/>
+        <viewAttribute id="TEXT20_2"/>
+        <viewAttribute id="TEXT20_3"/>
+        <viewAttribute id="TIMESTAMP1"/>
+        <viewAttribute id="TIMESTAMP2"/>
+        <viewAttribute id="DECIMAL1"/>
+        <viewAttribute id="DECIMAL2"/>
+        <viewAttribute id="DECIMAL3"/>
+        <viewAttribute id="TEXT40_1"/>
+        <viewAttribute id="TEXT40_2"/>
+        <viewAttribute id="TEXT40_3"/>
+        <viewAttribute id="TEXT80_1"/>
+        <viewAttribute id="TEXT80_2"/>
+        <viewAttribute id="TEXT80_3"/>
+        <viewAttribute id="TEXT120_1"/>
+        <viewAttribute id="TEXT120_2"/>
+        <viewAttribute id="TEXT120_3"/>
+        <viewAttribute id="TEXT255_1"/>
+        <viewAttribute id="TEXT255_2"/>
+        <viewAttribute id="UNIT"/>
+        <viewAttribute id="IC_TYPE"/>
+        <viewAttribute id="STREET"/>
+        <viewAttribute id="HOUSE_NUM1"/>
+        <viewAttribute id="FAXNR_LONG"/>
+        <viewAttribute id="WEB_URI"/>
+        <viewAttribute id="IMAGE_URI"/>
+        <viewAttribute id="DB_KEY"/>
+        <viewAttribute id="LCHG_DATE_TIME"/>
+        <viewAttribute id="LAST_IA_TIMESTAMP"/>
+        <viewAttribute id="CONTAINER"/>
+        <viewAttribute id="CONSUMER_ACCOUNT_ID"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="KUNNR_SOURCE_SYSTEM_TYPE"/>
+        <viewAttribute id="LATITUDE_1"/>
+        <viewAttribute id="LONGITUDE_1"/>
+        <viewAttribute id="BRSCH"/>
+        <viewAttribute id="CREA_DATE_TIME"/>
+        <viewAttribute id="END_OF_PURPOSE"/>
+        <viewAttribute id="IS_FOR_ACC_BSD_MKT"/>
+      
+      <viewAttribute id="COMPANY_REVENUE_CURRENCY"/>
+      <viewAttribute id="COMPANY_REVENUE"/>
+      <viewAttribute id="NUMBER_OF_EMPLOYEES"/>
+    
+      <viewAttribute id="LAST_INBOUND_IA_TIMESTAMP"/>
+      <viewAttribute id="CORPORATEACCOUNTPOSTALOPTIN"/></viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="BIGINT" id="DUMMY" expressionLanguage="COLUMN_ENGINE">
+          <formula>1</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DATE" id="LAST_IA_DATE" expressionLanguage="SQL">
+          <formula>to_date(to_timestamp(&quot;LAST_IA_TIMESTAMP&quot;))</formula>
+        </calculatedViewAttribute></calculatedViewAttributes>
+      <input node="CUAND_CE_IC_ROOT">
+        <mapping xsi:type="Calculation:AttributeMapping" target="IC_COMPANY_KEY" source="DB_KEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LATITUDE_1" source="LATITUDE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LONGITUDE_1" source="LONGITUDE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CORPORATEACCOUNTPOSTALOPTIN" source="POSTAL_OPTIN"/></input>
+    <filter>(&quot;MANDT&quot; ='$$client$$') AND (&quot;ANONYMIZED&quot; ='') AND (&quot;OBSOLETE&quot; ='') AND (in (&quot;_DATAAGING&quot;,'','00000000')) AND (in (&quot;IC_TYPE&quot;,'02')) AND (&quot;CONTAINER&quot; ='') AND (&quot;END_OF_PURPOSE&quot; ='')</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Proj_IC_REL">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="PARENT_KEY"/>
+        <viewAttribute id="DB_KEY"/>
+        <viewAttribute id="RELATION_TYPE"/>
+        <viewAttribute id="CONTACT_KEY_TO"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="CUAND_CE_IC_REL"/>
+    <filter>(&quot;MANDT&quot; ='$$client$$') AND (&quot;RELATION_TYPE&quot; ='01')</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_IC_REL" cardinality="C1_N" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="IMAGE_URI"/>
+        <viewAttribute id="IC_COMPANY_KEY"/>
+        <viewAttribute id="NAME_TEXT"/>
+        <viewAttribute id="COUNTRY"/>
+        <viewAttribute id="COUNTRY_FT"/>
+        <viewAttribute id="REGION"/>
+        <viewAttribute id="REGION_FT"/>
+        <viewAttribute id="CITY1"/>
+        <viewAttribute id="POSTCODE1"/>
+        <viewAttribute id="LANGUAGE"/>
+        <viewAttribute id="LANGUAGE_FT"/>
+        <viewAttribute id="COMPANY_NAME"/>
+        <viewAttribute id="BRSCH_FT"/>
+        <viewAttribute id="SMTP_ADDR"/>
+        <viewAttribute id="TELNR_LONG"/>
+        <viewAttribute id="TELNR_MOBILE"/>
+        <viewAttribute id="FOR_REVIEW"/>
+        <viewAttribute id="VALIDATION_STATUS"/>
+        <viewAttribute id="BOOLEAN1"/>
+        <viewAttribute id="BOOLEAN2"/>
+        <viewAttribute id="BOOLEAN3"/>
+        <viewAttribute id="BOOLEAN4"/>
+        <viewAttribute id="TIME1"/>
+        <viewAttribute id="DATE1"/>
+        <viewAttribute id="DATE2"/>
+        <viewAttribute id="DATE3"/>
+        <viewAttribute id="NUMBER1"/>
+        <viewAttribute id="NUMBER2"/>
+        <viewAttribute id="NUMBER3"/>
+        <viewAttribute id="TEXT20_1"/>
+        <viewAttribute id="TEXT20_2"/>
+        <viewAttribute id="TEXT20_3"/>
+        <viewAttribute id="TIMESTAMP1"/>
+        <viewAttribute id="TIMESTAMP2"/>
+        <viewAttribute id="DECIMAL1"/>
+        <viewAttribute id="DECIMAL2"/>
+        <viewAttribute id="DECIMAL3"/>
+        <viewAttribute id="TEXT40_1"/>
+        <viewAttribute id="TEXT40_2"/>
+        <viewAttribute id="TEXT40_3"/>
+        <viewAttribute id="TEXT80_1"/>
+        <viewAttribute id="TEXT80_2"/>
+        <viewAttribute id="TEXT80_3"/>
+        <viewAttribute id="TEXT120_1"/>
+        <viewAttribute id="TEXT120_2"/>
+        <viewAttribute id="TEXT120_3"/>
+        <viewAttribute id="TEXT255_1"/>
+        <viewAttribute id="TEXT255_2"/>
+        <viewAttribute id="UNIT"/>
+        <viewAttribute id="STREET"/>
+        <viewAttribute id="HOUSE_NUM1"/>
+        <viewAttribute id="FAXNR_LONG"/>
+        <viewAttribute id="WEB_URI"/>
+        <viewAttribute id="LAST_IA_DATE"/>
+        <viewAttribute id="IC_CONTACT_KEY"/>
+        <viewAttribute id="DUMMY"/>
+        <viewAttribute id="LCHG_DATE_TIME"/>
+        <viewAttribute id="LAST_IA_TIMESTAMP"/>
+        <viewAttribute id="BRSCH"/>
+        <viewAttribute id="CONSUMER_ACCOUNT_ID"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="CREA_DATE_TIME"/>
+        <viewAttribute id="LATITUDE"/>
+        <viewAttribute id="LONGITUDE"/>
+        <viewAttribute id="IS_FOR_ACC_BSD_MKT"/>
+      
+      <viewAttribute id="COMPANY_REVENUE_CURRENCY"/>
+      <viewAttribute id="COMPANY_REVENUE" aggregationType="sum"/>
+      <viewAttribute id="NUMBER_OF_EMPLOYEES" aggregationType="sum"/>
+    
+      <viewAttribute id="LAST_INBOUND_IA_TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="CORPORATEACCOUNTPOSTALOPTIN"/></viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="IC_ROOT">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IMAGE_URI" source="IMAGE_URI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IC_COMPANY_KEY" source="IC_COMPANY_KEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME_TEXT" source="NAME_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY_FT" source="COUNTRY_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION_FT" source="REGION_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CITY1" source="CITY1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSTCODE1" source="POSTCODE1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE" source="LANGUAGE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE_FT" source="LANGUAGE_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_NAME" source="COMPANY_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRSCH_FT" source="BRSCH_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SMTP_ADDR" source="SMTP_ADDR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TELNR_LONG" source="TELNR_LONG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TELNR_MOBILE" source="TELNR_MOBILE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FOR_REVIEW" source="FOR_REVIEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALIDATION_STATUS" source="VALIDATION_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN1" source="BOOLEAN1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN2" source="BOOLEAN2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN3" source="BOOLEAN3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN4" source="BOOLEAN4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIME1" source="TIME1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE1" source="DATE1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE2" source="DATE2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE3" source="DATE3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER1" source="NUMBER1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER2" source="NUMBER2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER3" source="NUMBER3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT20_1" source="TEXT20_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT20_2" source="TEXT20_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT20_3" source="TEXT20_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP1" source="TIMESTAMP1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP2" source="TIMESTAMP2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DECIMAL1" source="DECIMAL1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DECIMAL2" source="DECIMAL2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DECIMAL3" source="DECIMAL3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT40_1" source="TEXT40_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT40_2" source="TEXT40_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT40_3" source="TEXT40_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT80_1" source="TEXT80_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT80_2" source="TEXT80_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT80_3" source="TEXT80_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT120_1" source="TEXT120_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT120_2" source="TEXT120_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT120_3" source="TEXT120_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT255_1" source="TEXT255_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT255_2" source="TEXT255_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIT" source="UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STREET" source="STREET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOUSE_NUM1" source="HOUSE_NUM1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FAXNR_LONG" source="FAXNR_LONG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WEB_URI" source="WEB_URI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAST_IA_DATE" source="LAST_IA_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DUMMY" source="DUMMY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LCHG_DATE_TIME" source="LCHG_DATE_TIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAST_IA_TIMESTAMP" source="LAST_IA_TIMESTAMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRSCH" source="BRSCH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSUMER_ACCOUNT_ID" source="CONSUMER_ACCOUNT_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CREA_DATE_TIME" source="CREA_DATE_TIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LATITUDE" source="LATITUDE_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LONGITUDE" source="LONGITUDE_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_FOR_ACC_BSD_MKT" source="IS_FOR_ACC_BSD_MKT"/>
+      
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_REVENUE_CURRENCY" source="COMPANY_REVENUE_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_REVENUE" source="COMPANY_REVENUE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_OF_EMPLOYEES" source="NUMBER_OF_EMPLOYEES"/>
+      
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAST_INBOUND_IA_TIMESTAMP" source="LAST_INBOUND_IA_TIMESTAMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CORPORATEACCOUNTPOSTALOPTIN" source="CORPORATEACCOUNTPOSTALOPTIN"/></input>
+      <input node="Proj_IC_REL">
+        <mapping xsi:type="Calculation:AttributeMapping" target="IC_CONTACT_KEY" source="PARENT_KEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IC_COMPANY_KEY" source="CONTACT_KEY_TO"/>
+      </input>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="IC_COMPANY_KEY"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_LANGUAGE_CODE" cardinality="C1_N" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="IMAGE_URI"/>
+        <viewAttribute id="IC_COMPANY_KEY"/>
+        <viewAttribute id="NAME_TEXT"/>
+        <viewAttribute id="COUNTRY"/>
+        <viewAttribute id="COUNTRY_FT"/>
+        <viewAttribute id="REGION"/>
+        <viewAttribute id="REGION_FT"/>
+        <viewAttribute id="CITY1"/>
+        <viewAttribute id="POSTCODE1"/>
+        <viewAttribute id="LANGUAGE"/>
+        <viewAttribute id="LANGUAGE_FT"/>
+        <viewAttribute id="COMPANY_NAME"/>
+        <viewAttribute id="BRSCH_FT"/>
+        <viewAttribute id="SMTP_ADDR"/>
+        <viewAttribute id="TELNR_LONG"/>
+        <viewAttribute id="TELNR_MOBILE"/>
+        <viewAttribute id="FOR_REVIEW"/>
+        <viewAttribute id="VALIDATION_STATUS"/>
+        <viewAttribute id="BOOLEAN1"/>
+        <viewAttribute id="BOOLEAN2"/>
+        <viewAttribute id="BOOLEAN3"/>
+        <viewAttribute id="BOOLEAN4"/>
+        <viewAttribute id="TIME1"/>
+        <viewAttribute id="DATE1"/>
+        <viewAttribute id="DATE2"/>
+        <viewAttribute id="DATE3"/>
+        <viewAttribute id="NUMBER1"/>
+        <viewAttribute id="NUMBER2"/>
+        <viewAttribute id="NUMBER3"/>
+        <viewAttribute id="TEXT20_1"/>
+        <viewAttribute id="TEXT20_2"/>
+        <viewAttribute id="TEXT20_3"/>
+        <viewAttribute id="TIMESTAMP1"/>
+        <viewAttribute id="TIMESTAMP2"/>
+        <viewAttribute id="DECIMAL1"/>
+        <viewAttribute id="DECIMAL2"/>
+        <viewAttribute id="DECIMAL3"/>
+        <viewAttribute id="TEXT40_1"/>
+        <viewAttribute id="TEXT40_2"/>
+        <viewAttribute id="TEXT40_3"/>
+        <viewAttribute id="TEXT80_1"/>
+        <viewAttribute id="TEXT80_2"/>
+        <viewAttribute id="TEXT80_3"/>
+        <viewAttribute id="TEXT120_1"/>
+        <viewAttribute id="TEXT120_2"/>
+        <viewAttribute id="TEXT120_3"/>
+        <viewAttribute id="TEXT255_1"/>
+        <viewAttribute id="TEXT255_2"/>
+        <viewAttribute id="UNIT"/>
+        <viewAttribute id="STREET"/>
+        <viewAttribute id="HOUSE_NUM1"/>
+        <viewAttribute id="FAXNR_LONG"/>
+        <viewAttribute id="WEB_URI"/>
+        <viewAttribute id="LAST_IA_DATE"/>
+        <viewAttribute id="IC_CONTACT_KEY"/>
+        <viewAttribute id="DUMMY"/>
+        <viewAttribute id="LCHG_DATE_TIME"/>
+        <viewAttribute id="LAST_IA_TIMESTAMP"/>
+        <viewAttribute id="BRSCH"/>
+        <viewAttribute id="CONSUMER_ACCOUNT_ID"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="CREA_DATE_TIME"/>
+        <viewAttribute id="LANGUAGE_CODE"/>
+        <viewAttribute id="LATITUDE"/>
+        <viewAttribute id="LONGITUDE"/>
+        <viewAttribute id="IS_FOR_ACC_BSD_MKT"/>
+      
+      <viewAttribute id="COMPANY_REVENUE_CURRENCY"/>
+      <viewAttribute id="COMPANY_REVENUE" aggregationType="sum"/>
+      <viewAttribute id="NUMBER_OF_EMPLOYEES" aggregationType="sum"/>
+    
+      <viewAttribute id="LAST_INBOUND_IA_TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="CORPORATEACCOUNTPOSTALOPTIN"/></viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_IC_REL">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IMAGE_URI" source="IMAGE_URI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IC_COMPANY_KEY" source="IC_COMPANY_KEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME_TEXT" source="NAME_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY_FT" source="COUNTRY_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION_FT" source="REGION_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CITY1" source="CITY1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSTCODE1" source="POSTCODE1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE" source="LANGUAGE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE_FT" source="LANGUAGE_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_NAME" source="COMPANY_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRSCH_FT" source="BRSCH_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SMTP_ADDR" source="SMTP_ADDR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TELNR_LONG" source="TELNR_LONG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TELNR_MOBILE" source="TELNR_MOBILE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FOR_REVIEW" source="FOR_REVIEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALIDATION_STATUS" source="VALIDATION_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN1" source="BOOLEAN1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN2" source="BOOLEAN2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN3" source="BOOLEAN3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN4" source="BOOLEAN4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIME1" source="TIME1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE1" source="DATE1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE2" source="DATE2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE3" source="DATE3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER1" source="NUMBER1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER2" source="NUMBER2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER3" source="NUMBER3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT20_1" source="TEXT20_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT20_2" source="TEXT20_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT20_3" source="TEXT20_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP1" source="TIMESTAMP1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP2" source="TIMESTAMP2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DECIMAL1" source="DECIMAL1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DECIMAL2" source="DECIMAL2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DECIMAL3" source="DECIMAL3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT40_1" source="TEXT40_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT40_2" source="TEXT40_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT40_3" source="TEXT40_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT80_1" source="TEXT80_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT80_2" source="TEXT80_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT80_3" source="TEXT80_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT120_1" source="TEXT120_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT120_2" source="TEXT120_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT120_3" source="TEXT120_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT255_1" source="TEXT255_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT255_2" source="TEXT255_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIT" source="UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STREET" source="STREET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOUSE_NUM1" source="HOUSE_NUM1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FAXNR_LONG" source="FAXNR_LONG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WEB_URI" source="WEB_URI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAST_IA_DATE" source="LAST_IA_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IC_CONTACT_KEY" source="IC_CONTACT_KEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DUMMY" source="DUMMY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LCHG_DATE_TIME" source="LCHG_DATE_TIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAST_IA_TIMESTAMP" source="LAST_IA_TIMESTAMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRSCH" source="BRSCH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSUMER_ACCOUNT_ID" source="CONSUMER_ACCOUNT_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CREA_DATE_TIME" source="CREA_DATE_TIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LATITUDE" source="LATITUDE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LONGITUDE" source="LONGITUDE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_FOR_ACC_BSD_MKT" source="IS_FOR_ACC_BSD_MKT"/>
+      
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_REVENUE_CURRENCY" source="COMPANY_REVENUE_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_REVENUE" source="COMPANY_REVENUE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_OF_EMPLOYEES" source="NUMBER_OF_EMPLOYEES"/>
+      
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAST_INBOUND_IA_TIMESTAMP" source="LAST_INBOUND_IA_TIMESTAMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CORPORATEACCOUNTPOSTALOPTIN" source="CORPORATEACCOUNTPOSTALOPTIN"/></input>
+      <input node="T002">
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE_CODE" source="LAISO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE" source="SPRAS"/>
+      </input>
+    <joinAttribute name="LANGUAGE"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_LANGU" cardinality="C1_1" joinType="textTable" languageColumn="SPRAS">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="LANGUAGE_DESC"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="IMAGE_URI"/>
+        <viewAttribute id="IC_COMPANY_KEY"/>
+        <viewAttribute id="NAME_TEXT"/>
+        <viewAttribute id="COUNTRY"/>
+        <viewAttribute id="COUNTRY_FT"/>
+        <viewAttribute id="REGION"/>
+        <viewAttribute id="REGION_FT"/>
+        <viewAttribute id="CITY1"/>
+        <viewAttribute id="POSTCODE1"/>
+        <viewAttribute id="LANGUAGE"/>
+        <viewAttribute id="LANGUAGE_FT"/>
+        <viewAttribute id="COMPANY_NAME"/>
+        <viewAttribute id="BRSCH_FT"/>
+        <viewAttribute id="SMTP_ADDR"/>
+        <viewAttribute id="TELNR_LONG"/>
+        <viewAttribute id="TELNR_MOBILE"/>
+        <viewAttribute id="FOR_REVIEW"/>
+        <viewAttribute id="VALIDATION_STATUS"/>
+        <viewAttribute id="BOOLEAN1"/>
+        <viewAttribute id="BOOLEAN2"/>
+        <viewAttribute id="BOOLEAN3"/>
+        <viewAttribute id="BOOLEAN4"/>
+        <viewAttribute id="TIME1"/>
+        <viewAttribute id="DATE1"/>
+        <viewAttribute id="DATE2"/>
+        <viewAttribute id="DATE3"/>
+        <viewAttribute id="NUMBER1"/>
+        <viewAttribute id="NUMBER2"/>
+        <viewAttribute id="NUMBER3"/>
+        <viewAttribute id="TEXT20_1"/>
+        <viewAttribute id="TEXT20_2"/>
+        <viewAttribute id="TEXT20_3"/>
+        <viewAttribute id="TIMESTAMP1"/>
+        <viewAttribute id="TIMESTAMP2"/>
+        <viewAttribute id="DECIMAL1"/>
+        <viewAttribute id="DECIMAL2"/>
+        <viewAttribute id="DECIMAL3"/>
+        <viewAttribute id="TEXT40_1"/>
+        <viewAttribute id="TEXT40_2"/>
+        <viewAttribute id="TEXT40_3"/>
+        <viewAttribute id="TEXT80_1"/>
+        <viewAttribute id="TEXT80_2"/>
+        <viewAttribute id="TEXT80_3"/>
+        <viewAttribute id="TEXT120_1"/>
+        <viewAttribute id="TEXT120_2"/>
+        <viewAttribute id="TEXT120_3"/>
+        <viewAttribute id="TEXT255_1"/>
+        <viewAttribute id="TEXT255_2"/>
+        <viewAttribute id="UNIT"/>
+        <viewAttribute id="STREET"/>
+        <viewAttribute id="HOUSE_NUM1"/>
+        <viewAttribute id="FAXNR_LONG"/>
+        <viewAttribute id="WEB_URI"/>
+        <viewAttribute id="LAST_IA_DATE"/>
+        <viewAttribute id="IC_CONTACT_KEY"/>
+        <viewAttribute id="DUMMY"/>
+        <viewAttribute id="LCHG_DATE_TIME"/>
+        <viewAttribute id="LAST_IA_TIMESTAMP"/>
+        <viewAttribute id="BRSCH"/>
+        <viewAttribute id="CONSUMER_ACCOUNT_ID"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="CREA_DATE_TIME"/>
+        <viewAttribute id="LANGUAGE_CODE"/>
+        <viewAttribute id="LATITUDE"/>
+        <viewAttribute id="LONGITUDE"/>
+        <viewAttribute id="IS_FOR_ACC_BSD_MKT"/>
+      
+      <viewAttribute id="COMPANY_REVENUE_CURRENCY"/>
+      <viewAttribute id="COMPANY_REVENUE" aggregationType="sum"/>
+      <viewAttribute id="NUMBER_OF_EMPLOYEES" aggregationType="sum"/>
+    
+      <viewAttribute id="LAST_INBOUND_IA_TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="CORPORATEACCOUNTPOSTALOPTIN"/></viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_LANGUAGE_CODE">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IMAGE_URI" source="IMAGE_URI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IC_COMPANY_KEY" source="IC_COMPANY_KEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME_TEXT" source="NAME_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY_FT" source="COUNTRY_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION_FT" source="REGION_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CITY1" source="CITY1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSTCODE1" source="POSTCODE1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE" source="LANGUAGE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE_FT" source="LANGUAGE_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_NAME" source="COMPANY_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRSCH_FT" source="BRSCH_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SMTP_ADDR" source="SMTP_ADDR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TELNR_LONG" source="TELNR_LONG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TELNR_MOBILE" source="TELNR_MOBILE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FOR_REVIEW" source="FOR_REVIEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALIDATION_STATUS" source="VALIDATION_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN1" source="BOOLEAN1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN2" source="BOOLEAN2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN3" source="BOOLEAN3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN4" source="BOOLEAN4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIME1" source="TIME1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE1" source="DATE1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE2" source="DATE2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE3" source="DATE3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER1" source="NUMBER1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER2" source="NUMBER2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER3" source="NUMBER3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT20_1" source="TEXT20_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT20_2" source="TEXT20_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT20_3" source="TEXT20_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP1" source="TIMESTAMP1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP2" source="TIMESTAMP2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DECIMAL1" source="DECIMAL1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DECIMAL2" source="DECIMAL2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DECIMAL3" source="DECIMAL3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT40_1" source="TEXT40_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT40_2" source="TEXT40_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT40_3" source="TEXT40_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT80_1" source="TEXT80_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT80_2" source="TEXT80_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT80_3" source="TEXT80_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT120_1" source="TEXT120_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT120_2" source="TEXT120_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT120_3" source="TEXT120_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT255_1" source="TEXT255_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT255_2" source="TEXT255_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIT" source="UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STREET" source="STREET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOUSE_NUM1" source="HOUSE_NUM1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FAXNR_LONG" source="FAXNR_LONG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WEB_URI" source="WEB_URI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAST_IA_DATE" source="LAST_IA_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IC_CONTACT_KEY" source="IC_CONTACT_KEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DUMMY" source="DUMMY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LCHG_DATE_TIME" source="LCHG_DATE_TIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAST_IA_TIMESTAMP" source="LAST_IA_TIMESTAMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRSCH" source="BRSCH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSUMER_ACCOUNT_ID" source="CONSUMER_ACCOUNT_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CREA_DATE_TIME" source="CREA_DATE_TIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE_CODE" source="LANGUAGE_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LATITUDE" source="LATITUDE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LONGITUDE" source="LONGITUDE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_FOR_ACC_BSD_MKT" source="IS_FOR_ACC_BSD_MKT"/>
+      
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_REVENUE_CURRENCY" source="COMPANY_REVENUE_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_REVENUE" source="COMPANY_REVENUE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_OF_EMPLOYEES" source="NUMBER_OF_EMPLOYEES"/>
+      
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAST_INBOUND_IA_TIMESTAMP" source="LAST_INBOUND_IA_TIMESTAMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CORPORATEACCOUNTPOSTALOPTIN" source="CORPORATEACCOUNTPOSTALOPTIN"/></input>
+      <input node="T002T">
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE_DESC" source="SPTXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE" source="SPRSL"/>
+      </input>
+    <joinAttribute name="LANGUAGE"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_COUNTRY">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="LAND1"/>
+        <viewAttribute id="LANDX"/>
+        <viewAttribute id="LANDX50"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="NATIO"/>
+        <viewAttribute id="NATIO50"/>
+        <viewAttribute id="SPRAS"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="T005T"/>
+    <filter>(&quot;MANDT&quot; ='$$client$$')</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_IC_MKT">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="ROOT_KEY"/>
+        <viewAttribute id="_DATAAGING"/>
+        <viewAttribute id="OBSOLETE"/>
+        <viewAttribute id="MKT_AREA_ID"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="CUAND_CE_IC_MKTA"/>
+    <filter>(&quot;MANDT&quot; ='$$client$$') AND (&quot;_DATAAGING&quot; !='00010101') AND (&quot;OBSOLETE&quot; ='')</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_IC_MKT" cardinality="C1_N" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="IMAGE_URI"/>
+        <viewAttribute id="IC_COMPANY_KEY"/>
+        <viewAttribute id="NAME_TEXT"/>
+        <viewAttribute id="COUNTRY"/>
+        <viewAttribute id="COUNTRY_FT"/>
+        <viewAttribute id="REGION"/>
+        <viewAttribute id="REGION_FT"/>
+        <viewAttribute id="CITY1"/>
+        <viewAttribute id="POSTCODE1"/>
+        <viewAttribute id="LANGUAGE"/>
+        <viewAttribute id="LANGUAGE_FT"/>
+        <viewAttribute id="COMPANY_NAME"/>
+        <viewAttribute id="BRSCH_FT"/>
+        <viewAttribute id="SMTP_ADDR"/>
+        <viewAttribute id="TELNR_LONG"/>
+        <viewAttribute id="TELNR_MOBILE"/>
+        <viewAttribute id="FOR_REVIEW"/>
+        <viewAttribute id="VALIDATION_STATUS"/>
+        <viewAttribute id="BOOLEAN1"/>
+        <viewAttribute id="BOOLEAN2"/>
+        <viewAttribute id="BOOLEAN3"/>
+        <viewAttribute id="BOOLEAN4"/>
+        <viewAttribute id="TIME1"/>
+        <viewAttribute id="DATE1"/>
+        <viewAttribute id="DATE2"/>
+        <viewAttribute id="DATE3"/>
+        <viewAttribute id="NUMBER1"/>
+        <viewAttribute id="NUMBER2"/>
+        <viewAttribute id="NUMBER3"/>
+        <viewAttribute id="TEXT20_1"/>
+        <viewAttribute id="TEXT20_2"/>
+        <viewAttribute id="TEXT20_3"/>
+        <viewAttribute id="TIMESTAMP1"/>
+        <viewAttribute id="TIMESTAMP2"/>
+        <viewAttribute id="DECIMAL1"/>
+        <viewAttribute id="DECIMAL2"/>
+        <viewAttribute id="DECIMAL3"/>
+        <viewAttribute id="TEXT40_1"/>
+        <viewAttribute id="TEXT40_2"/>
+        <viewAttribute id="TEXT40_3"/>
+        <viewAttribute id="TEXT80_1"/>
+        <viewAttribute id="TEXT80_2"/>
+        <viewAttribute id="TEXT80_3"/>
+        <viewAttribute id="TEXT120_1"/>
+        <viewAttribute id="TEXT120_2"/>
+        <viewAttribute id="TEXT120_3"/>
+        <viewAttribute id="TEXT255_1"/>
+        <viewAttribute id="TEXT255_2"/>
+        <viewAttribute id="UNIT"/>
+        <viewAttribute id="STREET"/>
+        <viewAttribute id="HOUSE_NUM1"/>
+        <viewAttribute id="FAXNR_LONG"/>
+        <viewAttribute id="WEB_URI"/>
+        <viewAttribute id="LAST_IA_DATE"/>
+        <viewAttribute id="IC_CONTACT_KEY"/>
+        <viewAttribute id="DUMMY"/>
+        <viewAttribute id="LCHG_DATE_TIME"/>
+        <viewAttribute id="LAST_IA_TIMESTAMP"/>
+        <viewAttribute id="LANGUAGE_DESC"/>
+        <viewAttribute id="BRSCH"/>
+        <viewAttribute id="CONSUMER_ACCOUNT_ID"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="MKT_AREA_ID"/>
+        <viewAttribute id="CREA_DATE_TIME"/>
+        <viewAttribute id="LANGUAGE_CODE"/>
+        <viewAttribute id="LATITUDE"/>
+        <viewAttribute id="LONGITUDE"/>
+        <viewAttribute id="IS_FOR_ACC_BSD_MKT"/>
+      
+      <viewAttribute id="COMPANY_REVENUE_CURRENCY"/>
+      <viewAttribute id="COMPANY_REVENUE" aggregationType="sum"/>
+      <viewAttribute id="NUMBER_OF_EMPLOYEES" aggregationType="sum"/>
+    
+      <viewAttribute id="LAST_INBOUND_IA_TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="CORPORATEACCOUNTPOSTALOPTIN"/></viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_LANGU">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IMAGE_URI" source="IMAGE_URI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IC_COMPANY_KEY" source="IC_COMPANY_KEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME_TEXT" source="NAME_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY_FT" source="COUNTRY_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION_FT" source="REGION_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CITY1" source="CITY1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSTCODE1" source="POSTCODE1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE" source="LANGUAGE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE_FT" source="LANGUAGE_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_NAME" source="COMPANY_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRSCH_FT" source="BRSCH_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SMTP_ADDR" source="SMTP_ADDR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TELNR_LONG" source="TELNR_LONG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TELNR_MOBILE" source="TELNR_MOBILE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FOR_REVIEW" source="FOR_REVIEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALIDATION_STATUS" source="VALIDATION_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN1" source="BOOLEAN1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN2" source="BOOLEAN2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN3" source="BOOLEAN3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN4" source="BOOLEAN4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIME1" source="TIME1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE1" source="DATE1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE2" source="DATE2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE3" source="DATE3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER1" source="NUMBER1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER2" source="NUMBER2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER3" source="NUMBER3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT20_1" source="TEXT20_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT20_2" source="TEXT20_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT20_3" source="TEXT20_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP1" source="TIMESTAMP1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP2" source="TIMESTAMP2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DECIMAL1" source="DECIMAL1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DECIMAL2" source="DECIMAL2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DECIMAL3" source="DECIMAL3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT40_1" source="TEXT40_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT40_2" source="TEXT40_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT40_3" source="TEXT40_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT80_1" source="TEXT80_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT80_2" source="TEXT80_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT80_3" source="TEXT80_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT120_1" source="TEXT120_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT120_2" source="TEXT120_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT120_3" source="TEXT120_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT255_1" source="TEXT255_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT255_2" source="TEXT255_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIT" source="UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STREET" source="STREET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOUSE_NUM1" source="HOUSE_NUM1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FAXNR_LONG" source="FAXNR_LONG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WEB_URI" source="WEB_URI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAST_IA_DATE" source="LAST_IA_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IC_CONTACT_KEY" source="IC_CONTACT_KEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DUMMY" source="DUMMY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LCHG_DATE_TIME" source="LCHG_DATE_TIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAST_IA_TIMESTAMP" source="LAST_IA_TIMESTAMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE_DESC" source="LANGUAGE_DESC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRSCH" source="BRSCH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSUMER_ACCOUNT_ID" source="CONSUMER_ACCOUNT_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CREA_DATE_TIME" source="CREA_DATE_TIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE_CODE" source="LANGUAGE_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LATITUDE" source="LATITUDE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LONGITUDE" source="LONGITUDE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_FOR_ACC_BSD_MKT" source="IS_FOR_ACC_BSD_MKT"/>
+      
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_REVENUE_CURRENCY" source="COMPANY_REVENUE_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_REVENUE" source="COMPANY_REVENUE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_OF_EMPLOYEES" source="NUMBER_OF_EMPLOYEES"/>
+      
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAST_INBOUND_IA_TIMESTAMP" source="LAST_INBOUND_IA_TIMESTAMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CORPORATEACCOUNTPOSTALOPTIN" source="CORPORATEACCOUNTPOSTALOPTIN"/></input>
+      <input node="Projection_IC_MKT">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AREA_ID" source="MKT_AREA_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IC_COMPANY_KEY" source="ROOT_KEY"/>
+      </input>
+    <joinAttribute name="IC_COMPANY_KEY"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_MARKETING_DESC" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SPRAS"/>
+        <viewAttribute id="MKT_AREA_ID"/>
+        <viewAttribute id="MKT_AREA_DESC"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="HPAC_MKT_AREA_T"/>
+    <filter>(&quot;MANDT&quot; ='$$client$$')</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_MARKETING_DESC" cardinality="C1_1" joinType="textTable" languageColumn="SPRAS">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="IMAGE_URI"/>
+        <viewAttribute id="IC_COMPANY_KEY"/>
+        <viewAttribute id="NAME_TEXT"/>
+        <viewAttribute id="COUNTRY"/>
+        <viewAttribute id="COUNTRY_FT"/>
+        <viewAttribute id="REGION"/>
+        <viewAttribute id="REGION_FT"/>
+        <viewAttribute id="CITY1"/>
+        <viewAttribute id="POSTCODE1"/>
+        <viewAttribute id="LANGUAGE"/>
+        <viewAttribute id="LANGUAGE_FT"/>
+        <viewAttribute id="COMPANY_NAME"/>
+        <viewAttribute id="BRSCH_FT"/>
+        <viewAttribute id="SMTP_ADDR"/>
+        <viewAttribute id="TELNR_LONG"/>
+        <viewAttribute id="TELNR_MOBILE"/>
+        <viewAttribute id="FOR_REVIEW"/>
+        <viewAttribute id="VALIDATION_STATUS"/>
+        <viewAttribute id="BOOLEAN1"/>
+        <viewAttribute id="BOOLEAN2"/>
+        <viewAttribute id="BOOLEAN3"/>
+        <viewAttribute id="BOOLEAN4"/>
+        <viewAttribute id="TIME1"/>
+        <viewAttribute id="DATE1"/>
+        <viewAttribute id="DATE2"/>
+        <viewAttribute id="DATE3"/>
+        <viewAttribute id="NUMBER1"/>
+        <viewAttribute id="NUMBER2"/>
+        <viewAttribute id="NUMBER3"/>
+        <viewAttribute id="TEXT20_1"/>
+        <viewAttribute id="TEXT20_2"/>
+        <viewAttribute id="TEXT20_3"/>
+        <viewAttribute id="TIMESTAMP1"/>
+        <viewAttribute id="TIMESTAMP2"/>
+        <viewAttribute id="DECIMAL1"/>
+        <viewAttribute id="DECIMAL2"/>
+        <viewAttribute id="DECIMAL3"/>
+        <viewAttribute id="TEXT40_1"/>
+        <viewAttribute id="TEXT40_2"/>
+        <viewAttribute id="TEXT40_3"/>
+        <viewAttribute id="TEXT80_1"/>
+        <viewAttribute id="TEXT80_2"/>
+        <viewAttribute id="TEXT80_3"/>
+        <viewAttribute id="TEXT120_1"/>
+        <viewAttribute id="TEXT120_2"/>
+        <viewAttribute id="TEXT120_3"/>
+        <viewAttribute id="TEXT255_1"/>
+        <viewAttribute id="TEXT255_2"/>
+        <viewAttribute id="UNIT"/>
+        <viewAttribute id="STREET"/>
+        <viewAttribute id="HOUSE_NUM1"/>
+        <viewAttribute id="FAXNR_LONG"/>
+        <viewAttribute id="WEB_URI"/>
+        <viewAttribute id="LAST_IA_DATE"/>
+        <viewAttribute id="IC_CONTACT_KEY"/>
+        <viewAttribute id="DUMMY"/>
+        <viewAttribute id="LCHG_DATE_TIME"/>
+        <viewAttribute id="LAST_IA_TIMESTAMP"/>
+        <viewAttribute id="LANGUAGE_DESC"/>
+        <viewAttribute id="BRSCH"/>
+        <viewAttribute id="CONSUMER_ACCOUNT_ID"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="IC_COMP_MKT_AREA_ID"/>
+        <viewAttribute id="CREA_DATE_TIME"/>
+        <viewAttribute id="LANGUAGE_CODE"/>
+        <viewAttribute id="LATITUDE"/>
+        <viewAttribute id="LONGITUDE"/>
+        <viewAttribute id="IS_FOR_ACC_BSD_MKT"/>
+        <viewAttribute id="IC_COMP_MKT_AREA_DESC"/>
+      
+      <viewAttribute id="COMPANY_REVENUE_CURRENCY"/>
+      <viewAttribute id="COMPANY_REVENUE" aggregationType="sum"/>
+      <viewAttribute id="NUMBER_OF_EMPLOYEES" aggregationType="sum"/>
+    
+      <viewAttribute id="LAST_INBOUND_IA_TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="CORPORATEACCOUNTPOSTALOPTIN"/></viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_IC_MKT">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IMAGE_URI" source="IMAGE_URI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IC_COMPANY_KEY" source="IC_COMPANY_KEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME_TEXT" source="NAME_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY_FT" source="COUNTRY_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION_FT" source="REGION_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CITY1" source="CITY1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSTCODE1" source="POSTCODE1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE" source="LANGUAGE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE_FT" source="LANGUAGE_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_NAME" source="COMPANY_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRSCH_FT" source="BRSCH_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SMTP_ADDR" source="SMTP_ADDR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TELNR_LONG" source="TELNR_LONG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TELNR_MOBILE" source="TELNR_MOBILE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FOR_REVIEW" source="FOR_REVIEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALIDATION_STATUS" source="VALIDATION_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN1" source="BOOLEAN1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN2" source="BOOLEAN2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN3" source="BOOLEAN3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN4" source="BOOLEAN4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIME1" source="TIME1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE1" source="DATE1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE2" source="DATE2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE3" source="DATE3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER1" source="NUMBER1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER2" source="NUMBER2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER3" source="NUMBER3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT20_1" source="TEXT20_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT20_2" source="TEXT20_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT20_3" source="TEXT20_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP1" source="TIMESTAMP1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP2" source="TIMESTAMP2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DECIMAL1" source="DECIMAL1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DECIMAL2" source="DECIMAL2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DECIMAL3" source="DECIMAL3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT40_1" source="TEXT40_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT40_2" source="TEXT40_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT40_3" source="TEXT40_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT80_1" source="TEXT80_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT80_2" source="TEXT80_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT80_3" source="TEXT80_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT120_1" source="TEXT120_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT120_2" source="TEXT120_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT120_3" source="TEXT120_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT255_1" source="TEXT255_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT255_2" source="TEXT255_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIT" source="UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STREET" source="STREET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOUSE_NUM1" source="HOUSE_NUM1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FAXNR_LONG" source="FAXNR_LONG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WEB_URI" source="WEB_URI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAST_IA_DATE" source="LAST_IA_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IC_CONTACT_KEY" source="IC_CONTACT_KEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DUMMY" source="DUMMY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LCHG_DATE_TIME" source="LCHG_DATE_TIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAST_IA_TIMESTAMP" source="LAST_IA_TIMESTAMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE_DESC" source="LANGUAGE_DESC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRSCH" source="BRSCH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSUMER_ACCOUNT_ID" source="CONSUMER_ACCOUNT_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IC_COMP_MKT_AREA_ID" source="MKT_AREA_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CREA_DATE_TIME" source="CREA_DATE_TIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE_CODE" source="LANGUAGE_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LATITUDE" source="LATITUDE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LONGITUDE" source="LONGITUDE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_FOR_ACC_BSD_MKT" source="IS_FOR_ACC_BSD_MKT"/>
+      
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_REVENUE_CURRENCY" source="COMPANY_REVENUE_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_REVENUE" source="COMPANY_REVENUE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_OF_EMPLOYEES" source="NUMBER_OF_EMPLOYEES"/>
+      
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAST_INBOUND_IA_TIMESTAMP" source="LAST_INBOUND_IA_TIMESTAMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CORPORATEACCOUNTPOSTALOPTIN" source="CORPORATEACCOUNTPOSTALOPTIN"/></input>
+      <input node="Projection_MARKETING_DESC">
+        <mapping xsi:type="Calculation:AttributeMapping" target="IC_COMP_MKT_AREA_DESC" source="MKT_AREA_DESC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IC_COMP_MKT_AREA_ID" source="MKT_AREA_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      </input>
+    <joinAttribute name="IC_COMP_MKT_AREA_ID"/>
+    <joinAttribute name="MANDT"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_COUNTRY" cardinality="C1_1" joinType="textTable" languageColumn="SPRAS">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="LANDX50"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="IMAGE_URI"/>
+        <viewAttribute id="IC_COMPANY_KEY"/>
+        <viewAttribute id="NAME_TEXT"/>
+        <viewAttribute id="COUNTRY"/>
+        <viewAttribute id="COUNTRY_FT"/>
+        <viewAttribute id="REGION"/>
+        <viewAttribute id="REGION_FT"/>
+        <viewAttribute id="CITY1"/>
+        <viewAttribute id="POSTCODE1"/>
+        <viewAttribute id="LANGUAGE"/>
+        <viewAttribute id="LANGUAGE_FT"/>
+        <viewAttribute id="COMPANY_NAME"/>
+        <viewAttribute id="BRSCH_FT"/>
+        <viewAttribute id="SMTP_ADDR"/>
+        <viewAttribute id="TELNR_LONG"/>
+        <viewAttribute id="TELNR_MOBILE"/>
+        <viewAttribute id="FOR_REVIEW"/>
+        <viewAttribute id="VALIDATION_STATUS"/>
+        <viewAttribute id="BOOLEAN1"/>
+        <viewAttribute id="BOOLEAN2"/>
+        <viewAttribute id="BOOLEAN3"/>
+        <viewAttribute id="BOOLEAN4"/>
+        <viewAttribute id="TIME1"/>
+        <viewAttribute id="DATE1"/>
+        <viewAttribute id="DATE2"/>
+        <viewAttribute id="DATE3"/>
+        <viewAttribute id="NUMBER1"/>
+        <viewAttribute id="NUMBER2"/>
+        <viewAttribute id="NUMBER3"/>
+        <viewAttribute id="TEXT20_1"/>
+        <viewAttribute id="TEXT20_2"/>
+        <viewAttribute id="TEXT20_3"/>
+        <viewAttribute id="TIMESTAMP1"/>
+        <viewAttribute id="TIMESTAMP2"/>
+        <viewAttribute id="DECIMAL1"/>
+        <viewAttribute id="DECIMAL2"/>
+        <viewAttribute id="DECIMAL3"/>
+        <viewAttribute id="TEXT40_1"/>
+        <viewAttribute id="TEXT40_2"/>
+        <viewAttribute id="TEXT40_3"/>
+        <viewAttribute id="TEXT80_1"/>
+        <viewAttribute id="TEXT80_2"/>
+        <viewAttribute id="TEXT80_3"/>
+        <viewAttribute id="TEXT120_1"/>
+        <viewAttribute id="TEXT120_2"/>
+        <viewAttribute id="TEXT120_3"/>
+        <viewAttribute id="TEXT255_1"/>
+        <viewAttribute id="TEXT255_2"/>
+        <viewAttribute id="UNIT"/>
+        <viewAttribute id="STREET"/>
+        <viewAttribute id="HOUSE_NUM1"/>
+        <viewAttribute id="FAXNR_LONG"/>
+        <viewAttribute id="WEB_URI"/>
+        <viewAttribute id="LAST_IA_DATE"/>
+        <viewAttribute id="IC_CONTACT_KEY"/>
+        <viewAttribute id="DUMMY"/>
+        <viewAttribute id="LCHG_DATE_TIME"/>
+        <viewAttribute id="LAST_IA_TIMESTAMP"/>
+        <viewAttribute id="LANGUAGE_DESC"/>
+        <viewAttribute id="BRSCH"/>
+        <viewAttribute id="CONSUMER_ACCOUNT_ID"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="IC_COMP_MKT_AREA_ID"/>
+        <viewAttribute id="CREA_DATE_TIME"/>
+        <viewAttribute id="LANGUAGE_CODE"/>
+        <viewAttribute id="LATITUDE"/>
+        <viewAttribute id="LONGITUDE"/>
+        <viewAttribute id="IS_FOR_ACC_BSD_MKT"/>
+        <viewAttribute id="IC_COMP_MKT_AREA_DESC"/>
+      
+      <viewAttribute id="COMPANY_REVENUE_CURRENCY"/>
+      <viewAttribute id="COMPANY_REVENUE" aggregationType="sum"/>
+      <viewAttribute id="NUMBER_OF_EMPLOYEES" aggregationType="sum"/>
+    
+      <viewAttribute id="LAST_INBOUND_IA_TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="CORPORATEACCOUNTPOSTALOPTIN"/></viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_MARKETING_DESC">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IMAGE_URI" source="IMAGE_URI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IC_COMPANY_KEY" source="IC_COMPANY_KEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME_TEXT" source="NAME_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY_FT" source="COUNTRY_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION_FT" source="REGION_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CITY1" source="CITY1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSTCODE1" source="POSTCODE1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE" source="LANGUAGE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE_FT" source="LANGUAGE_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_NAME" source="COMPANY_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRSCH_FT" source="BRSCH_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SMTP_ADDR" source="SMTP_ADDR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TELNR_LONG" source="TELNR_LONG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TELNR_MOBILE" source="TELNR_MOBILE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FOR_REVIEW" source="FOR_REVIEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALIDATION_STATUS" source="VALIDATION_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN1" source="BOOLEAN1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN2" source="BOOLEAN2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN3" source="BOOLEAN3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN4" source="BOOLEAN4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIME1" source="TIME1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE1" source="DATE1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE2" source="DATE2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE3" source="DATE3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER1" source="NUMBER1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER2" source="NUMBER2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER3" source="NUMBER3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT20_1" source="TEXT20_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT20_2" source="TEXT20_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT20_3" source="TEXT20_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP1" source="TIMESTAMP1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP2" source="TIMESTAMP2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DECIMAL1" source="DECIMAL1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DECIMAL2" source="DECIMAL2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DECIMAL3" source="DECIMAL3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT40_1" source="TEXT40_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT40_2" source="TEXT40_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT40_3" source="TEXT40_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT80_1" source="TEXT80_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT80_2" source="TEXT80_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT80_3" source="TEXT80_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT120_1" source="TEXT120_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT120_2" source="TEXT120_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT120_3" source="TEXT120_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT255_1" source="TEXT255_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT255_2" source="TEXT255_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIT" source="UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STREET" source="STREET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOUSE_NUM1" source="HOUSE_NUM1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FAXNR_LONG" source="FAXNR_LONG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WEB_URI" source="WEB_URI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAST_IA_DATE" source="LAST_IA_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IC_CONTACT_KEY" source="IC_CONTACT_KEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DUMMY" source="DUMMY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LCHG_DATE_TIME" source="LCHG_DATE_TIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAST_IA_TIMESTAMP" source="LAST_IA_TIMESTAMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE_DESC" source="LANGUAGE_DESC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRSCH" source="BRSCH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSUMER_ACCOUNT_ID" source="CONSUMER_ACCOUNT_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IC_COMP_MKT_AREA_ID" source="IC_COMP_MKT_AREA_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CREA_DATE_TIME" source="CREA_DATE_TIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE_CODE" source="LANGUAGE_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LATITUDE" source="LATITUDE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LONGITUDE" source="LONGITUDE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_FOR_ACC_BSD_MKT" source="IS_FOR_ACC_BSD_MKT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IC_COMP_MKT_AREA_DESC" source="IC_COMP_MKT_AREA_DESC"/>
+      
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_REVENUE_CURRENCY" source="COMPANY_REVENUE_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_REVENUE" source="COMPANY_REVENUE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_OF_EMPLOYEES" source="NUMBER_OF_EMPLOYEES"/>
+      
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAST_INBOUND_IA_TIMESTAMP" source="LAST_INBOUND_IA_TIMESTAMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CORPORATEACCOUNTPOSTALOPTIN" source="CORPORATEACCOUNTPOSTALOPTIN"/></input>
+      <input node="Projection_COUNTRY">
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANDX50" source="LANDX50"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="LAND1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      </input>
+    <joinAttribute name="COUNTRY"/>
+    <joinAttribute name="MANDT"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_REGION">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="BEZEI"/>
+        <viewAttribute id="LAND1"/>
+        <viewAttribute id="BLAND"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SPRAS"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="T005U"/>
+    <filter>(&quot;MANDT&quot; ='$$client$$')</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_REGION" cardinality="C1_1" joinType="textTable" languageColumn="SPRAS">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="IMAGE_URI"/>
+        <viewAttribute id="IC_COMPANY_KEY"/>
+        <viewAttribute id="NAME_TEXT"/>
+        <viewAttribute id="COUNTRY"/>
+        <viewAttribute id="COUNTRY_FT"/>
+        <viewAttribute id="REGION"/>
+        <viewAttribute id="REGION_FT"/>
+        <viewAttribute id="CITY1"/>
+        <viewAttribute id="POSTCODE1"/>
+        <viewAttribute id="LANGUAGE"/>
+        <viewAttribute id="LANGUAGE_FT"/>
+        <viewAttribute id="COMPANY_NAME"/>
+        <viewAttribute id="BRSCH_FT"/>
+        <viewAttribute id="SMTP_ADDR"/>
+        <viewAttribute id="TELNR_LONG"/>
+        <viewAttribute id="TELNR_MOBILE"/>
+        <viewAttribute id="FOR_REVIEW"/>
+        <viewAttribute id="VALIDATION_STATUS"/>
+        <viewAttribute id="BOOLEAN1"/>
+        <viewAttribute id="BOOLEAN2"/>
+        <viewAttribute id="BOOLEAN3"/>
+        <viewAttribute id="BOOLEAN4"/>
+        <viewAttribute id="TIME1"/>
+        <viewAttribute id="DATE1"/>
+        <viewAttribute id="DATE2"/>
+        <viewAttribute id="DATE3"/>
+        <viewAttribute id="NUMBER1"/>
+        <viewAttribute id="NUMBER2"/>
+        <viewAttribute id="NUMBER3"/>
+        <viewAttribute id="TEXT20_1"/>
+        <viewAttribute id="TEXT20_2"/>
+        <viewAttribute id="TEXT20_3"/>
+        <viewAttribute id="TIMESTAMP1"/>
+        <viewAttribute id="TIMESTAMP2"/>
+        <viewAttribute id="DECIMAL1"/>
+        <viewAttribute id="DECIMAL2"/>
+        <viewAttribute id="DECIMAL3"/>
+        <viewAttribute id="TEXT40_1"/>
+        <viewAttribute id="TEXT40_2"/>
+        <viewAttribute id="TEXT40_3"/>
+        <viewAttribute id="TEXT80_1"/>
+        <viewAttribute id="TEXT80_2"/>
+        <viewAttribute id="TEXT80_3"/>
+        <viewAttribute id="TEXT120_1"/>
+        <viewAttribute id="TEXT120_2"/>
+        <viewAttribute id="TEXT120_3"/>
+        <viewAttribute id="TEXT255_1"/>
+        <viewAttribute id="TEXT255_2"/>
+        <viewAttribute id="UNIT"/>
+        <viewAttribute id="STREET"/>
+        <viewAttribute id="HOUSE_NUM1"/>
+        <viewAttribute id="FAXNR_LONG"/>
+        <viewAttribute id="WEB_URI"/>
+        <viewAttribute id="LAST_IA_DATE"/>
+        <viewAttribute id="IC_CONTACT_KEY"/>
+        <viewAttribute id="DUMMY"/>
+        <viewAttribute id="LCHG_DATE_TIME"/>
+        <viewAttribute id="LAST_IA_TIMESTAMP"/>
+        <viewAttribute id="LANGUAGE_DESC"/>
+        <viewAttribute id="BRSCH"/>
+        <viewAttribute id="CONSUMER_ACCOUNT_ID"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="COUNTRY_DESC"/>
+        <viewAttribute id="BEZEI"/>
+        <viewAttribute id="IC_COMP_MKT_AREA_ID"/>
+        <viewAttribute id="CREA_DATE_TIME"/>
+        <viewAttribute id="LANGUAGE_CODE"/>
+        <viewAttribute id="LATITUDE"/>
+        <viewAttribute id="LONGITUDE"/>
+        <viewAttribute id="IS_FOR_ACC_BSD_MKT"/>
+        <viewAttribute id="IC_COMP_MKT_AREA_DESC"/>
+      
+      <viewAttribute id="COMPANY_REVENUE_CURRENCY"/>
+      <viewAttribute id="COMPANY_REVENUE" aggregationType="sum"/>
+      <viewAttribute id="NUMBER_OF_EMPLOYEES" aggregationType="sum"/>
+    
+      <viewAttribute id="LAST_INBOUND_IA_TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="CORPORATEACCOUNTPOSTALOPTIN"/></viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_COUNTRY">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IMAGE_URI" source="IMAGE_URI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IC_COMPANY_KEY" source="IC_COMPANY_KEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME_TEXT" source="NAME_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY_FT" source="COUNTRY_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION_FT" source="REGION_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CITY1" source="CITY1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSTCODE1" source="POSTCODE1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE" source="LANGUAGE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE_FT" source="LANGUAGE_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_NAME" source="COMPANY_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRSCH_FT" source="BRSCH_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SMTP_ADDR" source="SMTP_ADDR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TELNR_LONG" source="TELNR_LONG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TELNR_MOBILE" source="TELNR_MOBILE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FOR_REVIEW" source="FOR_REVIEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALIDATION_STATUS" source="VALIDATION_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN1" source="BOOLEAN1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN2" source="BOOLEAN2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN3" source="BOOLEAN3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN4" source="BOOLEAN4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIME1" source="TIME1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE1" source="DATE1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE2" source="DATE2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE3" source="DATE3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER1" source="NUMBER1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER2" source="NUMBER2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER3" source="NUMBER3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT20_1" source="TEXT20_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT20_2" source="TEXT20_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT20_3" source="TEXT20_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP1" source="TIMESTAMP1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP2" source="TIMESTAMP2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DECIMAL1" source="DECIMAL1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DECIMAL2" source="DECIMAL2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DECIMAL3" source="DECIMAL3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT40_1" source="TEXT40_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT40_2" source="TEXT40_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT40_3" source="TEXT40_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT80_1" source="TEXT80_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT80_2" source="TEXT80_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT80_3" source="TEXT80_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT120_1" source="TEXT120_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT120_2" source="TEXT120_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT120_3" source="TEXT120_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT255_1" source="TEXT255_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT255_2" source="TEXT255_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIT" source="UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STREET" source="STREET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOUSE_NUM1" source="HOUSE_NUM1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FAXNR_LONG" source="FAXNR_LONG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WEB_URI" source="WEB_URI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAST_IA_DATE" source="LAST_IA_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IC_CONTACT_KEY" source="IC_CONTACT_KEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DUMMY" source="DUMMY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LCHG_DATE_TIME" source="LCHG_DATE_TIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAST_IA_TIMESTAMP" source="LAST_IA_TIMESTAMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE_DESC" source="LANGUAGE_DESC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRSCH" source="BRSCH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSUMER_ACCOUNT_ID" source="CONSUMER_ACCOUNT_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY_DESC" source="LANDX50"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IC_COMP_MKT_AREA_ID" source="IC_COMP_MKT_AREA_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CREA_DATE_TIME" source="CREA_DATE_TIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE_CODE" source="LANGUAGE_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LATITUDE" source="LATITUDE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LONGITUDE" source="LONGITUDE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_FOR_ACC_BSD_MKT" source="IS_FOR_ACC_BSD_MKT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IC_COMP_MKT_AREA_DESC" source="IC_COMP_MKT_AREA_DESC"/>
+      
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_REVENUE_CURRENCY" source="COMPANY_REVENUE_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_REVENUE" source="COMPANY_REVENUE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_OF_EMPLOYEES" source="NUMBER_OF_EMPLOYEES"/>
+      
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAST_INBOUND_IA_TIMESTAMP" source="LAST_INBOUND_IA_TIMESTAMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CORPORATEACCOUNTPOSTALOPTIN" source="CORPORATEACCOUNTPOSTALOPTIN"/></input>
+      <input node="Projection_REGION">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BEZEI" source="BEZEI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="LAND1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="BLAND"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      </input>
+    <joinAttribute name="COUNTRY"/>
+    <joinAttribute name="REGION"/>
+    <joinAttribute name="MANDT"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_BRSCH">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="BRSCH"/>
+        <viewAttribute id="BRTXT"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="SPRAS"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="CUANC_T016T"/>
+    <filter>(&quot;MANDT&quot; ='$$client$$')</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_BRSCH" cardinality="C1_1" joinType="textTable" languageColumn="SPRAS">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="IMAGE_URI"/>
+        <viewAttribute id="IC_COMPANY_KEY"/>
+        <viewAttribute id="NAME_TEXT"/>
+        <viewAttribute id="COUNTRY"/>
+        <viewAttribute id="COUNTRY_FT"/>
+        <viewAttribute id="REGION"/>
+        <viewAttribute id="REGION_FT"/>
+        <viewAttribute id="CITY1"/>
+        <viewAttribute id="POSTCODE1"/>
+        <viewAttribute id="LANGUAGE"/>
+        <viewAttribute id="LANGUAGE_FT"/>
+        <viewAttribute id="COMPANY_NAME"/>
+        <viewAttribute id="BRSCH_FT"/>
+        <viewAttribute id="SMTP_ADDR"/>
+        <viewAttribute id="TELNR_LONG"/>
+        <viewAttribute id="TELNR_MOBILE"/>
+        <viewAttribute id="FOR_REVIEW"/>
+        <viewAttribute id="VALIDATION_STATUS"/>
+        <viewAttribute id="BOOLEAN1"/>
+        <viewAttribute id="BOOLEAN2"/>
+        <viewAttribute id="BOOLEAN3"/>
+        <viewAttribute id="BOOLEAN4"/>
+        <viewAttribute id="TIME1"/>
+        <viewAttribute id="DATE1"/>
+        <viewAttribute id="DATE2"/>
+        <viewAttribute id="DATE3"/>
+        <viewAttribute id="NUMBER1"/>
+        <viewAttribute id="NUMBER2"/>
+        <viewAttribute id="NUMBER3"/>
+        <viewAttribute id="TEXT20_1"/>
+        <viewAttribute id="TEXT20_2"/>
+        <viewAttribute id="TEXT20_3"/>
+        <viewAttribute id="TIMESTAMP1"/>
+        <viewAttribute id="TIMESTAMP2"/>
+        <viewAttribute id="DECIMAL1"/>
+        <viewAttribute id="DECIMAL2"/>
+        <viewAttribute id="DECIMAL3"/>
+        <viewAttribute id="TEXT40_1"/>
+        <viewAttribute id="TEXT40_2"/>
+        <viewAttribute id="TEXT40_3"/>
+        <viewAttribute id="TEXT80_1"/>
+        <viewAttribute id="TEXT80_2"/>
+        <viewAttribute id="TEXT80_3"/>
+        <viewAttribute id="TEXT120_1"/>
+        <viewAttribute id="TEXT120_2"/>
+        <viewAttribute id="TEXT120_3"/>
+        <viewAttribute id="TEXT255_1"/>
+        <viewAttribute id="TEXT255_2"/>
+        <viewAttribute id="UNIT"/>
+        <viewAttribute id="STREET"/>
+        <viewAttribute id="HOUSE_NUM1"/>
+        <viewAttribute id="FAXNR_LONG"/>
+        <viewAttribute id="WEB_URI"/>
+        <viewAttribute id="LAST_IA_DATE"/>
+        <viewAttribute id="IC_CONTACT_KEY"/>
+        <viewAttribute id="DUMMY"/>
+        <viewAttribute id="LCHG_DATE_TIME"/>
+        <viewAttribute id="LAST_IA_TIMESTAMP"/>
+        <viewAttribute id="LANGUAGE_DESC"/>
+        <viewAttribute id="BRSCH"/>
+        <viewAttribute id="CONSUMER_ACCOUNT_ID"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="COUNTRY_DESC"/>
+        <viewAttribute id="REGION_DESC"/>
+        <viewAttribute id="BRTXT"/>
+        <viewAttribute id="IC_COMP_MKT_AREA_ID"/>
+        <viewAttribute id="CREA_DATE_TIME"/>
+        <viewAttribute id="LANGUAGE_CODE"/>
+        <viewAttribute id="LATITUDE"/>
+        <viewAttribute id="LONGITUDE"/>
+        <viewAttribute id="IS_FOR_ACC_BSD_MKT"/>
+        <viewAttribute id="IC_COMP_MKT_AREA_DESC"/>
+      
+      <viewAttribute id="COMPANY_REVENUE_CURRENCY"/>
+      <viewAttribute id="COMPANY_REVENUE" aggregationType="sum"/>
+      <viewAttribute id="NUMBER_OF_EMPLOYEES" aggregationType="sum"/>
+    
+      <viewAttribute id="LAST_INBOUND_IA_TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="CORPORATEACCOUNTPOSTALOPTIN"/></viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_REGION">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IMAGE_URI" source="IMAGE_URI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IC_COMPANY_KEY" source="IC_COMPANY_KEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME_TEXT" source="NAME_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY_FT" source="COUNTRY_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION_FT" source="REGION_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CITY1" source="CITY1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSTCODE1" source="POSTCODE1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE" source="LANGUAGE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE_FT" source="LANGUAGE_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_NAME" source="COMPANY_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRSCH_FT" source="BRSCH_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SMTP_ADDR" source="SMTP_ADDR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TELNR_LONG" source="TELNR_LONG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TELNR_MOBILE" source="TELNR_MOBILE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FOR_REVIEW" source="FOR_REVIEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALIDATION_STATUS" source="VALIDATION_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN1" source="BOOLEAN1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN2" source="BOOLEAN2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN3" source="BOOLEAN3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN4" source="BOOLEAN4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIME1" source="TIME1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE1" source="DATE1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE2" source="DATE2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE3" source="DATE3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER1" source="NUMBER1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER2" source="NUMBER2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER3" source="NUMBER3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT20_1" source="TEXT20_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT20_2" source="TEXT20_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT20_3" source="TEXT20_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP1" source="TIMESTAMP1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP2" source="TIMESTAMP2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DECIMAL1" source="DECIMAL1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DECIMAL2" source="DECIMAL2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DECIMAL3" source="DECIMAL3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT40_1" source="TEXT40_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT40_2" source="TEXT40_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT40_3" source="TEXT40_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT80_1" source="TEXT80_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT80_2" source="TEXT80_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT80_3" source="TEXT80_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT120_1" source="TEXT120_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT120_2" source="TEXT120_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT120_3" source="TEXT120_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT255_1" source="TEXT255_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT255_2" source="TEXT255_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIT" source="UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STREET" source="STREET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOUSE_NUM1" source="HOUSE_NUM1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FAXNR_LONG" source="FAXNR_LONG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WEB_URI" source="WEB_URI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAST_IA_DATE" source="LAST_IA_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IC_CONTACT_KEY" source="IC_CONTACT_KEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DUMMY" source="DUMMY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LCHG_DATE_TIME" source="LCHG_DATE_TIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAST_IA_TIMESTAMP" source="LAST_IA_TIMESTAMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE_DESC" source="LANGUAGE_DESC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRSCH" source="BRSCH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSUMER_ACCOUNT_ID" source="CONSUMER_ACCOUNT_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY_DESC" source="COUNTRY_DESC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION_DESC" source="BEZEI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IC_COMP_MKT_AREA_ID" source="IC_COMP_MKT_AREA_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CREA_DATE_TIME" source="CREA_DATE_TIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE_CODE" source="LANGUAGE_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LATITUDE" source="LATITUDE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LONGITUDE" source="LONGITUDE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_FOR_ACC_BSD_MKT" source="IS_FOR_ACC_BSD_MKT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IC_COMP_MKT_AREA_DESC" source="IC_COMP_MKT_AREA_DESC"/>
+      
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_REVENUE_CURRENCY" source="COMPANY_REVENUE_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_REVENUE" source="COMPANY_REVENUE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_OF_EMPLOYEES" source="NUMBER_OF_EMPLOYEES"/>
+      
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAST_INBOUND_IA_TIMESTAMP" source="LAST_INBOUND_IA_TIMESTAMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CORPORATEACCOUNTPOSTALOPTIN" source="CORPORATEACCOUNTPOSTALOPTIN"/></input>
+      <input node="Projection_BRSCH">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRTXT" source="BRTXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRSCH" source="BRSCH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      </input>
+    <joinAttribute name="BRSCH"/>
+    <joinAttribute name="MANDT"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_VA_ST">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="LANGU"/>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="VALIDATION_STATUS"/>
+        <viewAttribute id="VALIDATION_STATUS_DESC"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="CUANC_CE_VA_ST_T">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALIDATION_STATUS_DESC" source="VALIDATION_STATUS_DESCR"/>
+      </input>
+    <filter>(&quot;MANDT&quot; ='$$client$$')</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="COMPANY" cardinality="C1_1" joinType="textTable" languageColumn="LANGU">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MANDT"/>
+        <viewAttribute id="IMAGE_URI"/>
+        <viewAttribute id="IC_COMPANY_KEY"/>
+        <viewAttribute id="NAME_TEXT"/>
+        <viewAttribute id="COUNTRY"/>
+        <viewAttribute id="COUNTRY_FT"/>
+        <viewAttribute id="REGION"/>
+        <viewAttribute id="REGION_FT"/>
+        <viewAttribute id="CITY1"/>
+        <viewAttribute id="POSTCODE1"/>
+        <viewAttribute id="LANGUAGE"/>
+        <viewAttribute id="LANGUAGE_FT"/>
+        <viewAttribute id="COMPANY_NAME"/>
+        <viewAttribute id="BRSCH_FT"/>
+        <viewAttribute id="SMTP_ADDR"/>
+        <viewAttribute id="TELNR_LONG"/>
+        <viewAttribute id="TELNR_MOBILE"/>
+        <viewAttribute id="FOR_REVIEW"/>
+        <viewAttribute id="VALIDATION_STATUS"/>
+        <viewAttribute id="BOOLEAN1"/>
+        <viewAttribute id="BOOLEAN2"/>
+        <viewAttribute id="BOOLEAN3"/>
+        <viewAttribute id="BOOLEAN4"/>
+        <viewAttribute id="TIME1"/>
+        <viewAttribute id="DATE1"/>
+        <viewAttribute id="DATE2"/>
+        <viewAttribute id="DATE3"/>
+        <viewAttribute id="NUMBER1"/>
+        <viewAttribute id="NUMBER2"/>
+        <viewAttribute id="NUMBER3"/>
+        <viewAttribute id="TEXT20_1"/>
+        <viewAttribute id="TEXT20_2"/>
+        <viewAttribute id="TEXT20_3"/>
+        <viewAttribute id="TIMESTAMP1"/>
+        <viewAttribute id="TIMESTAMP2"/>
+        <viewAttribute id="DECIMAL1"/>
+        <viewAttribute id="DECIMAL2"/>
+        <viewAttribute id="DECIMAL3"/>
+        <viewAttribute id="TEXT40_1"/>
+        <viewAttribute id="TEXT40_2"/>
+        <viewAttribute id="TEXT40_3"/>
+        <viewAttribute id="TEXT80_1"/>
+        <viewAttribute id="TEXT80_2"/>
+        <viewAttribute id="TEXT80_3"/>
+        <viewAttribute id="TEXT120_1"/>
+        <viewAttribute id="TEXT120_2"/>
+        <viewAttribute id="TEXT120_3"/>
+        <viewAttribute id="TEXT255_1"/>
+        <viewAttribute id="TEXT255_2"/>
+        <viewAttribute id="UNIT"/>
+        <viewAttribute id="STREET"/>
+        <viewAttribute id="HOUSE_NUM1"/>
+        <viewAttribute id="FAXNR_LONG"/>
+        <viewAttribute id="WEB_URI"/>
+        <viewAttribute id="LAST_IA_DATE"/>
+        <viewAttribute id="IC_CONTACT_KEY"/>
+        <viewAttribute id="DUMMY"/>
+        <viewAttribute id="LCHG_DATE_TIME"/>
+        <viewAttribute id="LAST_IA_TIMESTAMP"/>
+        <viewAttribute id="LANGUAGE_DESC"/>
+        <viewAttribute id="BRSCH"/>
+        <viewAttribute id="CONSUMER_ACCOUNT_ID"/>
+        <viewAttribute id="KUNNR"/>
+        <viewAttribute id="COUNTRY_DESC"/>
+        <viewAttribute id="REGION_DESC"/>
+        <viewAttribute id="BRSCH_DESC"/>
+        <viewAttribute id="VALIDATION_STATUS_DESC"/>
+        <viewAttribute id="IC_COMP_MKT_AREA_ID"/>
+        <viewAttribute id="CREA_DATE_TIME"/>
+        <viewAttribute id="LANGUAGE_CODE"/>
+        <viewAttribute id="LATITUDE"/>
+        <viewAttribute id="LONGITUDE"/>
+        <viewAttribute id="IS_FOR_ACC_BSD_MKT"/>
+        <viewAttribute id="IC_COMP_MKT_AREA_DESC"/>
+      
+      <viewAttribute id="COMPANY_REVENUE_CURRENCY"/>
+      <viewAttribute id="COMPANY_REVENUE" aggregationType="sum"/>
+      <viewAttribute id="NUMBER_OF_EMPLOYEES" aggregationType="sum"/>
+    
+      <viewAttribute id="LAST_INBOUND_IA_TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="CORPORATEACCOUNTPOSTALOPTIN"/></viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_BRSCH">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IMAGE_URI" source="IMAGE_URI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IC_COMPANY_KEY" source="IC_COMPANY_KEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME_TEXT" source="NAME_TEXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY_FT" source="COUNTRY_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION_FT" source="REGION_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CITY1" source="CITY1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSTCODE1" source="POSTCODE1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE" source="LANGUAGE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE_FT" source="LANGUAGE_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_NAME" source="COMPANY_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRSCH_FT" source="BRSCH_FT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SMTP_ADDR" source="SMTP_ADDR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TELNR_LONG" source="TELNR_LONG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TELNR_MOBILE" source="TELNR_MOBILE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FOR_REVIEW" source="FOR_REVIEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALIDATION_STATUS" source="VALIDATION_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN1" source="BOOLEAN1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN2" source="BOOLEAN2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN3" source="BOOLEAN3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOOLEAN4" source="BOOLEAN4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIME1" source="TIME1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE1" source="DATE1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE2" source="DATE2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE3" source="DATE3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER1" source="NUMBER1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER2" source="NUMBER2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER3" source="NUMBER3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT20_1" source="TEXT20_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT20_2" source="TEXT20_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT20_3" source="TEXT20_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP1" source="TIMESTAMP1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP2" source="TIMESTAMP2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DECIMAL1" source="DECIMAL1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DECIMAL2" source="DECIMAL2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DECIMAL3" source="DECIMAL3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT40_1" source="TEXT40_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT40_2" source="TEXT40_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT40_3" source="TEXT40_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT80_1" source="TEXT80_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT80_2" source="TEXT80_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT80_3" source="TEXT80_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT120_1" source="TEXT120_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT120_2" source="TEXT120_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT120_3" source="TEXT120_3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT255_1" source="TEXT255_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TEXT255_2" source="TEXT255_2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNIT" source="UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STREET" source="STREET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HOUSE_NUM1" source="HOUSE_NUM1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FAXNR_LONG" source="FAXNR_LONG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WEB_URI" source="WEB_URI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAST_IA_DATE" source="LAST_IA_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IC_CONTACT_KEY" source="IC_CONTACT_KEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DUMMY" source="DUMMY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LCHG_DATE_TIME" source="LCHG_DATE_TIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAST_IA_TIMESTAMP" source="LAST_IA_TIMESTAMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE_DESC" source="LANGUAGE_DESC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRSCH" source="BRSCH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSUMER_ACCOUNT_ID" source="CONSUMER_ACCOUNT_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY_DESC" source="COUNTRY_DESC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION_DESC" source="REGION_DESC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRSCH_DESC" source="BRTXT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IC_COMP_MKT_AREA_ID" source="IC_COMP_MKT_AREA_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CREA_DATE_TIME" source="CREA_DATE_TIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE_CODE" source="LANGUAGE_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LATITUDE" source="LATITUDE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LONGITUDE" source="LONGITUDE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_FOR_ACC_BSD_MKT" source="IS_FOR_ACC_BSD_MKT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IC_COMP_MKT_AREA_DESC" source="IC_COMP_MKT_AREA_DESC"/>
+      
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_REVENUE_CURRENCY" source="COMPANY_REVENUE_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_REVENUE" source="COMPANY_REVENUE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_OF_EMPLOYEES" source="NUMBER_OF_EMPLOYEES"/>
+      
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAST_INBOUND_IA_TIMESTAMP" source="LAST_INBOUND_IA_TIMESTAMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CORPORATEACCOUNTPOSTALOPTIN" source="CORPORATEACCOUNTPOSTALOPTIN"/></input>
+      <input node="Projection_VA_ST">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALIDATION_STATUS_DESC" source="VALIDATION_STATUS_DESC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALIDATION_STATUS" source="VALIDATION_STATUS"/>
+      </input>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="VALIDATION_STATUS"/>
+  </calculationView>
+</calculationViews>
+  <logicalModel id="COMPANY">
+    <descriptions/>
+    <attributes>
+      <attribute id="IMAGE_URI" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Image URI"/>
+        <keyMapping columnObjectName="COMPANY" columnName="IMAGE_URI"/>
+      </attribute>
+      <attribute id="COUNTRY" order="2" attributeHierarchyActive="false" descriptionColumnName="COUNTRY_DESC" displayAttribute="false">
+        <descriptions defaultDescription="Country/Region"/>
+        <keyMapping columnObjectName="COMPANY" columnName="COUNTRY"/>
+      </attribute>
+      <attribute id="COUNTRY_FT" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Country/Region (User-Defined Text)"/>
+        <keyMapping columnObjectName="COMPANY" columnName="COUNTRY_FT"/>
+      </attribute>
+      <attribute id="REGION" order="4" attributeHierarchyActive="false" descriptionColumnName="REGION_DESC" displayAttribute="false">
+        <descriptions defaultDescription="Region"/>
+        <keyMapping columnObjectName="COMPANY" columnName="REGION"/>
+      </attribute>
+      <attribute id="REGION_FT" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Region (User-Defined Text)"/>
+        <keyMapping columnObjectName="COMPANY" columnName="REGION_FT"/>
+      </attribute>
+      <attribute id="CITY1" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="City"/>
+        <keyMapping columnObjectName="COMPANY" columnName="CITY1"/>
+      </attribute>
+      <attribute id="POSTCODE1" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Postal Code"/>
+        <keyMapping columnObjectName="COMPANY" columnName="POSTCODE1"/>
+      </attribute>
+      <attribute id="LANGUAGE" order="8" attributeHierarchyActive="false" descriptionColumnName="LANGUAGE_DESC" displayAttribute="false">
+        <descriptions defaultDescription="Language"/>
+        <keyMapping columnObjectName="COMPANY" columnName="LANGUAGE"/>
+      </attribute>
+      <attribute id="LANGUAGE_FT" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Language (User-Defined Text)"/>
+        <keyMapping columnObjectName="COMPANY" columnName="LANGUAGE_FT"/>
+      </attribute>
+      <attribute id="COMPANY_NAME" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Account"/>
+        <keyMapping columnObjectName="COMPANY" columnName="COMPANY_NAME"/>
+      </attribute>
+      <attribute id="BRSCH_FT" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Industry (User-Defined Text)"/>
+        <keyMapping columnObjectName="COMPANY" columnName="BRSCH_FT"/>
+      </attribute>
+      <attribute id="SMTP_ADDR" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Email"/>
+        <keyMapping columnObjectName="COMPANY" columnName="SMTP_ADDR"/>
+      </attribute>
+      <attribute id="TELNR_LONG" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Phone"/>
+        <keyMapping columnObjectName="COMPANY" columnName="TELNR_LONG"/>
+      </attribute>
+      <attribute id="TELNR_MOBILE" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Mobile"/>
+        <keyMapping columnObjectName="COMPANY" columnName="TELNR_MOBILE"/>
+      </attribute>
+      <attribute id="FOR_REVIEW" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="For Review"/>
+        <keyMapping columnObjectName="COMPANY" columnName="FOR_REVIEW"/>
+      </attribute>
+      <attribute id="VALIDATION_STATUS" order="16" attributeHierarchyActive="false" descriptionColumnName="VALIDATION_STATUS_DESC" displayAttribute="false">
+        <descriptions defaultDescription="Contact Level"/>
+        <keyMapping columnObjectName="COMPANY" columnName="VALIDATION_STATUS"/>
+      </attribute>
+      <attribute id="BOOLEAN1" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="BOOLEAN1"/>
+      </attribute>
+      <attribute id="BOOLEAN2" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="BOOLEAN2"/>
+      </attribute>
+      <attribute id="BOOLEAN3" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="BOOLEAN3"/>
+      </attribute>
+      <attribute id="BOOLEAN4" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="BOOLEAN4"/>
+      </attribute>
+      <attribute id="TIME1" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="TIME1"/>
+      </attribute>
+      <attribute id="DATE1" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="DATE1"/>
+      </attribute>
+      <attribute id="DATE2" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="DATE2"/>
+      </attribute>
+      <attribute id="DATE3" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="DATE3"/>
+      </attribute>
+      <attribute id="NUMBER1" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="NUMBER1"/>
+      </attribute>
+      <attribute id="NUMBER2" order="26" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="NUMBER2"/>
+      </attribute>
+      <attribute id="NUMBER3" order="27" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="NUMBER3"/>
+      </attribute>
+      <attribute id="TEXT20_1" order="28" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="TEXT20_1"/>
+      </attribute>
+      <attribute id="TEXT20_2" order="29" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="TEXT20_2"/>
+      </attribute>
+      <attribute id="TEXT20_3" order="30" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="TEXT20_3"/>
+      </attribute>
+      <attribute id="TIMESTAMP1" order="31" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="TIMESTAMP1"/>
+      </attribute>
+      <attribute id="TIMESTAMP2" order="32" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="TIMESTAMP2"/>
+      </attribute>
+      <attribute id="DECIMAL1" order="33" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="DECIMAL1"/>
+      </attribute>
+      <attribute id="DECIMAL2" order="34" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="DECIMAL2"/>
+      </attribute>
+      <attribute id="DECIMAL3" order="35" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="DECIMAL3"/>
+      </attribute>
+      <attribute id="TEXT40_1" order="36" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="TEXT40_1"/>
+      </attribute>
+      <attribute id="TEXT40_2" order="37" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="TEXT40_2"/>
+      </attribute>
+      <attribute id="TEXT40_3" order="38" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="TEXT40_3"/>
+      </attribute>
+      <attribute id="TEXT80_1" order="39" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="TEXT80_1"/>
+      </attribute>
+      <attribute id="TEXT80_2" order="40" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="TEXT80_2"/>
+      </attribute>
+      <attribute id="TEXT80_3" order="41" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="TEXT80_3"/>
+      </attribute>
+      <attribute id="TEXT120_1" order="42" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="TEXT120_1"/>
+      </attribute>
+      <attribute id="TEXT120_2" order="43" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="TEXT120_2"/>
+      </attribute>
+      <attribute id="TEXT120_3" order="44" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="TEXT120_3"/>
+      </attribute>
+      <attribute id="TEXT255_1" order="45" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="TEXT255_1"/>
+      </attribute>
+      <attribute id="TEXT255_2" order="46" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="TEXT255_2"/>
+      </attribute>
+      <attribute id="UNIT" order="47" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Unit"/>
+        <keyMapping columnObjectName="COMPANY" columnName="UNIT"/>
+      </attribute>
+      <attribute id="STREET" order="48" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Street"/>
+        <keyMapping columnObjectName="COMPANY" columnName="STREET"/>
+      </attribute>
+      <attribute id="HOUSE_NUM1" order="49" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="House Number"/>
+        <keyMapping columnObjectName="COMPANY" columnName="HOUSE_NUM1"/>
+      </attribute>
+      <attribute id="FAXNR_LONG" order="50" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Fax"/>
+        <keyMapping columnObjectName="COMPANY" columnName="FAXNR_LONG"/>
+      </attribute>
+      <attribute id="WEB_URI" order="51" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Web URI"/>
+        <keyMapping columnObjectName="COMPANY" columnName="WEB_URI"/>
+      </attribute>
+      <attribute id="LAST_IA_DATE" order="52" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Date of Latest Change"/>
+        <keyMapping columnObjectName="COMPANY" columnName="LAST_IA_DATE"/>
+      </attribute>
+      <attribute id="LCHG_DATE_TIME" order="54" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Last Change Date"/>
+        <keyMapping columnObjectName="COMPANY" columnName="LCHG_DATE_TIME"/>
+      </attribute>
+      <attribute id="LAST_IA_TIMESTAMP" order="55" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Timestamp of Last Interaction"/>
+        <keyMapping columnObjectName="COMPANY" columnName="LAST_IA_TIMESTAMP"/>
+      </attribute>
+      <attribute id="LANGUAGE_DESC" hidden="true" order="56" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="LANGUAGE_DESC"/>
+      </attribute>
+      <attribute id="BRSCH" order="57" semanticType="empty" attributeHierarchyActive="false" descriptionColumnName="BRSCH_DESC" displayAttribute="false">
+        <descriptions defaultDescription="Industry"/>
+        <keyMapping columnObjectName="COMPANY" columnName="BRSCH"/>
+      </attribute>
+      <attribute id="CONSUMER_ACCOUNT_ID" order="58" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Consumer Account ID"/>
+        <keyMapping columnObjectName="COMPANY" columnName="CONSUMER_ACCOUNT_ID"/>
+      </attribute>
+      <attribute id="KUNNR" order="59" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Account ID"/>
+        <keyMapping columnObjectName="COMPANY" columnName="KUNNR"/>
+      </attribute>
+      <attribute id="NAME_TEXT" order="60" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Full Name"/>
+        <keyMapping columnObjectName="COMPANY" columnName="NAME_TEXT"/>
+      </attribute>
+      <attribute id="COUNTRY_DESC" hidden="true" order="61" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="COUNTRY_DESC"/>
+      </attribute>
+      <attribute id="REGION_DESC" hidden="true" order="62" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="REGION_DESC"/>
+      </attribute>
+      <attribute id="BRSCH_DESC" hidden="true" order="63" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="BRSCH_DESC"/>
+      </attribute>
+      <attribute id="VALIDATION_STATUS_DESC" hidden="true" order="64" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="COMPANY" columnName="VALIDATION_STATUS_DESC"/>
+      </attribute>
+      <attribute id="IC_COMP_MKT_AREA_ID" order="65" semanticType="empty" attributeHierarchyActive="false" descriptionColumnName="IC_COMP_MKT_AREA_DESC" displayAttribute="false">
+        <descriptions defaultDescription="Marketing Area"/>
+        <keyMapping columnObjectName="COMPANY" columnName="IC_COMP_MKT_AREA_ID"/>
+      </attribute>
+      <attribute id="IC_CONTACT_KEY" order="66" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Contact Key"/>
+        <keyMapping columnObjectName="COMPANY" columnName="IC_CONTACT_KEY"/>
+      </attribute>
+      <attribute id="IC_COMP_CREA_DATE_TIME" order="67" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Creation Date Time"/>
+        <keyMapping columnObjectName="COMPANY" columnName="CREA_DATE_TIME"/>
+      </attribute>
+      <attribute id="IC_COMP_LANGUAGE_CODE" order="68" attributeHierarchyActive="false" displayAttribute="false" descriptionColumnName="LANGUAGE_DESC">
+        <descriptions defaultDescription="Language Code"/>
+        <keyMapping columnObjectName="COMPANY" columnName="LANGUAGE_CODE"/>
+      </attribute>
+      <attribute id="LATITUDE" order="69" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Latitude"/>
+        <keyMapping columnObjectName="COMPANY" columnName="LATITUDE"/>
+      </attribute>
+      <attribute id="LONGITUDE" order="70" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Longitude"/>
+        <keyMapping columnObjectName="COMPANY" columnName="LONGITUDE"/>
+      </attribute>
+      <attribute id="IS_FOR_ACC_BSD_MKT" order="71" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Account is for Account-Based Marketing"/>
+        <keyMapping columnObjectName="COMPANY" columnName="IS_FOR_ACC_BSD_MKT"/>
+      </attribute>
+      <attribute id="IC_COMP_MKT_AREA_DESC" hidden="true" order="72" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Marketing Area Description"/>
+        <keyMapping columnObjectName="COMPANY" columnName="IC_COMP_MKT_AREA_DESC"/>
+      </attribute>
+      <attribute id="IC_COMPANY_KEY" order="73" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Company Key"/>
+        <keyMapping columnObjectName="COMPANY" columnName="IC_COMPANY_KEY"/>
+      </attribute>
+      <attribute id="CORPORATEACCOUNTCURRENCY" order="74" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="Revenue Currency"/>
+        <keyMapping columnObjectName="COMPANY" columnName="COMPANY_REVENUE_CURRENCY"/>
+      </attribute>
+      <attribute id="CORPORATEACCOUNTREVENUE" order="75" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="Revenue"/>
+        <keyMapping columnObjectName="COMPANY" columnName="COMPANY_REVENUE"/>
+      </attribute>
+      <attribute id="NROFEMPLOYEESOFCORPACCOUNT" order="76" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="Number of Employees"/>
+        <keyMapping columnObjectName="COMPANY" columnName="NUMBER_OF_EMPLOYEES"/>
+      </attribute>
+      <attribute id="CORPACCTLASTINBINTACTNDATETIME" order="77" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="Last Inbound Interaction Timestamp"/>
+        <keyMapping columnObjectName="COMPANY" columnName="LAST_INBOUND_IA_TIMESTAMP"/>
+      </attribute>
+      <attribute id="CORPORATEACCOUNTPOSTALOPTIN" order="78" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="Postal Opt-In"/>
+        <keyMapping columnObjectName="COMPANY" columnName="CORPORATEACCOUNTPOSTALOPTIN"/>
+      </attribute>
+      <attribute id="MANDT$local">
+        <keyMapping columnObjectName="COMPANY" columnName="MANDT"/>
+      </attribute>
+      <attribute id="IC_COMPANY_KEY$local">
+        <descriptions defaultDescription="Company Key"/>
+        <keyMapping columnObjectName="COMPANY" columnName="IC_COMPANY_KEY"/>
+      </attribute>
+      <attribute id="IC_CONTACT_KEY$local">
+        <descriptions defaultDescription="Contact Key"/>
+        <keyMapping columnObjectName="COMPANY" columnName="IC_CONTACT_KEY"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="DUMMY" order="53" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Dummy"/>
+        <measureMapping columnObjectName="COMPANY" columnName="DUMMY"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+    <sharedDimensions>
+      <logicalJoin associatedObjectUri="sap.hana-app.cuan.contact::CA_D_INTERACTIONS">
+        <attributes>
+          <attributeRef>MANDT$local</attributeRef>
+          <attributeRef>IC_COMPANY_KEY$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>MANDT</attributeName>
+          <attributeName>CONTACT_KEY</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="C1_N" joinType="leftOuter" joinOperator="Equal"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="IA_BOOLEAN1" attributeName="BOOLEAN1"/>
+          <attributeReference alias="IA_BOOLEAN2" attributeName="BOOLEAN2"/>
+          <attributeReference alias="IA_BOOLEAN3" attributeName="BOOLEAN3"/>
+          <attributeReference alias="IA_BOOLEAN4" attributeName="BOOLEAN4"/>
+          <attributeReference alias="IA_TIME1" attributeName="TIME1"/>
+          <attributeReference alias="IA_DATE1" attributeName="DATE1"/>
+          <attributeReference alias="IA_DATE2" attributeName="DATE2"/>
+          <attributeReference alias="IA_DATE3" attributeName="DATE3"/>
+          <attributeReference alias="IA_NUMBER1" attributeName="NUMBER1"/>
+          <attributeReference alias="IA_NUMBER2" attributeName="NUMBER2"/>
+          <attributeReference alias="IA_NUMBER3" attributeName="NUMBER3"/>
+          <attributeReference alias="IA_TEXT20_1" attributeName="TEXT20_1"/>
+          <attributeReference alias="IA_TEXT20_2" attributeName="TEXT20_2"/>
+          <attributeReference alias="IA_TIMESTAMP1" attributeName="TIMESTAMP1">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_TIMESTAMP2" attributeName="TIMESTAMP2">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_DECIMAL1" attributeName="DECIMAL1"/>
+          <attributeReference alias="IA_DECIMAL2" attributeName="DECIMAL2"/>
+          <attributeReference alias="IA_DECIMAL3" attributeName="DECIMAL3"/>
+          <attributeReference alias="IA_TEXT40_1" attributeName="TEXT40_1"/>
+          <attributeReference alias="IA_TEXT40_2" attributeName="TEXT40_2"/>
+          <attributeReference alias="IA_TEXT80_1" attributeName="TEXT80_1"/>
+          <attributeReference alias="IA_TEXT80_2" attributeName="TEXT80_2"/>
+          <attributeReference alias="IA_TEXT120_1" attributeName="TEXT120_1"/>
+          <attributeReference alias="IA_TEXT120_2" attributeName="TEXT120_2"/>
+          <attributeReference alias="IA_TEXT255_1" attributeName="TEXT255_1"/>
+          <attributeReference alias="IA_TEXT255_2" attributeName="TEXT255_2"/>
+          <attributeReference alias="IA_CONTACT_KEY" attributeName="CONTACT_KEY" hidden="true">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="CORPACCTINTERACTIONDEVICETYPE" attributeName="DEVICETYPE"/>
+          <attributeReference alias="CORPACCTINTACTNREFERRALSOURCE" attributeName="REFERRALSOURCE"/>
+          <attributeReference alias="CORPACCTINTACTNREFERRALSRCECAT" attributeName="REFERRALSOURCECATEGORY"/>
+          <attributeReference alias="CORPACCTINTACTNAGREEMENTORIGIN" attributeName="IA_MKT_AGREEMENTORIGIN"/>
+          <attributeReference alias="CORPACCTINTERACTIONLANGUAGE" attributeName="IA_LANGUAGE_CODE"/>
+          <attributeReference alias="CORPACCOUNTINTERACTIONVALUE" attributeName="VALUATION">
+            <descriptions defaultDescription="Valuation"/>
+          </attributeReference>
+          <attributeReference alias="CORPACCTINTACTNAGREEMENTEXTID" attributeName="IA_MKT_AGREEMENTEXTERNALID"/>
+          <attributeReference alias="CORPACCTINTACTNCMPGNCNTNTLINK" attributeName="LAUNCH_URL_S">
+            <descriptions defaultDescription="Launch URL"/>
+          </attributeReference>
+          <attributeReference alias="CORPACCTINTACTNDIGITALACCOUNT" attributeName="IA_DIGACC_ID">
+            <descriptions defaultDescription="Digital Account"/>
+          </attributeReference>
+          <attributeReference alias="CORPACCTINTACTNDIGITALACCTTYPE" attributeName="IA_DIGACC_TYPE">
+            <descriptions defaultDescription="Digital Account Type"/>
+          </attributeReference>
+          <attributeReference alias="CORPACCTINTACTNSRCEUTCDATETIME" attributeName="IA_SOURCE_TIMESTAMP">
+            <descriptions defaultDescription="Source Timestamp"/>
+          </attributeReference>
+          <attributeReference alias="CORPACCTINTACTNOPGSYSTEMNAME" attributeName="IA_OS">
+            <descriptions defaultDescription="Device Operating System"/>
+          </attributeReference>
+          <attributeReference alias="CORPACCTINTACTNSWCLIENTNAME" attributeName="IA_SW_CLIENT">
+            <descriptions defaultDescription="Software Client"/>
+          </attributeReference>
+          <attributeReference attributeName="MANDT" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="sap.hana-app.cuan.contact::CA_D_INTERACTIONS_PROJ">
+        <attributes>
+          <attributeRef>MANDT$local</attributeRef>
+          <attributeRef>IC_CONTACT_KEY$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>MANDT</attributeName>
+          <attributeName>CONTACT_KEY</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="C1_N" joinType="leftOuter" joinOperator="Equal"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="CA_D_INTERACTIONS_PROJ_MANDT" attributeName="MANDT" hidden="true">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_IA_KEY" attributeName="IA_KEY" hidden="true">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_ID_ORIGIN" attributeName="ID_ORIGIN">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_ID" attributeName="ID">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_COMM_MEDIUM" attributeName="COMM_MEDIUM">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_IA_TYPE" attributeName="IA_TYPE">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_TIMESTAMP" attributeName="TIMESTAMP">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_CAMPAIGN_ID" attributeName="CAMPAIGN_ID">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_INITIATIVE_ID" attributeName="INITIATIVE_ID">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_INI_VERSION" attributeName="INI_VERSION">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_SOURCE_SYSTEM_TYPE" attributeName="SOURCE_SYSTEM_TYPE">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_SOURCE_SYSTEM_ID" attributeName="SOURCE_SYSTEM_ID">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_SOURCE_OBJECT_TYPE" attributeName="SOURCE_OBJECT_TYPE">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_SOURCE_OBJECT_ID" attributeName="SOURCE_OBJECT_ID">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_CONTACT_KEY" attributeName="CONTACT_KEY">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_IA_DATE" attributeName="IA_DATE">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_CONTENT_TITLE" attributeName="CONTENT_TITLE">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_MARKETING_ORCHESTRATION_ID" attributeName="MARKETING_ORCHESTRATION_ID">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_LAUNCH_TEXT" attributeName="LAUNCH_TEXT">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_INTEREST_ITEM" attributeName="INTEREST_ITEM">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_DIRECTION" attributeName="DIRECTION">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_CHANNEL" attributeName="CHANNEL">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_CAMPAIGN_GUID" attributeName="CAMPAIGN_GUID">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_TAG_TYPE" attributeName="TAG_TYPE">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_TAG" attributeName="TAG">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_YEAR" attributeName="YEAR">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_CALQUARTER" attributeName="CALQUARTER">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_CALMONTH" attributeName="CALMONTH">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_IA_LATITUDE" attributeName="IA_LATITUDE">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_IA_LONGITUDE" attributeName="IA_LONGITUDE">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONT_BOOLEAN1" attributeName="BOOLEAN1">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONT_BOOLEAN2" attributeName="BOOLEAN2">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONT_BOOLEAN3" attributeName="BOOLEAN3">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONT_BOOLEAN4" attributeName="BOOLEAN4">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONT_TIME1" attributeName="TIME1">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONT_DATE1" attributeName="DATE1">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONT_DATE2" attributeName="DATE2">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONT_DATE3" attributeName="DATE3">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONT_NUMBER1" attributeName="NUMBER1">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONT_NUMBER2" attributeName="NUMBER2">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONT_NUMBER3" attributeName="NUMBER3">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONT_TEXT20_1" attributeName="TEXT20_1">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONT_TEXT20_2" attributeName="TEXT20_2">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONT_TIMESTAMP1" attributeName="TIMESTAMP1">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONT_TIMESTAMP2" attributeName="TIMESTAMP2">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONT_DECIMAL1" attributeName="DECIMAL1">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONT_DECIMAL2" attributeName="DECIMAL2">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONT_DECIMAL3" attributeName="DECIMAL3">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONT_TEXT40_1" attributeName="TEXT40_1">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONT_TEXT40_2" attributeName="TEXT40_2">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONT_TEXT80_1" attributeName="TEXT80_1">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONT_TEXT80_2" attributeName="TEXT80_2">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONT_TEXT120_1" attributeName="TEXT120_1">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONT_TEXT120_2" attributeName="TEXT120_2">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONT_TEXT255_1" attributeName="TEXT255_1">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONT_TEXT255_2" attributeName="TEXT255_2">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_IA_REASON" attributeName="IA_REASON">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_IS_ANONYMOUS" attributeName="IS_ANONYMOUS">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_SOURCE_OBJECT_ADD_ID" attributeName="SOURCE_OBJECT_ADD_ID">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_SOURCE_OBJECT_STATUS_CODE" attributeName="SOURCE_OBJECT_STATUS_CODE">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_DEVICE_FT" attributeName="DEVICE_FT">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_SOURCE_DATA_URL_S" attributeName="SOURCE_DATA_URL_S">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IA_CONTACT_CURRENCY" attributeName="CURRENCY">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="CA_D_INTERACTIONS_PROJ_COMM_MEDIUM_DESC" attributeName="COMM_MEDIUM_DESC"/>
+          <attributeReference alias="CA_D_INTERACTIONS_PROJ_IA_TYPE_DESC" attributeName="IA_TYPE_DESC"/>
+          <attributeReference alias="CA_D_INTERACTIONS_PROJ_CAMPAIGN_ID_DESC" attributeName="CAMPAIGN_ID_DESC"/>
+          <attributeReference alias="CA_D_INTERACTIONS_PROJ_INITIATIVE_ID_DESC" attributeName="INITIATIVE_ID_DESC"/>
+          <attributeReference alias="CA_D_INTERACTIONS_PROJ_MARKETING_ORCHESTRATION_ID_DESC" attributeName="MARKETING_ORCHESTRATION_ID_DESC"/>
+          <attributeReference alias="CA_D_INTERACTIONS_PROJ_INTEREST_ITEM_DESC" attributeName="INTEREST_ITEM_DESC"/>
+          <attributeReference alias="CA_D_INTERACTIONS_PROJ_CHANNEL_DESC" attributeName="CHANNEL_DESC"/>
+          <attributeReference alias="DEVICETYPE" attributeName="IA_PROJ_DEVICETYPE"/>
+          <attributeReference alias="REFERRALSOURCE" attributeName="IA_PROJ_REFERRALSOURCE"/>
+          <attributeReference alias="REFERRALSOURCECATEGORY" attributeName="IA_PROJ_REFERRALSOURCECATEGORY"/>
+          <attributeReference alias="INTERACTIONLANGUAGE" attributeName="IA_PROJ_LANGUAGE_CODE"/>
+          <attributeReference alias="INTERACTIONAGREEMENTEXTERNALID" attributeName="IA_PROJ_MKT_AGREEMENTEXTERNALID"/>
+          <attributeReference alias="INTERACTIONAGREEMENTORIGIN" attributeName="IA_PROJ_MKT_AGREEMENTORIGIN"/>
+          <attributeReference alias="INTERACTIONVALUE" attributeName="IA_PROJ_VALUATION">
+            <descriptions defaultDescription="Valuation"/>
+          </attributeReference>
+          <attributeReference alias="CAMPAIGNCONTENTLINKURL" attributeName="IA_PROJ_LAUNCH_URL_S">
+            <descriptions defaultDescription="Launch URL"/>
+          </attributeReference>
+          <attributeReference alias="INTERACTIONDIGITALACCOUNTTYPE" attributeName="IA_PROJ_DIGACC_TYPE">
+            <descriptions defaultDescription="Digital Account Type"/>
+          </attributeReference>
+          <attributeReference alias="INTERACTIONDIGITALACCOUNT" attributeName="IA_PROJ_DIGACC_ID">
+            <descriptions defaultDescription="Digital Account"/>
+          </attributeReference>
+          <attributeReference alias="INTERACTIONSOURCETIMESTAMPUTC" attributeName="IA_PROJ_SOURCE_TIMESTAMP">
+            <descriptions defaultDescription="Source Timestamp"/>
+          </attributeReference>
+          <attributeReference alias="INTERACTIONOPERATINGSYSTEMNAME" attributeName="IA_PROJ_OS">
+            <descriptions defaultDescription="Device Operating System"/>
+          </attributeReference>
+          <attributeReference alias="INTERACTIONSOFTWARECLIENTNAME" attributeName="IA_PROJ_SW_CLIENT">
+            <descriptions defaultDescription="Software Client"/>
+          </attributeReference>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="sap.hana-app.cuan.contact.profile::CA_D_INTERACTION_CONTACT_B2B">
+        <attributes>
+          <attributeRef>IC_CONTACT_KEY$local</attributeRef>
+          <attributeRef>MANDT$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>CONTACT_KEY</attributeName>
+          <attributeName>MANDT</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="C1_N" joinType="leftOuter" joinOperator="Equal"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="CA_D_INTERACTION_CONTACT_B2B_MANDT" attributeName="MANDT" hidden="true"/>
+          <attributeReference alias="CONTACTLANGUAGE" attributeName="LANGUAGE_CODE"/>
+          <attributeReference alias="CNTCTLASTINBINTACTNDATETIME" attributeName="LAST_INBOUND_IA_TIMESTAMP"/>
+          <attributeReference alias="CONTACTPOSTALOPTIN" attributeName="IC_POSTAL_OPTIN"/>
+          <attributeReference alias="CONTACTFORREVIEW" attributeName="IC_FOR_REVIEW"/>
+          <attributeReference alias="CONTACTFAXNUMBER" attributeName="IC_FAXNR_LONG"/>
+          <attributeReference attributeName="CONTACT_KEY" hidden="true"/>
+          <attributeReference attributeName="CONT_COUNTRY_DESC" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="sap.hana-app.cuan.contact::CA_D_IC_MARKETING_PERMISSION">
+        <attributes>
+          <attributeRef>MANDT$local</attributeRef>
+          <attributeRef>IC_CONTACT_KEY$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>MANDT</attributeName>
+          <attributeName>CONTACT_KEY</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="C1_N" joinType="leftOuter" joinOperator="Equal"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="CA_D_IC_MARKETING_PERMISSION_MANDT" attributeName="MANDT" hidden="true"/>
+          <attributeReference alias="CA_D_IC_MARKETING_PERMISSION_CONTACT_KEY" attributeName="CONTACT_KEY" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="sap.hana-app.cuan.contact::CA_D_IC_NEWSLETTER_SUBSCRIPTION">
+        <attributes>
+          <attributeRef>MANDT$local</attributeRef>
+          <attributeRef>IC_CONTACT_KEY$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>MANDT</attributeName>
+          <attributeName>CONTACT_KEY</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="C1_N" joinType="leftOuter" joinOperator="Equal"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="CA_D_IC_NEWSLETTER_SUBSCRIPTION_MANDT" attributeName="MANDT" hidden="true"/>
+          <attributeReference alias="CA_D_IC_NEWSLETTER_SUBSCRIPTION_CONTACT_KEY" attributeName="CONTACT_KEY" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="sap.hana-app.cuan.contact.profile::CA_D_TARGET_GROUP_PROJ">
+        <attributes>
+          <attributeRef>MANDT$local</attributeRef>
+          <attributeRef>IC_CONTACT_KEY$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>MANDT</attributeName>
+          <attributeName>TARGET_GROUP_MEMBER_KEY</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="C1_N" joinType="leftOuter" joinOperator="Equal"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="CA_D_TARGET_GROUP_PROJ_MANDT" attributeName="MANDT" hidden="true">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="CA_D_TARGET_GROUP_PROJ_TARGET_GROUP_DB_KEY" attributeName="TARGET_GROUP_DB_KEY" hidden="true"/>
+          <attributeReference alias="CA_D_TARGET_GROUP_PROJ_TARGET_GROUP_MEMBER_KEY" attributeName="TARGET_GROUP_MEMBER_KEY" hidden="true"/>
+          <attributeReference alias="CONT_TARGET_GROUP" attributeName="TARGET_GROUP">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="sap.hana-app.cuan.contact::CA_D_IC_FACET">
+        <attributes>
+          <attributeRef>MANDT$local</attributeRef>
+          <attributeRef>IC_COMPANY_KEY$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>MANDT</attributeName>
+          <attributeName>PARENT_KEY</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="C1_N" joinType="leftOuter" joinOperator="Equal"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="CA_D_IC_FACET_MANDT" attributeName="MANDT" hidden="true">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IC_ID_ORIGIN" attributeName="ID_ORIGIN">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IC_ID" attributeName="ID">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference attributeName="PARENT_KEY" hidden="true"/>
+          <attributeReference attributeName="MEMBER_KEY" hidden="true"/>
+          <attributeReference attributeName="MKTGEVENTLANGUAGEISO" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="sap.hana-app.cuan.contact.profile::CA_D_IC_FACET_PROJ">
+        <attributes>
+          <attributeRef>MANDT$local</attributeRef>
+          <attributeRef>IC_CONTACT_KEY$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>MANDT</attributeName>
+          <attributeName>PARENT_KEY</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="C1_N" joinType="leftOuter" joinOperator="Equal"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="CA_D_IC_FACET_PROJ_MANDT" attributeName="MANDT" hidden="true">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="CA_D_IC_FACET_PROJ_PARENT_KEY" attributeName="PARENT_KEY" hidden="true">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IC_CONT_ID_ORIGIN" attributeName="ID_ORIGIN">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="IC_CONT_ID" attributeName="ID">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="CA_D_IC_FACET_PROJ_MEMBER_KEY" attributeName="MEMBER_KEY" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="sap.hana-app.cuan.contact::CA_D_INTERACTIONS_SURVEY">
+        <attributes>
+          <attributeRef>MANDT$local</attributeRef>
+          <attributeRef>IC_CONTACT_KEY$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>MANDT</attributeName>
+          <attributeName>SURVEY_CONTACT_KEY</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="C1_N" joinType="leftOuter" joinOperator="Equal"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="SURVEY_MANDT" attributeName="MANDT" hidden="true">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="SURVEY_TIMESTAMP" attributeName="TIMESTAMP">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="SURVEY_CONTENT_TITLE" attributeName="CONTENT_TITLE">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="SURVEY_INTEREST_ITEM" attributeName="INTEREST_ITEM">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="SURVEY_TAG" attributeName="TAG">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference alias="CA_D_INTERACTIONS_SURVEY_INTEREST_ITEM_DESC" attributeName="INTEREST_ITEM_DESC"/>
+          <attributeReference attributeName="SURVEY_CONTACT_KEY" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="sap.hana-app.cuan.contact::CA_LEAD_STAGE_CURRENT">
+        <attributes>
+          <attributeRef>IC_CONTACT_KEY$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>CA_LEAD_CONTACT_KEY</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="C1_1" joinType="leftOuter" joinOperator="Equal"/>
+        <associatedAttributeFeatures>
+          <attributeReference attributeName="CA_LEAD_CONTACT_KEY" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="sap.hana-app.cuan.contact::CA_D_TARGET_GROUP">
+        <attributes>
+          <attributeRef>MANDT$local</attributeRef>
+          <attributeRef>IC_COMPANY_KEY$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>MANDT</attributeName>
+          <attributeName>TARGET_GROUP_MEMBER_KEY</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="C1_N" joinType="leftOuter" joinOperator="Equal"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="CA_D_TARGET_GROUP_MANDT" attributeName="MANDT" hidden="true">
+            <descriptions defaultDescription=""/>
+          </attributeReference>
+          <attributeReference attributeName="TARGET_GROUP_DB_KEY" hidden="true"/>
+          <attributeReference attributeName="TARGET_GROUP_MEMBER_KEY" hidden="true"/>
+          <attributeReference attributeName="TARGET_GROUP_DESC" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="sap.hana-app.cuan.contact.profile::CA_D_INTERACTION_SURVEY">
+        <attributes>
+          <attributeRef>IC_CONTACT_KEY$local</attributeRef>
+          <attributeRef>MANDT$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>SURVEY_IA_CONTACT_KEY</attributeName>
+          <attributeName>SURVEY_IA_MANDT</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="C1_N" joinType="leftOuter" joinOperator="Equal"/>
+        <associatedAttributeFeatures>
+          <attributeReference attributeName="SURVEY_IA_CONTACT_KEY" hidden="true"/>
+          <attributeReference attributeName="SURVEY_IA_MANDT" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="sap.hana-app.cuan.contact::CA_D_AGREEMENT">
+        <attributes>
+          <attributeRef>MANDT$local</attributeRef>
+          <attributeRef>IC_CONTACT_KEY$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>SAPCLIENT</attributeName>
+          <attributeName>INTERACTIONCONTACTUUID</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="C1_N" joinType="leftOuter" joinOperator="Equal"/>
+        <associatedAttributeFeatures>
+          <attributeReference attributeName="SAPCLIENT" hidden="true"/>
+          <attributeReference attributeName="INTERACTIONCONTACTUUID" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="sap.hana-app.cuan.contact::CA_D_AGREEMENT_PROJ">
+        <attributes>
+          <attributeRef>MANDT$local</attributeRef>
+          <attributeRef>IC_COMPANY_KEY$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>SAPCLIENT</attributeName>
+          <attributeName>INTERACTIONCONTACTUUID</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="C1_N" joinType="leftOuter" joinOperator="Equal"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="CA_D_AGREEMENT_PROJ_SAPCLIENT" attributeName="SAPCLIENT" hidden="true"/>
+          <attributeReference alias="CA_D_AGREEMENT_PROJ_INTERACTIONCONTACTUUID" attributeName="INTERACTIONCONTACTUUID" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="sap.hana-app.cuan.contact.profile::CA_D_INTERACTION_SURVEY_PROJ">
+        <attributes>
+          <attributeRef>IC_COMPANY_KEY$local</attributeRef>
+          <attributeRef>MANDT$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>IC_COMP_SURVEY_IA_CONTACT_KEY</attributeName>
+          <attributeName>IC_COMP_SURVEY_IA_MANDT</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="C1_N" joinType="leftOuter" joinOperator="Equal"/>
+        <associatedAttributeFeatures>
+          <attributeReference attributeName="IC_COMP_SURVEY_IA_MANDT" hidden="true"/>
+          <attributeReference attributeName="IC_COMP_SURVEY_IA_CONTACT_KEY" hidden="true"/>
+          <attributeReference attributeName="IC_COMP_MARKETING_AREA_DESC" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="sap.hana-app.cuan.contact::CA_D_IC_NEWSL_OPTOUT">
+        <attributes>
+          <attributeRef>IC_CONTACT_KEY$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>UNSUBSCRIBECONTACTUUID</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="C1_N" joinType="leftOuter" joinOperator="Equal"/>
+        <associatedAttributeFeatures>
+          <attributeReference attributeName="UNSUBSCRIBECONTACTUUID" hidden="true"/>
+          <attributeReference attributeName="UNSUBSCRIBE_NEWSLETTER_DESC" hidden="true"/>
+          <attributeReference attributeName="UNSUB_CONTACT_ID_ORIGIN_DESC" hidden="true"/>
+          <attributeReference attributeName="UNSUB_NEWSLETTER_COMM_MEDIUM_DESC" hidden="true"/>
+          <attributeReference attributeName="UNSUB_NEWSLETTER_MKT_AREA_DESC" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+    </sharedDimensions>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="448" y="105"/>
+        <rectangleSize height="354" width="449"/>
+      </shape>
+      <shape expanded="true" modelObjectName="IC_ROOT" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="342" y="1841"/>
+        <rectangleSize height="-1" width="160"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Proj_IC_REL" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="552" y="1841"/>
+        <rectangleSize height="51" width="160"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_IC_REL" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="386" y="1681"/>
+        <rectangleSize height="60" width="160"/>
+      </shape>
+      <shape modelObjectName="IC_ROOT" modelObjectNameSpace="Join_IC_REL" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Proj_IC_REL" modelObjectNameSpace="Join_IC_REL" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_LANGUAGE_CODE" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="386" y="1541"/>
+        <rectangleSize height="0" width="160"/>
+      </shape>
+      <shape modelObjectName="Join_IC_REL" modelObjectNameSpace="Join_LANGUAGE_CODE" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="sap.hana-app.cuan.contact.db.cuan::T002" modelObjectNameSpace="Join_LANGUAGE_CODE" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_LANGU" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="394" y="1401"/>
+        <rectangleSize height="71" width="145"/>
+      </shape>
+      <shape modelObjectName="Join_LANGUAGE_CODE" modelObjectNameSpace="Join_LANGU" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="sap.hana-app.cuan.contact.db.cuan::T002T" modelObjectNameSpace="Join_LANGU" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_COUNTRY" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="406" y="1081"/>
+        <rectangleSize height="68" width="171"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_IC_MKT" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="91" y="1401"/>
+        <rectangleSize height="61" width="161"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_IC_MKT" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="119" y="1241"/>
+        <rectangleSize height="0" width="160"/>
+      </shape>
+      <shape modelObjectName="Join_LANGU" modelObjectNameSpace="Join_IC_MKT" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Projection_IC_MKT" modelObjectNameSpace="Join_IC_MKT" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_MARKETING_DESC" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="329" y="1241"/>
+        <rectangleSize height="-1" width="160"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_MARKETING_DESC" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="145" y="1081"/>
+        <rectangleSize height="0" width="160"/>
+      </shape>
+      <shape modelObjectName="Join_IC_MKT" modelObjectNameSpace="Join_MARKETING_DESC" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Projection_MARKETING_DESC" modelObjectNameSpace="Join_MARKETING_DESC" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_COUNTRY" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="172" y="921"/>
+        <rectangleSize height="-1" width="160"/>
+      </shape>
+      <shape modelObjectName="Join_MARKETING_DESC" modelObjectNameSpace="Join_COUNTRY" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Projection_COUNTRY" modelObjectNameSpace="Join_COUNTRY" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_REGION" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="519" y="921"/>
+        <rectangleSize height="71" width="161"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_REGION" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="493" y="761"/>
+        <rectangleSize height="-1" width="160"/>
+      </shape>
+      <shape modelObjectName="Join_COUNTRY" modelObjectNameSpace="Join_REGION" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Projection_REGION" modelObjectNameSpace="Join_REGION" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_BRSCH" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="273" y="761"/>
+        <rectangleSize height="61" width="158"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_BRSCH" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="299" y="601"/>
+        <rectangleSize height="-1" width="160"/>
+      </shape>
+      <shape modelObjectName="Join_REGION" modelObjectNameSpace="Join_BRSCH" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Projection_BRSCH" modelObjectNameSpace="Join_BRSCH" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_VA_ST" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="509" y="601"/>
+        <rectangleSize height="61" width="201"/>
+      </shape>
+      <shape expanded="true" modelObjectName="COMPANY" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="448" y="442"/>
+        <rectangleSize height="-1" width="160"/>
+      </shape>
+      <shape modelObjectName="Join_BRSCH" modelObjectNameSpace="COMPANY" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Projection_VA_ST" modelObjectNameSpace="COMPANY" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="COMPANY" modelObjectNameSpace="StarJoinViewNodeInput" modelObjectType="repository">
+        <upperLeftCorner x="518" y="400"/>
+      </shape>
+      <shape modelObjectName="sap.hana-app.cuan.contact::CA_D_INTERACTIONS" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="-15" y="377"/>
+      </shape>
+      <shape modelObjectName="sap.hana-app.cuan.contact::CA_D_INTERACTIONS_PROJ" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="916" y="1350"/>
+      </shape>
+      <shape modelObjectName="sap.hana-app.cuan.contact.profile::CA_D_INTERACTION_CONTACT_B2B" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="1049" y="369"/>
+      </shape>
+      <shape modelObjectName="sap.hana-app.cuan.contact::CA_D_IC_MARKETING_PERMISSION" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="2" y="1521"/>
+      </shape>
+      <shape modelObjectName="sap.hana-app.cuan.contact::CA_D_IC_NEWSLETTER_SUBSCRIPTION" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="27" y="1678"/>
+      </shape>
+      <shape modelObjectName="sap.hana-app.cuan.contact.profile::CA_D_TARGET_GROUP_PROJ" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="159" y="80"/>
+      </shape>
+      <shape modelObjectName="sap.hana-app.cuan.contact::CA_D_IC_FACET" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="732" y="207"/>
+      </shape>
+      <shape modelObjectName="sap.hana-app.cuan.contact.profile::CA_D_IC_FACET_PROJ" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="1033" y="108"/>
+      </shape>
+      <shape modelObjectName="sap.hana-app.cuan.contact::CA_D_INTERACTIONS_SURVEY" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="1534" y="30"/>
+      </shape>
+      <shape modelObjectName="sap.hana-app.cuan.contact::CA_LEAD_STAGE_CURRENT" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="1950" y="30"/>
+      </shape>
+      <shape modelObjectName="sap.hana-app.cuan.contact::CA_D_TARGET_GROUP" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="2346" y="30"/>
+      </shape>
+      <shape modelObjectName="sap.hana-app.cuan.contact.profile::CA_D_INTERACTION_SURVEY" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="2828" y="30"/>
+      </shape>
+      <shape modelObjectName="sap.hana-app.cuan.contact::CA_D_AGREEMENT" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="3374" y="30"/>
+      </shape>
+      <shape modelObjectName="sap.hana-app.cuan.contact::CA_D_AGREEMENT_PROJ" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="4032" y="30"/>
+      </shape>
+      <shape modelObjectName="sap.hana-app.cuan.contact.profile::CA_D_INTERACTION_SURVEY_PROJ" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="5052" y="30"/>
+      </shape>
+    
+    <shape modelObjectName="sap.hana-app.cuan.contact::CA_D_IC_NEWSL_OPTOUT" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+      <upperLeftCorner x="5352" y="30"/>
+      <rectangleSize width="528"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

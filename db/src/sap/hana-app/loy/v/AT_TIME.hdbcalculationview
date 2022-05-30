@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="sap.hana-app.loy.v::AT_TIME" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" dimensionType="STANDARD" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="Time Attributes"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="M_TIME_DIMENSION">
+      <resourceUri>sap.hana-app.cuan.db::M_TIME_DIMENSION</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <logicalModel id="M_TIME_DIMENSION">
+    <descriptions/>
+    <attributes>
+      <attribute id="YEAR" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Year"/>
+        <keyMapping columnObjectName="M_TIME_DIMENSION" columnName="YEAR"/>
+      </attribute>
+      <attribute id="QUARTER" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Quarter"/>
+        <keyMapping columnObjectName="M_TIME_DIMENSION" columnName="QUARTER"/>
+      </attribute>
+      <attribute id="MONTH" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Month"/>
+        <keyMapping columnObjectName="M_TIME_DIMENSION" columnName="MONTH"/>
+      </attribute>
+      <attribute id="WEEK" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Week"/>
+        <keyMapping columnObjectName="M_TIME_DIMENSION" columnName="WEEK"/>
+      </attribute>
+      <attribute id="CALQUARTER" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Calendar Quarter"/>
+        <keyMapping columnObjectName="M_TIME_DIMENSION" columnName="CALQUARTER"/>
+      </attribute>
+      <attribute id="CALMONTH" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Calendar Month"/>
+        <keyMapping columnObjectName="M_TIME_DIMENSION" columnName="CALMONTH"/>
+      </attribute>
+      <attribute id="CALWEEK" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Calendar Week"/>
+        <keyMapping columnObjectName="M_TIME_DIMENSION" columnName="CALWEEK"/>
+      </attribute>
+      <attribute id="DATETIMESTAMP" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Timestamp"/>
+        <keyMapping columnObjectName="M_TIME_DIMENSION" columnName="DATETIMESTAMP"/>
+      </attribute>
+      <attribute id="DATE_SQL" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Date"/>
+        <keyMapping columnObjectName="M_TIME_DIMENSION" columnName="DATE_SQL"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner/></shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

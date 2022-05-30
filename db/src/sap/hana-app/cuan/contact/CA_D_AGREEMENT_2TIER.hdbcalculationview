@@ -1,0 +1,1027 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="sap.hana-app.cuan.contact::CA_D_AGREEMENT_2TIER" applyPrivilegeType="NONE" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="CA_D_AGREEMENT_2TIER"/>
+  <metadata changedAt="2019-12-02 10:26:55.886"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="37"/>
+  <dataSources>
+    <DataSource id="CA_D_AGREEMENT">
+      <resourceUri>sap.hana-app.cuan.contact::CA_D_AGREEMENT</resourceUri>
+    </DataSource>
+    <DataSource id="sap.hana-app.cuan.contact::CA_D_AGREEMENT">
+      <resourceUri>sap.hana-app.cuan.contact::CA_D_AGREEMENT</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Tier1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MKT_AGRMTTIER1LONGITUDE"/>
+        <viewAttribute id="MKT_AGRMTTIER1LATITUDE"/>
+        <viewAttribute id="MKT_AGRMTTIER1HOUSENUM"/>
+        <viewAttribute id="MKT_AGRMTTIER1STREET"/>
+        <viewAttribute id="MKT_AGRMTTIER1POSTCODE"/>
+        <viewAttribute id="MKT_AGRMTTIER1CITY"/>
+        <viewAttribute id="MKT_AGRMTTIER1REGION"/>
+        <viewAttribute id="MKT_AGRMTTIER1COUNTRY"/>
+        <viewAttribute id="MKT_AGRMTTIER1LOCATIONNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER1MKTGLOCEXTID"/>
+        <viewAttribute id="MKT_AGRMTTIER1MKTGLOCORIGIN"/>
+        <viewAttribute id="MKT_AGRMTTIER1UUID"/>
+        <viewAttribute id="MKT_AGRMTTIER1ORIGIN"/>
+        <viewAttribute id="MKT_AGRMTTIER1ORIGINNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER1EXTERNALID"/>
+        <viewAttribute id="INTERACTIONCONTACTUUID"/>
+        <viewAttribute id="MKT_AGREEMENTISBUNDLE"/>
+        <viewAttribute id="MKT_AGREEMENTISBUNDLEMEMBER"/>
+        <viewAttribute id="MKT_AGRMTTIER1CANCLNREASON"/>
+        <viewAttribute id="MKT_AGRMTTIER1CANCLNREASONNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER1CONTACTID"/>
+        <viewAttribute id="MKT_AGRMTTIER1CONTACTORIGIN"/>
+        <viewAttribute id="MKT_AGRMTTIER1TYPE"/>
+        <viewAttribute id="MKT_AGRMTTIER1TYPENAME"/>
+        <viewAttribute id="MKT_AGRMTTIER1MARKETINGAREA"/>
+        <viewAttribute id="MKT_AGRMTTIER1STARTDATETIME"/>
+        <viewAttribute id="MKT_AGRMTTIER1ENDDATETIME"/>
+        <viewAttribute id="MKT_AGRMTTIER1ISCANCELED"/>
+        <viewAttribute id="MKT_AGRMTTIER1TERMSUUID"/>
+        <viewAttribute id="MKT_AGRMTTIER1TERMSSTARTDTETME"/>
+        <viewAttribute id="MKT_AGRMTTIER1TERMSENDDATETIME"/>
+        <viewAttribute id="MKT_AGRMTTIER1STATUS"/>
+        <viewAttribute id="MKT_AGRMTTIER1STATUSNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER1DERIVEDSTATUS"/>
+        <viewAttribute id="MKT_AGRMTTIER1DERIVDSTATUSNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER1PRODUCTORIGIN"/>
+        <viewAttribute id="MKT_AGRMTTIER1PRODUCTORIGNDESC"/>
+        <viewAttribute id="MKT_AGRMTTIER1PRODUCTID"/>
+        <viewAttribute id="MKT_AGRMTTIER1PRODUCTNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER1PRODCATEGORYKEY"/>
+        <viewAttribute id="MKT_AGRMTTIER1PRODCATEGORYNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER1RENEWALTYPE"/>
+        <viewAttribute id="MKT_AGRMTTIER1RENEWALTYPENAME"/>
+        <viewAttribute id="MKT_AGRMTTIER1CANCLNCONDITIONS"/>
+        <viewAttribute id="MKT_AGRMTTIER1CANCLNCNDNNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER1CANCLNTODTETME"/>
+        <viewAttribute id="MKT_AGRMTTIER1PROLNGNFRMDTETME"/>
+        <viewAttribute id="MKT_AGRMTTIER1PAYTISINADVANCE"/>
+        <viewAttribute id="MKT_AGRMTTIER1PAYMENTFREQUENCY"/>
+        <viewAttribute id="MKT_AGRMTTIER1PAYMENTFRQCYNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER1IASTATUS"/>
+        <viewAttribute id="MKT_AGRMTTIER1IASTATUSNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER1IATYPE"/>
+        <viewAttribute id="MKT_AGRMTTIER1IATYPENAME"/>
+        <viewAttribute id="MKT_AGRMTTIER1IAREASON"/>
+        <viewAttribute id="MKT_AGRMTTIER1IAREASONNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER1IATIMESTAMP"/>
+        <viewAttribute id="MKT_AGRMTTIER1REGIONDESC"/>
+        <viewAttribute id="MKT_AGRMTTIER1COUNTRYDESC"/>
+        <viewAttribute id="MKT_AGRMTTIER1PAYMENTMETHOD"/>
+        <viewAttribute id="MKT_AGRMTTIER1PAYMENTMETHNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER1CORRMEDIUM"/>
+        <viewAttribute id="MKT_AGRMTTIER1CORRMEDIUM_NAME"/>
+        <viewAttribute id="MKT_AGRMTTIER1MKTAREADESC"/>
+        <viewAttribute id="MKT_AGRMTTIER1OCCUPANCYTYPE"/>
+        <viewAttribute id="MKT_AGRMTTIER1OCCPCYTYPENAME"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="CA_D_AGREEMENT">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1LONGITUDE" source="MKT_AGRMT_LONGITUDE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1LATITUDE" source="MKT_AGRMT_LATITUDE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1HOUSENUM" source="MKT_AGRMT_HOUSE_NUM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1STREET" source="MKT_AGRMT_STREET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1POSTCODE" source="MKT_AGRMT_POSTCODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1CITY" source="MKT_AGRMT_CITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1REGION" source="MKT_AGRMT_REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1COUNTRY" source="MKT_AGRMT_COUNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1LOCATIONNAME" source="MKT_AGRMT_LOCATION_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1MKTGLOCEXTID" source="MARKETINGLOCATIONEXTERNALID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1MKTGLOCORIGIN" source="MARKETINGLOCATIONORIGIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1UUID" source="MKT_AGREEMENTUUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1ORIGIN" source="MKT_AGREEMENTORIGIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1ORIGINNAME" source="MKT_AGREEMENTORIGINNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1EXTERNALID" source="MKT_AGREEMENTEXTERNALID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1CANCLNREASON" source="MKT_AGRMTCANCELLATIONREASON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1CANCLNREASONNAME" source="MKT_AGRMTCANCLNREASONNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1CONTACTID" source="CONTACTID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1CONTACTORIGIN" source="CONTACTORIGIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1TYPE" source="MKT_AGREEMENTTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1TYPENAME" source="MKT_AGREEMENTTYPENAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1MARKETINGAREA" source="MARKETINGAREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1STARTDATETIME" source="MKT_AGREEMENTSTARTDATETIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1ENDDATETIME" source="MKT_AGREEMENTENDDATETIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1ISCANCELED" source="MKT_AGREEMENTISCANCELED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1TERMSUUID" source="MKT_AGREEMENTTERMSUUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1TERMSSTARTDTETME" source="MKT_AGRMTTERMSSTARTDATETIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1TERMSENDDATETIME" source="MKT_AGRMTTERMSENDDATETIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1STATUS" source="MKT_AGREEMENTSTATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1STATUSNAME" source="MKT_AGRMT_STATUS_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1DERIVEDSTATUS" source="DERIVED_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1DERIVDSTATUSNAME" source="AGR_DERIVED_STATUS_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1PRODUCTORIGIN" source="PRODUCTORIGIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1PRODUCTORIGNDESC" source="AGRMT_PRODUCT_ORIGIN_DESC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1PRODUCTID" source="PRODUCTID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1PRODUCTNAME" source="D_AGRMT_PRODUCT_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1PRODCATEGORYKEY" source="AGRMT_PRODUCT_CATEGORY_KEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1PRODCATEGORYNAME" source="MKT_AGRMT_PRODUCT_CATEGORY_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1RENEWALTYPE" source="MKT_AGREEMENTRENEWALTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1RENEWALTYPENAME" source="MKT_ARMT_RENEWAL_TYPE_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1CANCLNCONDITIONS" source="MKT_AGRMTCANCLNCONDITIONS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1CANCLNCNDNNAME" source="MKT_AGRMTCANCLNCONDITIONSNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1CANCLNTODTETME" source="MKT_AGRMTCANCLNDCSNTODATETIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1PROLNGNFRMDTETME" source="MKT_AGRMTPROLNGNDCSNFROMDTETME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1PAYTISINADVANCE" source="MKT_AGRPAYMENTISINADVANCE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1PAYMENTFREQUENCY" source="MKT_AGREEMENTPAYMENTFREQUENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1PAYMENTFRQCYNAME" source="MKT_AGRMTPAYMENTFREQUENCYNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1IASTATUS" source="MKT_AGREEMENT_IA_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1IASTATUSNAME" source="MKT_AGREEMENT_IA_STATUS_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1IATYPE" source="MKT_AGREEMENT_IA_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1IATYPENAME" source="MKT_AGREEMENT_TYPE_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1IAREASON" source="MKT_AGREEMENT_IA_REASON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1IAREASONNAME" source="MKT_AGREEMENT_IA_REASON_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1IATIMESTAMP" source="MKT_AGREEMENT_IA_TIMESTAMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1REGIONDESC" source="MKT_AGREEMENT_REGION_DESC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1COUNTRYDESC" source="MKT_AGREEMENT_COUNTRY_DESC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1PAYMENTMETHOD" source="MKT_AGREEMENTPAYMENTMETHOD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1PAYMENTMETHNAME" source="AGR_PAYMENT_METHOD_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1CORRMEDIUM" source="MKT_AGRMTCORRESPONDENCEMEDIUM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1CORRMEDIUM_NAME" source="AGR_CORR_MEDIUM_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1MKTAREADESC" source="MKT_AGREEMENTMKT_AREA_DESC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1OCCUPANCYTYPE" source="MKT_AGRMT_OCCUPANCY_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1OCCPCYTYPENAME" source="MKT_AGRMT_OCCUPANCY_TYPE_NAME"/>
+      </input>
+      <filter>(&quot;MKT_AGREEMENTISBUNDLE&quot; ='X') AND (&quot;MKT_AGREEMENTISBUNDLEMEMBER&quot; ='')</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Tier2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MKT_AGRMTTIER2LONGITUDE"/>
+        <viewAttribute id="MKT_AGRMTTIER2LATITUDE"/>
+        <viewAttribute id="MKT_AGRMTTIER2HOUSENUM"/>
+        <viewAttribute id="MKT_AGRMTTIER2STREET"/>
+        <viewAttribute id="MKT_AGRMTTIER2POSTCODE"/>
+        <viewAttribute id="MKT_AGRMTTIER2CITY"/>
+        <viewAttribute id="MKT_AGRMTTIER2REGION"/>
+        <viewAttribute id="MKT_AGRMTTIER2COUNTRY"/>
+        <viewAttribute id="MKT_AGRMTTIER2LOCATIONNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER2MKTGLOCEXTID"/>
+        <viewAttribute id="MKT_AGRMTTIER2MKTGLOCORIGIN"/>
+        <viewAttribute id="MKT_AGRMTTIER2UUID"/>
+        <viewAttribute id="MKT_AGRMTTIER2ORIGIN"/>
+        <viewAttribute id="MKT_AGRMTTIER2ORIGINNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER2EXTERNALID"/>
+        <viewAttribute id="INTERACTIONCONTACTUUID"/>
+        <viewAttribute id="MKT_AGREEMENTISBUNDLE"/>
+        <viewAttribute id="MKT_AGREEMENTISBUNDLEMEMBER"/>
+        <viewAttribute id="MKT_AGRMTTIER2CANCLNREASON"/>
+        <viewAttribute id="MKT_AGRMTTIER2CANCLNREASONNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER2CONTACTID"/>
+        <viewAttribute id="MKT_AGRMTTIER2CONTACTORIGIN"/>
+        <viewAttribute id="MKT_AGRMTTIER2TYPE"/>
+        <viewAttribute id="MKT_AGRMTTIER2TYPENAME"/>
+        <viewAttribute id="MKT_AGRMTTIER2MARKETINGAREA"/>
+        <viewAttribute id="MKT_AGRMTTIER2STARTDATETIME"/>
+        <viewAttribute id="MKT_AGRMTTIER2ENDDATETIME"/>
+        <viewAttribute id="MKT_AGRMTTIER2ISCANCELED"/>
+        <viewAttribute id="MKT_AGRMTTIER2TERMSUUID"/>
+        <viewAttribute id="MKT_AGRMTTIER2TERMSSTARTDTETME"/>
+        <viewAttribute id="MKT_AGRMTTIER2TERMSENDDATETIME"/>
+        <viewAttribute id="MKT_AGRMTTIER2STATUS"/>
+        <viewAttribute id="MKT_AGRMTTIER2STATUSNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER2DERIVEDSTATUS"/>
+        <viewAttribute id="MKT_AGRMTTIER2DERIVDSTATUSNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER2PRODUCTORIGIN"/>
+        <viewAttribute id="MKT_AGRMTTIER2PRODUCTORIGNDESC"/>
+        <viewAttribute id="MKT_AGRMTTIER2PRODUCTID"/>
+        <viewAttribute id="MKT_AGRMTTIER2PRODUCTNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER2PRODCATEGORYKEY"/>
+        <viewAttribute id="MKT_AGRMTTIER2PRODCATEGORYNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER2RENEWALTYPE"/>
+        <viewAttribute id="MKT_AGRMTTIER2RENEWALTYPENAME"/>
+        <viewAttribute id="MKT_AGRMTTIER2CANCLNCONDITIONS"/>
+        <viewAttribute id="MKT_AGRMTTIER2CANCLNCNDNNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER2CANCLNTODTETME"/>
+        <viewAttribute id="MKT_AGRMTTIER2PROLNGNFRMDTETME"/>
+        <viewAttribute id="MKT_AGRMTTIER2PAYTISINADVANCE"/>
+        <viewAttribute id="MKT_AGRMTTIER2PAYMENTFREQUENCY"/>
+        <viewAttribute id="MKT_AGRMTTIER2PAYMENTFRQCYNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER2IASTATUS"/>
+        <viewAttribute id="MKT_AGRMTTIER2IASTATUSNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER2IATYPE"/>
+        <viewAttribute id="MKT_AGRMTTIER2IATYPENAME"/>
+        <viewAttribute id="MKT_AGRMTTIER2IAREASON"/>
+        <viewAttribute id="MKT_AGRMTTIER2IAREASONNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER2IATIMESTAMP"/>
+        <viewAttribute id="MKT_AGRMTTIER2REGIONDESC"/>
+        <viewAttribute id="MKT_AGRMTTIER2COUNTRYDESC"/>
+        <viewAttribute id="MKT_AGRMTTIER2PAYMENTMETHOD"/>
+        <viewAttribute id="MKT_AGRMTTIER2PAYMENTMETHNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER2CORRMEDIUM"/>
+        <viewAttribute id="MKT_AGRMTTIER2CORRMEDIUM_NAME"/>
+        <viewAttribute id="MKT_AGRMTTIER2MKTAREADESC"/>
+        <viewAttribute id="MKT_AGRMTTIER2OCCUPANCYTYPE"/>
+        <viewAttribute id="MKT_AGRMTTIER2OCCPCYTYPENAME"/>
+        <viewAttribute id="MKT_AGREEMENTBUNDLEORIGIN"/>
+        <viewAttribute id="MKT_AGREEMENTBUNDLEEXTERNALID"/>
+        <viewAttribute id="MKT_AGRMTBUNDLESTARTDATETIME"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="sap.hana-app.cuan.contact::CA_D_AGREEMENT">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2LONGITUDE" source="MKT_AGRMT_LONGITUDE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2LATITUDE" source="MKT_AGRMT_LATITUDE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2HOUSENUM" source="MKT_AGRMT_HOUSE_NUM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2STREET" source="MKT_AGRMT_STREET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2POSTCODE" source="MKT_AGRMT_POSTCODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2CITY" source="MKT_AGRMT_CITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2REGION" source="MKT_AGRMT_REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2COUNTRY" source="MKT_AGRMT_COUNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2LOCATIONNAME" source="MKT_AGRMT_LOCATION_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2MKTGLOCEXTID" source="MARKETINGLOCATIONEXTERNALID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2MKTGLOCORIGIN" source="MARKETINGLOCATIONORIGIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2UUID" source="MKT_AGREEMENTUUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2ORIGIN" source="MKT_AGREEMENTORIGIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2ORIGINNAME" source="MKT_AGREEMENTORIGINNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2EXTERNALID" source="MKT_AGREEMENTEXTERNALID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2CANCLNREASON" source="MKT_AGRMTCANCELLATIONREASON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2CANCLNREASONNAME" source="MKT_AGRMTCANCLNREASONNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2CONTACTID" source="CONTACTID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2CONTACTORIGIN" source="CONTACTORIGIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2TYPE" source="MKT_AGREEMENTTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2TYPENAME" source="MKT_AGREEMENTTYPENAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2MARKETINGAREA" source="MARKETINGAREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2STARTDATETIME" source="MKT_AGREEMENTSTARTDATETIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2ENDDATETIME" source="MKT_AGREEMENTENDDATETIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2ISCANCELED" source="MKT_AGREEMENTISCANCELED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2TERMSUUID" source="MKT_AGREEMENTTERMSUUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2TERMSSTARTDTETME" source="MKT_AGRMTTERMSSTARTDATETIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2TERMSENDDATETIME" source="MKT_AGRMTTERMSENDDATETIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2STATUS" source="MKT_AGREEMENTSTATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2STATUSNAME" source="MKT_AGRMT_STATUS_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2DERIVEDSTATUS" source="DERIVED_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2DERIVDSTATUSNAME" source="AGR_DERIVED_STATUS_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2PRODUCTORIGIN" source="PRODUCTORIGIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2PRODUCTORIGNDESC" source="AGRMT_PRODUCT_ORIGIN_DESC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2PRODUCTID" source="PRODUCTID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2PRODUCTNAME" source="D_AGRMT_PRODUCT_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2PRODCATEGORYKEY" source="AGRMT_PRODUCT_CATEGORY_KEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2PRODCATEGORYNAME" source="MKT_AGRMT_PRODUCT_CATEGORY_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2RENEWALTYPE" source="MKT_AGREEMENTRENEWALTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2RENEWALTYPENAME" source="MKT_ARMT_RENEWAL_TYPE_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2CANCLNCONDITIONS" source="MKT_AGRMTCANCLNCONDITIONS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2CANCLNCNDNNAME" source="MKT_AGRMTCANCLNCONDITIONSNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2CANCLNTODTETME" source="MKT_AGRMTCANCLNDCSNTODATETIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2PROLNGNFRMDTETME" source="MKT_AGRMTPROLNGNDCSNFROMDTETME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2PAYTISINADVANCE" source="MKT_AGRPAYMENTISINADVANCE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2PAYMENTFREQUENCY" source="MKT_AGREEMENTPAYMENTFREQUENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2PAYMENTFRQCYNAME" source="MKT_AGRMTPAYMENTFREQUENCYNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2IASTATUS" source="MKT_AGREEMENT_IA_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2IASTATUSNAME" source="MKT_AGREEMENT_IA_STATUS_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2IATYPE" source="MKT_AGREEMENT_IA_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2IATYPENAME" source="MKT_AGREEMENT_TYPE_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2IAREASON" source="MKT_AGREEMENT_IA_REASON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2IAREASONNAME" source="MKT_AGREEMENT_IA_REASON_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2IATIMESTAMP" source="MKT_AGREEMENT_IA_TIMESTAMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2REGIONDESC" source="MKT_AGREEMENT_REGION_DESC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2COUNTRYDESC" source="MKT_AGREEMENT_COUNTRY_DESC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2PAYMENTMETHOD" source="MKT_AGREEMENTPAYMENTMETHOD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2PAYMENTMETHNAME" source="AGR_PAYMENT_METHOD_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2CORRMEDIUM" source="MKT_AGRMTCORRESPONDENCEMEDIUM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2CORRMEDIUM_NAME" source="AGR_CORR_MEDIUM_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2MKTAREADESC" source="MKT_AGREEMENTMKT_AREA_DESC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2OCCUPANCYTYPE" source="MKT_AGRMT_OCCUPANCY_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2OCCPCYTYPENAME" source="MKT_AGRMT_OCCUPANCY_TYPE_NAME"/></input>
+      <filter>(&quot;MKT_AGREEMENTISBUNDLE&quot; ='') AND (&quot;MKT_AGREEMENTISBUNDLEMEMBER&quot; ='X')</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="C1_N" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MKT_AGRMTTIER1LONGITUDE"/>
+        <viewAttribute id="MKT_AGRMTTIER1LATITUDE"/>
+        <viewAttribute id="MKT_AGRMTTIER1HOUSENUM"/>
+        <viewAttribute id="MKT_AGRMTTIER1STREET"/>
+        <viewAttribute id="MKT_AGRMTTIER1POSTCODE"/>
+        <viewAttribute id="MKT_AGRMTTIER1CITY"/>
+        <viewAttribute id="MKT_AGRMTTIER1REGION"/>
+        <viewAttribute id="MKT_AGRMTTIER1COUNTRY"/>
+        <viewAttribute id="MKT_AGRMTTIER1LOCATIONNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER1MKTGLOCEXTID"/>
+        <viewAttribute id="MKT_AGRMTTIER1MKTGLOCORIGIN"/>
+        <viewAttribute id="MKT_AGRMTTIER1UUID"/>
+        <viewAttribute id="MKT_AGRMTTIER1ORIGIN"/>
+        <viewAttribute id="MKT_AGRMTTIER1ORIGINNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER1EXTERNALID"/>
+        <viewAttribute id="INTERACTIONCONTACTUUID"/>
+        <viewAttribute id="MKT_AGRMTTIER1CANCLNREASON"/>
+        <viewAttribute id="MKT_AGRMTTIER1CANCLNREASONNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER1CONTACTID"/>
+        <viewAttribute id="MKT_AGRMTTIER1CONTACTORIGIN"/>
+        <viewAttribute id="MKT_AGRMTTIER1TYPE"/>
+        <viewAttribute id="MKT_AGRMTTIER1TYPENAME"/>
+        <viewAttribute id="MKT_AGRMTTIER1MARKETINGAREA"/>
+        <viewAttribute id="MKT_AGRMTTIER1STARTDATETIME"/>
+        <viewAttribute id="MKT_AGRMTTIER1ENDDATETIME"/>
+        <viewAttribute id="MKT_AGRMTTIER1ISCANCELED"/>
+        <viewAttribute id="MKT_AGRMTTIER1TERMSUUID"/>
+        <viewAttribute id="MKT_AGRMTTIER1TERMSSTARTDTETME"/>
+        <viewAttribute id="MKT_AGRMTTIER1TERMSENDDATETIME"/>
+        <viewAttribute id="MKT_AGRMTTIER1STATUS"/>
+        <viewAttribute id="MKT_AGRMTTIER1STATUSNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER1DERIVEDSTATUS"/>
+        <viewAttribute id="MKT_AGRMTTIER1DERIVDSTATUSNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER1PRODUCTORIGIN"/>
+        <viewAttribute id="MKT_AGRMTTIER1PRODUCTORIGNDESC"/>
+        <viewAttribute id="MKT_AGRMTTIER1PRODUCTID"/>
+        <viewAttribute id="MKT_AGRMTTIER1PRODUCTNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER1PRODCATEGORYKEY"/>
+        <viewAttribute id="MKT_AGRMTTIER1PRODCATEGORYNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER1RENEWALTYPE"/>
+        <viewAttribute id="MKT_AGRMTTIER1RENEWALTYPENAME"/>
+        <viewAttribute id="MKT_AGRMTTIER1CANCLNCONDITIONS"/>
+        <viewAttribute id="MKT_AGRMTTIER1CANCLNCNDNNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER1CANCLNTODTETME"/>
+        <viewAttribute id="MKT_AGRMTTIER1PROLNGNFRMDTETME"/>
+        <viewAttribute id="MKT_AGRMTTIER1PAYTISINADVANCE"/>
+        <viewAttribute id="MKT_AGRMTTIER1PAYMENTFREQUENCY"/>
+        <viewAttribute id="MKT_AGRMTTIER1PAYMENTFRQCYNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER1IASTATUS"/>
+        <viewAttribute id="MKT_AGRMTTIER1IASTATUSNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER1IATYPE"/>
+        <viewAttribute id="MKT_AGRMTTIER1IATYPENAME"/>
+        <viewAttribute id="MKT_AGRMTTIER1IAREASON"/>
+        <viewAttribute id="MKT_AGRMTTIER1IAREASONNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER1IATIMESTAMP"/>
+        <viewAttribute id="MKT_AGRMTTIER1REGIONDESC"/>
+        <viewAttribute id="MKT_AGRMTTIER1COUNTRYDESC"/>
+        <viewAttribute id="MKT_AGRMTTIER1PAYMENTMETHOD"/>
+        <viewAttribute id="MKT_AGRMTTIER1PAYMENTMETHNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER1CORRMEDIUM"/>
+        <viewAttribute id="MKT_AGRMTTIER1CORRMEDIUM_NAME"/>
+        <viewAttribute id="MKT_AGRMTTIER1MKTAREADESC"/>
+        <viewAttribute id="MKT_AGRMTTIER1OCCUPANCYTYPE"/>
+        <viewAttribute id="MKT_AGRMTTIER1OCCPCYTYPENAME"/>
+        <viewAttribute id="MKT_AGRMTTIER2LONGITUDE"/>
+        <viewAttribute id="MKT_AGRMTTIER2LATITUDE"/>
+        <viewAttribute id="MKT_AGRMTTIER2HOUSENUM"/>
+        <viewAttribute id="MKT_AGRMTTIER2STREET"/>
+        <viewAttribute id="MKT_AGRMTTIER2POSTCODE"/>
+        <viewAttribute id="MKT_AGRMTTIER2CITY"/>
+        <viewAttribute id="MKT_AGRMTTIER2REGION"/>
+        <viewAttribute id="MKT_AGRMTTIER2COUNTRY"/>
+        <viewAttribute id="MKT_AGRMTTIER2LOCATIONNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER2MKTGLOCEXTID"/>
+        <viewAttribute id="MKT_AGRMTTIER2MKTGLOCORIGIN"/>
+        <viewAttribute id="MKT_AGRMTTIER2UUID"/>
+        <viewAttribute id="MKT_AGRMTTIER2ORIGIN"/>
+        <viewAttribute id="MKT_AGRMTTIER2ORIGINNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER2EXTERNALID"/>
+        <viewAttribute id="MKT_AGRMTTIER2CANCLNREASON"/>
+        <viewAttribute id="MKT_AGRMTTIER2CANCLNREASONNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER2CONTACTID"/>
+        <viewAttribute id="MKT_AGRMTTIER2CONTACTORIGIN"/>
+        <viewAttribute id="MKT_AGRMTTIER2TYPE"/>
+        <viewAttribute id="MKT_AGRMTTIER2TYPENAME"/>
+        <viewAttribute id="MKT_AGRMTTIER2MARKETINGAREA"/>
+        <viewAttribute id="MKT_AGRMTTIER2STARTDATETIME"/>
+        <viewAttribute id="MKT_AGRMTTIER2ENDDATETIME"/>
+        <viewAttribute id="MKT_AGRMTTIER2ISCANCELED"/>
+        <viewAttribute id="MKT_AGRMTTIER2TERMSUUID"/>
+        <viewAttribute id="MKT_AGRMTTIER2TERMSSTARTDTETME"/>
+        <viewAttribute id="MKT_AGRMTTIER2TERMSENDDATETIME"/>
+        <viewAttribute id="MKT_AGRMTTIER2STATUS"/>
+        <viewAttribute id="MKT_AGRMTTIER2STATUSNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER2DERIVEDSTATUS"/>
+        <viewAttribute id="MKT_AGRMTTIER2DERIVDSTATUSNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER2PRODUCTORIGIN"/>
+        <viewAttribute id="MKT_AGRMTTIER2PRODUCTORIGNDESC"/>
+        <viewAttribute id="MKT_AGRMTTIER2PRODUCTID"/>
+        <viewAttribute id="MKT_AGRMTTIER2PRODUCTNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER2PRODCATEGORYKEY"/>
+        <viewAttribute id="MKT_AGRMTTIER2PRODCATEGORYNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER2RENEWALTYPE"/>
+        <viewAttribute id="MKT_AGRMTTIER2RENEWALTYPENAME"/>
+        <viewAttribute id="MKT_AGRMTTIER2CANCLNCONDITIONS"/>
+        <viewAttribute id="MKT_AGRMTTIER2CANCLNCNDNNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER2CANCLNTODTETME"/>
+        <viewAttribute id="MKT_AGRMTTIER2PROLNGNFRMDTETME"/>
+        <viewAttribute id="MKT_AGRMTTIER2PAYTISINADVANCE"/>
+        <viewAttribute id="MKT_AGRMTTIER2PAYMENTFREQUENCY"/>
+        <viewAttribute id="MKT_AGRMTTIER2PAYMENTFRQCYNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER2IASTATUS"/>
+        <viewAttribute id="MKT_AGRMTTIER2IASTATUSNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER2IATYPE"/>
+        <viewAttribute id="MKT_AGRMTTIER2IATYPENAME"/>
+        <viewAttribute id="MKT_AGRMTTIER2IAREASON"/>
+        <viewAttribute id="MKT_AGRMTTIER2IAREASONNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER2IATIMESTAMP"/>
+        <viewAttribute id="MKT_AGRMTTIER2REGIONDESC"/>
+        <viewAttribute id="MKT_AGRMTTIER2COUNTRYDESC"/>
+        <viewAttribute id="MKT_AGRMTTIER2PAYMENTMETHOD"/>
+        <viewAttribute id="MKT_AGRMTTIER2PAYMENTMETHNAME"/>
+        <viewAttribute id="MKT_AGRMTTIER2CORRMEDIUM"/>
+        <viewAttribute id="MKT_AGRMTTIER2CORRMEDIUM_NAME"/>
+        <viewAttribute id="MKT_AGRMTTIER2MKTAREADESC"/>
+        <viewAttribute id="MKT_AGRMTTIER2OCCUPANCYTYPE"/>
+        <viewAttribute id="MKT_AGRMTTIER2OCCPCYTYPENAME"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="Tier1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1LONGITUDE" source="MKT_AGRMTTIER1LONGITUDE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1LATITUDE" source="MKT_AGRMTTIER1LATITUDE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1HOUSENUM" source="MKT_AGRMTTIER1HOUSENUM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1STREET" source="MKT_AGRMTTIER1STREET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1POSTCODE" source="MKT_AGRMTTIER1POSTCODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1CITY" source="MKT_AGRMTTIER1CITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1REGION" source="MKT_AGRMTTIER1REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1COUNTRY" source="MKT_AGRMTTIER1COUNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1LOCATIONNAME" source="MKT_AGRMTTIER1LOCATIONNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1MKTGLOCEXTID" source="MKT_AGRMTTIER1MKTGLOCEXTID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1MKTGLOCORIGIN" source="MKT_AGRMTTIER1MKTGLOCORIGIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1UUID" source="MKT_AGRMTTIER1UUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1ORIGIN" source="MKT_AGRMTTIER1ORIGIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1ORIGINNAME" source="MKT_AGRMTTIER1ORIGINNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1EXTERNALID" source="MKT_AGRMTTIER1EXTERNALID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONCONTACTUUID" source="INTERACTIONCONTACTUUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1CANCLNREASON" source="MKT_AGRMTTIER1CANCLNREASON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1CANCLNREASONNAME" source="MKT_AGRMTTIER1CANCLNREASONNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1CONTACTID" source="MKT_AGRMTTIER1CONTACTID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1CONTACTORIGIN" source="MKT_AGRMTTIER1CONTACTORIGIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1TYPE" source="MKT_AGRMTTIER1TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1TYPENAME" source="MKT_AGRMTTIER1TYPENAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1MARKETINGAREA" source="MKT_AGRMTTIER1MARKETINGAREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1STARTDATETIME" source="MKT_AGRMTTIER1STARTDATETIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1ENDDATETIME" source="MKT_AGRMTTIER1ENDDATETIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1ISCANCELED" source="MKT_AGRMTTIER1ISCANCELED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1TERMSUUID" source="MKT_AGRMTTIER1TERMSUUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1TERMSSTARTDTETME" source="MKT_AGRMTTIER1TERMSSTARTDTETME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1TERMSENDDATETIME" source="MKT_AGRMTTIER1TERMSENDDATETIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1STATUS" source="MKT_AGRMTTIER1STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1STATUSNAME" source="MKT_AGRMTTIER1STATUSNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1DERIVEDSTATUS" source="MKT_AGRMTTIER1DERIVEDSTATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1DERIVDSTATUSNAME" source="MKT_AGRMTTIER1DERIVDSTATUSNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1PRODUCTORIGIN" source="MKT_AGRMTTIER1PRODUCTORIGIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1PRODUCTORIGNDESC" source="MKT_AGRMTTIER1PRODUCTORIGNDESC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1PRODUCTID" source="MKT_AGRMTTIER1PRODUCTID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1PRODUCTNAME" source="MKT_AGRMTTIER1PRODUCTNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1PRODCATEGORYKEY" source="MKT_AGRMTTIER1PRODCATEGORYKEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1PRODCATEGORYNAME" source="MKT_AGRMTTIER1PRODCATEGORYNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1RENEWALTYPE" source="MKT_AGRMTTIER1RENEWALTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1RENEWALTYPENAME" source="MKT_AGRMTTIER1RENEWALTYPENAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1CANCLNCONDITIONS" source="MKT_AGRMTTIER1CANCLNCONDITIONS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1CANCLNCNDNNAME" source="MKT_AGRMTTIER1CANCLNCNDNNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1CANCLNTODTETME" source="MKT_AGRMTTIER1CANCLNTODTETME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1PROLNGNFRMDTETME" source="MKT_AGRMTTIER1PROLNGNFRMDTETME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1PAYTISINADVANCE" source="MKT_AGRMTTIER1PAYTISINADVANCE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1PAYMENTFREQUENCY" source="MKT_AGRMTTIER1PAYMENTFREQUENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1PAYMENTFRQCYNAME" source="MKT_AGRMTTIER1PAYMENTFRQCYNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1IASTATUS" source="MKT_AGRMTTIER1IASTATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1IASTATUSNAME" source="MKT_AGRMTTIER1IASTATUSNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1IATYPE" source="MKT_AGRMTTIER1IATYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1IATYPENAME" source="MKT_AGRMTTIER1IATYPENAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1IAREASON" source="MKT_AGRMTTIER1IAREASON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1IAREASONNAME" source="MKT_AGRMTTIER1IAREASONNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1IATIMESTAMP" source="MKT_AGRMTTIER1IATIMESTAMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1REGIONDESC" source="MKT_AGRMTTIER1REGIONDESC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1COUNTRYDESC" source="MKT_AGRMTTIER1COUNTRYDESC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1PAYMENTMETHOD" source="MKT_AGRMTTIER1PAYMENTMETHOD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1PAYMENTMETHNAME" source="MKT_AGRMTTIER1PAYMENTMETHNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1CORRMEDIUM" source="MKT_AGRMTTIER1CORRMEDIUM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1CORRMEDIUM_NAME" source="MKT_AGRMTTIER1CORRMEDIUM_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1MKTAREADESC" source="MKT_AGRMTTIER1MKTAREADESC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1OCCUPANCYTYPE" source="MKT_AGRMTTIER1OCCUPANCYTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1OCCPCYTYPENAME" source="MKT_AGRMTTIER1OCCPCYTYPENAME"/>
+      </input>
+      <input node="Tier2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2LONGITUDE" source="MKT_AGRMTTIER2LONGITUDE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2LATITUDE" source="MKT_AGRMTTIER2LATITUDE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2HOUSENUM" source="MKT_AGRMTTIER2HOUSENUM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2STREET" source="MKT_AGRMTTIER2STREET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2POSTCODE" source="MKT_AGRMTTIER2POSTCODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2CITY" source="MKT_AGRMTTIER2CITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2REGION" source="MKT_AGRMTTIER2REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2COUNTRY" source="MKT_AGRMTTIER2COUNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2LOCATIONNAME" source="MKT_AGRMTTIER2LOCATIONNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2MKTGLOCEXTID" source="MKT_AGRMTTIER2MKTGLOCEXTID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2MKTGLOCORIGIN" source="MKT_AGRMTTIER2MKTGLOCORIGIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2UUID" source="MKT_AGRMTTIER2UUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2ORIGIN" source="MKT_AGRMTTIER2ORIGIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2ORIGINNAME" source="MKT_AGRMTTIER2ORIGINNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2EXTERNALID" source="MKT_AGRMTTIER2EXTERNALID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2CANCLNREASON" source="MKT_AGRMTTIER2CANCLNREASON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2CANCLNREASONNAME" source="MKT_AGRMTTIER2CANCLNREASONNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2CONTACTID" source="MKT_AGRMTTIER2CONTACTID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2CONTACTORIGIN" source="MKT_AGRMTTIER2CONTACTORIGIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2TYPE" source="MKT_AGRMTTIER2TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2TYPENAME" source="MKT_AGRMTTIER2TYPENAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2MARKETINGAREA" source="MKT_AGRMTTIER2MARKETINGAREA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2STARTDATETIME" source="MKT_AGRMTTIER2STARTDATETIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2ENDDATETIME" source="MKT_AGRMTTIER2ENDDATETIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2ISCANCELED" source="MKT_AGRMTTIER2ISCANCELED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2TERMSUUID" source="MKT_AGRMTTIER2TERMSUUID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2TERMSSTARTDTETME" source="MKT_AGRMTTIER2TERMSSTARTDTETME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2TERMSENDDATETIME" source="MKT_AGRMTTIER2TERMSENDDATETIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2STATUS" source="MKT_AGRMTTIER2STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2STATUSNAME" source="MKT_AGRMTTIER2STATUSNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2DERIVEDSTATUS" source="MKT_AGRMTTIER2DERIVEDSTATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2DERIVDSTATUSNAME" source="MKT_AGRMTTIER2DERIVDSTATUSNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2PRODUCTORIGIN" source="MKT_AGRMTTIER2PRODUCTORIGIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2PRODUCTORIGNDESC" source="MKT_AGRMTTIER2PRODUCTORIGNDESC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2PRODUCTID" source="MKT_AGRMTTIER2PRODUCTID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2PRODUCTNAME" source="MKT_AGRMTTIER2PRODUCTNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2PRODCATEGORYKEY" source="MKT_AGRMTTIER2PRODCATEGORYKEY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2PRODCATEGORYNAME" source="MKT_AGRMTTIER2PRODCATEGORYNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2RENEWALTYPE" source="MKT_AGRMTTIER2RENEWALTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2RENEWALTYPENAME" source="MKT_AGRMTTIER2RENEWALTYPENAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2CANCLNCONDITIONS" source="MKT_AGRMTTIER2CANCLNCONDITIONS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2CANCLNCNDNNAME" source="MKT_AGRMTTIER2CANCLNCNDNNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2CANCLNTODTETME" source="MKT_AGRMTTIER2CANCLNTODTETME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2PROLNGNFRMDTETME" source="MKT_AGRMTTIER2PROLNGNFRMDTETME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2PAYTISINADVANCE" source="MKT_AGRMTTIER2PAYTISINADVANCE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2PAYMENTFREQUENCY" source="MKT_AGRMTTIER2PAYMENTFREQUENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2PAYMENTFRQCYNAME" source="MKT_AGRMTTIER2PAYMENTFRQCYNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2IASTATUS" source="MKT_AGRMTTIER2IASTATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2IASTATUSNAME" source="MKT_AGRMTTIER2IASTATUSNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2IATYPE" source="MKT_AGRMTTIER2IATYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2IATYPENAME" source="MKT_AGRMTTIER2IATYPENAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2IAREASON" source="MKT_AGRMTTIER2IAREASON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2IAREASONNAME" source="MKT_AGRMTTIER2IAREASONNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2IATIMESTAMP" source="MKT_AGRMTTIER2IATIMESTAMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2REGIONDESC" source="MKT_AGRMTTIER2REGIONDESC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2COUNTRYDESC" source="MKT_AGRMTTIER2COUNTRYDESC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2PAYMENTMETHOD" source="MKT_AGRMTTIER2PAYMENTMETHOD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2PAYMENTMETHNAME" source="MKT_AGRMTTIER2PAYMENTMETHNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2CORRMEDIUM" source="MKT_AGRMTTIER2CORRMEDIUM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2CORRMEDIUM_NAME" source="MKT_AGRMTTIER2CORRMEDIUM_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2MKTAREADESC" source="MKT_AGRMTTIER2MKTAREADESC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2OCCUPANCYTYPE" source="MKT_AGRMTTIER2OCCUPANCYTYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER2OCCPCYTYPENAME" source="MKT_AGRMTTIER2OCCPCYTYPENAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1ORIGIN" source="MKT_AGREEMENTBUNDLEORIGIN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AGRMTTIER1EXTERNALID" source="MKT_AGREEMENTBUNDLEEXTERNALID"/>
+      </input>
+      <joinAttribute name="MKT_AGRMTTIER1ORIGIN"/>
+      <joinAttribute name="MKT_AGRMTTIER1EXTERNALID"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="MKT_AGRMTTIER1LONGITUDE" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Longitude"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1LONGITUDE"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1LATITUDE" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Latitude"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1LATITUDE"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1HOUSENUM" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Agreement House Number"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1HOUSENUM"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1STREET" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Street"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1STREET"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1POSTCODE" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Postcode"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1POSTCODE"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1CITY" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Agreement City"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1CITY"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1REGION" order="7" attributeHierarchyActive="false" descriptionColumnName="MKT_AGRMTTIER1REGIONDESC" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Region"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1REGION"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1COUNTRY" order="8" attributeHierarchyActive="false" descriptionColumnName="MKT_AGRMTTIER1COUNTRYDESC" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Country/Region"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1COUNTRY"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1LOCATIONNAME" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Location Name"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1LOCATIONNAME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1MKTGLOCEXTID" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Marketing Location ID"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1MKTGLOCEXTID"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1MKTGLOCORIGIN" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Marketing Location Origin"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1MKTGLOCORIGIN"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1UUID" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Key"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1UUID"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1ORIGIN" order="13" attributeHierarchyActive="false" descriptionColumnName="MKT_AGRMTTIER1ORIGINNAME" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Origin"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1ORIGIN"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1ORIGINNAME" hidden="true" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1ORIGINNAME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1EXTERNALID" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Agreement External ID"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1EXTERNALID"/>
+      </attribute>
+      <attribute id="INTERACTIONCONTACTUUID" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Contact UUID"/>
+        <keyMapping columnObjectName="Join_1" columnName="INTERACTIONCONTACTUUID"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1CONTACTID" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Contact ID"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1CONTACTID"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1CONTACTORIGIN" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Contact Origin"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1CONTACTORIGIN"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1TYPE" order="19" attributeHierarchyActive="false" descriptionColumnName="MKT_AGRMTTIER1TYPENAME" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Type"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1TYPE"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1TYPENAME" hidden="true" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1TYPENAME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1MARKETINGAREA" order="21" attributeHierarchyActive="false" descriptionColumnName="MKT_AGRMTTIER1MKTAREADESC" displayAttribute="false">
+        <descriptions defaultDescription="Marketing Area"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1MARKETINGAREA"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1STARTDATETIME" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Start Date/Time"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1STARTDATETIME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1ENDDATETIME" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Agreement End Date/Time"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1ENDDATETIME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1TERMSUUID" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Terms Key"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1TERMSUUID"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1TERMSSTARTDTETME" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Validity Start Date/Time"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1TERMSSTARTDTETME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1TERMSENDDATETIME" order="26" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Validity End Date/Time"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1TERMSENDDATETIME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1STATUS" order="27" attributeHierarchyActive="false" descriptionColumnName="MKT_AGRMTTIER1STATUSNAME" displayAttribute="false">
+        <descriptions defaultDescription="Status"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1STATUS"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1STATUSNAME" hidden="true" order="28" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1STATUSNAME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1PAYTISINADVANCE" order="29" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Payment in Advance"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1PAYTISINADVANCE"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1PAYMENTFREQUENCY" order="30" attributeHierarchyActive="false" descriptionColumnName="MKT_AGRMTTIER1PAYMENTFRQCYNAME" displayAttribute="false">
+        <descriptions defaultDescription="Payment Frequency"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1PAYMENTFREQUENCY"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1PAYMENTFRQCYNAME" hidden="true" order="31" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1PAYMENTFRQCYNAME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1IASTATUS" order="32" attributeHierarchyActive="false" descriptionColumnName="MKT_AGRMTTIER1IASTATUSNAME" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Interaction Status"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1IASTATUS"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1IASTATUSNAME" hidden="true" order="33" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1IASTATUSNAME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1IATYPE" order="34" attributeHierarchyActive="false" descriptionColumnName="MKT_AGRMTTIER1IATYPENAME" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Interaction Type"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1IATYPE"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1IATYPENAME" hidden="true" order="35" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1IATYPENAME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1IAREASON" order="36" attributeHierarchyActive="false" descriptionColumnName="MKT_AGRMTTIER1IAREASONNAME" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Interaction Reason"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1IAREASON"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1IAREASONNAME" hidden="true" order="37" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1IAREASONNAME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1IATIMESTAMP" order="38" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Interaction Timestamp"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1IATIMESTAMP"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1REGIONDESC" hidden="true" order="39" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Region Description"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1REGIONDESC"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1COUNTRYDESC" hidden="true" order="40" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Country/Region Description"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1COUNTRYDESC"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1PAYMENTMETHOD" order="41" attributeHierarchyActive="false" descriptionColumnName="MKT_AGRMTTIER1PAYMENTMETHNAME" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Payment Method"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1PAYMENTMETHOD"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1PAYMENTMETHNAME" hidden="true" order="42" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1PAYMENTMETHNAME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1CORRMEDIUM" order="43" attributeHierarchyActive="false" descriptionColumnName="MKT_AGRMTTIER1CORRMEDIUM_NAME" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Correspondence Medium"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1CORRMEDIUM"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1CORRMEDIUM_NAME" hidden="true" order="44" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1CORRMEDIUM_NAME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER1MKTAREADESC" hidden="true" order="45" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER1MKTAREADESC"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2LONGITUDE" order="46" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Longitude"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2LONGITUDE"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2LATITUDE" order="47" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Latitude"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2LATITUDE"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2HOUSENUM" order="48" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Agreement House Number"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2HOUSENUM"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2STREET" order="49" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Street"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2STREET"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2POSTCODE" order="50" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Postcode"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2POSTCODE"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2CITY" order="51" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Agreement City"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2CITY"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2REGION" order="52" attributeHierarchyActive="false" descriptionColumnName="MKT_AGRMTTIER2REGIONDESC" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Region"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2REGION"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2COUNTRY" order="53" attributeHierarchyActive="false" descriptionColumnName="MKT_AGRMTTIER2COUNTRYDESC" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Country/Region"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2COUNTRY"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2LOCATIONNAME" order="54" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Location Name"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2LOCATIONNAME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2MKTGLOCEXTID" order="55" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Marketing Location ID"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2MKTGLOCEXTID"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2MKTGLOCORIGIN" order="56" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Marketing Location Origin"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2MKTGLOCORIGIN"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2UUID" order="57" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Key"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2UUID"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2ORIGIN" order="58" attributeHierarchyActive="false" descriptionColumnName="MKT_AGRMTTIER2ORIGINNAME" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Origin"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2ORIGIN"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2ORIGINNAME" hidden="true" order="59" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2ORIGINNAME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2EXTERNALID" order="60" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Agreement External ID"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2EXTERNALID"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2CANCLNREASON" order="61" attributeHierarchyActive="false" descriptionColumnName="MKT_AGRMTTIER2CANCLNREASONNAME" displayAttribute="false">
+        <descriptions defaultDescription="Cancellation Reason"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2CANCLNREASON"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2CANCLNREASONNAME" hidden="true" order="62" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2CANCLNREASONNAME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2CONTACTID" order="63" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Contact ID"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2CONTACTID"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2CONTACTORIGIN" order="64" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Contact Origin"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2CONTACTORIGIN"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2TYPE" order="65" attributeHierarchyActive="false" descriptionColumnName="MKT_AGRMTTIER2TYPENAME" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Type"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2TYPE"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2TYPENAME" hidden="true" order="66" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2TYPENAME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2MARKETINGAREA" order="67" attributeHierarchyActive="false" descriptionColumnName="MKT_AGRMTTIER2MKTAREADESC" displayAttribute="false">
+        <descriptions defaultDescription="Marketing Area"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2MARKETINGAREA"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2STARTDATETIME" order="68" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Start Date/Time"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2STARTDATETIME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2ENDDATETIME" order="69" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Agreement End Date/Time"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2ENDDATETIME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2ISCANCELED" order="70" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cancelled"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2ISCANCELED"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2TERMSUUID" order="71" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Terms Key"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2TERMSUUID"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2TERMSSTARTDTETME" order="72" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Validity Start Date/Time"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2TERMSSTARTDTETME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2TERMSENDDATETIME" order="73" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Validity End Date/Time"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2TERMSENDDATETIME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2STATUS" order="74" attributeHierarchyActive="false" descriptionColumnName="MKT_AGRMTTIER2STATUSNAME" displayAttribute="false">
+        <descriptions defaultDescription="Status"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2STATUS"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2STATUSNAME" hidden="true" order="75" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2STATUSNAME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2DERIVEDSTATUS" order="76" attributeHierarchyActive="false" descriptionColumnName="MKT_AGRMTTIER2DERIVDSTATUSNAME" displayAttribute="false">
+        <descriptions defaultDescription="Current Status"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2DERIVEDSTATUS"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2DERIVDSTATUSNAME" hidden="true" order="77" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2DERIVDSTATUSNAME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2PRODUCTORIGIN" order="78" attributeHierarchyActive="false" descriptionColumnName="MKT_AGRMTTIER2PRODUCTORIGNDESC" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Product Origin"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2PRODUCTORIGIN"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2PRODUCTORIGNDESC" hidden="true" order="79" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2PRODUCTORIGNDESC"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2PRODUCTID" order="80" attributeHierarchyActive="false" descriptionColumnName="MKT_AGRMTTIER2PRODUCTNAME" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Product ID"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2PRODUCTID"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2PRODUCTNAME" hidden="true" order="81" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2PRODUCTNAME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2PRODCATEGORYKEY" order="82" attributeHierarchyActive="false" descriptionColumnName="MKT_AGRMTTIER2PRODCATEGORYNAME" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Product Category"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2PRODCATEGORYKEY"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2PRODCATEGORYNAME" hidden="true" order="83" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2PRODCATEGORYNAME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2RENEWALTYPE" order="84" attributeHierarchyActive="false" descriptionColumnName="MKT_AGRMTTIER2RENEWALTYPENAME" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Renewal Type"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2RENEWALTYPE"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2RENEWALTYPENAME" hidden="true" order="85" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2RENEWALTYPENAME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2CANCLNCONDITIONS" order="86" attributeHierarchyActive="false" descriptionColumnName="MKT_AGRMTTIER2CANCLNCNDNNAME" displayAttribute="false">
+        <descriptions defaultDescription="Cancellation Conditions"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2CANCLNCONDITIONS"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2CANCLNCNDNNAME" hidden="true" order="87" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2CANCLNCNDNNAME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2CANCLNTODTETME" order="88" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Latest Date/Time for Cancellation Before Automatic Renewal"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2CANCLNTODTETME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2PROLNGNFRMDTETME" order="89" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Earliest Date/Time for Prolongation"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2PROLNGNFRMDTETME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2PAYTISINADVANCE" order="90" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Payment in Advance"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2PAYTISINADVANCE"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2PAYMENTFREQUENCY" order="91" attributeHierarchyActive="false" descriptionColumnName="MKT_AGRMTTIER2PAYMENTFRQCYNAME" displayAttribute="false">
+        <descriptions defaultDescription="Payment Frequency"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2PAYMENTFREQUENCY"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2PAYMENTFRQCYNAME" hidden="true" order="92" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2PAYMENTFRQCYNAME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2IASTATUS" order="93" attributeHierarchyActive="false" descriptionColumnName="MKT_AGRMTTIER2IASTATUSNAME" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Interaction Status"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2IASTATUS"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2IASTATUSNAME" hidden="true" order="94" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2IASTATUSNAME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2IATYPE" order="95" attributeHierarchyActive="false" descriptionColumnName="MKT_AGRMTTIER2IATYPENAME" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Interaction Type"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2IATYPE"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2IATYPENAME" hidden="true" order="96" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2IATYPENAME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2IAREASON" order="97" attributeHierarchyActive="false" descriptionColumnName="MKT_AGRMTTIER2IAREASONNAME" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Interaction Reason"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2IAREASON"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2IAREASONNAME" hidden="true" order="98" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2IAREASONNAME"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2IATIMESTAMP" order="99" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Interaction Timestamp"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2IATIMESTAMP"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2REGIONDESC" hidden="true" order="100" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Region Description"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2REGIONDESC"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2COUNTRYDESC" hidden="true" order="101" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Country/Region Description"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2COUNTRYDESC"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2MKTAREADESC" hidden="true" order="102" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2MKTAREADESC"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2OCCUPANCYTYPE" order="103" attributeHierarchyActive="false" descriptionColumnName="MKT_AGRMTTIER2OCCPCYTYPENAME" displayAttribute="false">
+        <descriptions defaultDescription="Agreement Occupancy Type"/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2OCCUPANCYTYPE"/>
+      </attribute>
+      <attribute id="MKT_AGRMTTIER2OCCPCYTYPENAME" hidden="true" order="104" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="MKT_AGRMTTIER2OCCPCYTYPENAME"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="189" y="150"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Tier1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="50" y="370"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Tier2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="330" y="370"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="189" y="260"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    
+      <shape modelObjectName="Tier1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Tier2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

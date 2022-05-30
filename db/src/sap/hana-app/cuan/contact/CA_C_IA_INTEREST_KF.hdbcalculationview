@@ -1,0 +1,2368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="sap.hana-app.cuan.contact::CA_C_IA_INTEREST_KF" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="Key Figures of Interest Level"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="sap.hana-app.cuan.db.cuan::CUAND_CE_IA_RT">
+    <resourceUri>sap.hana-app.cuan.db.cuan::CUAND_CE_IA_RT</resourceUri>
+  </DataSource>
+  <DataSource id="sap.hana-app.cuan.db.cuan::CUAND_CE_IA_INTR">
+    <resourceUri>sap.hana-app.cuan.db.cuan::CUAND_CE_IA_INTR</resourceUri>
+  </DataSource>
+  <DataSource id="sap.hana-app.cuan.db.cuan::CUANC_DEVICE_T">
+    <resourceUri>sap.hana-app.cuan.db.cuan::CUANC_DEVICE_T</resourceUri>
+  </DataSource>
+  <DataSource id="sap.hana-app.cuan.db.cuan::DD07T">
+    <resourceUri>sap.hana-app.cuan.db.cuan::DD07T</resourceUri>
+  </DataSource>
+  <DataSource id="sap.hana-app.cuan.db.cuan::HPAC_MKT_AREA_T">
+    <resourceUri>sap.hana-app.cuan.db.cuan::HPAC_MKT_AREA_T</resourceUri>
+  </DataSource>
+  <DataSource id="Proj_Valuation_Descr$$$$sap.hana-app.cuan.db.cuan::DD07T$$">
+    <resourceUri>sap.hana-app.cuan.db.cuan::DD07T</resourceUri>
+  </DataSource>
+  <DataSource id="Proj_Priority_Descr$$$$sap.hana-app.cuan.db.cuan::DD07T$$">
+    <resourceUri>sap.hana-app.cuan.db.cuan::DD07T</resourceUri>
+  </DataSource>
+  <DataSource id="sap.hana-app.cuan.db.cuan::CUANC_CE_ORIGN_T">
+    <resourceUri>sap.hana-app.cuan.db.cuan::CUANC_CE_ORIGN_T</resourceUri>
+  </DataSource>
+  <DataSource id="sap.hana-app.cuan.db.cuan::CUAND_CE_IOI_T">
+    <resourceUri>sap.hana-app.cuan.db.cuan::CUAND_CE_IOI_T</resourceUri>
+  </DataSource>
+  <DataSource id="sap.hana-app.cuan.db.cuan::CUANC_CE_CH_ASGN">
+    <resourceUri>sap.hana-app.cuan.db.cuan::CUANC_CE_CH_ASGN</resourceUri>
+  </DataSource>
+  <DataSource id="sap.hana-app.cuan.db.cuan::CUANC_CE_CHNNL_T">
+    <resourceUri>sap.hana-app.cuan.db.cuan::CUANC_CE_CHNNL_T</resourceUri>
+  </DataSource>
+  <DataSource id="sap.hana-app.cuan.db.cuan::CUANC_CE_IATYP_T">
+    <resourceUri>sap.hana-app.cuan.db.cuan::CUANC_CE_IATYP_T</resourceUri>
+  </DataSource>
+  <DataSource id="sap.hana-app.cuan.db.cuan::CUANC_CE_CMM_M_T">
+    <resourceUri>sap.hana-app.cuan.db.cuan::CUANC_CE_CMM_M_T</resourceUri>
+  </DataSource>
+  <DataSource id="sap.hana-app.cuan.db.cuan::CUANC_CE_IA_TYPE">
+    <resourceUri>sap.hana-app.cuan.db.cuan::CUANC_CE_IA_TYPE</resourceUri>
+  </DataSource>
+  <DataSource id="Proj_IA_Direction_Descr$$$$sap.hana-app.cuan.db.cuan::DD07T$$">
+    <resourceUri>sap.hana-app.cuan.db.cuan::DD07T</resourceUri>
+  </DataSource>
+  <DataSource id="sap.hana-app.cuan.db.cuan::CUAN_D_INI_ROOT">
+    <resourceUri>sap.hana-app.cuan.db.cuan::CUAN_D_INI_ROOT</resourceUri>
+  </DataSource>
+  <DataSource id="sap.hana-app.cuan.db.cuan::CUANC_CE_IA_RS_T">
+    <resourceUri>sap.hana-app.cuan.db.cuan::CUANC_CE_IA_RS_T</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Proj_IA_RT" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="DB_KEY"/>
+      <viewAttribute id="ID_ORIGIN"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="COMM_MEDIUM"/>
+      <viewAttribute id="IA_TYPE"/>
+      <viewAttribute id="TIMESTAMP"/>
+      <viewAttribute id="SOURCE_OBJECT_TYPE"/>
+      <viewAttribute id="SOURCE_OBJECT_ID"/>
+      <viewAttribute id="INITIATIVE_ID"/>
+      <viewAttribute id="QUANTIFIER"/>
+      <viewAttribute id="IA_REASON"/>
+      <viewAttribute id="SOURCE_SYSTEM_TYPE"/>
+      <viewAttribute id="SOURCE_SYSTEM_ID"/>
+      <viewAttribute id="SOURCE_OBJECT_STATUS_CODE"/>
+    
+      <viewAttribute id="_DATAAGING"/>
+      <viewAttribute id="OBSOLETE"/>
+    
+      <viewAttribute id="CONTACT_KEY"/>
+    
+      <viewAttribute id="MKT_AREA_ID"/>
+      <viewAttribute id="VALUATION"/>
+      <viewAttribute id="IA_STATUS"/>
+      <viewAttribute id="IS_ANONYMOUS"/>
+      <viewAttribute id="DEVICE_TYPE"/>
+      <viewAttribute id="DEVICE_FT"/>
+      <viewAttribute id="SOURCE_OBJECT_ADD_ID"/>
+      <viewAttribute id="SOURCE_TIMESTAMP"/>
+      <viewAttribute id="LAUNCH_TEXT"/>
+      <viewAttribute id="REFERRAL_SOURCE"/>
+      <viewAttribute id="REFERRAL_SOURCE_CATEGORY"/>
+      <viewAttribute id="PRIORITY"/>
+      <viewAttribute id="SOURCE_DATA_URL"/>
+    
+      <viewAttribute id="LAUNCH_URL"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="INTERACTIONSOURCEDATAURL" datatype="NVARCHAR" length="1333" expressionLanguage="SQL">
+        <formula>left(to_nvarchar(&quot;SOURCE_DATA_URL&quot;), 1333)</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="INTERACTIONVALUATION" datatype="NVARCHAR" length="10" expressionLanguage="SQL">
+        <formula>TO_NVARCHAR(&quot;VALUATION&quot;)</formula>
+      </calculatedViewAttribute>
+    
+      <calculatedViewAttribute id="LAUNCHURL" datatype="NVARCHAR" length="1333" expressionLanguage="SQL">
+    
+        <formula>left(to_nvarchar(&quot;LAUNCH_URL&quot;), 1333)</formula>
+    
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input node="sap.hana-app.cuan.db.cuan::CUAND_CE_IA_RT"/>
+    <filter>(&quot;MANDT&quot; ='$$client$$') AND ((&quot;_DATAAGING&quot; = '') OR (&quot;_DATAAGING&quot; = '00000000')) AND  (&quot;OBSOLETE&quot; ='')</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Proj_IA_Interest" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="PARENT_KEY"/>
+      <viewAttribute id="INTEREST_ITEM"/>
+      <viewAttribute id="INTEREST_QUANTIFIER"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="sap.hana-app.cuan.db.cuan::CUAND_CE_IA_INTR"/>
+    <filter>&quot;MANDT&quot; ='$$client$$'</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_IA_RT_Interests" cardinality="C1_N" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="DB_KEY"/>
+      <viewAttribute id="ID_ORIGIN"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="COMM_MEDIUM"/>
+      <viewAttribute id="IA_TYPE"/>
+      <viewAttribute id="TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="SOURCE_OBJECT_TYPE"/>
+      <viewAttribute id="SOURCE_OBJECT_ID"/>
+      <viewAttribute id="INITIATIVE_ID"/>
+      <viewAttribute id="QUANTIFIER" aggregationType="sum"/>
+      <viewAttribute id="IA_REASON"/>
+      <viewAttribute id="SOURCE_SYSTEM_TYPE"/>
+      <viewAttribute id="SOURCE_SYSTEM_ID"/>
+      <viewAttribute id="SOURCE_OBJECT_STATUS_CODE"/>
+    
+      <viewAttribute id="INTEREST_ITEM"/>
+      <viewAttribute id="INTEREST_QUANTIFIER" aggregationType="sum"/>
+    
+      <viewAttribute id="CONTACT_KEY"/>
+    
+      <viewAttribute id="MKT_AREA_ID"/>
+      <viewAttribute id="IA_STATUS"/>
+      <viewAttribute id="IS_ANONYMOUS"/>
+      <viewAttribute id="DEVICE_TYPE"/>
+      <viewAttribute id="DEVICE_FT"/>
+      <viewAttribute id="SOURCE_OBJECT_ADD_ID"/>
+      <viewAttribute id="SOURCE_TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="LAUNCH_TEXT"/>
+      <viewAttribute id="REFERRAL_SOURCE"/>
+      <viewAttribute id="REFERRAL_SOURCE_CATEGORY"/>
+      <viewAttribute id="PRIORITY"/>
+      <viewAttribute id="DEVICE_TYPE_DESC"/>
+      <viewAttribute id="DDTEXT_STATUS"/>
+      <viewAttribute id="MKT_AREA_DESC"/>
+      <viewAttribute id="DDTEXT_VALUATION"/>
+      <viewAttribute id="DDTEXT_PRIORITY"/>
+      <viewAttribute id="INTERACTIONSOURCEDATAURL"/>
+      <viewAttribute id="INTERACTIONVALUATION"/>
+    
+      <viewAttribute id="LAUNCHURL"/>
+    
+      <viewAttribute id="ID_ORIGIN_DESC"/>
+      <viewAttribute id="IA_REASON_DESC"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_IA_RT_Device_Type_Descr">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DB_KEY" source="DB_KEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN" source="ID_ORIGIN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMM_MEDIUM" source="COMM_MEDIUM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_TYPE" source="IA_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP" source="TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_TYPE" source="SOURCE_OBJECT_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ID" source="SOURCE_OBJECT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INITIATIVE_ID" source="INITIATIVE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUANTIFIER" source="QUANTIFIER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON" source="IA_REASON"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_TYPE" source="SOURCE_SYSTEM_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_ID" source="SOURCE_SYSTEM_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_STATUS_CODE" source="SOURCE_OBJECT_STATUS_CODE"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONTACT_KEY" source="CONTACT_KEY"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AREA_ID" source="MKT_AREA_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_STATUS" source="IA_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IS_ANONYMOUS" source="IS_ANONYMOUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_TYPE" source="DEVICE_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_FT" source="DEVICE_FT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ADD_ID" source="SOURCE_OBJECT_ADD_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_TIMESTAMP" source="SOURCE_TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCH_TEXT" source="LAUNCH_TEXT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE" source="REFERRAL_SOURCE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE_CATEGORY" source="REFERRAL_SOURCE_CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRIORITY" source="PRIORITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_TYPE_DESC" source="DEVICE_TYPE_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_STATUS" source="DDTEXT_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AREA_DESC" source="MKT_AREA_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_VALUATION" source="DDTEXT_VALUATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_PRIORITY" source="DDTEXT_PRIORITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEDATAURL" source="INTERACTIONSOURCEDATAURL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONVALUATION" source="INTERACTIONVALUATION"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCHURL" source="LAUNCHURL"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN_DESC" source="ID_ORIGIN_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON_DESC" source="IA_REASON_DESC"/>
+    </input>
+  
+    <input node="Proj_IA_Interest">
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTEREST_ITEM" source="INTEREST_ITEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTEREST_QUANTIFIER" source="INTEREST_QUANTIFIER"/>
+  
+      <mapping xsi:type="Calculation:AttributeMapping" target="DB_KEY" source="PARENT_KEY"/>
+  
+    </input>
+    <joinAttribute name="DB_KEY"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_IA_RT_Device_Type_Descr" cardinality="C1_1" joinType="textTable" languageColumn="SPRAS">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="DB_KEY"/>
+      <viewAttribute id="ID_ORIGIN"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="COMM_MEDIUM"/>
+      <viewAttribute id="IA_TYPE"/>
+      <viewAttribute id="TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="SOURCE_OBJECT_TYPE"/>
+      <viewAttribute id="SOURCE_OBJECT_ID"/>
+      <viewAttribute id="INITIATIVE_ID"/>
+      <viewAttribute id="QUANTIFIER" aggregationType="sum"/>
+      <viewAttribute id="IA_REASON"/>
+      <viewAttribute id="SOURCE_SYSTEM_TYPE"/>
+      <viewAttribute id="SOURCE_SYSTEM_ID"/>
+      <viewAttribute id="SOURCE_OBJECT_STATUS_CODE"/>
+      <viewAttribute id="CONTACT_KEY"/>
+      <viewAttribute id="MKT_AREA_ID"/>
+      <viewAttribute id="IA_STATUS"/>
+      <viewAttribute id="IS_ANONYMOUS"/>
+      <viewAttribute id="DEVICE_TYPE"/>
+      <viewAttribute id="DEVICE_FT"/>
+      <viewAttribute id="SOURCE_OBJECT_ADD_ID"/>
+      <viewAttribute id="SOURCE_TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="LAUNCH_TEXT"/>
+      <viewAttribute id="REFERRAL_SOURCE"/>
+      <viewAttribute id="REFERRAL_SOURCE_CATEGORY"/>
+      <viewAttribute id="PRIORITY"/>
+      <viewAttribute id="DEVICE_TYPE_DESC"/>
+      <viewAttribute id="DDTEXT_STATUS"/>
+      <viewAttribute id="MKT_AREA_DESC"/>
+      <viewAttribute id="DDTEXT_VALUATION"/>
+      <viewAttribute id="DDTEXT_PRIORITY"/>
+      <viewAttribute id="INTERACTIONSOURCEDATAURL"/>
+      <viewAttribute id="INTERACTIONVALUATION"/>
+      <viewAttribute id="LAUNCHURL"/>
+      <viewAttribute id="ID_ORIGIN_DESC"/>
+      <viewAttribute id="IA_REASON_DESC"/>
+    
+    
+    
+      <viewAttribute id="_DATAAGING"/>
+      <viewAttribute id="OBSOLETE"/></viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_IA_RT_Status_Descr">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DB_KEY" source="DB_KEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN" source="ID_ORIGIN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMM_MEDIUM" source="COMM_MEDIUM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_TYPE" source="IA_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP" source="TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_TYPE" source="SOURCE_OBJECT_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ID" source="SOURCE_OBJECT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INITIATIVE_ID" source="INITIATIVE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUANTIFIER" source="QUANTIFIER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON" source="IA_REASON"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_TYPE" source="SOURCE_SYSTEM_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_ID" source="SOURCE_SYSTEM_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_STATUS_CODE" source="SOURCE_OBJECT_STATUS_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="_DATAAGING" source="_DATAAGING"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OBSOLETE" source="OBSOLETE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONTACT_KEY" source="CONTACT_KEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AREA_ID" source="MKT_AREA_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_STATUS" source="IA_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IS_ANONYMOUS" source="IS_ANONYMOUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_TYPE" source="DEVICE_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_FT" source="DEVICE_FT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ADD_ID" source="SOURCE_OBJECT_ADD_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_TIMESTAMP" source="SOURCE_TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCH_TEXT" source="LAUNCH_TEXT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE" source="REFERRAL_SOURCE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE_CATEGORY" source="REFERRAL_SOURCE_CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRIORITY" source="PRIORITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_STATUS" source="DDTEXT_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AREA_DESC" source="MKT_AREA_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_VALUATION" source="DDTEXT_VALUATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_PRIORITY" source="DDTEXT_PRIORITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEDATAURL" source="INTERACTIONSOURCEDATAURL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONVALUATION" source="INTERACTIONVALUATION"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCHURL" source="LAUNCHURL"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN_DESC" source="ID_ORIGIN_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON_DESC" source="IA_REASON_DESC"/>
+    </input>
+    <input node="Proj_Device_Descr">
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_TYPE_DESC" source="DEVICE_TYPE_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_TYPE" source="DEVICE_TYPE"/>
+    </input>
+    <joinAttribute name="DEVICE_TYPE"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_IA_RT_Status_Descr" cardinality="C1_1" joinType="textTable" languageColumn="DDLANGUAGE">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="DB_KEY"/>
+      <viewAttribute id="ID_ORIGIN"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="COMM_MEDIUM"/>
+      <viewAttribute id="IA_TYPE"/>
+      <viewAttribute id="TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="SOURCE_OBJECT_TYPE"/>
+      <viewAttribute id="SOURCE_OBJECT_ID"/>
+      <viewAttribute id="INITIATIVE_ID"/>
+      <viewAttribute id="QUANTIFIER" aggregationType="sum"/>
+      <viewAttribute id="IA_REASON"/>
+      <viewAttribute id="SOURCE_SYSTEM_TYPE"/>
+      <viewAttribute id="SOURCE_SYSTEM_ID"/>
+      <viewAttribute id="SOURCE_OBJECT_STATUS_CODE"/>
+      <viewAttribute id="_DATAAGING"/>
+      <viewAttribute id="OBSOLETE"/>
+      <viewAttribute id="CONTACT_KEY"/>
+      <viewAttribute id="MKT_AREA_ID"/>
+      <viewAttribute id="IA_STATUS"/>
+      <viewAttribute id="IS_ANONYMOUS"/>
+      <viewAttribute id="DEVICE_TYPE"/>
+      <viewAttribute id="DEVICE_FT"/>
+      <viewAttribute id="SOURCE_OBJECT_ADD_ID"/>
+      <viewAttribute id="SOURCE_TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="LAUNCH_TEXT"/>
+      <viewAttribute id="REFERRAL_SOURCE"/>
+      <viewAttribute id="REFERRAL_SOURCE_CATEGORY"/>
+      <viewAttribute id="PRIORITY"/>
+      <viewAttribute id="DDTEXT_STATUS"/>
+      <viewAttribute id="MKT_AREA_DESC"/>
+      <viewAttribute id="DDTEXT_VALUATION"/>
+      <viewAttribute id="DDTEXT_PRIORITY"/>
+      <viewAttribute id="INTERACTIONSOURCEDATAURL"/>
+      <viewAttribute id="INTERACTIONVALUATION"/>
+    
+      <viewAttribute id="LAUNCHURL"/>
+    
+      <viewAttribute id="ID_ORIGIN_DESC"/>
+      <viewAttribute id="IA_REASON_DESC"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_IA_RT_Mkt_Area_Descr">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DB_KEY" source="DB_KEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN" source="ID_ORIGIN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMM_MEDIUM" source="COMM_MEDIUM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_TYPE" source="IA_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP" source="TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_TYPE" source="SOURCE_OBJECT_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ID" source="SOURCE_OBJECT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INITIATIVE_ID" source="INITIATIVE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUANTIFIER" source="QUANTIFIER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON" source="IA_REASON"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_TYPE" source="SOURCE_SYSTEM_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_ID" source="SOURCE_SYSTEM_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_STATUS_CODE" source="SOURCE_OBJECT_STATUS_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="_DATAAGING" source="_DATAAGING"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OBSOLETE" source="OBSOLETE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONTACT_KEY" source="CONTACT_KEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AREA_ID" source="MKT_AREA_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_STATUS" source="IA_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IS_ANONYMOUS" source="IS_ANONYMOUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_TYPE" source="DEVICE_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_FT" source="DEVICE_FT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ADD_ID" source="SOURCE_OBJECT_ADD_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_TIMESTAMP" source="SOURCE_TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCH_TEXT" source="LAUNCH_TEXT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE" source="REFERRAL_SOURCE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE_CATEGORY" source="REFERRAL_SOURCE_CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRIORITY" source="PRIORITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AREA_DESC" source="MKT_AREA_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_VALUATION" source="DDTEXT_VALUATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_PRIORITY" source="DDTEXT_PRIORITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEDATAURL" source="INTERACTIONSOURCEDATAURL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONVALUATION" source="INTERACTIONVALUATION"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCHURL" source="LAUNCHURL"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN_DESC" source="ID_ORIGIN_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON_DESC" source="IA_REASON_DESC"/>
+    </input>
+    <input node="Proj_Status_Descr">
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_STATUS" source="DDTEXT_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_STATUS" source="DOMVALUE_L"/>
+    </input>
+    <joinAttribute name="IA_STATUS"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Proj_Device_Descr" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="DEVICE_TYPE_DESC"/>
+    
+      <viewAttribute id="DEVICE_TYPE"/>
+      <viewAttribute id="SPRAS"/>
+      <viewAttribute id="MANDT"/></viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="sap.hana-app.cuan.db.cuan::CUANC_DEVICE_T"/>
+    <filter>&quot;MANDT&quot; ='$$client$$'</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_IA_RT_Mkt_Area_Descr" cardinality="C1_1" joinType="textTable" languageColumn="SPRAS">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="DB_KEY"/>
+      <viewAttribute id="ID_ORIGIN"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="COMM_MEDIUM"/>
+      <viewAttribute id="IA_TYPE"/>
+      <viewAttribute id="TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="SOURCE_OBJECT_TYPE"/>
+      <viewAttribute id="SOURCE_OBJECT_ID"/>
+      <viewAttribute id="INITIATIVE_ID"/>
+      <viewAttribute id="QUANTIFIER" aggregationType="sum"/>
+      <viewAttribute id="IA_REASON"/>
+      <viewAttribute id="SOURCE_SYSTEM_TYPE"/>
+      <viewAttribute id="SOURCE_SYSTEM_ID"/>
+      <viewAttribute id="SOURCE_OBJECT_STATUS_CODE"/>
+      <viewAttribute id="_DATAAGING"/>
+      <viewAttribute id="OBSOLETE"/>
+      <viewAttribute id="CONTACT_KEY"/>
+      <viewAttribute id="MKT_AREA_ID"/>
+      <viewAttribute id="IA_STATUS"/>
+      <viewAttribute id="IS_ANONYMOUS"/>
+      <viewAttribute id="DEVICE_TYPE"/>
+      <viewAttribute id="DEVICE_FT"/>
+      <viewAttribute id="SOURCE_OBJECT_ADD_ID"/>
+      <viewAttribute id="SOURCE_TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="LAUNCH_TEXT"/>
+      <viewAttribute id="REFERRAL_SOURCE"/>
+      <viewAttribute id="REFERRAL_SOURCE_CATEGORY"/>
+      <viewAttribute id="PRIORITY"/>
+      <viewAttribute id="MKT_AREA_DESC"/>
+      <viewAttribute id="DDTEXT_VALUATION"/>
+      <viewAttribute id="DDTEXT_PRIORITY"/>
+      <viewAttribute id="INTERACTIONSOURCEDATAURL"/>
+      <viewAttribute id="INTERACTIONVALUATION"/>
+    
+      <viewAttribute id="LAUNCHURL"/>
+    
+      <viewAttribute id="ID_ORIGIN_DESC"/>
+      <viewAttribute id="IA_REASON_DESC"/>
+    
+    
+      <viewAttribute id="SPRAS"/></viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_IA_RT_Valuation_Descr">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DB_KEY" source="DB_KEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN" source="ID_ORIGIN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMM_MEDIUM" source="COMM_MEDIUM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_TYPE" source="IA_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP" source="TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_TYPE" source="SOURCE_OBJECT_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ID" source="SOURCE_OBJECT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INITIATIVE_ID" source="INITIATIVE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUANTIFIER" source="QUANTIFIER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON" source="IA_REASON"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_TYPE" source="SOURCE_SYSTEM_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_ID" source="SOURCE_SYSTEM_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_STATUS_CODE" source="SOURCE_OBJECT_STATUS_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="_DATAAGING" source="_DATAAGING"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OBSOLETE" source="OBSOLETE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONTACT_KEY" source="CONTACT_KEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AREA_ID" source="MKT_AREA_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_STATUS" source="IA_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IS_ANONYMOUS" source="IS_ANONYMOUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_TYPE" source="DEVICE_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_FT" source="DEVICE_FT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ADD_ID" source="SOURCE_OBJECT_ADD_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_TIMESTAMP" source="SOURCE_TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCH_TEXT" source="LAUNCH_TEXT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE" source="REFERRAL_SOURCE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE_CATEGORY" source="REFERRAL_SOURCE_CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRIORITY" source="PRIORITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_VALUATION" source="DDTEXT_VALUATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_PRIORITY" source="DDTEXT_PRIORITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEDATAURL" source="INTERACTIONSOURCEDATAURL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONVALUATION" source="INTERACTIONVALUATION"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCHURL" source="LAUNCHURL"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN_DESC" source="ID_ORIGIN_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON_DESC" source="IA_REASON_DESC"/>
+    </input>
+    <input node="Proj_Mkt_Area_Descr">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AREA_DESC" source="MKT_AREA_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SPRAS" source="SPRAS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AREA_ID" source="MKT_AREA_ID"/>
+    </input>
+    <joinAttribute name="MKT_AREA_ID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Proj_Status_Descr" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="DDTEXT_STATUS"/>
+      <viewAttribute id="DOMVALUE_L"/>
+    
+      <viewAttribute id="DDLANGUAGE"/>
+      <viewAttribute id="DOMNAME"/>
+      <viewAttribute id="AS4LOCAL"/></viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="sap.hana-app.cuan.db.cuan::DD07T">
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_STATUS" source="DDTEXT"/>
+    </input>
+    <filter>(&quot;DOMNAME&quot; = 'CUAN_CE_IA_STATUS') AND  (&quot;AS4LOCAL&quot; ='A')</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_IA_RT_Valuation_Descr" cardinality="C1_1" joinType="textTable" languageColumn="DDLANGUAGE">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="DB_KEY"/>
+      <viewAttribute id="ID_ORIGIN"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="COMM_MEDIUM"/>
+      <viewAttribute id="IA_TYPE"/>
+      <viewAttribute id="TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="SOURCE_OBJECT_TYPE"/>
+      <viewAttribute id="SOURCE_OBJECT_ID"/>
+      <viewAttribute id="INITIATIVE_ID"/>
+      <viewAttribute id="QUANTIFIER" aggregationType="sum"/>
+      <viewAttribute id="IA_REASON"/>
+      <viewAttribute id="SOURCE_SYSTEM_TYPE"/>
+      <viewAttribute id="SOURCE_SYSTEM_ID"/>
+      <viewAttribute id="SOURCE_OBJECT_STATUS_CODE"/>
+      <viewAttribute id="_DATAAGING"/>
+      <viewAttribute id="OBSOLETE"/>
+      <viewAttribute id="CONTACT_KEY"/>
+      <viewAttribute id="MKT_AREA_ID"/>
+      <viewAttribute id="IA_STATUS"/>
+      <viewAttribute id="IS_ANONYMOUS"/>
+      <viewAttribute id="DEVICE_TYPE"/>
+      <viewAttribute id="DEVICE_FT"/>
+      <viewAttribute id="SOURCE_OBJECT_ADD_ID"/>
+      <viewAttribute id="SOURCE_TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="LAUNCH_TEXT"/>
+      <viewAttribute id="REFERRAL_SOURCE"/>
+      <viewAttribute id="REFERRAL_SOURCE_CATEGORY"/>
+      <viewAttribute id="PRIORITY"/>
+      <viewAttribute id="DDTEXT_VALUATION"/>
+      <viewAttribute id="DDTEXT_PRIORITY"/>
+      <viewAttribute id="INTERACTIONSOURCEDATAURL"/>
+      <viewAttribute id="INTERACTIONVALUATION"/>
+    
+      <viewAttribute id="LAUNCHURL"/>
+    
+      <viewAttribute id="ID_ORIGIN_DESC"/>
+      <viewAttribute id="IA_REASON_DESC"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_IA_RT_Priority_Descr">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DB_KEY" source="DB_KEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN" source="ID_ORIGIN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMM_MEDIUM" source="COMM_MEDIUM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_TYPE" source="IA_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP" source="TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_TYPE" source="SOURCE_OBJECT_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ID" source="SOURCE_OBJECT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INITIATIVE_ID" source="INITIATIVE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUANTIFIER" source="QUANTIFIER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON" source="IA_REASON"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_TYPE" source="SOURCE_SYSTEM_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_ID" source="SOURCE_SYSTEM_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_STATUS_CODE" source="SOURCE_OBJECT_STATUS_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="_DATAAGING" source="_DATAAGING"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OBSOLETE" source="OBSOLETE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONTACT_KEY" source="CONTACT_KEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AREA_ID" source="MKT_AREA_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_STATUS" source="IA_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IS_ANONYMOUS" source="IS_ANONYMOUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_TYPE" source="DEVICE_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_FT" source="DEVICE_FT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ADD_ID" source="SOURCE_OBJECT_ADD_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_TIMESTAMP" source="SOURCE_TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCH_TEXT" source="LAUNCH_TEXT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE" source="REFERRAL_SOURCE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE_CATEGORY" source="REFERRAL_SOURCE_CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRIORITY" source="PRIORITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_PRIORITY" source="DDTEXT_PRIORITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEDATAURL" source="INTERACTIONSOURCEDATAURL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONVALUATION" source="INTERACTIONVALUATION"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCHURL" source="LAUNCHURL"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN_DESC" source="ID_ORIGIN_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON_DESC" source="IA_REASON_DESC"/>
+    </input>
+    <input node="Proj_Valuation_Descr">
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_VALUATION" source="DDTEXT_VALUATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONVALUATION" source="DOMVALUE_L"/>
+    </input>
+    <joinAttribute name="INTERACTIONVALUATION"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Proj_Mkt_Area_Descr" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="MKT_AREA_DESC"/>
+      <viewAttribute id="SPRAS"/>
+    
+      <viewAttribute id="MKT_AREA_ID"/>
+      <viewAttribute id="MANDT"/></viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="sap.hana-app.cuan.db.cuan::HPAC_MKT_AREA_T"/>
+    <filter>&quot;MANDT&quot; ='$$client$$'</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_IA_RT_Priority_Descr" cardinality="C1_1" joinType="textTable" languageColumn="DDLANGUAGE">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="DB_KEY"/>
+      <viewAttribute id="ID_ORIGIN"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="COMM_MEDIUM"/>
+      <viewAttribute id="IA_TYPE"/>
+      <viewAttribute id="TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="SOURCE_OBJECT_TYPE"/>
+      <viewAttribute id="SOURCE_OBJECT_ID"/>
+      <viewAttribute id="INITIATIVE_ID"/>
+      <viewAttribute id="QUANTIFIER" aggregationType="sum"/>
+      <viewAttribute id="IA_REASON"/>
+      <viewAttribute id="SOURCE_SYSTEM_TYPE"/>
+      <viewAttribute id="SOURCE_SYSTEM_ID"/>
+      <viewAttribute id="SOURCE_OBJECT_STATUS_CODE"/>
+      <viewAttribute id="_DATAAGING"/>
+      <viewAttribute id="OBSOLETE"/>
+      <viewAttribute id="CONTACT_KEY"/>
+      <viewAttribute id="MKT_AREA_ID"/>
+      <viewAttribute id="IA_STATUS"/>
+      <viewAttribute id="IS_ANONYMOUS"/>
+      <viewAttribute id="DEVICE_TYPE"/>
+      <viewAttribute id="DEVICE_FT"/>
+      <viewAttribute id="SOURCE_OBJECT_ADD_ID"/>
+      <viewAttribute id="SOURCE_TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="LAUNCH_TEXT"/>
+      <viewAttribute id="REFERRAL_SOURCE"/>
+      <viewAttribute id="REFERRAL_SOURCE_CATEGORY"/>
+      <viewAttribute id="PRIORITY"/>
+      <viewAttribute id="DDTEXT_PRIORITY"/>
+      <viewAttribute id="INTERACTIONSOURCEDATAURL"/>
+      <viewAttribute id="INTERACTIONVALUATION"/>
+    
+      <viewAttribute id="LAUNCHURL"/>
+    
+      <viewAttribute id="ID_ORIGIN_DESC"/>
+      <viewAttribute id="IA_REASON_DESC"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_IA_RT_Origin_Descr">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DB_KEY" source="DB_KEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN" source="ID_ORIGIN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMM_MEDIUM" source="COMM_MEDIUM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_TYPE" source="IA_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP" source="TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_TYPE" source="SOURCE_OBJECT_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ID" source="SOURCE_OBJECT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INITIATIVE_ID" source="INITIATIVE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUANTIFIER" source="QUANTIFIER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON" source="IA_REASON"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_TYPE" source="SOURCE_SYSTEM_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_ID" source="SOURCE_SYSTEM_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_STATUS_CODE" source="SOURCE_OBJECT_STATUS_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="_DATAAGING" source="_DATAAGING"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OBSOLETE" source="OBSOLETE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONTACT_KEY" source="CONTACT_KEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AREA_ID" source="MKT_AREA_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_STATUS" source="IA_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IS_ANONYMOUS" source="IS_ANONYMOUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_TYPE" source="DEVICE_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_FT" source="DEVICE_FT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ADD_ID" source="SOURCE_OBJECT_ADD_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_TIMESTAMP" source="SOURCE_TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCH_TEXT" source="LAUNCH_TEXT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE" source="REFERRAL_SOURCE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE_CATEGORY" source="REFERRAL_SOURCE_CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRIORITY" source="PRIORITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEDATAURL" source="INTERACTIONSOURCEDATAURL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONVALUATION" source="INTERACTIONVALUATION"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCHURL" source="LAUNCHURL"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN_DESC" source="ID_ORIGIN_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON_DESC" source="IA_REASON_DESC"/>
+    </input>
+    <input node="Proj_Priority_Descr">
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_PRIORITY" source="DDTEXT_PRIORITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRIORITY" source="DOMVALUE_L"/>
+    </input>
+    <joinAttribute name="PRIORITY"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Proj_Valuation_Descr" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="DDTEXT_VALUATION"/>
+      <viewAttribute id="DOMVALUE_L"/>
+    
+      <viewAttribute id="DDLANGUAGE"/>
+      <viewAttribute id="DOMNAME"/>
+      <viewAttribute id="AS4LOCAL"/></viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Proj_Valuation_Descr$$$$sap.hana-app.cuan.db.cuan::DD07T$$">
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_VALUATION" source="DDTEXT"/>
+    </input>
+    <filter>(&quot;DOMNAME&quot; = 'HPA_OBJECT_VALUATION') AND  (&quot;AS4LOCAL&quot; ='A')</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_IA_RT_Origin_Descr" cardinality="C1_1" joinType="textTable" languageColumn="SPRAS">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="DB_KEY"/>
+      <viewAttribute id="ID_ORIGIN"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="COMM_MEDIUM"/>
+      <viewAttribute id="IA_TYPE"/>
+      <viewAttribute id="TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="SOURCE_OBJECT_TYPE"/>
+      <viewAttribute id="SOURCE_OBJECT_ID"/>
+      <viewAttribute id="INITIATIVE_ID"/>
+      <viewAttribute id="QUANTIFIER" aggregationType="sum"/>
+      <viewAttribute id="IA_REASON"/>
+      <viewAttribute id="SOURCE_SYSTEM_TYPE"/>
+      <viewAttribute id="SOURCE_SYSTEM_ID"/>
+      <viewAttribute id="SOURCE_OBJECT_STATUS_CODE"/>
+      <viewAttribute id="_DATAAGING"/>
+      <viewAttribute id="OBSOLETE"/>
+      <viewAttribute id="CONTACT_KEY"/>
+      <viewAttribute id="MKT_AREA_ID"/>
+      <viewAttribute id="IA_STATUS"/>
+      <viewAttribute id="IS_ANONYMOUS"/>
+      <viewAttribute id="DEVICE_TYPE"/>
+      <viewAttribute id="DEVICE_FT"/>
+      <viewAttribute id="SOURCE_OBJECT_ADD_ID"/>
+      <viewAttribute id="SOURCE_TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="LAUNCH_TEXT"/>
+      <viewAttribute id="REFERRAL_SOURCE"/>
+      <viewAttribute id="REFERRAL_SOURCE_CATEGORY"/>
+      <viewAttribute id="PRIORITY"/>
+      <viewAttribute id="INTERACTIONSOURCEDATAURL"/>
+      <viewAttribute id="INTERACTIONVALUATION"/>
+      <viewAttribute id="LAUNCHURL"/>
+      <viewAttribute id="ID_ORIGIN_DESC"/>
+      <viewAttribute id="IA_REASON_DESC"/>
+    
+      <viewAttribute id="VALUATION" aggregationType="sum"/>
+      <viewAttribute id="SOURCE_DATA_URL"/>
+      <viewAttribute id="LAUNCH_URL"/></viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_IA_RT_Reason_Descr">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DB_KEY" source="DB_KEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN" source="ID_ORIGIN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMM_MEDIUM" source="COMM_MEDIUM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_TYPE" source="IA_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP" source="TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_TYPE" source="SOURCE_OBJECT_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ID" source="SOURCE_OBJECT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INITIATIVE_ID" source="INITIATIVE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUANTIFIER" source="QUANTIFIER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON" source="IA_REASON"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_TYPE" source="SOURCE_SYSTEM_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_ID" source="SOURCE_SYSTEM_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_STATUS_CODE" source="SOURCE_OBJECT_STATUS_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="_DATAAGING" source="_DATAAGING"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OBSOLETE" source="OBSOLETE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONTACT_KEY" source="CONTACT_KEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AREA_ID" source="MKT_AREA_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VALUATION" source="VALUATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_STATUS" source="IA_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IS_ANONYMOUS" source="IS_ANONYMOUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_TYPE" source="DEVICE_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_FT" source="DEVICE_FT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ADD_ID" source="SOURCE_OBJECT_ADD_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_TIMESTAMP" source="SOURCE_TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCH_TEXT" source="LAUNCH_TEXT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE" source="REFERRAL_SOURCE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE_CATEGORY" source="REFERRAL_SOURCE_CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRIORITY" source="PRIORITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_DATA_URL" source="SOURCE_DATA_URL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCH_URL" source="LAUNCH_URL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEDATAURL" source="INTERACTIONSOURCEDATAURL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONVALUATION" source="INTERACTIONVALUATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCHURL" source="LAUNCHURL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON_DESC" source="IA_REASON_DESC"/>
+    </input>
+    <input node="Proj_Origin_Descr">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN_DESC" source="ID_ORIGIN_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN" source="ID_ORIGIN"/>
+    </input>
+    <joinAttribute name="ID_ORIGIN"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Proj_Priority_Descr" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="DDTEXT_PRIORITY"/>
+      <viewAttribute id="DOMVALUE_L"/>
+    
+      <viewAttribute id="DDLANGUAGE"/>
+      <viewAttribute id="DOMNAME"/>
+      <viewAttribute id="AS4LOCAL"/></viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Proj_Priority_Descr$$$$sap.hana-app.cuan.db.cuan::DD07T$$">
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_PRIORITY" source="DDTEXT"/>
+    </input>
+    <filter>(&quot;DOMNAME&quot; = 'CUAN_CE_IA_PRIORITY') AND  (&quot;AS4LOCAL&quot; ='A')</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_IA_RT_Reason_Descr" cardinality="C1_1" joinType="textTable" languageColumn="SPRAS">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="DB_KEY"/>
+      <viewAttribute id="ID_ORIGIN"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="COMM_MEDIUM"/>
+      <viewAttribute id="IA_TYPE"/>
+      <viewAttribute id="TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="SOURCE_OBJECT_TYPE"/>
+      <viewAttribute id="SOURCE_OBJECT_ID"/>
+      <viewAttribute id="INITIATIVE_ID"/>
+      <viewAttribute id="QUANTIFIER" aggregationType="sum"/>
+      <viewAttribute id="IA_REASON"/>
+      <viewAttribute id="SOURCE_SYSTEM_TYPE"/>
+      <viewAttribute id="SOURCE_SYSTEM_ID"/>
+      <viewAttribute id="SOURCE_OBJECT_STATUS_CODE"/>
+      <viewAttribute id="_DATAAGING"/>
+      <viewAttribute id="OBSOLETE"/>
+      <viewAttribute id="CONTACT_KEY"/>
+      <viewAttribute id="MKT_AREA_ID"/>
+      <viewAttribute id="VALUATION" aggregationType="sum"/>
+      <viewAttribute id="IA_STATUS"/>
+      <viewAttribute id="IS_ANONYMOUS"/>
+      <viewAttribute id="DEVICE_TYPE"/>
+      <viewAttribute id="DEVICE_FT"/>
+      <viewAttribute id="SOURCE_OBJECT_ADD_ID"/>
+      <viewAttribute id="SOURCE_TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="LAUNCH_TEXT"/>
+      <viewAttribute id="REFERRAL_SOURCE"/>
+      <viewAttribute id="REFERRAL_SOURCE_CATEGORY"/>
+      <viewAttribute id="PRIORITY"/>
+      <viewAttribute id="SOURCE_DATA_URL"/>
+      <viewAttribute id="LAUNCH_URL"/>
+      <viewAttribute id="INTERACTIONSOURCEDATAURL"/>
+      <viewAttribute id="INTERACTIONVALUATION"/>
+      <viewAttribute id="LAUNCHURL"/>
+      <viewAttribute id="IA_REASON_DESC"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Proj_IA_RT">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DB_KEY" source="DB_KEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN" source="ID_ORIGIN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMM_MEDIUM" source="COMM_MEDIUM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_TYPE" source="IA_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP" source="TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_TYPE" source="SOURCE_OBJECT_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ID" source="SOURCE_OBJECT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INITIATIVE_ID" source="INITIATIVE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUANTIFIER" source="QUANTIFIER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON" source="IA_REASON"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_TYPE" source="SOURCE_SYSTEM_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_ID" source="SOURCE_SYSTEM_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_STATUS_CODE" source="SOURCE_OBJECT_STATUS_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="_DATAAGING" source="_DATAAGING"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OBSOLETE" source="OBSOLETE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONTACT_KEY" source="CONTACT_KEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AREA_ID" source="MKT_AREA_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VALUATION" source="VALUATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_STATUS" source="IA_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IS_ANONYMOUS" source="IS_ANONYMOUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_TYPE" source="DEVICE_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_FT" source="DEVICE_FT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ADD_ID" source="SOURCE_OBJECT_ADD_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_TIMESTAMP" source="SOURCE_TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCH_TEXT" source="LAUNCH_TEXT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE" source="REFERRAL_SOURCE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE_CATEGORY" source="REFERRAL_SOURCE_CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRIORITY" source="PRIORITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_DATA_URL" source="SOURCE_DATA_URL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCH_URL" source="LAUNCH_URL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEDATAURL" source="INTERACTIONSOURCEDATAURL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONVALUATION" source="INTERACTIONVALUATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCHURL" source="LAUNCHURL"/>
+    </input>
+    <input node="Proj_IA_Reason_Descr">
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON_DESC" source="IA_REASON_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_TYPE" source="IA_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON" source="IA_REASON"/>
+    </input>
+    <joinAttribute name="IA_TYPE"/>
+    <joinAttribute name="IA_REASON"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Proj_Origin_Descr" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="ID_ORIGIN_DESC"/>
+    
+      <viewAttribute id="ID_ORIGIN"/>
+      <viewAttribute id="SPRAS"/>
+      <viewAttribute id="MANDT"/></viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="sap.hana-app.cuan.db.cuan::CUANC_CE_ORIGN_T"/>
+    <filter>&quot;MANDT&quot; ='$$client$$'</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Proj_IA_Intr_Descr" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="SPRAS"/>
+      <viewAttribute id="INTEREST_ITEM"/>
+      <viewAttribute id="INTEREST_ITEM_DESC"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="sap.hana-app.cuan.db.cuan::CUAND_CE_IOI_T"/>
+    <filter>&quot;MANDT&quot; ='$$client$$'</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_IA_RT_Interest_Descriptions" cardinality="C1_1" joinType="textTable" languageColumn="SPRAS">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="DB_KEY"/>
+      <viewAttribute id="ID_ORIGIN"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="COMM_MEDIUM"/>
+      <viewAttribute id="IA_TYPE"/>
+      <viewAttribute id="TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="SOURCE_OBJECT_TYPE"/>
+      <viewAttribute id="SOURCE_OBJECT_ID"/>
+      <viewAttribute id="INITIATIVE_ID"/>
+      <viewAttribute id="QUANTIFIER" aggregationType="sum"/>
+      <viewAttribute id="IA_REASON"/>
+      <viewAttribute id="SOURCE_SYSTEM_TYPE"/>
+      <viewAttribute id="SOURCE_SYSTEM_ID"/>
+      <viewAttribute id="SOURCE_OBJECT_STATUS_CODE"/>
+      <viewAttribute id="INTEREST_ITEM"/>
+      <viewAttribute id="INTEREST_QUANTIFIER" aggregationType="sum"/>
+      <viewAttribute id="INTEREST_ITEM_DESC"/>
+    
+      <viewAttribute id="CONTACT_KEY"/>
+    
+      <viewAttribute id="MKT_AREA_ID"/>
+      <viewAttribute id="IA_STATUS"/>
+      <viewAttribute id="IS_ANONYMOUS"/>
+      <viewAttribute id="DEVICE_TYPE"/>
+      <viewAttribute id="DEVICE_FT"/>
+      <viewAttribute id="SOURCE_OBJECT_ADD_ID"/>
+      <viewAttribute id="SOURCE_TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="LAUNCH_TEXT"/>
+      <viewAttribute id="REFERRAL_SOURCE"/>
+      <viewAttribute id="REFERRAL_SOURCE_CATEGORY"/>
+      <viewAttribute id="PRIORITY"/>
+      <viewAttribute id="DEVICE_TYPE_DESC"/>
+      <viewAttribute id="DDTEXT_STATUS"/>
+      <viewAttribute id="MKT_AREA_DESC"/>
+      <viewAttribute id="DDTEXT_VALUATION"/>
+      <viewAttribute id="DDTEXT_PRIORITY"/>
+      <viewAttribute id="INTERACTIONSOURCEDATAURL"/>
+      <viewAttribute id="INTERACTIONVALUATION"/>
+    
+      <viewAttribute id="LAUNCHURL"/>
+    
+      <viewAttribute id="ID_ORIGIN_DESC"/>
+      <viewAttribute id="IA_REASON_DESC"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_IA_RT_Interests">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DB_KEY" source="DB_KEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN" source="ID_ORIGIN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMM_MEDIUM" source="COMM_MEDIUM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_TYPE" source="IA_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP" source="TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_TYPE" source="SOURCE_OBJECT_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ID" source="SOURCE_OBJECT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INITIATIVE_ID" source="INITIATIVE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUANTIFIER" source="QUANTIFIER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON" source="IA_REASON"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_TYPE" source="SOURCE_SYSTEM_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_ID" source="SOURCE_SYSTEM_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_STATUS_CODE" source="SOURCE_OBJECT_STATUS_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTEREST_ITEM" source="INTEREST_ITEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTEREST_QUANTIFIER" source="INTEREST_QUANTIFIER"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONTACT_KEY" source="CONTACT_KEY"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AREA_ID" source="MKT_AREA_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_STATUS" source="IA_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IS_ANONYMOUS" source="IS_ANONYMOUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_TYPE" source="DEVICE_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_FT" source="DEVICE_FT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ADD_ID" source="SOURCE_OBJECT_ADD_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_TIMESTAMP" source="SOURCE_TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCH_TEXT" source="LAUNCH_TEXT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE" source="REFERRAL_SOURCE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE_CATEGORY" source="REFERRAL_SOURCE_CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRIORITY" source="PRIORITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_TYPE_DESC" source="DEVICE_TYPE_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_STATUS" source="DDTEXT_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AREA_DESC" source="MKT_AREA_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_VALUATION" source="DDTEXT_VALUATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_PRIORITY" source="DDTEXT_PRIORITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEDATAURL" source="INTERACTIONSOURCEDATAURL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONVALUATION" source="INTERACTIONVALUATION"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCHURL" source="LAUNCHURL"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN_DESC" source="ID_ORIGIN_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON_DESC" source="IA_REASON_DESC"/>
+    </input>
+    <input node="Proj_IA_Intr_Descr">
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTEREST_ITEM_DESC" source="INTEREST_ITEM_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTEREST_ITEM" source="INTEREST_ITEM"/>
+    </input>
+    <joinAttribute name="INTEREST_ITEM"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Proj_Channel_Assignment" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="IA_TYPE"/>
+      <viewAttribute id="COMM_MEDIUM"/>
+      <viewAttribute id="CHANNEL"/>
+      <viewAttribute id="DISABLED"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="sap.hana-app.cuan.db.cuan::CUANC_CE_CH_ASGN"/>
+    <filter>(&quot;MANDT&quot; ='$$client$$') and (&quot;DISABLED&quot; = '')</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_IA_RT_Channel" cardinality="CN_N" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="DB_KEY"/>
+      <viewAttribute id="ID_ORIGIN"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="COMM_MEDIUM"/>
+      <viewAttribute id="IA_TYPE"/>
+      <viewAttribute id="TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="SOURCE_OBJECT_TYPE"/>
+      <viewAttribute id="SOURCE_OBJECT_ID"/>
+      <viewAttribute id="INITIATIVE_ID"/>
+      <viewAttribute id="QUANTIFIER" aggregationType="sum"/>
+      <viewAttribute id="IA_REASON"/>
+      <viewAttribute id="SOURCE_SYSTEM_TYPE"/>
+      <viewAttribute id="SOURCE_SYSTEM_ID"/>
+      <viewAttribute id="SOURCE_OBJECT_STATUS_CODE"/>
+      <viewAttribute id="INTEREST_ITEM"/>
+      <viewAttribute id="INTEREST_QUANTIFIER" aggregationType="sum"/>
+      <viewAttribute id="INTEREST_ITEM_DESC"/>
+      <viewAttribute id="CHANNEL"/>
+    
+      <viewAttribute id="CONTACT_KEY"/>
+    
+      <viewAttribute id="MKT_AREA_ID"/>
+      <viewAttribute id="IA_STATUS"/>
+      <viewAttribute id="IS_ANONYMOUS"/>
+      <viewAttribute id="DEVICE_TYPE"/>
+      <viewAttribute id="DEVICE_FT"/>
+      <viewAttribute id="SOURCE_OBJECT_ADD_ID"/>
+      <viewAttribute id="SOURCE_TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="LAUNCH_TEXT"/>
+      <viewAttribute id="REFERRAL_SOURCE"/>
+      <viewAttribute id="REFERRAL_SOURCE_CATEGORY"/>
+      <viewAttribute id="PRIORITY"/>
+      <viewAttribute id="DEVICE_TYPE_DESC"/>
+      <viewAttribute id="DDTEXT_STATUS"/>
+      <viewAttribute id="MKT_AREA_DESC"/>
+      <viewAttribute id="DDTEXT_VALUATION"/>
+      <viewAttribute id="DDTEXT_PRIORITY"/>
+      <viewAttribute id="INTERACTIONSOURCEDATAURL"/>
+      <viewAttribute id="INTERACTIONVALUATION"/>
+    
+      <viewAttribute id="LAUNCHURL"/>
+    
+      <viewAttribute id="ID_ORIGIN_DESC"/>
+      <viewAttribute id="IA_REASON_DESC"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_IA_RT_Interest_Descriptions">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DB_KEY" source="DB_KEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN" source="ID_ORIGIN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMM_MEDIUM" source="COMM_MEDIUM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_TYPE" source="IA_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP" source="TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_TYPE" source="SOURCE_OBJECT_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ID" source="SOURCE_OBJECT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INITIATIVE_ID" source="INITIATIVE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUANTIFIER" source="QUANTIFIER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON" source="IA_REASON"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_TYPE" source="SOURCE_SYSTEM_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_ID" source="SOURCE_SYSTEM_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_STATUS_CODE" source="SOURCE_OBJECT_STATUS_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTEREST_ITEM" source="INTEREST_ITEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTEREST_QUANTIFIER" source="INTEREST_QUANTIFIER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTEREST_ITEM_DESC" source="INTEREST_ITEM_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONTACT_KEY" source="CONTACT_KEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AREA_ID" source="MKT_AREA_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_STATUS" source="IA_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IS_ANONYMOUS" source="IS_ANONYMOUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_TYPE" source="DEVICE_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_FT" source="DEVICE_FT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ADD_ID" source="SOURCE_OBJECT_ADD_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_TIMESTAMP" source="SOURCE_TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCH_TEXT" source="LAUNCH_TEXT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE" source="REFERRAL_SOURCE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE_CATEGORY" source="REFERRAL_SOURCE_CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRIORITY" source="PRIORITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_TYPE_DESC" source="DEVICE_TYPE_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_STATUS" source="DDTEXT_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AREA_DESC" source="MKT_AREA_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_VALUATION" source="DDTEXT_VALUATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_PRIORITY" source="DDTEXT_PRIORITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEDATAURL" source="INTERACTIONSOURCEDATAURL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONVALUATION" source="INTERACTIONVALUATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCHURL" source="LAUNCHURL"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN_DESC" source="ID_ORIGIN_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON_DESC" source="IA_REASON_DESC"/>
+    </input>
+    <input node="Proj_Channel_Assignment">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANNEL" source="CHANNEL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_TYPE" source="IA_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMM_MEDIUM" source="COMM_MEDIUM"/>
+    </input>
+    <joinAttribute name="IA_TYPE"/>
+    <joinAttribute name="COMM_MEDIUM"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Proj_Channel_Descr" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="SPRAS"/>
+      <viewAttribute id="CHANNEL"/>
+      <viewAttribute id="CHANNEL_DESC"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="sap.hana-app.cuan.db.cuan::CUANC_CE_CHNNL_T"/>
+    <filter>&quot;MANDT&quot; ='$$client$$'</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_IA_RT_Channel_Descr" cardinality="C1_1" joinType="textTable" languageColumn="SPRAS">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="DB_KEY"/>
+      <viewAttribute id="ID_ORIGIN"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="COMM_MEDIUM"/>
+      <viewAttribute id="IA_TYPE"/>
+      <viewAttribute id="TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="SOURCE_OBJECT_TYPE"/>
+      <viewAttribute id="SOURCE_OBJECT_ID"/>
+      <viewAttribute id="INITIATIVE_ID"/>
+      <viewAttribute id="QUANTIFIER" aggregationType="sum"/>
+      <viewAttribute id="IA_REASON"/>
+      <viewAttribute id="SOURCE_SYSTEM_TYPE"/>
+      <viewAttribute id="SOURCE_SYSTEM_ID"/>
+      <viewAttribute id="SOURCE_OBJECT_STATUS_CODE"/>
+      <viewAttribute id="INTEREST_ITEM"/>
+      <viewAttribute id="INTEREST_QUANTIFIER" aggregationType="sum"/>
+      <viewAttribute id="INTEREST_ITEM_DESC"/>
+      <viewAttribute id="CHANNEL_DESC"/>
+    
+      <viewAttribute id="CONTACT_KEY"/>
+    
+      <viewAttribute id="MKT_AREA_ID"/>
+      <viewAttribute id="IA_STATUS"/>
+      <viewAttribute id="IS_ANONYMOUS"/>
+      <viewAttribute id="DEVICE_TYPE"/>
+      <viewAttribute id="DEVICE_FT"/>
+      <viewAttribute id="SOURCE_OBJECT_ADD_ID"/>
+      <viewAttribute id="SOURCE_TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="LAUNCH_TEXT"/>
+      <viewAttribute id="REFERRAL_SOURCE"/>
+      <viewAttribute id="REFERRAL_SOURCE_CATEGORY"/>
+      <viewAttribute id="PRIORITY"/>
+      <viewAttribute id="DEVICE_TYPE_DESC"/>
+      <viewAttribute id="DDTEXT_STATUS"/>
+      <viewAttribute id="MKT_AREA_DESC"/>
+      <viewAttribute id="DDTEXT_VALUATION"/>
+      <viewAttribute id="DDTEXT_PRIORITY"/>
+      <viewAttribute id="INTERACTIONSOURCEDATAURL"/>
+      <viewAttribute id="INTERACTIONVALUATION"/>
+    
+      <viewAttribute id="LAUNCHURL"/>
+    
+      <viewAttribute id="CHANNEL"/>
+    
+      <viewAttribute id="ID_ORIGIN_DESC"/>
+      <viewAttribute id="IA_REASON_DESC"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_IA_RT_Channel">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DB_KEY" source="DB_KEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN" source="ID_ORIGIN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMM_MEDIUM" source="COMM_MEDIUM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_TYPE" source="IA_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP" source="TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_TYPE" source="SOURCE_OBJECT_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ID" source="SOURCE_OBJECT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INITIATIVE_ID" source="INITIATIVE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUANTIFIER" source="QUANTIFIER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON" source="IA_REASON"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_TYPE" source="SOURCE_SYSTEM_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_ID" source="SOURCE_SYSTEM_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_STATUS_CODE" source="SOURCE_OBJECT_STATUS_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTEREST_ITEM" source="INTEREST_ITEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTEREST_QUANTIFIER" source="INTEREST_QUANTIFIER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTEREST_ITEM_DESC" source="INTEREST_ITEM_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONTACT_KEY" source="CONTACT_KEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AREA_ID" source="MKT_AREA_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_STATUS" source="IA_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IS_ANONYMOUS" source="IS_ANONYMOUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_TYPE" source="DEVICE_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_FT" source="DEVICE_FT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ADD_ID" source="SOURCE_OBJECT_ADD_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_TIMESTAMP" source="SOURCE_TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCH_TEXT" source="LAUNCH_TEXT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE" source="REFERRAL_SOURCE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE_CATEGORY" source="REFERRAL_SOURCE_CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRIORITY" source="PRIORITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_TYPE_DESC" source="DEVICE_TYPE_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_STATUS" source="DDTEXT_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AREA_DESC" source="MKT_AREA_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_VALUATION" source="DDTEXT_VALUATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_PRIORITY" source="DDTEXT_PRIORITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEDATAURL" source="INTERACTIONSOURCEDATAURL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONVALUATION" source="INTERACTIONVALUATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCHURL" source="LAUNCHURL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANNEL" source="CHANNEL"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN_DESC" source="ID_ORIGIN_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON_DESC" source="IA_REASON_DESC"/>
+    </input>
+    <input node="Proj_Channel_Descr">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANNEL_DESC" source="CHANNEL_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANNEL" source="CHANNEL"/>
+    </input>
+    <joinAttribute name="CHANNEL"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Proj_IA_Type_Descr" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="SPRAS"/>
+      <viewAttribute id="IA_TYPE"/>
+      <viewAttribute id="IA_TYPE_DESC"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="sap.hana-app.cuan.db.cuan::CUANC_CE_IATYP_T"/>
+    <filter>&quot;MANDT&quot; ='$$client$$'</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_IA_RT_IA_Type_Descr" cardinality="C1_1" joinType="textTable" languageColumn="SPRAS">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="DB_KEY"/>
+      <viewAttribute id="ID_ORIGIN"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="COMM_MEDIUM"/>
+      <viewAttribute id="IA_TYPE"/>
+      <viewAttribute id="TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="SOURCE_OBJECT_TYPE"/>
+      <viewAttribute id="SOURCE_OBJECT_ID"/>
+      <viewAttribute id="INITIATIVE_ID"/>
+      <viewAttribute id="QUANTIFIER" aggregationType="sum"/>
+      <viewAttribute id="IA_REASON"/>
+      <viewAttribute id="SOURCE_SYSTEM_TYPE"/>
+      <viewAttribute id="SOURCE_SYSTEM_ID"/>
+      <viewAttribute id="SOURCE_OBJECT_STATUS_CODE"/>
+      <viewAttribute id="INTEREST_ITEM"/>
+      <viewAttribute id="INTEREST_QUANTIFIER" aggregationType="sum"/>
+      <viewAttribute id="INTEREST_ITEM_DESC"/>
+      <viewAttribute id="CHANNEL_DESC"/>
+      <viewAttribute id="IA_TYPE_DESC"/>
+    
+      <viewAttribute id="CONTACT_KEY"/>
+    
+      <viewAttribute id="MKT_AREA_ID"/>
+      <viewAttribute id="IA_STATUS"/>
+      <viewAttribute id="IS_ANONYMOUS"/>
+      <viewAttribute id="DEVICE_TYPE"/>
+      <viewAttribute id="DEVICE_FT"/>
+      <viewAttribute id="SOURCE_OBJECT_ADD_ID"/>
+      <viewAttribute id="SOURCE_TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="LAUNCH_TEXT"/>
+      <viewAttribute id="REFERRAL_SOURCE"/>
+      <viewAttribute id="REFERRAL_SOURCE_CATEGORY"/>
+      <viewAttribute id="PRIORITY"/>
+      <viewAttribute id="DEVICE_TYPE_DESC"/>
+      <viewAttribute id="DDTEXT_STATUS"/>
+      <viewAttribute id="MKT_AREA_DESC"/>
+      <viewAttribute id="DDTEXT_VALUATION"/>
+      <viewAttribute id="DDTEXT_PRIORITY"/>
+      <viewAttribute id="INTERACTIONSOURCEDATAURL"/>
+      <viewAttribute id="INTERACTIONVALUATION"/>
+    
+      <viewAttribute id="LAUNCHURL"/>
+    
+      <viewAttribute id="CHANNEL"/>
+    
+      <viewAttribute id="ID_ORIGIN_DESC"/>
+      <viewAttribute id="IA_REASON_DESC"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_IA_RT_Channel_Descr">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DB_KEY" source="DB_KEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN" source="ID_ORIGIN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMM_MEDIUM" source="COMM_MEDIUM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_TYPE" source="IA_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP" source="TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_TYPE" source="SOURCE_OBJECT_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ID" source="SOURCE_OBJECT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INITIATIVE_ID" source="INITIATIVE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUANTIFIER" source="QUANTIFIER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON" source="IA_REASON"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_TYPE" source="SOURCE_SYSTEM_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_ID" source="SOURCE_SYSTEM_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_STATUS_CODE" source="SOURCE_OBJECT_STATUS_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTEREST_ITEM" source="INTEREST_ITEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTEREST_QUANTIFIER" source="INTEREST_QUANTIFIER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTEREST_ITEM_DESC" source="INTEREST_ITEM_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANNEL_DESC" source="CHANNEL_DESC"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONTACT_KEY" source="CONTACT_KEY"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AREA_ID" source="MKT_AREA_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_STATUS" source="IA_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IS_ANONYMOUS" source="IS_ANONYMOUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_TYPE" source="DEVICE_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_FT" source="DEVICE_FT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ADD_ID" source="SOURCE_OBJECT_ADD_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_TIMESTAMP" source="SOURCE_TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCH_TEXT" source="LAUNCH_TEXT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE" source="REFERRAL_SOURCE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE_CATEGORY" source="REFERRAL_SOURCE_CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRIORITY" source="PRIORITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_TYPE_DESC" source="DEVICE_TYPE_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_STATUS" source="DDTEXT_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AREA_DESC" source="MKT_AREA_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_VALUATION" source="DDTEXT_VALUATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_PRIORITY" source="DDTEXT_PRIORITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEDATAURL" source="INTERACTIONSOURCEDATAURL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONVALUATION" source="INTERACTIONVALUATION"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCHURL" source="LAUNCHURL"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANNEL" source="CHANNEL"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN_DESC" source="ID_ORIGIN_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON_DESC" source="IA_REASON_DESC"/>
+    </input>
+    <input node="Proj_IA_Type_Descr">
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_TYPE_DESC" source="IA_TYPE_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_TYPE" source="IA_TYPE"/>
+    </input>
+    <joinAttribute name="IA_TYPE"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Proj_Comm_Med_Descr" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="SPRAS"/>
+      <viewAttribute id="COMM_MEDIUM"/>
+      <viewAttribute id="COMM_MEDIUM_DESC"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="sap.hana-app.cuan.db.cuan::CUANC_CE_CMM_M_T"/>
+    <filter>&quot;MANDT&quot; ='$$client$$'</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_IA_RT_Comm_Med_Descr" cardinality="C1_1" joinType="textTable" languageColumn="SPRAS">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="DB_KEY"/>
+      <viewAttribute id="ID_ORIGIN"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="COMM_MEDIUM"/>
+      <viewAttribute id="IA_TYPE"/>
+      <viewAttribute id="TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="SOURCE_OBJECT_TYPE"/>
+      <viewAttribute id="SOURCE_OBJECT_ID"/>
+      <viewAttribute id="INITIATIVE_ID"/>
+      <viewAttribute id="QUANTIFIER" aggregationType="sum"/>
+      <viewAttribute id="IA_REASON"/>
+      <viewAttribute id="SOURCE_SYSTEM_TYPE"/>
+      <viewAttribute id="SOURCE_SYSTEM_ID"/>
+      <viewAttribute id="SOURCE_OBJECT_STATUS_CODE"/>
+      <viewAttribute id="INTEREST_ITEM"/>
+      <viewAttribute id="INTEREST_QUANTIFIER" aggregationType="sum"/>
+      <viewAttribute id="INTEREST_ITEM_DESC"/>
+      <viewAttribute id="CHANNEL_DESC"/>
+      <viewAttribute id="IA_TYPE_DESC"/>
+      <viewAttribute id="COMM_MEDIUM_DESC"/>
+    
+      <viewAttribute id="CONTACT_KEY"/>
+    
+      <viewAttribute id="MKT_AREA_ID"/>
+      <viewAttribute id="IA_STATUS"/>
+      <viewAttribute id="IS_ANONYMOUS"/>
+      <viewAttribute id="DEVICE_TYPE"/>
+      <viewAttribute id="DEVICE_FT"/>
+      <viewAttribute id="SOURCE_OBJECT_ADD_ID"/>
+      <viewAttribute id="SOURCE_TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="LAUNCH_TEXT"/>
+      <viewAttribute id="REFERRAL_SOURCE"/>
+      <viewAttribute id="REFERRAL_SOURCE_CATEGORY"/>
+      <viewAttribute id="PRIORITY"/>
+      <viewAttribute id="DEVICE_TYPE_DESC"/>
+      <viewAttribute id="DDTEXT_STATUS"/>
+      <viewAttribute id="MKT_AREA_DESC"/>
+      <viewAttribute id="DDTEXT_VALUATION"/>
+      <viewAttribute id="DDTEXT_PRIORITY"/>
+      <viewAttribute id="INTERACTIONSOURCEDATAURL"/>
+      <viewAttribute id="INTERACTIONVALUATION"/>
+    
+      <viewAttribute id="LAUNCHURL"/>
+    
+      <viewAttribute id="CHANNEL"/>
+    
+      <viewAttribute id="ID_ORIGIN_DESC"/>
+      <viewAttribute id="IA_REASON_DESC"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_IA_RT_IA_Type_Descr">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DB_KEY" source="DB_KEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN" source="ID_ORIGIN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMM_MEDIUM" source="COMM_MEDIUM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_TYPE" source="IA_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP" source="TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_TYPE" source="SOURCE_OBJECT_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ID" source="SOURCE_OBJECT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INITIATIVE_ID" source="INITIATIVE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUANTIFIER" source="QUANTIFIER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON" source="IA_REASON"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_TYPE" source="SOURCE_SYSTEM_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_ID" source="SOURCE_SYSTEM_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_STATUS_CODE" source="SOURCE_OBJECT_STATUS_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTEREST_ITEM" source="INTEREST_ITEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTEREST_QUANTIFIER" source="INTEREST_QUANTIFIER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTEREST_ITEM_DESC" source="INTEREST_ITEM_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANNEL_DESC" source="CHANNEL_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_TYPE_DESC" source="IA_TYPE_DESC"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONTACT_KEY" source="CONTACT_KEY"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AREA_ID" source="MKT_AREA_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_STATUS" source="IA_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IS_ANONYMOUS" source="IS_ANONYMOUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_TYPE" source="DEVICE_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_FT" source="DEVICE_FT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ADD_ID" source="SOURCE_OBJECT_ADD_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_TIMESTAMP" source="SOURCE_TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCH_TEXT" source="LAUNCH_TEXT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE" source="REFERRAL_SOURCE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE_CATEGORY" source="REFERRAL_SOURCE_CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRIORITY" source="PRIORITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_TYPE_DESC" source="DEVICE_TYPE_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_STATUS" source="DDTEXT_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AREA_DESC" source="MKT_AREA_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_VALUATION" source="DDTEXT_VALUATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_PRIORITY" source="DDTEXT_PRIORITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEDATAURL" source="INTERACTIONSOURCEDATAURL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONVALUATION" source="INTERACTIONVALUATION"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCHURL" source="LAUNCHURL"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANNEL" source="CHANNEL"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN_DESC" source="ID_ORIGIN_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON_DESC" source="IA_REASON_DESC"/>
+    </input>
+    <input node="Proj_Comm_Med_Descr">
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMM_MEDIUM_DESC" source="COMM_MEDIUM_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMM_MEDIUM" source="COMM_MEDIUM"/>
+    </input>
+    <joinAttribute name="COMM_MEDIUM"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Proj_IA_Type" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="IA_TYPE"/>
+      <viewAttribute id="DIRECTION"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="sap.hana-app.cuan.db.cuan::CUANC_CE_IA_TYPE"/>
+    <filter>&quot;MANDT&quot; ='$$client$$'</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_IA_RT_IA_Type" cardinality="CN_1" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="DB_KEY"/>
+      <viewAttribute id="ID_ORIGIN"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="COMM_MEDIUM"/>
+      <viewAttribute id="IA_TYPE"/>
+      <viewAttribute id="TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="SOURCE_OBJECT_TYPE"/>
+      <viewAttribute id="SOURCE_OBJECT_ID"/>
+      <viewAttribute id="INITIATIVE_ID"/>
+      <viewAttribute id="QUANTIFIER" aggregationType="sum"/>
+      <viewAttribute id="IA_REASON"/>
+      <viewAttribute id="SOURCE_SYSTEM_TYPE"/>
+      <viewAttribute id="SOURCE_SYSTEM_ID"/>
+      <viewAttribute id="SOURCE_OBJECT_STATUS_CODE"/>
+      <viewAttribute id="INTEREST_ITEM"/>
+      <viewAttribute id="INTEREST_QUANTIFIER" aggregationType="sum"/>
+      <viewAttribute id="INTEREST_ITEM_DESC"/>
+      <viewAttribute id="CHANNEL_DESC"/>
+      <viewAttribute id="IA_TYPE_DESC"/>
+      <viewAttribute id="COMM_MEDIUM_DESC"/>
+      <viewAttribute id="DIRECTION"/>
+    
+      <viewAttribute id="CONTACT_KEY"/>
+    
+      <viewAttribute id="MKT_AREA_ID"/>
+      <viewAttribute id="IA_STATUS"/>
+      <viewAttribute id="IS_ANONYMOUS"/>
+      <viewAttribute id="DEVICE_TYPE"/>
+      <viewAttribute id="DEVICE_FT"/>
+      <viewAttribute id="SOURCE_OBJECT_ADD_ID"/>
+      <viewAttribute id="SOURCE_TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="LAUNCH_TEXT"/>
+      <viewAttribute id="REFERRAL_SOURCE"/>
+      <viewAttribute id="REFERRAL_SOURCE_CATEGORY"/>
+      <viewAttribute id="PRIORITY"/>
+      <viewAttribute id="DEVICE_TYPE_DESC"/>
+      <viewAttribute id="DDTEXT_STATUS"/>
+      <viewAttribute id="MKT_AREA_DESC"/>
+      <viewAttribute id="DDTEXT_VALUATION"/>
+      <viewAttribute id="DDTEXT_PRIORITY"/>
+      <viewAttribute id="INTERACTIONSOURCEDATAURL"/>
+      <viewAttribute id="INTERACTIONVALUATION"/>
+    
+      <viewAttribute id="LAUNCHURL"/>
+    
+      <viewAttribute id="CHANNEL"/>
+    
+      <viewAttribute id="ID_ORIGIN_DESC"/>
+      <viewAttribute id="IA_REASON_DESC"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_IA_RT_Comm_Med_Descr">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DB_KEY" source="DB_KEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN" source="ID_ORIGIN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMM_MEDIUM" source="COMM_MEDIUM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_TYPE" source="IA_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP" source="TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_TYPE" source="SOURCE_OBJECT_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ID" source="SOURCE_OBJECT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INITIATIVE_ID" source="INITIATIVE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUANTIFIER" source="QUANTIFIER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON" source="IA_REASON"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_TYPE" source="SOURCE_SYSTEM_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_ID" source="SOURCE_SYSTEM_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_STATUS_CODE" source="SOURCE_OBJECT_STATUS_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTEREST_ITEM" source="INTEREST_ITEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTEREST_QUANTIFIER" source="INTEREST_QUANTIFIER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTEREST_ITEM_DESC" source="INTEREST_ITEM_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANNEL_DESC" source="CHANNEL_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_TYPE_DESC" source="IA_TYPE_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMM_MEDIUM_DESC" source="COMM_MEDIUM_DESC"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONTACT_KEY" source="CONTACT_KEY"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AREA_ID" source="MKT_AREA_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_STATUS" source="IA_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IS_ANONYMOUS" source="IS_ANONYMOUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_TYPE" source="DEVICE_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_FT" source="DEVICE_FT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ADD_ID" source="SOURCE_OBJECT_ADD_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_TIMESTAMP" source="SOURCE_TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCH_TEXT" source="LAUNCH_TEXT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE" source="REFERRAL_SOURCE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE_CATEGORY" source="REFERRAL_SOURCE_CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRIORITY" source="PRIORITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_TYPE_DESC" source="DEVICE_TYPE_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_STATUS" source="DDTEXT_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AREA_DESC" source="MKT_AREA_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_VALUATION" source="DDTEXT_VALUATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_PRIORITY" source="DDTEXT_PRIORITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEDATAURL" source="INTERACTIONSOURCEDATAURL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONVALUATION" source="INTERACTIONVALUATION"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCHURL" source="LAUNCHURL"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANNEL" source="CHANNEL"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN_DESC" source="ID_ORIGIN_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON_DESC" source="IA_REASON_DESC"/>
+    </input>
+    <input node="Proj_IA_Type">
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIRECTION" source="DIRECTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_TYPE" source="IA_TYPE"/>
+    </input>
+    <joinAttribute name="IA_TYPE"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Proj_IA_Direction_Descr" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="DOMNAME"/>
+      <viewAttribute id="DDLANGUAGE"/>
+      <viewAttribute id="AS4LOCAL"/>
+      <viewAttribute id="DDTEXT"/>
+      <viewAttribute id="DOMVALUE_L"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Proj_IA_Direction_Descr$$$$sap.hana-app.cuan.db.cuan::DD07T$$"/>
+    <filter>(&quot;DOMNAME&quot; = 'CUAN_CE_DIRECTION') AND  (&quot;AS4LOCAL&quot; ='A')</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_IA_RT_Direction_Descr" cardinality="C1_1" joinType="textTable" languageColumn="DDLANGUAGE">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="DB_KEY"/>
+      <viewAttribute id="ID_ORIGIN"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="COMM_MEDIUM"/>
+      <viewAttribute id="IA_TYPE"/>
+      <viewAttribute id="TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="SOURCE_OBJECT_TYPE"/>
+      <viewAttribute id="SOURCE_OBJECT_ID"/>
+      <viewAttribute id="INITIATIVE_ID"/>
+      <viewAttribute id="QUANTIFIER" aggregationType="sum"/>
+      <viewAttribute id="IA_REASON"/>
+      <viewAttribute id="SOURCE_SYSTEM_TYPE"/>
+      <viewAttribute id="SOURCE_SYSTEM_ID"/>
+      <viewAttribute id="SOURCE_OBJECT_STATUS_CODE"/>
+      <viewAttribute id="INTEREST_ITEM"/>
+      <viewAttribute id="INTEREST_QUANTIFIER" aggregationType="sum"/>
+      <viewAttribute id="INTEREST_ITEM_DESC"/>
+      <viewAttribute id="CHANNEL_DESC"/>
+      <viewAttribute id="IA_TYPE_DESC"/>
+      <viewAttribute id="COMM_MEDIUM_DESC"/>
+      <viewAttribute id="DIRECTION"/>
+      <viewAttribute id="DOMVALUE_L"/>
+    
+      <viewAttribute id="CONTACT_KEY"/>
+    
+      <viewAttribute id="DDTEXT"/>
+    
+      <viewAttribute id="MKT_AREA_ID"/>
+      <viewAttribute id="IA_STATUS"/>
+      <viewAttribute id="IS_ANONYMOUS"/>
+      <viewAttribute id="DEVICE_TYPE"/>
+      <viewAttribute id="DEVICE_FT"/>
+      <viewAttribute id="SOURCE_OBJECT_ADD_ID"/>
+      <viewAttribute id="SOURCE_TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="LAUNCH_TEXT"/>
+      <viewAttribute id="REFERRAL_SOURCE"/>
+      <viewAttribute id="REFERRAL_SOURCE_CATEGORY"/>
+      <viewAttribute id="PRIORITY"/>
+      <viewAttribute id="DEVICE_TYPE_DESC"/>
+      <viewAttribute id="DDTEXT_STATUS"/>
+      <viewAttribute id="MKT_AREA_DESC"/>
+      <viewAttribute id="DDTEXT_VALUATION"/>
+      <viewAttribute id="DDTEXT_PRIORITY"/>
+      <viewAttribute id="INTERACTIONSOURCEDATAURL"/>
+      <viewAttribute id="INTERACTIONVALUATION"/>
+    
+      <viewAttribute id="LAUNCHURL"/>
+    
+      <viewAttribute id="CHANNEL"/>
+    
+      <viewAttribute id="ID_ORIGIN_DESC"/>
+      <viewAttribute id="IA_REASON_DESC"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_IA_RT_IA_Type">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DB_KEY" source="DB_KEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN" source="ID_ORIGIN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMM_MEDIUM" source="COMM_MEDIUM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_TYPE" source="IA_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP" source="TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_TYPE" source="SOURCE_OBJECT_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ID" source="SOURCE_OBJECT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INITIATIVE_ID" source="INITIATIVE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUANTIFIER" source="QUANTIFIER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON" source="IA_REASON"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_TYPE" source="SOURCE_SYSTEM_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_ID" source="SOURCE_SYSTEM_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_STATUS_CODE" source="SOURCE_OBJECT_STATUS_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTEREST_ITEM" source="INTEREST_ITEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTEREST_QUANTIFIER" source="INTEREST_QUANTIFIER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTEREST_ITEM_DESC" source="INTEREST_ITEM_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANNEL_DESC" source="CHANNEL_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_TYPE_DESC" source="IA_TYPE_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMM_MEDIUM_DESC" source="COMM_MEDIUM_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIRECTION" source="DIRECTION"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONTACT_KEY" source="CONTACT_KEY"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AREA_ID" source="MKT_AREA_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_STATUS" source="IA_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IS_ANONYMOUS" source="IS_ANONYMOUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_TYPE" source="DEVICE_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_FT" source="DEVICE_FT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ADD_ID" source="SOURCE_OBJECT_ADD_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_TIMESTAMP" source="SOURCE_TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCH_TEXT" source="LAUNCH_TEXT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE" source="REFERRAL_SOURCE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE_CATEGORY" source="REFERRAL_SOURCE_CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRIORITY" source="PRIORITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_TYPE_DESC" source="DEVICE_TYPE_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_STATUS" source="DDTEXT_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AREA_DESC" source="MKT_AREA_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_VALUATION" source="DDTEXT_VALUATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_PRIORITY" source="DDTEXT_PRIORITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEDATAURL" source="INTERACTIONSOURCEDATAURL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONVALUATION" source="INTERACTIONVALUATION"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCHURL" source="LAUNCHURL"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANNEL" source="CHANNEL"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN_DESC" source="ID_ORIGIN_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON_DESC" source="IA_REASON_DESC"/>
+    </input>
+    <input node="Proj_IA_Direction_Descr">
+      <mapping xsi:type="Calculation:AttributeMapping" target="DOMVALUE_L" source="DOMVALUE_L"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT" source="DDTEXT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIRECTION" source="DOMVALUE_L"/>
+    </input>
+    <joinAttribute name="DIRECTION"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_IA_RT_Campaign_Descr" cardinality="CN_1" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="DB_KEY"/>
+      <viewAttribute id="ID_ORIGIN"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="COMM_MEDIUM"/>
+      <viewAttribute id="IA_TYPE"/>
+      <viewAttribute id="TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="SOURCE_OBJECT_TYPE"/>
+      <viewAttribute id="SOURCE_OBJECT_ID"/>
+      <viewAttribute id="INITIATIVE_ID"/>
+      <viewAttribute id="QUANTIFIER" aggregationType="sum"/>
+      <viewAttribute id="IA_REASON"/>
+      <viewAttribute id="SOURCE_SYSTEM_TYPE"/>
+      <viewAttribute id="SOURCE_SYSTEM_ID"/>
+      <viewAttribute id="SOURCE_OBJECT_STATUS_CODE"/>
+      <viewAttribute id="INTEREST_ITEM"/>
+      <viewAttribute id="INTEREST_QUANTIFIER" aggregationType="sum"/>
+      <viewAttribute id="INTEREST_ITEM_DESC"/>
+      <viewAttribute id="CHANNEL_DESC"/>
+      <viewAttribute id="IA_TYPE_DESC"/>
+      <viewAttribute id="COMM_MEDIUM_DESC"/>
+      <viewAttribute id="DIRECTION"/>
+      <viewAttribute id="CONTACT_KEY"/>
+      <viewAttribute id="NAME"/>
+      <viewAttribute id="DDTEXT"/>
+    
+      <viewAttribute id="MKT_AREA_ID"/>
+      <viewAttribute id="IA_STATUS"/>
+      <viewAttribute id="IS_ANONYMOUS"/>
+      <viewAttribute id="DEVICE_TYPE"/>
+      <viewAttribute id="DEVICE_FT"/>
+      <viewAttribute id="SOURCE_OBJECT_ADD_ID"/>
+      <viewAttribute id="SOURCE_TIMESTAMP" aggregationType="sum"/>
+      <viewAttribute id="LAUNCH_TEXT"/>
+      <viewAttribute id="REFERRAL_SOURCE"/>
+      <viewAttribute id="REFERRAL_SOURCE_CATEGORY"/>
+      <viewAttribute id="PRIORITY"/>
+      <viewAttribute id="DEVICE_TYPE_DESC"/>
+      <viewAttribute id="DDTEXT_STATUS"/>
+      <viewAttribute id="MKT_AREA_DESC"/>
+      <viewAttribute id="DDTEXT_VALUATION"/>
+      <viewAttribute id="DDTEXT_PRIORITY"/>
+      <viewAttribute id="INTERACTIONSOURCEDATAURL"/>
+      <viewAttribute id="INTERACTIONVALUATION"/>
+    
+      <viewAttribute id="LAUNCHURL"/>
+    
+      <viewAttribute id="CHANNEL"/>
+    
+      <viewAttribute id="ID_ORIGIN_DESC"/>
+      <viewAttribute id="IA_REASON_DESC"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_IA_RT_Direction_Descr">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DB_KEY" source="DB_KEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN" source="ID_ORIGIN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMM_MEDIUM" source="COMM_MEDIUM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_TYPE" source="IA_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP" source="TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_TYPE" source="SOURCE_OBJECT_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ID" source="SOURCE_OBJECT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INITIATIVE_ID" source="INITIATIVE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUANTIFIER" source="QUANTIFIER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON" source="IA_REASON"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_TYPE" source="SOURCE_SYSTEM_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_ID" source="SOURCE_SYSTEM_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_STATUS_CODE" source="SOURCE_OBJECT_STATUS_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTEREST_ITEM" source="INTEREST_ITEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTEREST_QUANTIFIER" source="INTEREST_QUANTIFIER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTEREST_ITEM_DESC" source="INTEREST_ITEM_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANNEL_DESC" source="CHANNEL_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_TYPE_DESC" source="IA_TYPE_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMM_MEDIUM_DESC" source="COMM_MEDIUM_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIRECTION" source="DIRECTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONTACT_KEY" source="CONTACT_KEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT" source="DDTEXT"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AREA_ID" source="MKT_AREA_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_STATUS" source="IA_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IS_ANONYMOUS" source="IS_ANONYMOUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_TYPE" source="DEVICE_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_FT" source="DEVICE_FT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_OBJECT_ADD_ID" source="SOURCE_OBJECT_ADD_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_TIMESTAMP" source="SOURCE_TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCH_TEXT" source="LAUNCH_TEXT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE" source="REFERRAL_SOURCE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REFERRAL_SOURCE_CATEGORY" source="REFERRAL_SOURCE_CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRIORITY" source="PRIORITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_TYPE_DESC" source="DEVICE_TYPE_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_STATUS" source="DDTEXT_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MKT_AREA_DESC" source="MKT_AREA_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_VALUATION" source="DDTEXT_VALUATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DDTEXT_PRIORITY" source="DDTEXT_PRIORITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEDATAURL" source="INTERACTIONSOURCEDATAURL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONVALUATION" source="INTERACTIONVALUATION"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAUNCHURL" source="LAUNCHURL"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANNEL" source="CHANNEL"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN_DESC" source="ID_ORIGIN_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IA_REASON_DESC" source="IA_REASON_DESC"/>
+    </input>
+    <input node="Proj_Campaign_Descr">
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME" source="NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INITIATIVE_ID" source="ID"/>
+    </input>
+    <joinAttribute name="INITIATIVE_ID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Proj_Campaign_Descr" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="NAME"/>
+    
+      <viewAttribute id="ID"/>
+      <viewAttribute id="MANDT"/></viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="sap.hana-app.cuan.db.cuan::CUAN_D_INI_ROOT"/>
+    <filter>&quot;MANDT&quot; ='$$client$$'</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Proj_IA_Reason_Descr" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="IA_REASON_DESC"/>
+    
+      <viewAttribute id="IA_TYPE"/>
+      <viewAttribute id="IA_REASON"/>
+      <viewAttribute id="SPRAS"/>
+      <viewAttribute id="MANDT"/></viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="sap.hana-app.cuan.db.cuan::CUANC_CE_IA_RS_T"/>
+    <filter>&quot;MANDT&quot; ='$$client$$'</filter>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_IA_RT_Campaign_Descr">
+  <attributes>
+    <attribute id="INTERACTIONCONTACTORIGIN" order="1" displayAttribute="false" attributeHierarchyActive="false" semanticType="empty" descriptionColumnName="INTERACTIONCONTACTORIGINNAME">
+      <descriptions defaultDescription="Origin of Contact"/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="ID_ORIGIN"/>
+    </attribute>
+    <attribute id="INTERACTIONCONTACTID" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ID of Contact"/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="ID"/>
+    </attribute>
+    <attribute id="INTERACTIONCOMMUNICATIONMEDIUM" order="3" descriptionColumnName="COMMUNICATIONMEDIUMNAME" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Communication Medium of Interaction"/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="COMM_MEDIUM"/>
+    </attribute>
+    <attribute id="INTERACTIONTYPE" order="4" descriptionColumnName="INTERACTIONTYPENAME" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Interaction Type"/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="IA_TYPE"/>
+    </attribute>
+    <attribute id="INTERACTIONTIMESTAMPUTC" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Timestamp of Interaction"/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="TIMESTAMP"/>
+    </attribute>
+    <attribute id="INTERACTIONSOURCEOBJECTTYPE" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Source Object Type of Interaction"/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="SOURCE_OBJECT_TYPE"/>
+    </attribute>
+    <attribute id="INTERACTIONSOURCEOBJECT" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Source Object ID of Interaction"/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="SOURCE_OBJECT_ID"/>
+    </attribute>
+    <attribute id="CAMPAIGNID" order="8" displayAttribute="false" attributeHierarchyActive="false" descriptionColumnName="CAMPAIGNNAME">
+      <descriptions defaultDescription="Campaign"/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="INITIATIVE_ID"/>
+    </attribute>
+    <attribute id="INTERACTIONREASON" order="10" displayAttribute="false" attributeHierarchyActive="false" descriptionColumnName="INTERACTIONREASONNAME">
+      <descriptions defaultDescription="Interaction Reason"/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="IA_REASON"/>
+    </attribute>
+    <attribute id="SOURCESYSTEMTYPE" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Source System Type of Interaction"/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="SOURCE_SYSTEM_TYPE"/>
+    </attribute>
+    <attribute id="SOURCESYSTEM" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Source System ID of Interaction"/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="SOURCE_SYSTEM_ID"/>
+    </attribute>
+    <attribute id="INTERACTIONSOURCEOBJECTSTATUS" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Business Document Status"/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="SOURCE_OBJECT_STATUS_CODE"/>
+    </attribute>
+    <attribute id="ITEMOFINTEREST" order="14" displayAttribute="false" attributeHierarchyActive="false" descriptionColumnName="ITEMOFINTERESTNAME">
+      <descriptions defaultDescription="Item of Interest"/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="INTEREST_ITEM"/>
+    </attribute>
+    <attribute id="ITEMOFINTERESTNAME" order="16" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
+      <descriptions defaultDescription=""/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="INTEREST_ITEM_DESC"/>
+    </attribute>
+    <attribute id="INTERACTIONCHANNELNAME" hidden="true" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription=""/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="CHANNEL_DESC"/>
+    </attribute>
+    <attribute id="INTERACTIONTYPENAME" hidden="true" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription=""/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="IA_TYPE_DESC"/>
+    </attribute>
+    <attribute id="COMMUNICATIONMEDIUMNAME" hidden="true" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription=""/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="COMM_MEDIUM_DESC"/>
+    </attribute>
+    <attribute id="INTERACTIONDIRECTION" order="20" displayAttribute="false" attributeHierarchyActive="false" descriptionColumnName="INTERACTIONDIRECTIONNAME">
+      <descriptions defaultDescription="Direction of Interaction"/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="DIRECTION"/>
+    </attribute>
+  
+    <attribute id="INTERACTIONCONTACTUUID" order="21" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Contact Key"/>
+  
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="CONTACT_KEY"/>
+  
+    </attribute>
+  
+    <attribute id="CAMPAIGNNAME" hidden="true" order="22" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription=""/>
+  
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="NAME"/>
+  
+    </attribute>
+    <attribute id="INTERACTIONDIRECTIONNAME" hidden="true" order="23" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription=""/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="DDTEXT"/>
+    </attribute>
+  
+    <attribute id="MARKETINGAREA" order="24" descriptionColumnName="MARKETINGAREANAME" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Marketing Area of Interaction"/>
+  
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="MKT_AREA_ID"/>
+  
+    </attribute>
+    <attribute id="INTERACTIONSTATUS" order="25" descriptionColumnName="INTERACTIONSTATUSNAME" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Interaction Status"/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="IA_STATUS"/>
+    </attribute>
+    <attribute id="INTERACTIONISANONYMOUS" order="26" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Is Anonymous"/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="IS_ANONYMOUS"/>
+    </attribute>
+    <attribute id="DEVICETYPE" order="27" descriptionColumnName="DEVICETYPENAME" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Device Type"/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="DEVICE_TYPE"/>
+    </attribute>
+    <attribute id="INTERACTIONDEVICENAME" order="28" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Device"/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="DEVICE_FT"/>
+    </attribute>
+    <attribute id="INTERACTIONSOURCEOBJECTADDLID" order="29" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Source Object Additional ID"/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="SOURCE_OBJECT_ADD_ID"/>
+    </attribute>
+    <attribute id="INTERACTIONSOURCETIMESTAMPUTC" order="30" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Source Timestamp"/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="SOURCE_TIMESTAMP"/>
+    </attribute>
+    <attribute id="CAMPAIGNCONTENTLINKNAME" order="31" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Text of Launch URL"/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="LAUNCH_TEXT"/>
+    </attribute>
+    <attribute id="REFERRALSOURCE" order="32" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Referral Source"/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="REFERRAL_SOURCE"/>
+    </attribute>
+    <attribute id="REFERRALSOURCECATEGORY" order="33" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Referral Source Category"/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="REFERRAL_SOURCE_CATEGORY"/>
+    </attribute>
+    <attribute id="INTERACTIONPRIORITY" order="34" descriptionColumnName="INTERACTIONPRIORITYNAME" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Interaction Priority"/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="PRIORITY"/>
+    </attribute>
+    <attribute id="DEVICETYPENAME" hidden="true" order="35" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription=""/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="DEVICE_TYPE_DESC"/>
+    </attribute>
+    <attribute id="INTERACTIONSTATUSNAME" hidden="true" order="36" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription=""/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="DDTEXT_STATUS"/>
+    </attribute>
+    <attribute id="MARKETINGAREANAME" hidden="true" order="37" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription=""/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="MKT_AREA_DESC"/>
+    </attribute>
+    <attribute id="INTERACTIONSENTIMENTNAME" hidden="true" order="38" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription=""/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="DDTEXT_VALUATION"/>
+    </attribute>
+    <attribute id="INTERACTIONPRIORITYNAME" hidden="true" order="39" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription=""/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="DDTEXT_PRIORITY"/>
+    </attribute>
+    <attribute id="INTERACTIONUUID" order="40" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Interaction Key"/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="DB_KEY"/>
+    </attribute>
+    <attribute id="INTERACTIONSOURCEDATAURL" order="41" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Source Data URL"/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="INTERACTIONSOURCEDATAURL"/>
+    </attribute>
+  
+    <attribute id="INTERACTIONVALUATION" order="42" descriptionColumnName="INTERACTIONSENTIMENTNAME" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Interaction Valuation"/>
+  
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="INTERACTIONVALUATION"/>
+  
+    </attribute>
+  
+    <attribute id="CAMPAIGNCONTENTLINKURL" order="43" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Launch URL"/>
+  
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="LAUNCHURL"/>
+  
+    </attribute>
+  
+    <attribute id="INTERACTIONCHANNEL" order="44" descriptionColumnName="INTERACTIONCHANNELNAME" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Interaction Channel"/>
+  
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="CHANNEL"/>
+  
+    </attribute>
+  
+    <attribute id="INTERACTIONCONTACTORIGINNAME" hidden="true" order="45" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription=""/>
+  
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="ID_ORIGIN_DESC"/>
+  
+    </attribute>
+    <attribute id="INTERACTIONREASONNAME" hidden="true" order="46" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription=""/>
+      <keyMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="IA_REASON_DESC"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="INTERACTIONWEIGHTINGFACTOR" hidden="true" order="9" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription=""/>
+      <measureMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="QUANTIFIER"/>
+    </measure>
+    <measure id="INTERACTIONINTRSTWEIGHTINGFCTR" order="15" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Interest Level"/>
+      <measureMapping columnObjectName="Join_IA_RT_Campaign_Descr" columnName="INTEREST_QUANTIFIER"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="1446" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Proj_IA_RT" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-718" y="2873"/>
+      <rectangleSize height="30" width="387"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Proj_IA_Interest" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="373" y="1807"/>
+      <rectangleSize height="30" width="326"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_IA_RT_Interests" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="207" y="1636"/>
+      <rectangleSize height="30" width="205"/>
+    </shape>
+    <shape modelObjectName="Join_IA_RT_Device_Type_Descr" modelObjectNameSpace="Join_IA_RT_Interests" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="268"/>
+    </shape>
+    <shape modelObjectName="Proj_IA_Interest" modelObjectNameSpace="Join_IA_RT_Interests" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="213"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_IA_RT_Device_Type_Descr" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="26" y="1807"/>
+      <rectangleSize height="30" width="277"/>
+    </shape>
+    <shape modelObjectName="Join_IA_RT_Status_Descr" modelObjectNameSpace="Join_IA_RT_Device_Type_Descr" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="620" y="30"/>
+      <rectangleSize width="268"/>
+    </shape>
+    <shape modelObjectName="Proj_Device_Descr" modelObjectNameSpace="Join_IA_RT_Device_Type_Descr" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="172"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_IA_RT_Status_Descr" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-65" y="1968"/>
+      <rectangleSize height="30" width="252"/>
+    </shape>
+    <shape modelObjectName="Join_IA_RT_Mkt_Area_Descr" modelObjectNameSpace="Join_IA_RT_Status_Descr" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="268"/>
+    </shape>
+    <shape modelObjectName="Proj_Status_Descr" modelObjectNameSpace="Join_IA_RT_Status_Descr" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="206"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Proj_Device_Descr" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="272" y="1968"/>
+      <rectangleSize height="30" width="338"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_IA_RT_Mkt_Area_Descr" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-189" y="2100"/>
+      <rectangleSize height="30" width="241"/>
+    </shape>
+    <shape modelObjectName="Join_IA_RT_Valuation_Descr" modelObjectNameSpace="Join_IA_RT_Mkt_Area_Descr" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="268"/>
+    </shape>
+    <shape modelObjectName="Proj_Mkt_Area_Descr" modelObjectNameSpace="Join_IA_RT_Mkt_Area_Descr" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="188"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Proj_Status_Descr" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="187" y="2104"/>
+      <rectangleSize height="30" width="279"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_IA_RT_Valuation_Descr" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-278" y="2237"/>
+      <rectangleSize height="30" width="235"/>
+    </shape>
+    <shape modelObjectName="Join_IA_RT_Priority_Descr" modelObjectNameSpace="Join_IA_RT_Valuation_Descr" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="268"/>
+    </shape>
+    <shape modelObjectName="Proj_Valuation_Descr" modelObjectNameSpace="Join_IA_RT_Valuation_Descr" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="187"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Proj_Mkt_Area_Descr" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="80" y="2234"/>
+      <rectangleSize height="30" width="220"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_IA_RT_Priority_Descr" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-363" y="2371"/>
+      <rectangleSize height="30" width="275"/>
+    </shape>
+    <shape modelObjectName="Join_IA_RT_Origin_Descr" modelObjectNameSpace="Join_IA_RT_Priority_Descr" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Proj_Priority_Descr" modelObjectNameSpace="Join_IA_RT_Priority_Descr" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="188"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Proj_Valuation_Descr" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-5" y="2376"/>
+      <rectangleSize height="30" width="234"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_IA_RT_Origin_Descr" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-583" y="2515"/>
+      <rectangleSize height="30" width="381"/>
+    </shape>
+    <shape modelObjectName="Join_IA_RT_Reason_Descr" modelObjectNameSpace="Join_IA_RT_Origin_Descr" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="268"/>
+    </shape>
+    <shape modelObjectName="Proj_Origin_Descr" modelObjectNameSpace="Join_IA_RT_Origin_Descr" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="178"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Proj_Priority_Descr" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-53" y="2519"/>
+      <rectangleSize height="30" width="266"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_IA_RT_Reason_Descr" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-552" y="2722"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Proj_IA_RT" modelObjectNameSpace="Join_IA_RT_Reason_Descr" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Proj_IA_Reason_Descr" modelObjectNameSpace="Join_IA_RT_Reason_Descr" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="196"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Proj_Origin_Descr" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-179" y="2699"/>
+      <rectangleSize height="30" width="260"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Proj_IA_Intr_Descr" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="479" y="1636"/>
+      <rectangleSize height="30" width="277"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_IA_RT_Interest_Descriptions" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="355" y="1475"/>
+      <rectangleSize height="30" width="263"/>
+    </shape>
+    <shape modelObjectName="Join_IA_RT_Interests" modelObjectNameSpace="Join_IA_RT_Interest_Descriptions" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="56" y="33"/>
+      <rectangleSize width="213"/>
+    </shape>
+  
+    <shape modelObjectName="Proj_IA_Intr_Descr" modelObjectNameSpace="Join_IA_RT_Interest_Descriptions" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="356" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Proj_Channel_Assignment" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="804" y="1313"/>
+      <rectangleSize height="30" width="302"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_IA_RT_Channel" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="595" y="1148"/>
+      <rectangleSize height="30" width="260"/>
+    </shape>
+    <shape modelObjectName="Join_IA_RT_Interest_Descriptions" modelObjectNameSpace="Join_IA_RT_Channel" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Proj_Channel_Assignment" modelObjectNameSpace="Join_IA_RT_Channel" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="399" y="30"/>
+      <rectangleSize width="216"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Proj_Channel_Descr" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="906" y="1148"/>
+      <rectangleSize height="30" width="250"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_IA_RT_Channel_Descr" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="723" y="996"/>
+      <rectangleSize height="30" width="243"/>
+    </shape>
+    <shape modelObjectName="Join_IA_RT_Channel" modelObjectNameSpace="Join_IA_RT_Channel_Descr" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="268"/>
+    </shape>
+    <shape modelObjectName="Proj_Channel_Descr" modelObjectNameSpace="Join_IA_RT_Channel_Descr" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="175"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Proj_IA_Type_Descr" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="1021" y="996"/>
+      <rectangleSize height="30" width="251"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_IA_RT_IA_Type_Descr" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="841" y="836"/>
+      <rectangleSize height="30" width="245"/>
+    </shape>
+    <shape modelObjectName="Join_IA_RT_Channel_Descr" modelObjectNameSpace="Join_IA_RT_IA_Type_Descr" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Proj_IA_Type_Descr" modelObjectNameSpace="Join_IA_RT_IA_Type_Descr" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Proj_Comm_Med_Descr" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="1165" y="836"/>
+      <rectangleSize height="30" width="236"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_IA_RT_Comm_Med_Descr" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="983" y="676"/>
+      <rectangleSize height="30" width="295"/>
+    </shape>
+    <shape modelObjectName="Join_IA_RT_IA_Type_Descr" modelObjectNameSpace="Join_IA_RT_Comm_Med_Descr" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Proj_Comm_Med_Descr" modelObjectNameSpace="Join_IA_RT_Comm_Med_Descr" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Proj_IA_Type" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="1354" y="676"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_IA_RT_IA_Type" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="1146" y="514"/>
+      <rectangleSize height="30" width="195"/>
+    </shape>
+    <shape modelObjectName="Join_IA_RT_Comm_Med_Descr" modelObjectNameSpace="Join_IA_RT_IA_Type" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Proj_IA_Type" modelObjectNameSpace="Join_IA_RT_IA_Type" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Proj_IA_Direction_Descr" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="1405" y="509"/>
+      <rectangleSize height="30" width="219"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_IA_RT_Direction_Descr" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="1252" y="356"/>
+      <rectangleSize height="30" width="221"/>
+    </shape>
+    <shape modelObjectName="Join_IA_RT_IA_Type" modelObjectNameSpace="Join_IA_RT_Direction_Descr" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Proj_IA_Direction_Descr" modelObjectNameSpace="Join_IA_RT_Direction_Descr" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="204"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_IA_RT_Campaign_Descr" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="1446" y="217"/>
+      <rectangleSize height="30" width="222"/>
+    </shape>
+    <shape modelObjectName="Join_IA_RT_Direction_Descr" modelObjectNameSpace="Join_IA_RT_Campaign_Descr" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Proj_Campaign_Descr" modelObjectNameSpace="Join_IA_RT_Campaign_Descr" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="192"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Proj_Campaign_Descr" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="1526" y="356"/>
+      <rectangleSize height="30" width="220"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Proj_IA_Reason_Descr" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-193" y="2858"/>
+      <rectangleSize height="30" width="160"/>
+    </shape></shapes>
+</layout>
+</Calculation:scenario>

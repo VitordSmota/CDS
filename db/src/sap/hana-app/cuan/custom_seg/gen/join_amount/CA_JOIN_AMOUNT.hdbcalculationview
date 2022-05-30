@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="sap.hana-app.cuan.custom_seg.gen.join_amount::CA_JOIN_AMOUNT" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" cacheInvalidationPeriod="NONE" enforceSqlExecution="true">
+ <descriptions defaultDescription="JOIN_AMOUNT"/>
+ <localVariables>
+  <variable id="Currency_MXN" parameter="true">
+   <descriptions defaultDescription="Target Currency &apos;MXN&apos;"/>
+   <variableProperties datatype="VARCHAR" length="3" mandatory="false" defaultValue="MXN">
+    <valueDomain type="Currency"/>
+    <selection multiLine="false" type="SingleValue"/>
+   </variableProperties>
+  </variable>
+ </localVariables>
+ <variableMappings/>
+ <dataSources>
+  <DataSource id="hdbtables::CUAND_CE_IA_PROD">
+   <resourceUri>hdbtables::CUAND_CE_IA_PROD</resourceUri>
+  </DataSource>
+  <DataSource id="sap.hana-app.cuan.db::M_TIME_DIMENSION">
+   <resourceUri>sap.hana-app.cuan.db::M_TIME_DIMENSION</resourceUri>
+  </DataSource>
+  <DataSource id="hdbtables::CUAND_CE_IA_RT">
+   <resourceUri>hdbtables::CUAND_CE_IA_RT</resourceUri>
+  </DataSource>
+  <DataSource id="hdbtables::CUAN_D_INI_ROOT">
+   <resourceUri>hdbtables::CUAN_D_INI_ROOT</resourceUri>
+  </DataSource>
+  <DataSource id="hdbtables::CUANC_CE_IA_TYPE">
+   <resourceUri>hdbtables::CUANC_CE_IA_TYPE</resourceUri>
+  </DataSource>
+ </dataSources>
+ <calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+   <viewAttributes>
+    <viewAttribute id="UNIT_OF_MEASURE"/>
+    <viewAttribute id="AMOUNT"/>
+    <viewAttribute id="PRODUCT_KEY"/>
+    <viewAttribute id="PRODUCT_NAV_URL"/>
+    <viewAttribute id="PRODUCT_IMAGE_URL"/>
+   </viewAttributes>
+   <calculatedViewAttributes/>
+   <input node="hdbtables::CUAND_CE_IA_PROD"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1">
+   <viewAttributes>
+    <viewAttribute id="UNIT_OF_MEASURE"/>
+    <viewAttribute id="AMOUNT" aggregationType="sum"/>
+    <viewAttribute id="PRODUCT_KEY"/>
+    <viewAttribute id="PRODUCT_NAV_URL"/>
+    <viewAttribute id="PRODUCT_IMAGE_URL"/>
+    <viewAttribute id="CALMONTH"/>
+    <viewAttribute id="CALQUARTER"/>
+    <viewAttribute id="DAY"/>
+    <viewAttribute id="YEAR"/>
+   </viewAttributes>
+   <calculatedViewAttributes/>
+   <input node="Projection_1">
+    <mapping xsi:type="Calculation:AttributeMapping" target="UNIT_OF_MEASURE" source="UNIT_OF_MEASURE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="AMOUNT" source="AMOUNT"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_KEY" source="PRODUCT_KEY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_NAV_URL" source="PRODUCT_NAV_URL"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_IMAGE_URL" source="PRODUCT_IMAGE_URL"/>
+   </input>
+   <input node="sap.hana-app.cuan.db::M_TIME_DIMENSION">
+    <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH" source="CALMONTH"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="CALQUARTER" source="CALQUARTER"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="DAY" source="DAY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+   </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2">
+   <viewAttributes>
+    <viewAttribute id="TIMESTAMP" aggregationType="sum"/>
+    <viewAttribute id="SOURCE_SYSTEM_TYPE"/>
+    <viewAttribute id="CONTACT_KEY"/>
+    <viewAttribute id="CAMPAIGNCONTENTLINKNAME"/>
+    <viewAttribute id="INTERACTIONAGREEMENTEXTERNALID"/>
+    <viewAttribute id="INTERACTIONCONTENTSUBJECT"/>
+    <viewAttribute id="INTERACTIONEXTERNALID"/>
+    <viewAttribute id="INTERACTIONOPERATINGSYSTEMNAME"/>
+    <viewAttribute id="INTERACTIONPROCESSINGDURATION" aggregationType="sum"/>
+    <viewAttribute id="INTERACTIONSOURCEOBJECTADDLID"/>
+    <viewAttribute id="INTERACTIONDEVICEFREETEXT"/>
+    <viewAttribute id="INTERACTIONDIGITALACCOUNT"/>
+    <viewAttribute id="INTERACTIONISANONYMOUS"/>
+    <viewAttribute id="INTERACTIONSOFTWARECLIENTNAME"/>
+    <viewAttribute id="INTERACTIONSOURCEOBJECTSTATUS"/>
+    <viewAttribute id="INTERACTIONVALUE" aggregationType="sum"/>
+    <viewAttribute id="REFERRALSOURCE"/>
+    <viewAttribute id="REFERRALSOURCECATEGORY"/>
+    <viewAttribute id="IA_STATUS"/>
+    <viewAttribute id="INTERACTIONSOURCEOBJECT"/>
+    <viewAttribute id="INTERACTIONWEIGHTINGFACTOR" aggregationType="sum"/>
+    <viewAttribute id="SOURCESYSTEM"/>
+    <viewAttribute id="CURRENCY"/>
+    <viewAttribute id="INTERACTIONSOURCETIMESTAMPUTC" aggregationType="sum"/>
+    <viewAttribute id="DEVICE_TYPE"/>
+    <viewAttribute id="INTERACTIONAGREEMENTORIGIN"/>
+    <viewAttribute id="INTERACTIONDIGITALACCOUNTTYPE"/>
+    <viewAttribute id="UNIT_OF_MEASURE"/>
+    <viewAttribute id="AMOUNT" aggregationType="sum"/>
+    <viewAttribute id="PRODUCT_KEY"/>
+    <viewAttribute id="PRODUCT_NAV_URL"/>
+    <viewAttribute id="PRODUCT_IMAGE_URL"/>
+    <viewAttribute id="CALMONTH"/>
+    <viewAttribute id="CALQUARTER"/>
+    <viewAttribute id="DAY"/>
+    <viewAttribute id="YEAR"/>
+    <viewAttribute id="IA_DATE"/>
+   </viewAttributes>
+   <calculatedViewAttributes/>
+   <input node="Join_1">
+    <mapping xsi:type="Calculation:AttributeMapping" target="UNIT_OF_MEASURE" source="UNIT_OF_MEASURE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="AMOUNT" source="AMOUNT"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_KEY" source="PRODUCT_KEY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_NAV_URL" source="PRODUCT_NAV_URL"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_IMAGE_URL" source="PRODUCT_IMAGE_URL"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH" source="CALMONTH"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="CALQUARTER" source="CALQUARTER"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="DAY" source="DAY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+   </input>
+   <input node="hdbtables::CUAND_CE_IA_RT">
+    <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP" source="TIMESTAMP"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_TYPE" source="SOURCE_SYSTEM_TYPE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="CONTACT_KEY" source="CONTACT_KEY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="CAMPAIGNCONTENTLINKNAME" source="LAUNCH_TEXT"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONAGREEMENTEXTERNALID" source="MKT_AGREEMENTEXTERNALID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONCONTENTSUBJECT" source="CONTENT_TITLE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONEXTERNALID" source="ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONOPERATINGSYSTEMNAME" source="OS"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONPROCESSINGDURATION" source="PROCESSING_TIME"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEOBJECTADDLID" source="SOURCE_OBJECT_ADD_ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONDEVICEFREETEXT" source="DEVICE_FT"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONDIGITALACCOUNT" source="DIGACC_ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONISANONYMOUS" source="IS_ANONYMOUS"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOFTWARECLIENTNAME" source="SW_CLIENT"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEOBJECTSTATUS" source="SOURCE_OBJECT_STATUS_CODE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONVALUE" source="VALUATION"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="REFERRALSOURCE" source="REFERRAL_SOURCE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="REFERRALSOURCECATEGORY" source="REFERRAL_SOURCE_CATEGORY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="IA_STATUS" source="IA_STATUS"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEOBJECT" source="SOURCE_OBJECT_ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONWEIGHTINGFACTOR" source="QUANTIFIER"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="SOURCESYSTEM" source="SOURCE_SYSTEM_ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY" source="CURRENCY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCETIMESTAMPUTC" source="SOURCE_TIMESTAMP"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_TYPE" source="DEVICE_TYPE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONAGREEMENTORIGIN" source="MKT_AGREEMENTORIGIN"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONDIGITALACCOUNTTYPE" source="DIGACC_TYPE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="IA_DATE" source="IA_DATE"/>
+   </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_3">
+   <viewAttributes>
+    <viewAttribute id="INITIATIVE_DESC"/>
+    <viewAttribute id="CA_D_CAMPAIGN_ID"/>
+    <viewAttribute id="TIMESTAMP" aggregationType="sum"/>
+    <viewAttribute id="SOURCE_SYSTEM_TYPE"/>
+    <viewAttribute id="CONTACT_KEY"/>
+    <viewAttribute id="CAMPAIGNCONTENTLINKNAME"/>
+    <viewAttribute id="INTERACTIONAGREEMENTEXTERNALID"/>
+    <viewAttribute id="INTERACTIONCONTENTSUBJECT"/>
+    <viewAttribute id="INTERACTIONEXTERNALID"/>
+    <viewAttribute id="INTERACTIONOPERATINGSYSTEMNAME"/>
+    <viewAttribute id="INTERACTIONPROCESSINGDURATION" aggregationType="sum"/>
+    <viewAttribute id="INTERACTIONSOURCEOBJECTADDLID"/>
+    <viewAttribute id="INTERACTIONDEVICEFREETEXT"/>
+    <viewAttribute id="INTERACTIONDIGITALACCOUNT"/>
+    <viewAttribute id="INTERACTIONISANONYMOUS"/>
+    <viewAttribute id="INTERACTIONSOFTWARECLIENTNAME"/>
+    <viewAttribute id="INTERACTIONSOURCEOBJECTSTATUS"/>
+    <viewAttribute id="INTERACTIONSOURCEOBJECTSTATUS_1"/>
+    <viewAttribute id="INTERACTIONVALUE" aggregationType="sum"/>
+    <viewAttribute id="REFERRALSOURCE"/>
+    <viewAttribute id="REFERRALSOURCECATEGORY"/>
+    <viewAttribute id="IA_STATUS"/>
+    <viewAttribute id="INTERACTIONSOURCEOBJECT"/>
+    <viewAttribute id="INTERACTIONWEIGHTINGFACTOR" aggregationType="sum"/>
+    <viewAttribute id="SOURCESYSTEM"/>
+    <viewAttribute id="CURRENCY"/>
+    <viewAttribute id="INTERACTIONSOURCETIMESTAMPUTC" aggregationType="sum"/>
+    <viewAttribute id="DEVICE_TYPE"/>
+    <viewAttribute id="INTERACTIONAGREEMENTORIGIN"/>
+    <viewAttribute id="INTERACTIONDIGITALACCOUNTTYPE"/>
+    <viewAttribute id="UNIT_OF_MEASURE"/>
+    <viewAttribute id="AMOUNT" aggregationType="sum"/>
+    <viewAttribute id="PRODUCT_KEY"/>
+    <viewAttribute id="PRODUCT_NAV_URL"/>
+    <viewAttribute id="PRODUCT_IMAGE_URL"/>
+    <viewAttribute id="CALMONTH"/>
+    <viewAttribute id="CALQUARTER"/>
+    <viewAttribute id="DAY"/>
+    <viewAttribute id="YEAR"/>
+    <viewAttribute id="INITIATIVE_ID_DESC"/>
+    <viewAttribute id="IA_DATE"/>
+   </viewAttributes>
+   <calculatedViewAttributes/>
+   <input node="hdbtables::CUAN_D_INI_ROOT">
+    <mapping xsi:type="Calculation:AttributeMapping" target="INITIATIVE_DESC" source="DESCRIPTION"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="CA_D_CAMPAIGN_ID" source="ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INITIATIVE_ID_DESC" source="NAME"/>
+   </input>
+   <input node="Join_2">
+    <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP" source="TIMESTAMP"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_TYPE" source="SOURCE_SYSTEM_TYPE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="CONTACT_KEY" source="CONTACT_KEY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="CAMPAIGNCONTENTLINKNAME" source="CAMPAIGNCONTENTLINKNAME"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONAGREEMENTEXTERNALID" source="INTERACTIONAGREEMENTEXTERNALID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONCONTENTSUBJECT" source="INTERACTIONCONTENTSUBJECT"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONEXTERNALID" source="INTERACTIONEXTERNALID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONOPERATINGSYSTEMNAME" source="INTERACTIONOPERATINGSYSTEMNAME"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONPROCESSINGDURATION" source="INTERACTIONPROCESSINGDURATION"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEOBJECTADDLID" source="INTERACTIONSOURCEOBJECTADDLID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONDEVICEFREETEXT" source="INTERACTIONDEVICEFREETEXT"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONDIGITALACCOUNT" source="INTERACTIONDIGITALACCOUNT"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONISANONYMOUS" source="INTERACTIONISANONYMOUS"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOFTWARECLIENTNAME" source="INTERACTIONSOFTWARECLIENTNAME"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEOBJECTSTATUS_1" source="INTERACTIONSOURCEOBJECTSTATUS"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONVALUE" source="INTERACTIONVALUE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="REFERRALSOURCE" source="REFERRALSOURCE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="REFERRALSOURCECATEGORY" source="REFERRALSOURCECATEGORY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="IA_STATUS" source="IA_STATUS"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEOBJECT" source="INTERACTIONSOURCEOBJECT"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONWEIGHTINGFACTOR" source="INTERACTIONWEIGHTINGFACTOR"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="SOURCESYSTEM" source="SOURCESYSTEM"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY" source="CURRENCY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCETIMESTAMPUTC" source="INTERACTIONSOURCETIMESTAMPUTC"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_TYPE" source="DEVICE_TYPE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONAGREEMENTORIGIN" source="INTERACTIONAGREEMENTORIGIN"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONDIGITALACCOUNTTYPE" source="INTERACTIONDIGITALACCOUNTTYPE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="UNIT_OF_MEASURE" source="UNIT_OF_MEASURE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="AMOUNT" source="AMOUNT"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_KEY" source="PRODUCT_KEY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_NAV_URL" source="PRODUCT_NAV_URL"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_IMAGE_URL" source="PRODUCT_IMAGE_URL"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH" source="CALMONTH"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="CALQUARTER" source="CALQUARTER"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEOBJECTSTATUS" source="INTERACTIONSOURCEOBJECTSTATUS"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="DAY" source="DAY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="IA_DATE" source="IA_DATE"/>
+   </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_4">
+   <viewAttributes>
+    <viewAttribute id="INITIATIVE_DESC"/>
+    <viewAttribute id="CA_D_CAMPAIGN_ID"/>
+    <viewAttribute id="TIMESTAMP" aggregationType="sum"/>
+    <viewAttribute id="SOURCE_SYSTEM_TYPE"/>
+    <viewAttribute id="CONTACT_KEY"/>
+    <viewAttribute id="CAMPAIGNCONTENTLINKNAME"/>
+    <viewAttribute id="INTERACTIONAGREEMENTEXTERNALID"/>
+    <viewAttribute id="INTERACTIONCONTENTSUBJECT"/>
+    <viewAttribute id="INTERACTIONEXTERNALID"/>
+    <viewAttribute id="INTERACTIONOPERATINGSYSTEMNAME"/>
+    <viewAttribute id="INTERACTIONPROCESSINGDURATION" aggregationType="sum"/>
+    <viewAttribute id="INTERACTIONSOURCEOBJECTADDLID"/>
+    <viewAttribute id="INTERACTIONDEVICEFREETEXT"/>
+    <viewAttribute id="INTERACTIONDIGITALACCOUNT"/>
+    <viewAttribute id="INTERACTIONISANONYMOUS"/>
+    <viewAttribute id="INTERACTIONSOFTWARECLIENTNAME"/>
+    <viewAttribute id="INTERACTIONSOURCEOBJECTSTATUS"/>
+    <viewAttribute id="INTERACTIONSOURCEOBJECTSTATUS_1"/>
+    <viewAttribute id="INTERACTIONVALUE" aggregationType="sum"/>
+    <viewAttribute id="REFERRALSOURCE"/>
+    <viewAttribute id="REFERRALSOURCECATEGORY"/>
+    <viewAttribute id="IA_STATUS"/>
+    <viewAttribute id="INTERACTIONSOURCEOBJECT"/>
+    <viewAttribute id="INTERACTIONWEIGHTINGFACTOR" aggregationType="sum"/>
+    <viewAttribute id="SOURCESYSTEM"/>
+    <viewAttribute id="CURRENCY"/>
+    <viewAttribute id="INTERACTIONSOURCETIMESTAMPUTC" aggregationType="sum"/>
+    <viewAttribute id="DEVICE_TYPE"/>
+    <viewAttribute id="INTERACTIONAGREEMENTORIGIN"/>
+    <viewAttribute id="INTERACTIONDIGITALACCOUNTTYPE"/>
+    <viewAttribute id="UNIT_OF_MEASURE"/>
+    <viewAttribute id="AMOUNT" aggregationType="sum"/>
+    <viewAttribute id="PRODUCT_KEY"/>
+    <viewAttribute id="PRODUCT_NAV_URL"/>
+    <viewAttribute id="PRODUCT_IMAGE_URL"/>
+    <viewAttribute id="CALMONTH"/>
+    <viewAttribute id="CALQUARTER"/>
+    <viewAttribute id="DAY"/>
+    <viewAttribute id="YEAR"/>
+    <viewAttribute id="INITIATIVE_ID_DESC"/>
+    <viewAttribute id="IA_DATE"/>
+   </viewAttributes>
+   <calculatedViewAttributes/>
+   <input node="Join_3">
+    <mapping xsi:type="Calculation:AttributeMapping" target="INITIATIVE_DESC" source="INITIATIVE_DESC"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="CA_D_CAMPAIGN_ID" source="CA_D_CAMPAIGN_ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP" source="TIMESTAMP"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_TYPE" source="SOURCE_SYSTEM_TYPE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="CONTACT_KEY" source="CONTACT_KEY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="CAMPAIGNCONTENTLINKNAME" source="CAMPAIGNCONTENTLINKNAME"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONAGREEMENTEXTERNALID" source="INTERACTIONAGREEMENTEXTERNALID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONCONTENTSUBJECT" source="INTERACTIONCONTENTSUBJECT"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONEXTERNALID" source="INTERACTIONEXTERNALID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONOPERATINGSYSTEMNAME" source="INTERACTIONOPERATINGSYSTEMNAME"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONPROCESSINGDURATION" source="INTERACTIONPROCESSINGDURATION"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEOBJECTADDLID" source="INTERACTIONSOURCEOBJECTADDLID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONDEVICEFREETEXT" source="INTERACTIONDEVICEFREETEXT"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONDIGITALACCOUNT" source="INTERACTIONDIGITALACCOUNT"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONISANONYMOUS" source="INTERACTIONISANONYMOUS"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOFTWARECLIENTNAME" source="INTERACTIONSOFTWARECLIENTNAME"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEOBJECTSTATUS" source="INTERACTIONSOURCEOBJECTSTATUS"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEOBJECTSTATUS_1" source="INTERACTIONSOURCEOBJECTSTATUS_1"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONVALUE" source="INTERACTIONVALUE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="REFERRALSOURCE" source="REFERRALSOURCE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="REFERRALSOURCECATEGORY" source="REFERRALSOURCECATEGORY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="IA_STATUS" source="IA_STATUS"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEOBJECT" source="INTERACTIONSOURCEOBJECT"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONWEIGHTINGFACTOR" source="INTERACTIONWEIGHTINGFACTOR"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="SOURCESYSTEM" source="SOURCESYSTEM"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY" source="CURRENCY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCETIMESTAMPUTC" source="INTERACTIONSOURCETIMESTAMPUTC"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="DEVICE_TYPE" source="DEVICE_TYPE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONAGREEMENTORIGIN" source="INTERACTIONAGREEMENTORIGIN"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONDIGITALACCOUNTTYPE" source="INTERACTIONDIGITALACCOUNTTYPE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="UNIT_OF_MEASURE" source="UNIT_OF_MEASURE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="AMOUNT" source="AMOUNT"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_KEY" source="PRODUCT_KEY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_NAV_URL" source="PRODUCT_NAV_URL"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_IMAGE_URL" source="PRODUCT_IMAGE_URL"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH" source="CALMONTH"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="CALQUARTER" source="CALQUARTER"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="DAY" source="DAY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INITIATIVE_ID_DESC" source="INITIATIVE_ID_DESC"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="IA_DATE" source="IA_DATE"/>
+   </input>
+   <input node="hdbtables::CUANC_CE_IA_TYPE"/>
+  </calculationView>
+ </calculationViews>
+ <logicalModel id="Join_4" filterExpressionLanguage="SQL">
+  <attributes>
+   <attribute id="INITIATIVE_DESC" order="1" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INITIATIVE_DESC"/>
+    <keyMapping columnObjectName="Join_4" columnName="INITIATIVE_DESC"/>
+   </attribute>
+   <attribute id="CA_D_CAMPAIGN_ID" order="2" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="CA_D_CAMPAIGN_ID"/>
+    <keyMapping columnObjectName="Join_4" columnName="CA_D_CAMPAIGN_ID"/>
+   </attribute>
+   <attribute id="SOURCE_SYSTEM_TYPE" order="4" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="SOURCE_SYSTEM_TYPE"/>
+    <keyMapping columnObjectName="Join_4" columnName="SOURCE_SYSTEM_TYPE"/>
+   </attribute>
+   <attribute id="CONTACT_KEY" order="5" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="CONTACT_KEY"/>
+    <keyMapping columnObjectName="Join_4" columnName="CONTACT_KEY"/>
+   </attribute>
+   <attribute id="CAMPAIGNCONTENTLINKNAME" order="6" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="CAMPAIGNCONTENTLINKNAME"/>
+    <keyMapping columnObjectName="Join_4" columnName="CAMPAIGNCONTENTLINKNAME"/>
+   </attribute>
+   <attribute id="INTERACTIONAGREEMENTEXTERNALID" order="7" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONAGREEMENTEXTERNALID"/>
+    <keyMapping columnObjectName="Join_4" columnName="INTERACTIONAGREEMENTEXTERNALID"/>
+   </attribute>
+   <attribute id="INTERACTIONCONTENTSUBJECT" order="8" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONCONTENTSUBJECT"/>
+    <keyMapping columnObjectName="Join_4" columnName="INTERACTIONCONTENTSUBJECT"/>
+   </attribute>
+   <attribute id="INTERACTIONEXTERNALID" order="9" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONEXTERNALID"/>
+    <keyMapping columnObjectName="Join_4" columnName="INTERACTIONEXTERNALID"/>
+   </attribute>
+   <attribute id="INTERACTIONOPERATINGSYSTEMNAME" order="10" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONOPERATINGSYSTEMNAME"/>
+    <keyMapping columnObjectName="Join_4" columnName="INTERACTIONOPERATINGSYSTEMNAME"/>
+   </attribute>
+   <attribute id="INTERACTIONSOURCEOBJECTADDLID" order="12" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONSOURCEOBJECTADDLID"/>
+    <keyMapping columnObjectName="Join_4" columnName="INTERACTIONSOURCEOBJECTADDLID"/>
+   </attribute>
+   <attribute id="INTERACTIONDEVICEFREETEXT" order="13" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONDEVICEFREETEXT"/>
+    <keyMapping columnObjectName="Join_4" columnName="INTERACTIONDEVICEFREETEXT"/>
+   </attribute>
+   <attribute id="INTERACTIONDIGITALACCOUNT" order="14" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONDIGITALACCOUNT"/>
+    <keyMapping columnObjectName="Join_4" columnName="INTERACTIONDIGITALACCOUNT"/>
+   </attribute>
+   <attribute id="INTERACTIONISANONYMOUS" order="15" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONISANONYMOUS"/>
+    <keyMapping columnObjectName="Join_4" columnName="INTERACTIONISANONYMOUS"/>
+   </attribute>
+   <attribute id="INTERACTIONSOFTWARECLIENTNAME" order="16" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONSOFTWARECLIENTNAME"/>
+    <keyMapping columnObjectName="Join_4" columnName="INTERACTIONSOFTWARECLIENTNAME"/>
+   </attribute>
+   <attribute id="INTERACTIONSOURCEOBJECTSTATUS" order="17" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONSOURCEOBJECTSTATUS"/>
+    <keyMapping columnObjectName="Join_4" columnName="INTERACTIONSOURCEOBJECTSTATUS"/>
+   </attribute>
+   <attribute id="INTERACTIONSOURCEOBJECTSTATUS_1" order="18" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONSOURCEOBJECTSTATUS_1"/>
+    <keyMapping columnObjectName="Join_4" columnName="INTERACTIONSOURCEOBJECTSTATUS_1"/>
+   </attribute>
+   <attribute id="REFERRALSOURCE" order="20" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="REFERRALSOURCE"/>
+    <keyMapping columnObjectName="Join_4" columnName="REFERRALSOURCE"/>
+   </attribute>
+   <attribute id="REFERRALSOURCECATEGORY" order="21" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="REFERRALSOURCECATEGORY"/>
+    <keyMapping columnObjectName="Join_4" columnName="REFERRALSOURCECATEGORY"/>
+   </attribute>
+   <attribute id="IA_STATUS" order="22" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="IA_STATUS"/>
+    <keyMapping columnObjectName="Join_4" columnName="IA_STATUS"/>
+   </attribute>
+   <attribute id="INTERACTIONSOURCEOBJECT" order="23" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONSOURCEOBJECT"/>
+    <keyMapping columnObjectName="Join_4" columnName="INTERACTIONSOURCEOBJECT"/>
+   </attribute>
+   <attribute id="SOURCESYSTEM" order="25" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="SOURCESYSTEM"/>
+    <keyMapping columnObjectName="Join_4" columnName="SOURCESYSTEM"/>
+   </attribute>
+   <attribute id="CURRENCY" order="26" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="CURRENCY"/>
+    <keyMapping columnObjectName="Join_4" columnName="CURRENCY"/>
+   </attribute>
+   <attribute id="DEVICE_TYPE" order="28" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="DEVICE_TYPE"/>
+    <keyMapping columnObjectName="Join_4" columnName="DEVICE_TYPE"/>
+   </attribute>
+   <attribute id="INTERACTIONAGREEMENTORIGIN" order="29" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONAGREEMENTORIGIN"/>
+    <keyMapping columnObjectName="Join_4" columnName="INTERACTIONAGREEMENTORIGIN"/>
+   </attribute>
+   <attribute id="INTERACTIONDIGITALACCOUNTTYPE" order="30" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONDIGITALACCOUNTTYPE"/>
+    <keyMapping columnObjectName="Join_4" columnName="INTERACTIONDIGITALACCOUNTTYPE"/>
+   </attribute>
+   <attribute id="UNIT_OF_MEASURE" order="31" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="UNIT_OF_MEASURE"/>
+    <keyMapping columnObjectName="Join_4" columnName="UNIT_OF_MEASURE"/>
+   </attribute>
+   <attribute id="PRODUCT_KEY" order="33" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="PRODUCT_KEY"/>
+    <keyMapping columnObjectName="Join_4" columnName="PRODUCT_KEY"/>
+   </attribute>
+   <attribute id="PRODUCT_NAV_URL" order="34" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="PRODUCT_NAV_URL"/>
+    <keyMapping columnObjectName="Join_4" columnName="PRODUCT_NAV_URL"/>
+   </attribute>
+   <attribute id="PRODUCT_IMAGE_URL" order="35" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="PRODUCT_IMAGE_URL"/>
+    <keyMapping columnObjectName="Join_4" columnName="PRODUCT_IMAGE_URL"/>
+   </attribute>
+   <attribute id="CALMONTH" order="36" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="CALMONTH"/>
+    <keyMapping columnObjectName="Join_4" columnName="CALMONTH"/>
+   </attribute>
+   <attribute id="CALQUARTER" order="37" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="CALQUARTER"/>
+    <keyMapping columnObjectName="Join_4" columnName="CALQUARTER"/>
+   </attribute>
+   <attribute id="DAY" order="38" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="DAY"/>
+    <keyMapping columnObjectName="Join_4" columnName="DAY"/>
+   </attribute>
+   <attribute id="YEAR" order="39" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="YEAR"/>
+    <keyMapping columnObjectName="Join_4" columnName="YEAR"/>
+   </attribute>
+   <attribute id="INITIATIVE_ID_DESC" order="40" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="NAME"/>
+    <keyMapping columnObjectName="Join_4" columnName="INITIATIVE_ID_DESC"/>
+   </attribute>
+   <attribute id="IA_DATE" order="41" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="IA_DATE"/>
+    <keyMapping columnObjectName="Join_4" columnName="IA_DATE"/>
+   </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+   <measure id="TIMESTAMP" order="3" aggregationType="sum" measureType="simple">
+    <descriptions defaultDescription="TIMESTAMP"/>
+    <measureMapping columnObjectName="Join_4" columnName="TIMESTAMP"/>
+   </measure>
+   <measure id="INTERACTIONPROCESSINGDURATION" order="11" aggregationType="sum" measureType="simple">
+    <descriptions defaultDescription="INTERACTIONPROCESSINGDURATION"/>
+    <measureMapping columnObjectName="Join_4" columnName="INTERACTIONPROCESSINGDURATION"/>
+   </measure>
+   <measure id="INTERACTIONVALUE" order="19" aggregationType="sum" measureType="simple">
+    <descriptions defaultDescription="INTERACTIONVALUE"/>
+    <measureMapping columnObjectName="Join_4" columnName="INTERACTIONVALUE"/>
+   </measure>
+   <measure id="INTERACTIONWEIGHTINGFACTOR" order="24" aggregationType="sum" measureType="simple">
+    <descriptions defaultDescription="INTERACTIONWEIGHTINGFACTOR"/>
+    <measureMapping columnObjectName="Join_4" columnName="INTERACTIONWEIGHTINGFACTOR"/>
+   </measure>
+   <measure id="INTERACTIONSOURCETIMESTAMPUTC" order="27" aggregationType="sum" measureType="simple">
+    <descriptions defaultDescription="INTERACTIONSOURCETIMESTAMPUTC"/>
+    <measureMapping columnObjectName="Join_4" columnName="INTERACTIONSOURCETIMESTAMPUTC"/>
+   </measure>
+   <measure id="AMOUNT" order="32" aggregationType="sum" measureType="simple">
+    <descriptions defaultDescription="AMOUNT"/>
+    <measureMapping columnObjectName="Join_4" columnName="AMOUNT"/>
+   </measure>
+  </baseMeasures>
+  <calculatedMeasures>
+   <measure id="AMOUNT_CC" order="42" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="31" scale="2" expressionLanguage="SQL">
+    <descriptions defaultDescription="Amount MXN"/>
+    <formula>&quot;AMOUNT&quot;</formula>
+   </measure>
+  </calculatedMeasures>
+  <restrictedMeasures/>
+  <localDimensions/>
+  <sharedDimensions/>
+ </logicalModel>
+ <layout>
+  <shapes>
+   <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+    <upperLeftCorner x="220" y="105"/>
+    <rectangleSize width="160"/>
+   </shape>
+   <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+    <upperLeftCorner x="112" y="695"/>
+    <rectangleSize height="30" width="160"/>
+   </shape>
+   <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+    <upperLeftCorner x="-53" y="589"/>
+    <rectangleSize height="30" width="160"/>
+   </shape>
+   <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+    <upperLeftCorner x="20" y="30"/>
+    <rectangleSize width="210"/>
+   </shape>
+   <shape modelObjectName="sap.hana-app.cuan.db::M_TIME_DIMENSION" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+    <upperLeftCorner x="320" y="30"/>
+    <rectangleSize width="318"/>
+   </shape>
+   <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+    <upperLeftCorner x="180" y="495"/>
+    <rectangleSize height="30" width="160"/>
+   </shape>
+   <shape modelObjectName="Join_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+    <upperLeftCorner x="20" y="30"/>
+    <rectangleSize width="250"/>
+   </shape>
+   <shape modelObjectName="hdbtables::CUAND_CE_IA_RT" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+    <upperLeftCorner x="320" y="30"/>
+    <rectangleSize width="269"/>
+   </shape>
+   <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
+    <upperLeftCorner x="-72" y="404"/>
+    <rectangleSize height="30" width="160"/>
+   </shape>
+   <shape modelObjectName="hdbtables::CUAN_D_INI_ROOT" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+    <upperLeftCorner x="20" y="30"/>
+    <rectangleSize width="278"/>
+   </shape>
+   <shape modelObjectName="Join_2" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+    <upperLeftCorner x="320" y="30"/>
+    <rectangleSize width="250"/>
+   </shape>
+   <shape expanded="true" modelObjectName="Join_4" modelObjectNameSpace="CalculationView">
+    <upperLeftCorner x="220" y="322"/>
+    <rectangleSize height="30" width="160"/>
+   </shape>
+   <shape modelObjectName="Join_3" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+    <upperLeftCorner x="20" y="30"/>
+    <rectangleSize width="305"/>
+   </shape>
+   <shape modelObjectName="hdbtables::CUANC_CE_IA_TYPE" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+    <upperLeftCorner x="320" y="30"/>
+    <rectangleSize width="252"/>
+   </shape>
+   <shape modelObjectName="Join_4" modelObjectNameSpace="StarJoinViewNodeInput" modelObjectType="repository">
+    <upperLeftCorner x="20" y="30"/>
+    <rectangleSize width="250"/>
+   </shape>
+  </shapes>
+ </layout>
+</Calculation:scenario>

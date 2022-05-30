@@ -1,0 +1,1137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="sap.hana-app.cuan.custom_seg.gen.product_related_ia_kf_mxn::CA_PRODUCT_RELATED_IA_KF_MXN" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="true">
+ <descriptions defaultDescription="PRODUCT_RELATED_IA_KF_MXN"/>
+ <localVariables>
+  <variable id="TARGET_CURRENCY" parameter="true">
+   <descriptions defaultDescription="Input Parameter: Target Currency &apos;MXN&apos;"/>
+   <variableProperties datatype="VARCHAR" length="3" mandatory="false" defaultValue="MXN">
+    <valueDomain type="Currency"/>
+    <selection multiLine="false" type="SingleValue"/>
+   </variableProperties>
+  </variable>
+ </localVariables>
+ <variableMappings/>
+ <dataSources>
+  <DataSource id="hdbtables::CUAND_CE_IA_RT">
+   <resourceUri>hdbtables::CUAND_CE_IA_RT</resourceUri>
+  </DataSource>
+  <DataSource id="hdbtables::CUAND_PROD_ROOT">
+   <resourceUri>hdbtables::CUAND_PROD_ROOT</resourceUri>
+  </DataSource>
+  <DataSource id="hdbtables::CUAND_PROD_FACET">
+   <resourceUri>hdbtables::CUAND_PROD_FACET</resourceUri>
+  </DataSource>
+  <DataSource id="hdbtables::CUAND_CE_IA_PROD">
+   <resourceUri>hdbtables::CUAND_CE_IA_PROD</resourceUri>
+  </DataSource>
+  <DataSource id="sap.hana-app.cuan.db::M_TIME_DIMENSION">
+   <resourceUri>sap.hana-app.cuan.db::M_TIME_DIMENSION</resourceUri>
+  </DataSource>
+  <DataSource id="hdbtables::T002">
+   <resourceUri>hdbtables::T002</resourceUri>
+  </DataSource>
+  <DataSource id="hdbtables::CUANC_CE_CH_ASGN">
+   <resourceUri>hdbtables::CUANC_CE_CH_ASGN</resourceUri>
+  </DataSource>
+  <DataSource id="hdbtables::CUAN_D_INI_ROOT">
+   <resourceUri>hdbtables::CUAN_D_INI_ROOT</resourceUri>
+  </DataSource>
+  <DataSource id="hdbtables::CUANC_CE_IA_TYPE">
+   <resourceUri>hdbtables::CUANC_CE_IA_TYPE</resourceUri>
+  </DataSource>
+  <DataSource id="INI_ROOT$$$$hdbtables::CUAN_D_INI_ROOT$$">
+   <resourceUri>hdbtables::CUAN_D_INI_ROOT</resourceUri>
+  </DataSource>
+ </dataSources>
+ <calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="IA_RT">
+   <viewAttributes>
+    <viewAttribute id="TIMESTAMP"/>
+    <viewAttribute id="SOURCE_SYSTEM_TYPE"/>
+    <viewAttribute id="CONTACT_KEY"/>
+    <viewAttribute id="CAMPAIGNCONTENTLINKNAME"/>
+    <viewAttribute id="INTERACTIONAGREEMENTEXTERNALID"/>
+    <viewAttribute id="INTERACTIONCONTENTSUBJECT"/>
+    <viewAttribute id="INTERACTIONEXTERNALID"/>
+    <viewAttribute id="INTERACTIONOPERATINGSYSTEMNAME"/>
+    <viewAttribute id="INTERACTIONPROCESSINGDURATION"/>
+    <viewAttribute id="INTERACTIONSOURCEOBJECTADDLID"/>
+    <viewAttribute id="INTERACTIONDEVICEFREETEXT"/>
+    <viewAttribute id="INTERACTIONDIGITALACCOUNT"/>
+    <viewAttribute id="INTERACTIONISANONYMOUS"/>
+    <viewAttribute id="INTERACTIONSOFTWARECLIENTNAME"/>
+    <viewAttribute id="INTERACTIONSOURCEOBJECTSTATUS"/>
+    <viewAttribute id="VALUATION"/>
+    <viewAttribute id="REFERRALSOURCE"/>
+    <viewAttribute id="REFERRALSOURCECATEGORY"/>
+    <viewAttribute id="IA_STATUS"/>
+    <viewAttribute id="INTERACTIONSOURCEOBJECT"/>
+    <viewAttribute id="QUANTIFIER"/>
+    <viewAttribute id="SOURCESYSTEM"/>
+    <viewAttribute id="CURRENCY"/>
+    <viewAttribute id="INTERACTIONSOURCETIMESTAMPUTC"/>
+    <viewAttribute id="DEVICETYPE"/>
+    <viewAttribute id="INTERACTIONAGREEMENTORIGIN"/>
+    <viewAttribute id="INTERACTIONDIGITALACCOUNTTYPE"/>
+    <viewAttribute id="INTERACTIONMARKETINGAREA"/>
+    <viewAttribute id="INTERACTIONORIGIN"/>
+    <viewAttribute id="INTERACTIONPRIORITY"/>
+    <viewAttribute id="INTERACTIONREASON"/>
+    <viewAttribute id="INTERACTIONSOURCEOBJECTTYPE"/>
+    <viewAttribute id="MARKETINGLOCATIONEXTERNALID"/>
+    <viewAttribute id="MARKETINGLOCATIONORIGIN"/>
+    <viewAttribute id="MARKETING_ORCHESTRATION_ID"/>
+    <viewAttribute id="AMOUNT"/>
+    <viewAttribute id="IA_DATE"/>
+   </viewAttributes>
+   <calculatedViewAttributes/>
+   <input node="hdbtables::CUAND_CE_IA_RT">
+    <mapping xsi:type="Calculation:AttributeMapping" target="CAMPAIGNCONTENTLINKNAME" source="LAUNCH_TEXT"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONAGREEMENTEXTERNALID" source="MKT_AGREEMENTEXTERNALID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONCONTENTSUBJECT" source="CONTENT_TITLE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONEXTERNALID" source="ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONOPERATINGSYSTEMNAME" source="OS"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONPROCESSINGDURATION" source="PROCESSING_TIME"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEOBJECTADDLID" source="SOURCE_OBJECT_ADD_ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONDEVICEFREETEXT" source="DEVICE_FT"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONDIGITALACCOUNT" source="DIGACC_ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONISANONYMOUS" source="IS_ANONYMOUS"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOFTWARECLIENTNAME" source="SW_CLIENT"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEOBJECTSTATUS" source="SOURCE_OBJECT_STATUS_CODE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="REFERRALSOURCE" source="REFERRAL_SOURCE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="REFERRALSOURCECATEGORY" source="REFERRAL_SOURCE_CATEGORY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEOBJECT" source="SOURCE_OBJECT_ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="SOURCESYSTEM" source="SOURCE_SYSTEM_ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCETIMESTAMPUTC" source="SOURCE_TIMESTAMP"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="DEVICETYPE" source="DEVICE_TYPE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONAGREEMENTORIGIN" source="MKT_AGREEMENTORIGIN"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONDIGITALACCOUNTTYPE" source="DIGACC_TYPE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONMARKETINGAREA" source="MKT_AREA_ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONORIGIN" source="ID_ORIGIN"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONPRIORITY" source="PRIORITY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONREASON" source="IA_REASON"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEOBJECTTYPE" source="SOURCE_OBJECT_TYPE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="MARKETINGLOCATIONEXTERNALID" source="LOC_ID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="MARKETINGLOCATIONORIGIN" source="LOC_ORIGIN"/>
+   </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="PROD_ROOT">
+   <viewAttributes>
+    <viewAttribute id="PRODUCT_IMAGE_URL"/>
+    <viewAttribute id="PRODUCT_NAV_URL"/>
+    <viewAttribute id="INTERACTIONPRODUCTBRANDID"/>
+   </viewAttributes>
+   <calculatedViewAttributes/>
+   <input node="hdbtables::CUAND_PROD_ROOT">
+    <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_IMAGE_URL" source="IMAGE_URL"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_NAV_URL" source="NAV_URL"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONPRODUCTBRANDID" source="BRAND_ID"/>
+   </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="PROD_FACET">
+   <viewAttributes>
+    <viewAttribute id="PRODUCT_ID"/>
+   </viewAttributes>
+   <calculatedViewAttributes/>
+   <input node="hdbtables::CUAND_PROD_FACET"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="IA_PROD">
+   <viewAttributes>
+    <viewAttribute id="PRODUCT_KEY"/>
+    <viewAttribute id="UNIT_OF_MEASURE"/>
+   </viewAttributes>
+   <calculatedViewAttributes/>
+   <input node="hdbtables::CUAND_CE_IA_PROD"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="TIME_DIM">
+   <viewAttributes>
+    <viewAttribute id="YEAR"/>
+    <viewAttribute id="CALMONTH"/>
+    <viewAttribute id="CALQUARTER"/>
+    <viewAttribute id="DAY"/>
+   </viewAttributes>
+   <calculatedViewAttributes/>
+   <input node="sap.hana-app.cuan.db::M_TIME_DIMENSION"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="LANGUAGE">
+   <viewAttributes>
+    <viewAttribute id="INTERACTIONLANGUAGE"/>
+   </viewAttributes>
+   <calculatedViewAttributes/>
+   <input node="hdbtables::T002">
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONLANGUAGE" source="LAISO"/>
+   </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+   <viewAttributes>
+    <viewAttribute id="TIMESTAMP" aggregationType="sum"/>
+    <viewAttribute id="SOURCE_SYSTEM_TYPE"/>
+    <viewAttribute id="CONTACT_KEY"/>
+    <viewAttribute id="CAMPAIGNCONTENTLINKNAME"/>
+    <viewAttribute id="INTERACTIONAGREEMENTEXTERNALID"/>
+    <viewAttribute id="INTERACTIONCONTENTSUBJECT"/>
+    <viewAttribute id="INTERACTIONEXTERNALID"/>
+    <viewAttribute id="INTERACTIONOPERATINGSYSTEMNAME"/>
+    <viewAttribute id="INTERACTIONPROCESSINGDURATION" aggregationType="sum"/>
+    <viewAttribute id="INTERACTIONSOURCEOBJECTADDLID"/>
+    <viewAttribute id="INTERACTIONDEVICEFREETEXT"/>
+    <viewAttribute id="INTERACTIONDIGITALACCOUNT"/>
+    <viewAttribute id="INTERACTIONISANONYMOUS"/>
+    <viewAttribute id="INTERACTIONSOFTWARECLIENTNAME"/>
+    <viewAttribute id="INTERACTIONSOURCEOBJECTSTATUS"/>
+    <viewAttribute id="VALUATION" aggregationType="sum"/>
+    <viewAttribute id="REFERRALSOURCE"/>
+    <viewAttribute id="REFERRALSOURCECATEGORY"/>
+    <viewAttribute id="IA_STATUS"/>
+    <viewAttribute id="INTERACTIONSOURCEOBJECT"/>
+    <viewAttribute id="QUANTIFIER" aggregationType="sum"/>
+    <viewAttribute id="SOURCESYSTEM"/>
+    <viewAttribute id="CURRENCY"/>
+    <viewAttribute id="INTERACTIONSOURCETIMESTAMPUTC" aggregationType="sum"/>
+    <viewAttribute id="DEVICETYPE"/>
+    <viewAttribute id="INTERACTIONAGREEMENTORIGIN"/>
+    <viewAttribute id="INTERACTIONDIGITALACCOUNTTYPE"/>
+    <viewAttribute id="INTERACTIONMARKETINGAREA"/>
+    <viewAttribute id="INTERACTIONORIGIN"/>
+    <viewAttribute id="INTERACTIONPRIORITY"/>
+    <viewAttribute id="INTERACTIONREASON"/>
+    <viewAttribute id="INTERACTIONSOURCEOBJECTTYPE"/>
+    <viewAttribute id="MARKETINGLOCATIONEXTERNALID"/>
+    <viewAttribute id="MARKETINGLOCATIONORIGIN"/>
+    <viewAttribute id="MARKETING_ORCHESTRATION_ID" aggregationType="sum"/>
+    <viewAttribute id="PRODUCT_IMAGE_URL"/>
+    <viewAttribute id="PRODUCT_NAV_URL"/>
+    <viewAttribute id="INTERACTIONPRODUCTBRANDID"/>
+    <viewAttribute id="PRODUCT_ID"/>
+    <viewAttribute id="PRODUCT_KEY"/>
+    <viewAttribute id="UNIT_OF_MEASURE"/>
+    <viewAttribute id="YEAR"/>
+    <viewAttribute id="CALMONTH"/>
+    <viewAttribute id="CALQUARTER"/>
+    <viewAttribute id="DAY"/>
+    <viewAttribute id="INTERACTIONLANGUAGE"/>
+    <viewAttribute id="IA_TYPE"/>
+    <viewAttribute id="COMM_MEDIUM"/>
+    <viewAttribute id="CHANNEL"/>
+    <viewAttribute id="CA_D_CAMPAIGN_ID"/>
+    <viewAttribute id="DIRECTION"/>
+    <viewAttribute id="INITIATIVE_DESC"/>
+    <viewAttribute id="INITIATIVE_ID_DESC"/>
+    <viewAttribute id="AMOUNT" aggregationType="sum"/>
+    <viewAttribute id="IA_DATE"/>
+   </viewAttributes>
+   <calculatedViewAttributes/>
+   <input node="IA_RT" emptyUnionBehavior="NO_ROW">
+    <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP" source="TIMESTAMP"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="SOURCE_SYSTEM_TYPE" source="SOURCE_SYSTEM_TYPE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="CONTACT_KEY" source="CONTACT_KEY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="CAMPAIGNCONTENTLINKNAME" source="CAMPAIGNCONTENTLINKNAME"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONAGREEMENTEXTERNALID" source="INTERACTIONAGREEMENTEXTERNALID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONCONTENTSUBJECT" source="INTERACTIONCONTENTSUBJECT"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONEXTERNALID" source="INTERACTIONEXTERNALID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONOPERATINGSYSTEMNAME" source="INTERACTIONOPERATINGSYSTEMNAME"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONPROCESSINGDURATION" source="INTERACTIONPROCESSINGDURATION"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEOBJECTADDLID" source="INTERACTIONSOURCEOBJECTADDLID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONDEVICEFREETEXT" source="INTERACTIONDEVICEFREETEXT"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONDIGITALACCOUNT" source="INTERACTIONDIGITALACCOUNT"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONISANONYMOUS" source="INTERACTIONISANONYMOUS"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOFTWARECLIENTNAME" source="INTERACTIONSOFTWARECLIENTNAME"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEOBJECTSTATUS" source="INTERACTIONSOURCEOBJECTSTATUS"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="VALUATION" source="VALUATION"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="REFERRALSOURCE" source="REFERRALSOURCE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="REFERRALSOURCECATEGORY" source="REFERRALSOURCECATEGORY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="IA_STATUS" source="IA_STATUS"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEOBJECT" source="INTERACTIONSOURCEOBJECT"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="QUANTIFIER" source="QUANTIFIER"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="SOURCESYSTEM" source="SOURCESYSTEM"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY" source="CURRENCY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCETIMESTAMPUTC" source="INTERACTIONSOURCETIMESTAMPUTC"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="DEVICETYPE" source="DEVICETYPE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONAGREEMENTORIGIN" source="INTERACTIONAGREEMENTORIGIN"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONDIGITALACCOUNTTYPE" source="INTERACTIONDIGITALACCOUNTTYPE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONMARKETINGAREA" source="INTERACTIONMARKETINGAREA"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONORIGIN" source="INTERACTIONORIGIN"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONPRIORITY" source="INTERACTIONPRIORITY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONREASON" source="INTERACTIONREASON"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONSOURCEOBJECTTYPE" source="INTERACTIONSOURCEOBJECTTYPE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="MARKETINGLOCATIONEXTERNALID" source="MARKETINGLOCATIONEXTERNALID"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="MARKETINGLOCATIONORIGIN" source="MARKETINGLOCATIONORIGIN"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="MARKETING_ORCHESTRATION_ID" source="MARKETING_ORCHESTRATION_ID"/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_IMAGE_URL" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_NAV_URL" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONPRODUCTBRANDID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_ID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_KEY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="UNIT_OF_MEASURE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="YEAR" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CALMONTH" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CALQUARTER" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DAY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONLANGUAGE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IA_TYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COMM_MEDIUM" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CHANNEL" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CA_D_CAMPAIGN_ID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DIRECTION" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INITIATIVE_DESC" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INITIATIVE_ID_DESC" null="true" value=""/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="AMOUNT" source="AMOUNT"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="IA_DATE" source="IA_DATE"/>
+   </input>
+   <input node="PROD_ROOT" emptyUnionBehavior="NO_ROW">
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TIMESTAMP" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SOURCE_SYSTEM_TYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CONTACT_KEY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CAMPAIGNCONTENTLINKNAME" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONAGREEMENTEXTERNALID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONCONTENTSUBJECT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONEXTERNALID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONOPERATINGSYSTEMNAME" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONPROCESSINGDURATION" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECTADDLID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONDEVICEFREETEXT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONDIGITALACCOUNT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONISANONYMOUS" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOFTWARECLIENTNAME" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECTSTATUS" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VALUATION" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REFERRALSOURCE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REFERRALSOURCECATEGORY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IA_STATUS" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="QUANTIFIER" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SOURCESYSTEM" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CURRENCY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCETIMESTAMPUTC" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEVICETYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONAGREEMENTORIGIN" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONDIGITALACCOUNTTYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONMARKETINGAREA" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONORIGIN" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONPRIORITY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONREASON" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECTTYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MARKETINGLOCATIONEXTERNALID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MARKETINGLOCATIONORIGIN" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MARKETING_ORCHESTRATION_ID" null="true" value=""/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_IMAGE_URL" source="PRODUCT_IMAGE_URL"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_NAV_URL" source="PRODUCT_NAV_URL"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONPRODUCTBRANDID" source="INTERACTIONPRODUCTBRANDID"/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_ID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_KEY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="UNIT_OF_MEASURE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="YEAR" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CALMONTH" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CALQUARTER" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DAY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONLANGUAGE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IA_TYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COMM_MEDIUM" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CHANNEL" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CA_D_CAMPAIGN_ID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DIRECTION" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INITIATIVE_DESC" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INITIATIVE_ID_DESC" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="AMOUNT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IA_DATE" null="true" value=""/>
+   </input>
+   <input node="PROD_FACET" emptyUnionBehavior="NO_ROW">
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TIMESTAMP" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SOURCE_SYSTEM_TYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CONTACT_KEY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CAMPAIGNCONTENTLINKNAME" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONAGREEMENTEXTERNALID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONCONTENTSUBJECT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONEXTERNALID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONOPERATINGSYSTEMNAME" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONPROCESSINGDURATION" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECTADDLID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONDEVICEFREETEXT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONDIGITALACCOUNT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONISANONYMOUS" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOFTWARECLIENTNAME" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECTSTATUS" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VALUATION" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REFERRALSOURCE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REFERRALSOURCECATEGORY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IA_STATUS" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="QUANTIFIER" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SOURCESYSTEM" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CURRENCY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCETIMESTAMPUTC" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEVICETYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONAGREEMENTORIGIN" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONDIGITALACCOUNTTYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONMARKETINGAREA" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONORIGIN" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONPRIORITY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONREASON" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECTTYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MARKETINGLOCATIONEXTERNALID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MARKETINGLOCATIONORIGIN" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MARKETING_ORCHESTRATION_ID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_IMAGE_URL" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_NAV_URL" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONPRODUCTBRANDID" null="true" value=""/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_ID" source="PRODUCT_ID"/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_KEY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="UNIT_OF_MEASURE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="YEAR" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CALMONTH" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CALQUARTER" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DAY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONLANGUAGE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IA_TYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COMM_MEDIUM" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CHANNEL" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CA_D_CAMPAIGN_ID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DIRECTION" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INITIATIVE_DESC" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INITIATIVE_ID_DESC" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="AMOUNT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IA_DATE" null="true" value=""/>
+   </input>
+   <input node="IA_PROD" emptyUnionBehavior="NO_ROW">
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TIMESTAMP" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SOURCE_SYSTEM_TYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CONTACT_KEY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CAMPAIGNCONTENTLINKNAME" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONAGREEMENTEXTERNALID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONCONTENTSUBJECT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONEXTERNALID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONOPERATINGSYSTEMNAME" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONPROCESSINGDURATION" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECTADDLID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONDEVICEFREETEXT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONDIGITALACCOUNT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONISANONYMOUS" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOFTWARECLIENTNAME" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECTSTATUS" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VALUATION" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REFERRALSOURCE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REFERRALSOURCECATEGORY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IA_STATUS" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="QUANTIFIER" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SOURCESYSTEM" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CURRENCY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCETIMESTAMPUTC" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEVICETYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONAGREEMENTORIGIN" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONDIGITALACCOUNTTYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONMARKETINGAREA" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONORIGIN" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONPRIORITY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONREASON" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECTTYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MARKETINGLOCATIONEXTERNALID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MARKETINGLOCATIONORIGIN" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MARKETING_ORCHESTRATION_ID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_IMAGE_URL" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_NAV_URL" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONPRODUCTBRANDID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_ID" null="true" value=""/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_KEY" source="PRODUCT_KEY"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="UNIT_OF_MEASURE" source="UNIT_OF_MEASURE"/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="YEAR" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CALMONTH" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CALQUARTER" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DAY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONLANGUAGE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IA_TYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COMM_MEDIUM" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CHANNEL" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CA_D_CAMPAIGN_ID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DIRECTION" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INITIATIVE_DESC" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INITIATIVE_ID_DESC" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="AMOUNT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IA_DATE" null="true" value=""/>
+   </input>
+   <input node="TIME_DIM" emptyUnionBehavior="NO_ROW">
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TIMESTAMP" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SOURCE_SYSTEM_TYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CONTACT_KEY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CAMPAIGNCONTENTLINKNAME" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONAGREEMENTEXTERNALID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONCONTENTSUBJECT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONEXTERNALID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONOPERATINGSYSTEMNAME" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONPROCESSINGDURATION" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECTADDLID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONDEVICEFREETEXT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONDIGITALACCOUNT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONISANONYMOUS" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOFTWARECLIENTNAME" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECTSTATUS" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VALUATION" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REFERRALSOURCE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REFERRALSOURCECATEGORY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IA_STATUS" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="QUANTIFIER" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SOURCESYSTEM" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CURRENCY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCETIMESTAMPUTC" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEVICETYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONAGREEMENTORIGIN" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONDIGITALACCOUNTTYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONMARKETINGAREA" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONORIGIN" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONPRIORITY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONREASON" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECTTYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MARKETINGLOCATIONEXTERNALID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MARKETINGLOCATIONORIGIN" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MARKETING_ORCHESTRATION_ID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_IMAGE_URL" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_NAV_URL" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONPRODUCTBRANDID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_ID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_KEY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="UNIT_OF_MEASURE" null="true" value=""/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH" source="CALMONTH"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="CALQUARTER" source="CALQUARTER"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="DAY" source="DAY"/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONLANGUAGE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IA_TYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COMM_MEDIUM" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CHANNEL" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CA_D_CAMPAIGN_ID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DIRECTION" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INITIATIVE_DESC" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INITIATIVE_ID_DESC" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="AMOUNT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IA_DATE" null="true" value=""/>
+   </input>
+   <input node="LANGUAGE" emptyUnionBehavior="NO_ROW">
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TIMESTAMP" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SOURCE_SYSTEM_TYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CONTACT_KEY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CAMPAIGNCONTENTLINKNAME" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONAGREEMENTEXTERNALID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONCONTENTSUBJECT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONEXTERNALID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONOPERATINGSYSTEMNAME" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONPROCESSINGDURATION" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECTADDLID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONDEVICEFREETEXT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONDIGITALACCOUNT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONISANONYMOUS" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOFTWARECLIENTNAME" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECTSTATUS" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VALUATION" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REFERRALSOURCE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REFERRALSOURCECATEGORY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IA_STATUS" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="QUANTIFIER" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SOURCESYSTEM" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CURRENCY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCETIMESTAMPUTC" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEVICETYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONAGREEMENTORIGIN" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONDIGITALACCOUNTTYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONMARKETINGAREA" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONORIGIN" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONPRIORITY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONREASON" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECTTYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MARKETINGLOCATIONEXTERNALID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MARKETINGLOCATIONORIGIN" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MARKETING_ORCHESTRATION_ID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_IMAGE_URL" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_NAV_URL" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONPRODUCTBRANDID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_ID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_KEY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="UNIT_OF_MEASURE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="YEAR" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CALMONTH" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CALQUARTER" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DAY" null="true" value=""/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INTERACTIONLANGUAGE" source="INTERACTIONLANGUAGE"/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IA_TYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COMM_MEDIUM" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CHANNEL" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CA_D_CAMPAIGN_ID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DIRECTION" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INITIATIVE_DESC" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INITIATIVE_ID_DESC" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="AMOUNT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IA_DATE" null="true" value=""/>
+   </input>
+   <input node="CHANNEL" emptyUnionBehavior="NO_ROW">
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TIMESTAMP" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SOURCE_SYSTEM_TYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CONTACT_KEY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CAMPAIGNCONTENTLINKNAME" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONAGREEMENTEXTERNALID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONCONTENTSUBJECT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONEXTERNALID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONOPERATINGSYSTEMNAME" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONPROCESSINGDURATION" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECTADDLID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONDEVICEFREETEXT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONDIGITALACCOUNT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONISANONYMOUS" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOFTWARECLIENTNAME" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECTSTATUS" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VALUATION" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REFERRALSOURCE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REFERRALSOURCECATEGORY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IA_STATUS" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="QUANTIFIER" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SOURCESYSTEM" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CURRENCY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCETIMESTAMPUTC" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEVICETYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONAGREEMENTORIGIN" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONDIGITALACCOUNTTYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONMARKETINGAREA" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONORIGIN" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONPRIORITY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONREASON" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECTTYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MARKETINGLOCATIONEXTERNALID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MARKETINGLOCATIONORIGIN" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MARKETING_ORCHESTRATION_ID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_IMAGE_URL" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_NAV_URL" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONPRODUCTBRANDID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_ID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_KEY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="UNIT_OF_MEASURE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="YEAR" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CALMONTH" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CALQUARTER" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DAY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONLANGUAGE" null="true" value=""/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="IA_TYPE" source="IA_TYPE"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="COMM_MEDIUM" source="COMM_MEDIUM"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="CHANNEL" source="CHANNEL"/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CA_D_CAMPAIGN_ID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DIRECTION" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INITIATIVE_DESC" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INITIATIVE_ID_DESC" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="AMOUNT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IA_DATE" null="true" value=""/>
+   </input>
+   <input node="CAMPAIGN_ID" emptyUnionBehavior="NO_ROW">
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TIMESTAMP" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SOURCE_SYSTEM_TYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CONTACT_KEY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CAMPAIGNCONTENTLINKNAME" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONAGREEMENTEXTERNALID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONCONTENTSUBJECT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONEXTERNALID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONOPERATINGSYSTEMNAME" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONPROCESSINGDURATION" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECTADDLID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONDEVICEFREETEXT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONDIGITALACCOUNT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONISANONYMOUS" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOFTWARECLIENTNAME" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECTSTATUS" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VALUATION" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REFERRALSOURCE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REFERRALSOURCECATEGORY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IA_STATUS" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="QUANTIFIER" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SOURCESYSTEM" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CURRENCY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCETIMESTAMPUTC" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEVICETYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONAGREEMENTORIGIN" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONDIGITALACCOUNTTYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONMARKETINGAREA" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONORIGIN" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONPRIORITY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONREASON" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECTTYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MARKETINGLOCATIONEXTERNALID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MARKETINGLOCATIONORIGIN" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MARKETING_ORCHESTRATION_ID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_IMAGE_URL" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_NAV_URL" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONPRODUCTBRANDID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_ID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_KEY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="UNIT_OF_MEASURE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="YEAR" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CALMONTH" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CALQUARTER" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DAY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONLANGUAGE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IA_TYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COMM_MEDIUM" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CHANNEL" null="true" value=""/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="CA_D_CAMPAIGN_ID" source="CA_D_CAMPAIGN_ID"/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DIRECTION" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INITIATIVE_DESC" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INITIATIVE_ID_DESC" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="AMOUNT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IA_DATE" null="true" value=""/>
+   </input>
+   <input node="IA_TYPE" emptyUnionBehavior="NO_ROW">
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TIMESTAMP" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SOURCE_SYSTEM_TYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CONTACT_KEY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CAMPAIGNCONTENTLINKNAME" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONAGREEMENTEXTERNALID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONCONTENTSUBJECT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONEXTERNALID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONOPERATINGSYSTEMNAME" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONPROCESSINGDURATION" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECTADDLID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONDEVICEFREETEXT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONDIGITALACCOUNT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONISANONYMOUS" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOFTWARECLIENTNAME" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECTSTATUS" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VALUATION" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REFERRALSOURCE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REFERRALSOURCECATEGORY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IA_STATUS" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="QUANTIFIER" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SOURCESYSTEM" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CURRENCY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCETIMESTAMPUTC" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEVICETYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONAGREEMENTORIGIN" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONDIGITALACCOUNTTYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONMARKETINGAREA" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONORIGIN" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONPRIORITY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONREASON" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECTTYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MARKETINGLOCATIONEXTERNALID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MARKETINGLOCATIONORIGIN" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MARKETING_ORCHESTRATION_ID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_IMAGE_URL" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_NAV_URL" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONPRODUCTBRANDID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_ID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_KEY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="UNIT_OF_MEASURE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="YEAR" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CALMONTH" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CALQUARTER" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DAY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONLANGUAGE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IA_TYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COMM_MEDIUM" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CHANNEL" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CA_D_CAMPAIGN_ID" null="true" value=""/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="DIRECTION" source="DIRECTION"/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INITIATIVE_DESC" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INITIATIVE_ID_DESC" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="AMOUNT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IA_DATE" null="true" value=""/>
+   </input>
+   <input node="INI_ROOT" emptyUnionBehavior="NO_ROW">
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TIMESTAMP" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SOURCE_SYSTEM_TYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CONTACT_KEY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CAMPAIGNCONTENTLINKNAME" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONAGREEMENTEXTERNALID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONCONTENTSUBJECT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONEXTERNALID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONOPERATINGSYSTEMNAME" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONPROCESSINGDURATION" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECTADDLID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONDEVICEFREETEXT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONDIGITALACCOUNT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONISANONYMOUS" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOFTWARECLIENTNAME" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECTSTATUS" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VALUATION" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REFERRALSOURCE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REFERRALSOURCECATEGORY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IA_STATUS" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="QUANTIFIER" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SOURCESYSTEM" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CURRENCY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCETIMESTAMPUTC" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEVICETYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONAGREEMENTORIGIN" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONDIGITALACCOUNTTYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONMARKETINGAREA" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONORIGIN" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONPRIORITY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONREASON" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONSOURCEOBJECTTYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MARKETINGLOCATIONEXTERNALID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MARKETINGLOCATIONORIGIN" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MARKETING_ORCHESTRATION_ID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_IMAGE_URL" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_NAV_URL" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONPRODUCTBRANDID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_ID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PRODUCT_KEY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="UNIT_OF_MEASURE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="YEAR" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CALMONTH" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CALQUARTER" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DAY" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="INTERACTIONLANGUAGE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IA_TYPE" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COMM_MEDIUM" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CHANNEL" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CA_D_CAMPAIGN_ID" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DIRECTION" null="true" value=""/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INITIATIVE_DESC" source="INITIATIVE_DESC"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INITIATIVE_ID_DESC" source="INITIATIVE_ID_DESC"/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="AMOUNT" null="true" value=""/>
+    <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IA_DATE" null="true" value=""/>
+   </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="CHANNEL">
+   <viewAttributes>
+    <viewAttribute id="IA_TYPE"/>
+    <viewAttribute id="COMM_MEDIUM"/>
+    <viewAttribute id="CHANNEL"/>
+   </viewAttributes>
+   <calculatedViewAttributes/>
+   <input node="hdbtables::CUANC_CE_CH_ASGN"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="CAMPAIGN_ID">
+   <viewAttributes>
+    <viewAttribute id="CA_D_CAMPAIGN_ID"/>
+   </viewAttributes>
+   <calculatedViewAttributes/>
+   <input node="hdbtables::CUAN_D_INI_ROOT">
+    <mapping xsi:type="Calculation:AttributeMapping" target="CA_D_CAMPAIGN_ID" source="ID"/>
+   </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="IA_TYPE">
+   <viewAttributes>
+    <viewAttribute id="DIRECTION"/>
+   </viewAttributes>
+   <calculatedViewAttributes/>
+   <input node="hdbtables::CUANC_CE_IA_TYPE"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="INI_ROOT">
+   <viewAttributes>
+    <viewAttribute id="INITIATIVE_DESC"/>
+    <viewAttribute id="INITIATIVE_ID_DESC"/>
+   </viewAttributes>
+   <calculatedViewAttributes/>
+   <input node="INI_ROOT$$$$hdbtables::CUAN_D_INI_ROOT$$">
+    <mapping xsi:type="Calculation:AttributeMapping" target="INITIATIVE_DESC" source="DESCRIPTION"/>
+    <mapping xsi:type="Calculation:AttributeMapping" target="INITIATIVE_ID_DESC" source="NAME"/>
+   </input>
+  </calculationView>
+ </calculationViews>
+ <logicalModel id="Union_1">
+  <attributes>
+   <attribute id="SOURCE_SYSTEM_TYPE" order="2" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="SOURCE_SYSTEM_TYPE"/>
+    <keyMapping columnObjectName="Union_1" columnName="SOURCE_SYSTEM_TYPE"/>
+   </attribute>
+   <attribute id="CONTACT_KEY" order="3" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="CONTACT_KEY"/>
+    <keyMapping columnObjectName="Union_1" columnName="CONTACT_KEY"/>
+   </attribute>
+   <attribute id="CAMPAIGNCONTENTLINKNAME" order="4" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="CAMPAIGNCONTENTLINKNAME"/>
+    <keyMapping columnObjectName="Union_1" columnName="CAMPAIGNCONTENTLINKNAME"/>
+   </attribute>
+   <attribute id="INTERACTIONAGREEMENTEXTERNALID" order="5" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONAGREEMENTEXTERNALID"/>
+    <keyMapping columnObjectName="Union_1" columnName="INTERACTIONAGREEMENTEXTERNALID"/>
+   </attribute>
+   <attribute id="INTERACTIONCONTENTSUBJECT" order="6" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONCONTENTSUBJECT"/>
+    <keyMapping columnObjectName="Union_1" columnName="INTERACTIONCONTENTSUBJECT"/>
+   </attribute>
+   <attribute id="INTERACTIONEXTERNALID" order="7" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONEXTERNALID"/>
+    <keyMapping columnObjectName="Union_1" columnName="INTERACTIONEXTERNALID"/>
+   </attribute>
+   <attribute id="INTERACTIONOPERATINGSYSTEMNAME" order="8" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONOPERATINGSYSTEMNAME"/>
+    <keyMapping columnObjectName="Union_1" columnName="INTERACTIONOPERATINGSYSTEMNAME"/>
+   </attribute>
+   <attribute id="INTERACTIONSOURCEOBJECTADDLID" order="10" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONSOURCEOBJECTADDLID"/>
+    <keyMapping columnObjectName="Union_1" columnName="INTERACTIONSOURCEOBJECTADDLID"/>
+   </attribute>
+   <attribute id="INTERACTIONDEVICEFREETEXT" order="11" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONDEVICEFREETEXT"/>
+    <keyMapping columnObjectName="Union_1" columnName="INTERACTIONDEVICEFREETEXT"/>
+   </attribute>
+   <attribute id="INTERACTIONDIGITALACCOUNT" order="12" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONDIGITALACCOUNT"/>
+    <keyMapping columnObjectName="Union_1" columnName="INTERACTIONDIGITALACCOUNT"/>
+   </attribute>
+   <attribute id="INTERACTIONISANONYMOUS" order="13" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONISANONYMOUS"/>
+    <keyMapping columnObjectName="Union_1" columnName="INTERACTIONISANONYMOUS"/>
+   </attribute>
+   <attribute id="INTERACTIONSOFTWARECLIENTNAME" order="14" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONSOFTWARECLIENTNAME"/>
+    <keyMapping columnObjectName="Union_1" columnName="INTERACTIONSOFTWARECLIENTNAME"/>
+   </attribute>
+   <attribute id="INTERACTIONSOURCEOBJECTSTATUS" order="15" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONSOURCEOBJECTSTATUS"/>
+    <keyMapping columnObjectName="Union_1" columnName="INTERACTIONSOURCEOBJECTSTATUS"/>
+   </attribute>
+   <attribute id="REFERRALSOURCE" order="17" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="REFERRALSOURCE"/>
+    <keyMapping columnObjectName="Union_1" columnName="REFERRALSOURCE"/>
+   </attribute>
+   <attribute id="REFERRALSOURCECATEGORY" order="18" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="REFERRALSOURCECATEGORY"/>
+    <keyMapping columnObjectName="Union_1" columnName="REFERRALSOURCECATEGORY"/>
+   </attribute>
+   <attribute id="IA_STATUS" order="19" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="IA_STATUS"/>
+    <keyMapping columnObjectName="Union_1" columnName="IA_STATUS"/>
+   </attribute>
+   <attribute id="INTERACTIONSOURCEOBJECT" order="20" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONSOURCEOBJECT"/>
+    <keyMapping columnObjectName="Union_1" columnName="INTERACTIONSOURCEOBJECT"/>
+   </attribute>
+   <attribute id="SOURCESYSTEM" order="22" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="SOURCESYSTEM"/>
+    <keyMapping columnObjectName="Union_1" columnName="SOURCESYSTEM"/>
+   </attribute>
+   <attribute id="CURRENCY" order="23" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="CURRENCY"/>
+    <keyMapping columnObjectName="Union_1" columnName="CURRENCY"/>
+   </attribute>
+   <attribute id="DEVICETYPE" order="25" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="DEVICETYPE"/>
+    <keyMapping columnObjectName="Union_1" columnName="DEVICETYPE"/>
+   </attribute>
+   <attribute id="INTERACTIONAGREEMENTORIGIN" order="26" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONAGREEMENTORIGIN"/>
+    <keyMapping columnObjectName="Union_1" columnName="INTERACTIONAGREEMENTORIGIN"/>
+   </attribute>
+   <attribute id="INTERACTIONDIGITALACCOUNTTYPE" order="27" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONDIGITALACCOUNTTYPE"/>
+    <keyMapping columnObjectName="Union_1" columnName="INTERACTIONDIGITALACCOUNTTYPE"/>
+   </attribute>
+   <attribute id="INTERACTIONMARKETINGAREA" order="28" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONMARKETINGAREA"/>
+    <keyMapping columnObjectName="Union_1" columnName="INTERACTIONMARKETINGAREA"/>
+   </attribute>
+   <attribute id="INTERACTIONORIGIN" order="29" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONORIGIN"/>
+    <keyMapping columnObjectName="Union_1" columnName="INTERACTIONORIGIN"/>
+   </attribute>
+   <attribute id="INTERACTIONPRIORITY" order="30" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONPRIORITY"/>
+    <keyMapping columnObjectName="Union_1" columnName="INTERACTIONPRIORITY"/>
+   </attribute>
+   <attribute id="INTERACTIONREASON" order="31" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONREASON"/>
+    <keyMapping columnObjectName="Union_1" columnName="INTERACTIONREASON"/>
+   </attribute>
+   <attribute id="INTERACTIONSOURCEOBJECTTYPE" order="32" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONSOURCEOBJECTTYPE"/>
+    <keyMapping columnObjectName="Union_1" columnName="INTERACTIONSOURCEOBJECTTYPE"/>
+   </attribute>
+   <attribute id="MARKETINGLOCATIONEXTERNALID" order="33" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="MARKETINGLOCATIONEXTERNALID"/>
+    <keyMapping columnObjectName="Union_1" columnName="MARKETINGLOCATIONEXTERNALID"/>
+   </attribute>
+   <attribute id="MARKETINGLOCATIONORIGIN" order="34" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="MARKETINGLOCATIONORIGIN"/>
+    <keyMapping columnObjectName="Union_1" columnName="MARKETINGLOCATIONORIGIN"/>
+   </attribute>
+   <attribute id="PRODUCT_IMAGE_URL" order="36" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="PRODUCT_IMAGE_URL"/>
+    <keyMapping columnObjectName="Union_1" columnName="PRODUCT_IMAGE_URL"/>
+   </attribute>
+   <attribute id="PRODUCT_NAV_URL" order="37" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="PRODUCT_NAV_URL"/>
+    <keyMapping columnObjectName="Union_1" columnName="PRODUCT_NAV_URL"/>
+   </attribute>
+   <attribute id="INTERACTIONPRODUCTBRANDID" order="38" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONPRODUCTBRANDID"/>
+    <keyMapping columnObjectName="Union_1" columnName="INTERACTIONPRODUCTBRANDID"/>
+   </attribute>
+   <attribute id="PRODUCT_ID" order="39" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="PRODUCT_ID"/>
+    <keyMapping columnObjectName="Union_1" columnName="PRODUCT_ID"/>
+   </attribute>
+   <attribute id="PRODUCT_KEY" order="40" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="PRODUCT_KEY"/>
+    <keyMapping columnObjectName="Union_1" columnName="PRODUCT_KEY"/>
+   </attribute>
+   <attribute id="UNIT_OF_MEASURE" order="41" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="UNIT_OF_MEASURE"/>
+    <keyMapping columnObjectName="Union_1" columnName="UNIT_OF_MEASURE"/>
+   </attribute>
+   <attribute id="YEAR" order="42" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="YEAR"/>
+    <keyMapping columnObjectName="Union_1" columnName="YEAR"/>
+   </attribute>
+   <attribute id="CALMONTH" order="43" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="CALMONTH"/>
+    <keyMapping columnObjectName="Union_1" columnName="CALMONTH"/>
+   </attribute>
+   <attribute id="CALQUARTER" order="44" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="CALQUARTER"/>
+    <keyMapping columnObjectName="Union_1" columnName="CALQUARTER"/>
+   </attribute>
+   <attribute id="DAY" order="45" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="DAY"/>
+    <keyMapping columnObjectName="Union_1" columnName="DAY"/>
+   </attribute>
+   <attribute id="INTERACTIONLANGUAGE" order="46" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="INTERACTIONLANGUAGE"/>
+    <keyMapping columnObjectName="Union_1" columnName="INTERACTIONLANGUAGE"/>
+   </attribute>
+   <attribute id="IA_TYPE" order="47" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="IA_TYPE"/>
+    <keyMapping columnObjectName="Union_1" columnName="IA_TYPE"/>
+   </attribute>
+   <attribute id="COMM_MEDIUM" order="48" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="COMM_MEDIUM"/>
+    <keyMapping columnObjectName="Union_1" columnName="COMM_MEDIUM"/>
+   </attribute>
+   <attribute id="CHANNEL" order="49" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="CHANNEL"/>
+    <keyMapping columnObjectName="Union_1" columnName="CHANNEL"/>
+   </attribute>
+   <attribute id="CA_D_CAMPAIGN_ID" order="50" displayAttribute="false" attributeHierarchyActive="false" descriptionColumnName="INITIATIVE_ID_DESC">
+    <descriptions defaultDescription="CA_D_CAMPAIGN_ID"/>
+    <keyMapping columnObjectName="Union_1" columnName="CA_D_CAMPAIGN_ID"/>
+   </attribute>
+   <attribute id="DIRECTION" order="51" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="DIRECTION"/>
+    <keyMapping columnObjectName="Union_1" columnName="DIRECTION"/>
+   </attribute>
+   <attribute id="INITIATIVE_DESC" order="52" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="DESCRIPTION"/>
+    <keyMapping columnObjectName="Union_1" columnName="INITIATIVE_DESC"/>
+   </attribute>
+   <attribute id="INITIATIVE_ID_DESC" order="53" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="NAME"/>
+    <keyMapping columnObjectName="Union_1" columnName="INITIATIVE_ID_DESC"/>
+   </attribute>
+   <attribute id="IA_DATE" order="55" displayAttribute="false" attributeHierarchyActive="false">
+    <descriptions defaultDescription="IA_DATE"/>
+    <keyMapping columnObjectName="Union_1" columnName="IA_DATE"/>
+   </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+   <measure id="TIMESTAMP" order="1" aggregationType="sum" measureType="simple">
+    <descriptions defaultDescription="TIMESTAMP"/>
+    <measureMapping columnObjectName="Union_1" columnName="TIMESTAMP"/>
+   </measure>
+   <measure id="INTERACTIONPROCESSINGDURATION" order="9" aggregationType="sum" measureType="simple">
+    <descriptions defaultDescription="INTERACTIONPROCESSINGDURATION"/>
+    <measureMapping columnObjectName="Union_1" columnName="INTERACTIONPROCESSINGDURATION"/>
+   </measure>
+   <measure id="VALUATION" order="16" aggregationType="sum" measureType="simple">
+    <descriptions defaultDescription="VALUATION"/>
+    <measureMapping columnObjectName="Union_1" columnName="VALUATION"/>
+   </measure>
+   <measure id="QUANTIFIER" order="21" aggregationType="sum" measureType="simple">
+    <descriptions defaultDescription="QUANTIFIER"/>
+    <measureMapping columnObjectName="Union_1" columnName="QUANTIFIER"/>
+   </measure>
+   <measure id="INTERACTIONSOURCETIMESTAMPUTC" order="24" aggregationType="sum" measureType="simple">
+    <descriptions defaultDescription="INTERACTIONSOURCETIMESTAMPUTC"/>
+    <measureMapping columnObjectName="Union_1" columnName="INTERACTIONSOURCETIMESTAMPUTC"/>
+   </measure>
+   <measure id="MARKETING_ORCHESTRATION_ID" order="35" aggregationType="sum" measureType="simple">
+    <descriptions defaultDescription="MARKETING_ORCHESTRATION_ID"/>
+    <measureMapping columnObjectName="Union_1" columnName="MARKETING_ORCHESTRATION_ID"/>
+   </measure>
+   <measure id="AMOUNT" order="54" aggregationType="sum" measureType="simple">
+    <descriptions defaultDescription="AMOUNT"/>
+    <measureMapping columnObjectName="Union_1" columnName="AMOUNT"/>
+   </measure>
+  </baseMeasures>
+  <calculatedMeasures>
+   <measure id="AMOUNT_CC" order="56" semanticType="amount" aggregationType="sum" measureType="amount" datatype="DECIMAL" length="31" scale="2" expressionLanguage="SQL" unconverted="false">
+    <unitCurrencyAttribute attributeName="AMOUNT_CC_CURRENCY"/>
+    <currencyConversion generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="AMOUNT_CC_CURRENCY" convert="true" accuracy="COMPATIBILITY" method="ERP" lookup="REGULAR">
+     <client>
+      <value>$$client$$</value>
+     </client>
+     <currencyConversionTables rates="hdbtables::TCURR" configuration="hdbtables::TCURV" prefactors="hdbtables::TCURF" notations="hdbtables::TCURN" precisions="hdbtables::TCURX"/>
+     <outputDataType datatype="DECIMAL" length="31" scale="2"/>
+     <sourceCurrency>
+      <attribute attributeName="CURRENCY"/>
+     </sourceCurrency>
+     <erpDecimalShift>true</erpDecimalShift>
+     <targetCurrency>
+      <localVariable>TARGET_CURRENCY</localVariable>
+     </targetCurrency>
+     <referenceDate>
+      <attribute attributeName="IA_DATE"/>
+     </referenceDate>
+     <exchangeRateType>M</exchangeRateType>
+    </currencyConversion>
+    <formula>&apos;AMOUNT&apos;</formula>
+   </measure>
+  </calculatedMeasures>
+  <restrictedMeasures/>
+  <localDimensions/>
+ </logicalModel>
+ <layout>
+  <shapes>
+   <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+    <upperLeftCorner x="742" y="105"/>
+    <rectangleSize width="160"/>
+   </shape>
+   <shape expanded="true" modelObjectName="IA_RT" modelObjectNameSpace="CalculationView">
+    <upperLeftCorner x="-493" y="521"/>
+    <rectangleSize height="30" width="160"/>
+   </shape>
+   <shape expanded="true" modelObjectName="PROD_ROOT" modelObjectNameSpace="CalculationView">
+    <upperLeftCorner x="-283" y="511"/>
+    <rectangleSize height="30" width="160"/>
+   </shape>
+   <shape expanded="true" modelObjectName="PROD_FACET" modelObjectNameSpace="CalculationView">
+    <upperLeftCorner x="-54" y="511"/>
+    <rectangleSize height="30" width="160"/>
+   </shape>
+   <shape expanded="true" modelObjectName="IA_PROD" modelObjectNameSpace="CalculationView">
+    <upperLeftCorner x="142" y="511"/>
+    <rectangleSize height="30" width="160"/>
+   </shape>
+   <shape expanded="true" modelObjectName="TIME_DIM" modelObjectNameSpace="CalculationView">
+    <upperLeftCorner x="356" y="504"/>
+    <rectangleSize height="30" width="160"/>
+   </shape>
+   <shape expanded="true" modelObjectName="LANGUAGE" modelObjectNameSpace="CalculationView">
+    <upperLeftCorner x="542" y="504"/>
+    <rectangleSize height="30" width="160"/>
+   </shape>
+   <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+    <upperLeftCorner x="722" y="210"/>
+    <rectangleSize height="30" width="160"/>
+   </shape>
+   <shape expanded="true" modelObjectName="CHANNEL" modelObjectNameSpace="CalculationView">
+    <upperLeftCorner x="732" y="504"/>
+    <rectangleSize height="30" width="160"/>
+   </shape>
+   <shape expanded="true" modelObjectName="CAMPAIGN_ID" modelObjectNameSpace="CalculationView">
+    <upperLeftCorner x="937" y="504"/>
+    <rectangleSize height="30" width="160"/>
+   </shape>
+   <shape expanded="true" modelObjectName="IA_TYPE" modelObjectNameSpace="CalculationView">
+    <upperLeftCorner x="1117" y="504"/>
+    <rectangleSize height="30" width="160"/>
+   </shape>
+   <shape expanded="true" modelObjectName="INI_ROOT" modelObjectNameSpace="CalculationView">
+    <upperLeftCorner x="1298" y="504"/>
+    <rectangleSize height="30" width="160"/>
+   </shape>
+  </shapes>
+ </layout>
+</Calculation:scenario>
